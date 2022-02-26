@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .body {
+    @apply bg-zinc-900;
+  }
+
+  .nav-link {
+    @apply text-white opacity-70 hover:opacity-100 hover:text-white transition-all text-lg;
+  }
+
+  .nav-link.active {
+    @apply text-yellow-300 opacity-100;
+  }
+
+  .nav-link.active::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+
+    @apply bg-yellow-300 transition-all;
+  }
+
+  .nav-link::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0%;
+
+    @apply bg-white transition-all;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .link-button {
+    transition: all 0.2s ease;
+  }
+
+  .link-button:hover svg {
+    margin-left: 1em;
+  }
+
+  .link-button {
+    @apply gap-6 flex items-center p-6 px-10 rounded-full border-2   transition-all w-fit hover:bg-opacity-10 whitespace-nowrap;
+  }
+
+  .link-button svg {
+    @apply transition-all;
+  }
+
+  .link-button.primary {
+    @apply text-gray-800 bg-yellow-300 border-0;
+  }
+
+  .link-button.secondary {
+    @apply border-slate-600 hover:bg-slate-200 hover:bg-opacity-10 text-slate-200;
+  }
+
+  .link-button.outline {
+    @apply border-slate-600 text-slate-200;
+  }
+
+  .link-button.large {
+    @apply p-6 px-10;
+  }
+
+  .link-button.small {
+    @apply p-2 px-4;
+  }
+
+  .h1 {
+    @apply text-white text-5xl mt-2 leading-snug;
+  }
+
+  .h2 {
+    @apply text-4xl text-white;
+  }
+
+  .h3 {
+    @apply text-3xl text-white;
+  }
+
+  .h4 {
+    @apply text-xl text-white;
+  }
+
+  .h1.coloured,
+  .h2.coloured,
+  .h3.coloured,
+  .h4.coloured {
+    @apply text-yellow-300;
+  }
+
+  .subtitle {
+    @apply text-3xl text-gray-400 mt-4 leading-snug;
+  }
+
+  .post-item {
+    @apply w-full h-[550px] overflow-hidden rounded-lg opacity-50 transition-all hover:opacity-100 relative;
+  }
+
+  .post-item:hover .gradient {
+    @apply opacity-100;
+  }
+
+  .post-item .gradient {
+    height: 100%;
+    width: 100%;
+    background: #000;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    @apply bg-gradient-to-t from-zinc-900 bg-transparent transition-all;
+  }
+
+  .post-item-body {
+    bottom: -100px !important;
+    @apply transition-all;
+  }
+
+  .post-item-title {
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 8);
+  }
+
+  .post-item:hover .post-item-body {
+    bottom: 40px !important;
+  }
+
+  .post-item:hover .post-item-description,
+  .post-item:hover .post-item-cta {
+    @apply opacity-100;
+  }
+}
