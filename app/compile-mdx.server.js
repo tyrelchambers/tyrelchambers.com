@@ -8,7 +8,7 @@ export const getContentPath = (slug) => resolve("posts", slug);
 export const getFilePath = (contentPath, filename) =>
   resolve(contentPath, filename);
 
-export const bundleMDX = async ({ cwd, file }) => {
+export const bundleMDX = async ({ cwd, file, source }) => {
   const { default: remarkGfm } = await import("remark-gfm");
   const { default: remarkBreaks } = await import("remark-breaks");
   const { default: remarkFootnotes } = await import("remark-footnotes");
@@ -19,6 +19,7 @@ export const bundleMDX = async ({ cwd, file }) => {
   return mdxBundler.bundleMDX({
     cwd,
     file,
+    source,
     xdmOptions: (options) => {
       options.remarkPlugins = [
         ...(options.remarkPlugins ?? []),

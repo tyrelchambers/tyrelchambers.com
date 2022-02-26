@@ -8,11 +8,13 @@ import {
 } from "remix";
 import styles from "./tailwind.css";
 import globalStyles from "../styles/global.css";
+import editorcss from "../styles/editor.css";
 
 export function links() {
   return [
     { rel: "stylesheet", href: styles },
     { rel: "stylesheet", href: globalStyles },
+    { rel: "stylesheet", href: editorcss },
   ];
 }
 
@@ -40,7 +42,7 @@ export default function App() {
         />
         <script
           src="https://kit.fontawesome.com/5f8ee45a20.js"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></script>
       </head>
       <body className="body">

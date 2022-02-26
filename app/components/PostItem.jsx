@@ -3,6 +3,7 @@ import { Link } from "remix";
 import { truncateString } from "~/utils/truncateString";
 
 const PostItem = ({ post }) => {
+  return null;
   return (
     <div className="post-item">
       <img src={post.banner} alt="" className="w-full object-cover h-full" />

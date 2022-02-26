@@ -3,6 +3,7 @@ import fs from "fs/promises";
 import parseFrontMatter from "front-matter";
 import invariant from "tiny-invariant";
 import { bundleMDX } from "./compile-mdx.server";
+import { slugify } from "./utils/slugify";
 
 const postsPath = path.join(__dirname, "..", "posts");
 
@@ -22,21 +23,21 @@ export async function getPost(slug) {
     `Post ${filepath} is missing attributes`
   );
 
-  return { slug, code, frontmatter };
+  return {};
 }
 
-export async function getPosts() {
-  const dir = await fs.readdir(postsPath);
+export async function getPosts(posts) {
   return Promise.all(
-    dir.map(async (filename) => {
-      const file = await fs.readFile(path.join(postsPath, filename));
-      const { attributes } = parseFrontMatter(file.toString());
+    posts.map(async (file) => {
+      const { attributes } = parseFrontMatter(JSON.parse(file));
+      console.log(attributes.title);
       invariant(
         isValidPostAttributes(attributes),
-        `${filename} has bad meta data!`
+        `${slugify(attributes.title)} has bad meta data!`
       );
+
       return {
-        slug: filename.replace(/\.mdx$/, ""),
+        slug: slugify(attributes.title).replace(/\.mdx$/, ""),
         title: attributes.title,
         banner: attributes.banner,
         date: attributes.date,
