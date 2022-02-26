@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@netlify/functions": "^0.10.0",
+    "@prisma/client": "^3.10.0",
     "@remix-run/netlify": "^1.2.2",
     "@remix-run/react": "^1.2.2",
     "@remix-run/serve": "^1.2.2",
@@ -27,6 +28,7 @@
     "frontmatter": "^0.0.3",
     "mdx-bundler": "^8.0.1",
     "monaco-editor": "^0.32.1",
+    "prisma": "^3.10.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-textarea-autosize": "^8.3.3",

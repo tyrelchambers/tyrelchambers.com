@@ -1,21 +1,31 @@
-import { useLoaderData } from "remix";
+import { Link, useLoaderData } from "remix";
 import React from "react";
-import { getPostsFromS3 } from "~/utils/aws";
 import AdminHeader from "~/layouts/AdminHeader";
-import { getPosts } from "~/post";
+import { db } from "~/db.server";
 
 export const loader = async () => {
-  const postsFromS3 = await getPostsFromS3();
-  const posts = await getPosts(postsFromS3);
+  const posts = await db.post.findMany();
+
   return posts;
 };
 
 const index = () => {
   const posts = useLoaderData();
-  console.log(posts);
   return (
     <div className="max-w-screen-2xl ml-auto mr-auto mt-10">
       <AdminHeader />
+
+      <div className="grid grid-cols-3 mt-10 gap-10">
+        {posts.map((post) => (
+          <Link
+            to={`/admin/post/${post.id}`}
+            className="border-2 border-gray-500 rounded-lg p-4"
+            key={post.id}
+          >
+            <p className="text-gray-300">{post.title}</p>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
