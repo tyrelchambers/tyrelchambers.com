@@ -1,19 +1,16 @@
 import { supabase } from "./supabase";
 
 export const getImages = async () => {
-  const images = await supabase.storage.from("images").list();
-  console.log(images);
+  const images = await supabase.storage.from("tyrel-chambers/images").list();
   return null;
 };
 
 export const getImage = async (filename) => {
-  const file = await supabase.storage.from("images").findOne({
-    where: {
-      filename,
-    },
-  });
+  const {
+    data: { publicURL },
+  } = await supabase.storage
+    .from("tyrel-chambers/images")
+    .getPublicUrl(filename);
 
-  console.log(file);
-
-  return file;
+  return publicURL;
 };
