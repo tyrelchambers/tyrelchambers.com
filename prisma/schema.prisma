@@ -8,6 +8,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Post {
@@ -16,18 +17,31 @@ model Post {
   updatedAt DateTime @updatedAt
   title     String   @db.VarChar(255)
   content   String?
-  published Boolean  @default(false)
   slug      String   @db.VarChar(255)
+  devTo     Boolean? @default(false)
+  hashNode  Boolean?  @default(false)
+  cover_img String?   @db.VarChar(255)
+  tags      Json[]   @db.Json
+  description String?  @db.VarChar(255)
 }
 
 model DevTo {
+  id            Int      @id @default(autoincrement())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  title         String   @db.VarChar(255)
+  body_markdown String?
+  series        String   @db.VarChar(255)
+  main_img      String   @db.VarChar(255)
+  canonical_url String   @db.VarChar(255)
+  tags          String   @db.VarChar(255)
+}
+
+model Tag {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  title     String   @db.VarChar(255)
-  body_markdown   String?
-  series    String   @db.VarChar(255)
-  main_img String   @db.VarChar(255)
-  canonical_url String   @db.VarChar(255)
-  tags      String   @db.VarChar(255)
+  name      String   @db.VarChar(255)
+  extId     String   @db.VarChar(255)
+  slug      String   @db.VarChar(255)
 }

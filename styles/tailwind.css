@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  :root {
+    --select-highlight: @apply bg-zinc-700;
+    --bg-primary: @apply bg-zinc-900;
+  }
   .body {
     @apply bg-zinc-900;
   }
@@ -55,6 +59,10 @@
 
   .link-button.primary {
     @apply text-gray-800 bg-yellow-300 border-0;
+  }
+
+  .link-button.primary:disabled {
+    @apply text-gray-600 bg-gray-300 border-0;
   }
 
   .link-button.secondary {
@@ -134,5 +142,19 @@
   .post-item:hover .post-item-description,
   .post-item:hover .post-item-cta {
     @apply opacity-100;
+  }
+
+  .custom-select [class*="control"] {
+    @apply bg-zinc-700 border-zinc-400;
+  }
+
+  .custom-select [class*="multiValue"] [class*="Svg"] {
+    @apply text-gray-800;
+  }
+  .custom-select [class*="Svg"] {
+    @apply text-white;
+  }
+  .custom-select [class*="menu"] {
+    @apply bg-zinc-800 text-gray-200;
   }
 }

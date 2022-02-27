@@ -8,19 +8,7 @@ const Hashnode = () => {
       </h4>
 
       <div className="flex flex-col mt-4 gap-2">
-        <label htmlFor="markdown" className="text-yellow-300  ">
-          Cover Image URL
-        </label>
-        <input
-          type="text"
-          name="coverImageURL"
-          className="rounded-lg p-4 bg-zinc-700 w-full text-white"
-          placeholder="Cover Image URL"
-        />
-      </div>
-
-      <div className="flex flex-col mt-4 gap-2">
-        <label htmlFor="markdown" className="text-yellow-300  ">
+        <label htmlFor="markdown" className="text-yellow-300  text-xl">
           Tags
         </label>
         <input

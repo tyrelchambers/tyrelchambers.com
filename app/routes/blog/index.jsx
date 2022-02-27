@@ -1,24 +1,44 @@
-import React from "react";
-import { useLoaderData } from "remix";
+import React, { useState } from "react";
+import { Form, useLoaderData } from "remix";
 import Gap from "~/components/Gap";
 import Header from "~/layouts/Header";
-import { getPosts } from "~/post";
 import { useSearchParams } from "remix";
 import Footer from "~/layouts/Footer";
 import BlogPosts from "~/components/BlogPosts";
 import { Link } from "react-router-dom";
+import { useUpdateQueryStringValueWithoutNavigation } from "~/utils/misc";
+import { supabase } from "~/utils/supabase";
 
 export const loader = async () => {
-  return getPosts();
+  const { data: posts } = await supabase.from("post").select();
+  return posts;
 };
 
 const index = () => {
   const posts = useLoaderData();
-  const tags = [...new Set(posts.map((post) => post.tags.split(",")).flat())];
-  let [searchParams, setSearchParams] = useSearchParams();
-  let queryTag = searchParams.get("tag");
-  let query = searchParams.get("q");
-  const featuredPost = posts[posts.length - 1];
+  const postsTags = posts.reduce((acc, post) => {
+    post.tags.forEach((tag) => {
+      if (!acc.includes(tag)) {
+        acc.push(tag);
+      }
+    });
+    return acc;
+  }, []);
+
+  const tags = postsTags.filter(
+    (value, index, self) =>
+      index ===
+      self.findIndex((t) => t.slug === value.slug && t.name === value.name)
+  );
+  let [searchParams] = useSearchParams();
+  const featuredPost = posts.filter((post) => post.featured)[0];
+
+  const [queryValue, setQuery] = React.useState(() => {
+    return searchParams.get("q") ?? "";
+  });
+  const query = queryValue.trim();
+
+  useUpdateQueryStringValueWithoutNavigation("q", query);
 
   return (
     <div>
@@ -33,19 +53,28 @@ const index = () => {
             <p className="subtitle">
               I write mainly for myself, but hopefully they help you too!
             </p>
-            <input
-              type="search"
-              placeholder="Search for articles"
-              className="mt-16 rounded-full p-6 border-2 border-gray-500 bg-zinc-800 bg-opacity-20 text-white"
-              onInput={(e) => setSearchParams({ q: e.target.value })}
-              value={query}
-            />
+            <Form
+              action="/blog"
+              method="GET"
+              onSubmit={(e) => e.preventDefault()}
+              className="w-full"
+            >
+              <input
+                type="search"
+                placeholder="Search for articles"
+                className="mt-16 rounded-full p-6 border-2 border-gray-500 bg-zinc-800 bg-opacity-20 text-white w-full"
+                onChange={(event) =>
+                  setQuery(event.currentTarget.value.toLowerCase())
+                }
+                value={query}
+              />
+            </Form>
           </div>
           <div className="w-1/2">
             <h2 className="h3 mb-6">Featured article</h2>
             <div className="flex flex-col w-full bg-zinc-800  rounded-lg shadow-lg">
               <img
-                src={featuredPost.banner}
+                src={featuredPost.cover_img}
                 alt=""
                 className="w-full h-52 object-cover mb-4  rounded-lg"
               />
@@ -69,23 +98,33 @@ const index = () => {
         <section>
           <div className="flex flex-col">
             <h3 className="h3">Search by tag</h3>
+
             <div className="flex gap-2 mt-8 max-w-3xl flex-wrap">
-              {tags.map((tag) => (
+              <label
+                className={`bg-zinc-800 p-3 px-6 border-2  rounded-full whitespace-nowrap text-gray-200 ${
+                  query === "" ? "border-yellow-300" : "border-transparent"
+                }`}
+                onClick={() => {
+                  setQuery("");
+                }}
+              >
+                <input type="checkbox" name="" id="" className="sr-only" />
+                <span>All</span>
+              </label>
+              {tags.map((tag, id) => (
                 <label
-                  className={`bg-zinc-800 p-3 px-6 rounded-full whitespace-nowrap text-gray-200 ${
-                    queryTag === tag && " border-2 border-yellow-300"
+                  className={`bg-zinc-800 p-3 px-6 border-2  rounded-full whitespace-nowrap text-gray-200 ${
+                    query.includes(encodeURIComponent(tag.name.toLowerCase()))
+                      ? "border-yellow-300"
+                      : "border-transparent"
                   }`}
                   onClick={() => {
-                    if (queryTag === tag) {
-                      setSearchParams("");
-                    } else {
-                      setSearchParams({ tag });
-                    }
+                    setQuery(encodeURIComponent(tag.name.toLowerCase()));
                   }}
-                  key={tag}
+                  key={id}
                 >
                   <input type="checkbox" name="" id="" className="sr-only" />
-                  <span>{tag}</span>
+                  <span>{tag.name}</span>
                 </label>
               ))}
             </div>
@@ -93,9 +132,15 @@ const index = () => {
         </section>
         <Gap height="h-28" />
         <section>
-          <h3 className="h3">Showing {queryTag ? queryTag : "all"} articles</h3>
+          <h3 className="h3">
+            Showing{" "}
+            <span className="text-sky-300 italic">
+              {query ? decodeURIComponent(query) : "all"}
+            </span>{" "}
+            articles
+          </h3>
           <div className="grid grid-cols-3 gap-10 mt-10">
-            <BlogPosts posts={posts} query={query} queryTag={queryTag} />
+            <BlogPosts posts={posts} query={query} />
           </div>
         </section>
       </main>

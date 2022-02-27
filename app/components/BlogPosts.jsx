@@ -17,11 +17,16 @@ export function ErrorBoundary({ error }) {
     </html>
   );
 }
-const BlogPosts = ({ posts, queryTag, query }) => {
+const BlogPosts = ({ posts, query }) => {
   return posts
-    .filter((post) => (queryTag ? post.tags.includes(queryTag) : post))
-    .filter((post) => (query ? post.title.toLowerCase().includes(query) : post))
-    .map((post) => <PostItem key={post.title} post={post} />);
+    .filter((post) =>
+      query
+        ? post.title.toLowerCase().includes(query) ||
+          post.tags.filter((tag) => tag.slug.toLowerCase().includes(query))
+            .length > 0
+        : post
+    )
+    .map((post) => <PostItem key={post.title + "_" + post.id} post={post} />);
 };
 
 export default BlogPosts;

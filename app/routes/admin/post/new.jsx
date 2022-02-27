@@ -1,41 +1,92 @@
 import TextareaAutosize from "react-textarea-autosize";
-import { Form, redirect } from "remix";
+import { json, redirect, useFetcher } from "remix";
 import { bundleMDX } from "~/compile-mdx.server";
 import AdminHeader from "~/layouts/AdminHeader";
-import { db } from "~/db.server";
-import { useState } from "react";
-import DevTo from "~/components/DevTo";
-import HashNode from "~/components/HashNode";
+import { useEffect, useState } from "react";
+import { postToDevTo, postToHashNode } from "~/api/index";
+import CustomSelect from "~/components/CustomSelect";
+import { tags } from "~/constants/blogTags";
+import { supabase } from "~/utils/supabase";
 
 export const action = async ({ request }) => {
   const {
-    _fields: { markdown, devTo, title, slug, hashNode },
+    _fields: { title, description, cover_img, markdown, tags, hashNode, devTo },
   } = await request.formData();
+
+  const slug = title[0]
+    .replace(/\s+/g, "-")
+    .replace(/[^a-zA-Z0-9\-]/g, "")
+    .toLowerCase();
+
+  const formattedtags = JSON.parse(tags).map((tag) => ({
+    name: tag.name,
+    _id: tag._id,
+  }));
 
   await bundleMDX({
     source: markdown[0],
   });
 
-  await db.post.create({
-    data: {
-      title: title[0],
-      slug: slug[0],
-      content: markdown[0],
-    },
+  const canonical_url = "https://tyrelchambers.com/blog/" + slug;
+
+  const { error } = await supabase.from("post").insert({
+    title: title[0],
+    slug: slug[0],
+    markdown: markdown[0],
+    tags: formattedtags,
+    cover_img: cover_img[0],
+    description: description[0],
+    devTo: devTo[0],
+    hashNode: hashNode[0],
   });
 
-  return redirect(`/admin`);
+  if (error) {
+    return { error };
+  }
+
+  if (devTo[0] === "true") {
+    await postToDevTo({
+      article: {
+        body_markdown: markdown[0],
+        title: title[0],
+        tags: formattedtags,
+        main_img: cover_img[0],
+        canonical_url,
+      },
+    });
+  }
+
+  if (hashNode[0] === "true") {
+    await postToHashNode({
+      title: title[0],
+      contentMarkdown: markdown[0],
+      coverImageURL: cover_img[0],
+      originalArticleURL: canonical_url,
+      tags: formattedtags,
+      publicationId: "6096b94d1ea29f2c341e0420",
+    });
+  }
+
+  return json({ ok: true });
 };
 
 const newPost = () => {
-  const [platform, setPlatform] = useState([]);
+  const [state, setState] = useState({
+    title: "",
+    tags: [],
+    description: "",
+    cover_img: "",
+    markdown: "",
+    hashNode: false,
+    devTo: false,
+  });
+  const fetcher = useFetcher();
 
-  const checkHandler = (e) => {
-    if (e.target.checked) {
-      setPlatform([...platform, e.target.name]);
-    } else {
-      setPlatform(platform.filter((item) => item !== e.target.value));
-    }
+  const submitHandler = async (e) => {
+    fetcher.submit(
+      { ...state, tags: JSON.stringify(state.tags) },
+      { method: "post" }
+    );
   };
 
   return (
@@ -43,7 +94,7 @@ const newPost = () => {
       <AdminHeader />
       <h3 className="h3 mt-20">Create a post</h3>
       <div className="max-w-2xl w-full mt-8">
-        <Form method="post" className="flex flex-col gap-10">
+        <fetcher.Form className="flex flex-col gap-10" onSubmit={submitHandler}>
           <div className="flex flex-col">
             <label htmlFor="title" className="text-yellow-300  text-xl">
               Title
@@ -56,19 +107,54 @@ const newPost = () => {
               name="title"
               className="rounded-lg p-4 bg-zinc-700 w-full text-white"
               placeholder="Post title"
+              onChange={(e) => setState({ ...state, title: e.target.value })}
+              value={state.title}
+            />
+            <p className="text-gray-300 font-thin text-sm mt-2">
+              https://tyrelchambers.com/blog/
+              {state.title
+                .replace(/\s+/g, "-")
+                .replace(/[^a-zA-Z0-9\-]/g, "")
+                .toLowerCase()}
+            </p>
+          </div>
+
+          <div className="flex flex-col">
+            <label htmlFor="title" className="text-yellow-300  text-xl">
+              Description
+            </label>
+            <p className="text-gray-400 mb-2">
+              A brief summary of what this article is about
+            </p>
+            <input
+              type="text"
+              name="description"
+              className="rounded-lg p-4 bg-zinc-700 w-full text-white"
+              placeholder="Post description"
+              onChange={(e) =>
+                setState({ ...state, description: e.target.value })
+              }
+              value={state.description}
             />
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="slug" className="text-yellow-300  text-xl">
-              Slug
+            <label htmlFor="cover_img" className="text-yellow-300  text-xl">
+              Cover image URL
             </label>
-            <p className="text-gray-400 mb-2">Post slug</p>
+            <p className="text-gray-400 mb-2">
+              This is the image that will be used as the cover image for your
+              post
+            </p>
             <input
               type="text"
-              name="slug"
+              name="cover_img"
               className="rounded-lg p-4 bg-zinc-700 w-full text-white"
-              placeholder="Post slug"
+              placeholder="Cover image url"
+              onChange={(e) =>
+                setState({ ...state, cover_img: e.target.value })
+              }
+              value={state.cover_img}
             />
           </div>
 
@@ -82,6 +168,23 @@ const newPost = () => {
               className="w-full max-w-3xl rounded-lg bg-zinc-700 p-2 text-white"
               name="markdown"
               placeholder="Markdown"
+              onChange={(e) => setState({ ...state, markdown: e.target.value })}
+              value={state.markdown}
+            />
+          </div>
+
+          <div className="flex flex-col mt-4 gap-2">
+            <label htmlFor="tags" className="text-yellow-300 text-xl">
+              Tags
+            </label>
+            <CustomSelect
+              options={tags.map((tag) => ({
+                ...tag,
+                value: tag.slug,
+                label: tag.name,
+              }))}
+              isMulti
+              onChange={(e) => setState({ ...state, tags: e })}
             />
           </div>
 
@@ -96,7 +199,10 @@ const newPost = () => {
                   type="checkbox"
                   name="devTo"
                   className="mr-4"
-                  onClick={(e) => checkHandler(e)}
+                  onClick={(e) =>
+                    setState({ ...state, devTo: e.target.checked })
+                  }
+                  checked={state.devTo}
                 />
                 Dev.to
               </label>
@@ -106,26 +212,26 @@ const newPost = () => {
                   type="checkbox"
                   name="hashNode"
                   className="mr-4"
-                  onClick={(e) => checkHandler(e)}
+                  checked={state.hashNode}
+                  onClick={(e) =>
+                    setState({ ...state, hashNode: e.target.checked })
+                  }
                 />
                 Hashnode
               </label>
             </fieldset>
           </div>
 
-          <div className="flex flex-col">
-            <h3 className="text-white  text-3xl">Platform Config</h3>
-            <p className="text-gray-400">
-              Configure the post for each platform
-            </p>
-            {platform.includes("devTo") && <DevTo />}
-            {platform.includes("hashNode") && <HashNode />}
-          </div>
-
-          <button className="link-button primary small mt-6" type="submit">
-            Create post
+          <button
+            className="link-button primary small mt-6"
+            type="submit"
+            disabled={fetcher.state === "submitting"}
+          >
+            {fetcher.state === "submitting"
+              ? "Creating post..."
+              : "Create post"}
           </button>
-        </Form>
+        </fetcher.Form>
       </div>
     </div>
   );

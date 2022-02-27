@@ -30,7 +30,6 @@ export async function getPosts(posts) {
   return Promise.all(
     posts.map(async (file) => {
       const { attributes } = parseFrontMatter(JSON.parse(file));
-      console.log(attributes.title);
       invariant(
         isValidPostAttributes(attributes),
         `${slugify(attributes.title)} has bad meta data!`

@@ -1,5 +1,4 @@
 import React from "react";
-import Editor from "~/components/Editor";
 import AdminHeader from "~/layouts/AdminHeader";
 import AdminNav from "~/layouts/AdminNav";
 
