@@ -8,11 +8,10 @@ import Header from "~/layouts/Header";
 export const loader = async () => {
   const data = resourcesList;
 
-  data.books.map(async (book) => {
-    const image = await getImage(book.img);
-    book.imageURL = image;
-    return book;
-  });
+  for (let index = 0; index < data.books.length; index++) {
+    const element = data.books[index];
+    element.imageURL = await getImage(element.img);
+  }
 
   return data;
 };
@@ -32,8 +31,6 @@ const resources = () => {
     projectManagement,
     books,
   } = useLoaderData();
-
-  console.log(books);
 
   return (
     <div>
