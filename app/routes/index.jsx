@@ -14,9 +14,10 @@ import mtn from "../../public/images/mtn.jpeg";
 import cousin from "../../public/images/cousin.jpeg";
 import papa from "../../public/images/papa.jpeg";
 import Footer from "~/layouts/Footer";
+import { supabase } from "~/utils/supabase";
 
 export const loader = async () => {
-  const posts = await getPosts();
+  const { data: posts } = await supabase.from("post").select();
   const suggestions = getArticleSuggestions({ articles: posts, count: 3 });
   return suggestions;
 };

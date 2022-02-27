@@ -2,18 +2,11 @@ import React from "react";
 import { Link, useLoaderData } from "remix";
 import Gap from "~/components/Gap";
 import * as resourcesList from "~/constants/resources";
-import { getImage } from "~/imgLoader";
+import { getImage } from "~/getImage";
 import Header from "~/layouts/Header";
 
 export const loader = async () => {
   const data = resourcesList;
-
-  data.books.map(async (book) => {
-    const image = await getImage(book.img);
-    const base64Str = image.toString("base64");
-    book.imgUrl = base64Str;
-    return book;
-  });
 
   return data;
 };
@@ -281,13 +274,13 @@ const resources = () => {
                   target="_blank"
                   className="border-2 border-gray-700 rounded-lg p-6 hover:border-yellow-300 transition-all flex gap-6"
                 >
-                  <img
+                  {/* <img
                     src={`data:image/${item.img.match(/\.[\S]+/g)};base64,${
                       item.imgUrl
                     }`}
                     alt=""
                     className="w-32 object-cover  rounded-lg aspect-[4/6]"
-                  />
+                  /> */}
                   <div className="flex flex-col">
                     <h3 className="h3">{item.title}</h3>
                     <p className="text-gray-400 text-xl mt-4">{item.author}</p>

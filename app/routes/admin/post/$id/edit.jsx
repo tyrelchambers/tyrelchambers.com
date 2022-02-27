@@ -2,7 +2,6 @@ import { bundleMDX } from "~/compile-mdx.server";
 import React, { useState } from "react";
 import { useFetcher, useLoaderData } from "remix";
 import AdminHeader from "~/layouts/AdminHeader";
-import { db } from "~/db.server";
 import invariant from "tiny-invariant";
 import TextareaAutosize from "react-textarea-autosize";
 import CustomSelect from "~/components/CustomSelect";
