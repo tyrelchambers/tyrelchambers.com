@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, useLoaderData } from "remix";
 import Gap from "~/components/Gap";
 import Header from "~/layouts/Header";
@@ -7,10 +7,10 @@ import Footer from "~/layouts/Footer";
 import BlogPosts from "~/components/BlogPosts";
 import { Link } from "react-router-dom";
 import { useUpdateQueryStringValueWithoutNavigation } from "~/utils/misc";
-import { supabase } from "~/utils/supabase";
+import { getBlogPosts } from "../../utils/getBlogPosts";
 
 export const loader = async () => {
-  const { data: posts } = await supabase.from("post").select();
+  const posts = getBlogPosts();
   return posts;
 };
 

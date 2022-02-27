@@ -1,8 +1,8 @@
 import TextareaAutosize from "react-textarea-autosize";
-import { json, redirect, useFetcher } from "remix";
+import { json, useFetcher } from "remix";
 import { bundleMDX } from "~/compile-mdx.server";
 import AdminHeader from "~/layouts/AdminHeader";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { postToDevTo, postToHashNode } from "~/api/index";
 import CustomSelect from "~/components/CustomSelect";
 import { tags } from "~/constants/blogTags";

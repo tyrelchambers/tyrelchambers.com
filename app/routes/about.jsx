@@ -1,20 +1,15 @@
-import React from "react";
 import Gap from "~/components/Gap";
 import SocialList from "~/components/SocialList";
 import Header from "~/layouts/Header";
-import img1 from "../../public/images/890717F1-8B22-4767-89CF-897A7B0209EF_1_105_c.jpeg";
-import img2 from "../../public/images/821F0F1E-A38C-4939-A04C-EEB7DA2109FB_1_105_c.jpeg";
-import img3 from "../../public/images/81EEA478-6EC4-4817-B9FA-47D0B5638095_1_105_c.jpeg";
-import img4 from "../../public/images/1FBEB87D-AFA9-4D12-AAEE-94027686A3EA_1_105_c.jpeg";
 
 import Footer from "~/layouts/Footer";
 import { Link, useLoaderData } from "remix";
-import { getPosts } from "~/post";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
 import PostItem from "~/components/PostItem";
+import { getBlogPosts } from "~/utils/getBlogPosts";
 
 export const loader = async () => {
-  const posts = await getPosts();
+  const posts = await getBlogPosts();
   const suggestions = getArticleSuggestions({ articles: posts, count: 3 });
   return suggestions;
 };
@@ -41,7 +36,7 @@ const about = () => {
             <SocialList className="mt-10" />
           </div>
           <img
-            src={img1}
+            src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/890717F1-8B22-4767-89CF-897A7B0209EF_1_105_c.jpeg"
             alt=""
             className="w-full max-w-[450px] object-cover rounded-lg "
           />
@@ -51,7 +46,7 @@ const about = () => {
 
         <figure>
           <img
-            src={img2}
+            src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/821F0F1E-A38C-4939-A04C-EEB7DA2109FB_1_105_c.jpeg"
             alt=""
             className="w-full h-[800px] object-cover rounded-lg"
           />
@@ -140,7 +135,7 @@ const about = () => {
           <div className="flex gap-10">
             <figure className="w-full max-w-[500px]">
               <img
-                src={img3}
+                src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/81EEA478-6EC4-4817-B9FA-47D0B5638095_1_105_c.jpeg"
                 alt=""
                 className="w-full  rounded-lg object-cover"
               />
@@ -195,7 +190,11 @@ const about = () => {
           </div>
         </section>
 
-        <img src={img4} alt="" className="w-full rounded-lg h-[600px] mt-20" />
+        <img
+          src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/1FBEB87D-AFA9-4D12-AAEE-94027686A3EA_1_105_c.jpeg"
+          alt=""
+          className="w-full rounded-lg h-[600px] mt-20"
+        />
         <Gap />
         <section>
           <h2 className="h1 mb-6">Some of my music I enjoy</h2>

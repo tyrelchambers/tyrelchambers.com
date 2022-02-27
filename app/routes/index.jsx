@@ -7,7 +7,6 @@ import SocialList from "~/components/SocialList";
 import Gap from "~/components/Gap";
 import { projects } from "~/constants/projects";
 import Project from "~/components/Project";
-import { getPosts } from "~/post";
 import PostItem from "~/components/PostItem";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
 import mtn from "../../public/images/mtn.jpeg";
