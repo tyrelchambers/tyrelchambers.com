@@ -9,8 +9,8 @@ body {
 /* header */
 
 /* Nav */
-@media screen and (max-width: 769px) {
+/* @media screen and (min-width: 769px) {
   .nav {
     display: none !important;
   }
-}
+} */
