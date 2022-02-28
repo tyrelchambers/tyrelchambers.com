@@ -4,6 +4,7 @@ import Gap from "~/components/Gap";
 import * as resourcesList from "~/constants/resources";
 import { getImage } from "~/utils/getImage";
 import Header from "~/layouts/Header";
+import Footer from "~/layouts/Footer";
 
 export const loader = async () => {
   const data = resourcesList;
@@ -35,7 +36,7 @@ const resources = () => {
   return (
     <div>
       <Header />
-      <main className="max-w-screen-2xl ml-auto mr-auto mt-10">
+      <main className="max-w-screen-2xl ml-auto mr-auto mt-10 p-4">
         <div className="w-full max-w-3xl">
           <h1 className="h1">A curated list of resources</h1>
           <p className="subtitle">
@@ -62,7 +63,7 @@ const resources = () => {
         <div className="flex flex-col gap-20">
           <section>
             <h2 className="h2 coloured">Photography</h2>
-            <div className="grid grid-cols-3 mt-8 gap-10">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 mt-8 gap-10">
               {photography.map((item, index) => (
                 <a
                   href={item.url}
@@ -81,7 +82,7 @@ const resources = () => {
 
           <section>
             <h2 className="h2 coloured">Tutorials</h2>
-            <div className="grid grid-cols-3 mt-8 gap-10">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 mt-8 gap-10">
               {tutorials.map((item, index) => (
                 <a
                   href={item.url}
@@ -100,7 +101,7 @@ const resources = () => {
 
           <section>
             <h2 className="h2 coloured">Code resources</h2>
-            <div className="grid grid-cols-3 mt-8 gap-10">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 mt-8 gap-10">
               {codeResources.map((item, index) => (
                 <a
                   href={item.url}
@@ -119,7 +120,7 @@ const resources = () => {
 
           <section>
             <h2 className="h2 coloured">Source control</h2>
-            <div className="grid grid-cols-3 mt-8 gap-10">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 mt-8 gap-10">
               {sourceControl.map((item, index) => (
                 <a
                   href={item.url}
@@ -138,7 +139,7 @@ const resources = () => {
 
           <section>
             <h2 className="h2 coloured">Cheet sheets</h2>
-            <div className="grid grid-cols-3 mt-8 gap-10">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 mt-8 gap-10">
               {cheatSheets.map((item, index) => (
                 <a
                   href={item.url}
@@ -157,7 +158,7 @@ const resources = () => {
 
           <section>
             <h2 className="h2 coloured">Colour pickers</h2>
-            <div className="grid grid-cols-3 mt-8 gap-10">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 mt-8 gap-10">
               {colourPickers.map((item, index) => (
                 <a
                   href={item.url}
@@ -176,7 +177,7 @@ const resources = () => {
 
           <section>
             <h2 className="h2 coloured">Articles</h2>
-            <div className="grid grid-cols-3 mt-8 gap-10">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 mt-8 gap-10">
               {articles.map((item, index) => (
                 <a
                   href={item.url}
@@ -195,7 +196,7 @@ const resources = () => {
 
           <section>
             <h2 className="h2 coloured">VPS</h2>
-            <div className="grid grid-cols-3 mt-8 gap-10">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 mt-8 gap-10">
               {servers.map((item, index) => (
                 <a
                   href={item.url}
@@ -214,7 +215,7 @@ const resources = () => {
 
           <section>
             <h2 className="h2 coloured">Communication</h2>
-            <div className="grid grid-cols-3 mt-8 gap-10">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 mt-8 gap-10">
               {communication.map((item, index) => (
                 <a
                   href={item.url}
@@ -233,7 +234,7 @@ const resources = () => {
 
           <section>
             <h2 className="h2 coloured">Design software</h2>
-            <div className="grid grid-cols-3 mt-8 gap-10">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 mt-8 gap-10">
               {designSoftware.map((item, index) => (
                 <a
                   href={item.url}
@@ -252,7 +253,7 @@ const resources = () => {
 
           <section>
             <h2 className="h2 coloured">Project management</h2>
-            <div className="grid grid-cols-3 mt-8 gap-10">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 mt-8 gap-10">
               {projectManagement.map((item, index) => (
                 <a
                   href={item.url}
@@ -271,13 +272,13 @@ const resources = () => {
 
           <section>
             <h2 className="h2 coloured">Books</h2>
-            <div className="grid grid-cols-3 mt-8 gap-10">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 mt-8 gap-10">
               {books.map((item, index) => (
                 <a
                   href={item.url}
                   key={index}
                   target="_blank"
-                  className="border-2 border-gray-700 rounded-lg p-6 hover:border-yellow-300 transition-all flex gap-6"
+                  className="border-2 border-gray-700 rounded-lg p-6 hover:border-yellow-300 transition-all flex flex-col mobile:flex-row gap-6 items-center"
                 >
                   <img
                     src={item.imageURL}
@@ -285,8 +286,12 @@ const resources = () => {
                     className="w-32 object-cover  rounded-lg aspect-[4/6]"
                   />
                   <div className="flex flex-col">
-                    <h3 className="h3">{item.title}</h3>
-                    <p className="text-gray-400 text-xl mt-4">{item.author}</p>
+                    <h3 className="h3 text-center mobile:text-left">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-400 text-xl mt-4 text-center mobile:text-left">
+                      {item.author}
+                    </p>
                   </div>
                 </a>
               ))}
@@ -294,6 +299,7 @@ const resources = () => {
           </section>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };
