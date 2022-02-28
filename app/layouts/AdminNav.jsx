@@ -3,8 +3,8 @@ import { Link, NavLink } from "remix";
 
 const AdminNav = () => {
   return (
-    <nav className="w-fit">
-      <ul className="flex gap-10">
+    <nav className="w-fit mt-4 tablet:mt-0 tablet:flex hidden">
+      <ul className="flex gap-10 flex-wrap">
         <Link to="/" className="nav-link" end>
           Home
         </Link>

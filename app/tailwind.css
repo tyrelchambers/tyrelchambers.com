@@ -1158,6 +1158,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 @media screen and (max-width: 768px) {
+  .h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
   .h2 {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -1326,14 +1331,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 3px;
 }
 
-.h-\[800px\] {
-  height: 800px;
-}
-
-.h-\[600px\] {
-  height: 600px;
-}
-
 .h-\[500px\] {
   height: 500px;
 }
@@ -1352,14 +1349,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 13rem;
 }
 
-.h-28 {
-  height: 7rem;
-}
-
-.h-0 {
-  height: 0px;
-}
-
 .w-full {
   width: 100%;
 }
@@ -1376,10 +1365,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-32 {
   width: 8rem;
-}
-
-.w-1\/2 {
-  width: 50%;
 }
 
 .w-\[200px\] {
@@ -1442,20 +1427,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   flex-grow: 1;
 }
 
-.grid-flow-col {
-  grid-auto-flow: column;
-}
-
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -1696,6 +1673,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 0.5rem;
 }
 
+.pt-4 {
+  padding-top: 1rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1723,11 +1704,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
 }
 
 .text-sm {
@@ -1994,12 +1970,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 @media (min-width: 768px) {
-  .tablet\:mt-16 {
-    margin-top: 4rem;
-  }
-
   .tablet\:mt-0 {
     margin-top: 0px;
+  }
+
+  .tablet\:mt-16 {
+    margin-top: 4rem;
   }
 
   .tablet\:flex {
@@ -2010,12 +1986,8 @@ Ensure the default browser behavior of the `hidden` attribute.
     display: none;
   }
 
-  .tablet\:h-28 {
-    height: 7rem;
-  }
-
-  .tablet\:h-\[600px\] {
-    height: 600px;
+  .tablet\:h-20 {
+    height: 5rem;
   }
 
   .tablet\:w-fit {
@@ -2032,10 +2004,6 @@ Ensure the default browser behavior of the `hidden` attribute.
     max-width: 20rem;
   }
 
-  .tablet\:max-w-\[500px\] {
-    max-width: 500px;
-  }
-
   .tablet\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2044,17 +2012,25 @@ Ensure the default browser behavior of the `hidden` attribute.
     flex-direction: row;
   }
 
+  .tablet\:items-start {
+    align-items: flex-start;
+  }
+
   .tablet\:items-center {
     align-items: center;
   }
 
-  .tablet\:gap-20 {
-    gap: 5rem;
+  .tablet\:p-0 {
+    padding: 0px;
   }
 
   .tablet\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .tablet\:text-left {
+    text-align: left;
   }
 
   .tablet\:text-5xl {
@@ -2080,16 +2056,20 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: 12rem;
   }
 
-  .desktop\:h-28 {
-    height: 7rem;
-  }
-
   .desktop\:h-\[800px\] {
     height: 800px;
   }
 
   .desktop\:h-\[600px\] {
     height: 600px;
+  }
+
+  .desktop\:h-28 {
+    height: 7rem;
+  }
+
+  .desktop\:h-20 {
+    height: 5rem;
   }
 
   .desktop\:w-1\/2 {
@@ -2104,8 +2084,16 @@ Ensure the default browser behavior of the `hidden` attribute.
     flex-direction: row;
   }
 
+  .desktop\:items-start {
+    align-items: flex-start;
+  }
+
   .desktop\:gap-20 {
     gap: 5rem;
+  }
+
+  .desktop\:text-left {
+    text-align: left;
   }
 
   .desktop\:text-xl {
@@ -2121,5 +2109,19 @@ Ensure the default browser behavior of the `hidden` attribute.
   .desktop\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .large\:flex-row {
+    flex-direction: row;
+  }
+
+  .large\:items-start {
+    align-items: flex-start;
+  }
+
+  .large\:text-left {
+    text-align: left;
   }
 }
