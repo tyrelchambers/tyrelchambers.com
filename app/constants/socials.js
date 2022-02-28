@@ -27,4 +27,11 @@ export const socials = [
       <i className={`fa-brands fa-hashnode ${className}`}></i>
     ),
   },
+  {
+    label: "Instagram",
+    url: "https://instagram.com/tyrelchambers",
+    icon: ({ className = "" }) => (
+      <i className={`fa-brands fa-instagram ${className}`}></i>
+    ),
+  },
 ];

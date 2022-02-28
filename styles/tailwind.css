@@ -163,7 +163,7 @@
   }
 
   .mobile-nav-link {
-    @apply text-gray-200;
+    @apply text-gray-200 w-full flex;
   }
 
   @media screen and (max-width: 768px) {

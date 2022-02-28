@@ -30,8 +30,8 @@ export default function Index() {
     <div>
       <Header />
 
-      <main className="mt-14 max-w-screen-xl ml-auto mr-auto py-8">
-        <section className=" w-full flex items-center max-w-screen-xl ml-auto mr-auto gap-8 desktop:gap-20 p-4 desktop:p-0 flex-col-reverse tablet:flex-row">
+      <main className="mt-4 desktop:mt-14 max-w-screen-xl ml-auto mr-auto py-8">
+        <section className=" w-full flex items-center max-w-screen-xl ml-auto mr-auto gap-8 desktop:gap-20 p-4 flex-col-reverse tablet:flex-row">
           <div className="flex flex-col items-start">
             <h1 className="max-w-2xl text-white text-3xl mt-2 leading-snug desktop:text-5xl">
               Building software and teaching people about what I love the most
@@ -93,7 +93,7 @@ export default function Index() {
             These are entirely made up of personal projects or technically
             challenges.
           </p>
-          <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3  gap-8 tablet:gap-20 mt-16">
+          <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3  gap-8 desktop:gap-20 mt-16">
             {projects.map((project, index) => (
               <Project project={project} key={index} />
             ))}

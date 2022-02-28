@@ -1151,6 +1151,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .mobile-nav-link {
+  display: flex;
+  width: 100%;
   --tw-text-opacity: 1;
   color: rgb(229 231 235 / var(--tw-text-opacity));
 }
@@ -1256,10 +1258,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 5rem;
 }
 
-.mt-14 {
-  margin-top: 3.5rem;
-}
-
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -1282,6 +1280,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .mr-2 {
   margin-right: 0.5rem;
+}
+
+.mt-14 {
+  margin-top: 3.5rem;
 }
 
 .flex {
@@ -1963,12 +1965,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   }
 }
 
-@media (min-width: 768px) {
-  .md\:hidden {
-    display: none;
-  }
-}
-
 @media (min-width: 1024px) {
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2006,10 +2002,6 @@ Ensure the default browser behavior of the `hidden` attribute.
     align-items: center;
   }
 
-  .tablet\:gap-20 {
-    gap: 5rem;
-  }
-
   .tablet\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
@@ -2017,6 +2009,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 @media (min-width: 1024px) {
+  .desktop\:mt-14 {
+    margin-top: 3.5rem;
+  }
+
   .desktop\:flex {
     display: flex;
   }
@@ -2043,10 +2039,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .desktop\:gap-20 {
     gap: 5rem;
-  }
-
-  .desktop\:p-0 {
-    padding: 0px;
   }
 
   .desktop\:text-xl {
