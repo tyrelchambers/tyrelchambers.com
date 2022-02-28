@@ -1356,6 +1356,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 7rem;
 }
 
+.h-0 {
+  height: 0px;
+}
+
 .w-full {
   width: 100%;
 }
@@ -1444,6 +1448,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -1972,6 +1980,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 @media (min-width: 768px) {
+  .tablet\:mt-16 {
+    margin-top: 4rem;
+  }
+
   .tablet\:flex {
     display: flex;
   }
@@ -1980,10 +1992,18 @@ Ensure the default browser behavior of the `hidden` attribute.
     display: none;
   }
 
+  .tablet\:h-28 {
+    height: 7rem;
+  }
+
   .tablet\:w-fit {
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
+  }
+
+  .tablet\:w-1\/2 {
+    width: 50%;
   }
 
   .tablet\:max-w-xs {
@@ -2002,9 +2022,18 @@ Ensure the default browser behavior of the `hidden` attribute.
     align-items: center;
   }
 
+  .tablet\:gap-20 {
+    gap: 5rem;
+  }
+
   .tablet\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .tablet\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
   }
 }
 
@@ -2023,6 +2052,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .desktop\:h-48 {
     height: 12rem;
+  }
+
+  .desktop\:h-28 {
+    height: 7rem;
   }
 
   .desktop\:w-1\/2 {

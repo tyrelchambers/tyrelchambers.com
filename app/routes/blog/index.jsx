@@ -43,11 +43,11 @@ const index = () => {
   return (
     <div>
       <Header />
-      <Gap height="h-20" />
+      <Gap className="h-12" />
       <main className="max-w-screen-xl ml-auto mr-auto mb-20">
-        <div className="flex gap-20">
-          <div className="max-w-2xl flex flex-col w-1/2">
-            <h1 className="text-white text-5xl mt-2 leading-snug ">
+        <section className="flex desktop:gap-20 gap-8 p-4 flex-col tablet:flex-row">
+          <div className="max-w-2xl flex flex-col w-full tablet:w-1/2">
+            <h1 className="text-white text-3xl mt-2 leading-snug tablet:text-5xl">
               Welcome to my growing collection of articles
             </h1>
             <p className="subtitle">
@@ -62,7 +62,7 @@ const index = () => {
               <input
                 type="search"
                 placeholder="Search for articles"
-                className="mt-16 rounded-full p-6 border-2 border-gray-500 bg-zinc-800 bg-opacity-20 text-white w-full"
+                className="mt-6 tablet:mt-16 rounded-full p-6 border-2 border-gray-500 bg-zinc-800 bg-opacity-20 text-white w-full"
                 onChange={(event) =>
                   setQuery(event.currentTarget.value.toLowerCase())
                 }
@@ -70,7 +70,7 @@ const index = () => {
               />
             </Form>
           </div>
-          <div className="w-1/2">
+          <div className="w-full tablet:w-1/2">
             <h2 className="h3 mb-6">Featured article</h2>
             <div className="flex flex-col w-full bg-zinc-800  rounded-lg shadow-lg">
               <img
@@ -93,9 +93,9 @@ const index = () => {
               </div>
             </div>
           </div>
-        </div>
-        <Gap height="h-28" />
-        <section>
+        </section>
+        <Gap height="h-12 desktop:h-28" className="" />
+        <section className="p-4">
           <div className="flex flex-col">
             <h3 className="h3">Search by tag</h3>
 
@@ -130,8 +130,8 @@ const index = () => {
             </div>
           </div>
         </section>
-        <Gap height="h-28" />
-        <section>
+        <Gap height="h-12 desktop:h-28" />
+        <section className="p-4">
           <h3 className="h3">
             Showing{" "}
             <span className="text-sky-300 italic">
@@ -139,7 +139,7 @@ const index = () => {
             </span>{" "}
             articles
           </h3>
-          <div className="grid grid-cols-3 gap-10 mt-10">
+          <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-10 mt-10">
             <BlogPosts posts={posts} query={query} />
           </div>
         </section>
