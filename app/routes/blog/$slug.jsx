@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLoaderData } from "remix";
+import { Link, useLoaderData, Meta } from "remix";
 import invariant from "tiny-invariant";
 import Header from "~/layouts/Header";
 import { getPost, getPosts } from "~/post";
@@ -10,6 +10,14 @@ import PostItem from "~/components/PostItem";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
 import PostFooter from "~/layouts/PostFooter";
 import Footer from "~/layouts/Footer";
+
+export const meta = (props) => {
+  console.log(props);
+  return {
+    title: "Tyrel Chambers | Blog",
+    description: "",
+  };
+};
 
 export const loader = async ({ params }) => {
   invariant(params.slug, "expected params.slug");

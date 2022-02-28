@@ -11,6 +11,7 @@ import { getBlogPosts } from "~/utils/getBlogPosts";
 export const meta = () => {
   return {
     title: "Tyrel Chambers | About",
+    description: `I'm a full-stack developer living in Ontario, Canada. I'm a self-taught indie developer and I love day-dreaming new ideas and using my free time to bring them to life.`,
   };
 };
 
@@ -29,7 +30,7 @@ const about = () => {
       <main className="w-full max-w-screen-xl ml-auto mr-auto mt-20">
         <section className="flex gap-8 desktop:gap-20 p-4 flex-col-reverse tablet:flex-row">
           <div className="flex flex-col max-w-screen-sm tablet:w-1/2 w-full">
-            <h2 className="h2">Hey, I'm Tyrel Chambers 👋</h2>
+            <h1 className="h1">Hey, I'm Tyrel Chambers 👋</h1>
             <p className="text-xl text-blue-300 mt-4">
               Software Engineer &amp; DevRel @ This Dot Labs
             </p>
@@ -211,7 +212,7 @@ const about = () => {
           <h2 className="h2 mb-6">Some of my music I enjoy</h2>
           <iframe
             allow="autoplay *; encrypted-media *; fullscreen *"
-            frameborder="0"
+            frameBorder="0"
             height="450"
             style={{
               width: "100%",

@@ -11,7 +11,7 @@ const Header = () => {
   const { isMobileNavOpen, toggleMobileNav } = useMobileNav();
 
   return (
-    <header className="max-w-screen-2xl ml-auto mr-auto flex flex-col items-center justify-between w-full p-4">
+    <header className="max-w-screen-2xl ml-auto mr-auto flex flex-col items-center justify-between w-full p-4 tablet:py-8">
       <section className="w-full flex items-center justify-between flex-col tablet:flex-row">
         <div className="flex w-full items-center px-4 tablet:px-0 justify-between tablet:w-fit">
           <h1 className="text-white text-2xl mb-4 sm:mb-0 mt-4 sm:mt-0">

@@ -32,8 +32,8 @@ export default function Index() {
 
       <main className="mt-4 desktop:mt-14 max-w-screen-xl ml-auto mr-auto py-8">
         <section className=" w-full flex items-center max-w-screen-xl ml-auto mr-auto gap-8 desktop:gap-20 p-4 flex-col-reverse tablet:flex-row">
-          <div className="flex flex-col items-start">
-            <h1 className="max-w-2xl text-white text-3xl mt-2 leading-snug desktop:text-5xl">
+          <div className="flex flex-col items-start w-full desktop:w-1/2">
+            <h1 className="h1">
               Building software and teaching people about what I love the most
             </h1>
             <div className="flex flex-col items-center mt-10 w-full gap-6 desktop:flex-row">

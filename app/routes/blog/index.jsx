@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, useLoaderData } from "remix";
+import { Form, useLoaderData, Meta } from "remix";
 import Gap from "~/components/Gap";
 import Header from "~/layouts/Header";
 import { useSearchParams } from "remix";
@@ -8,6 +8,13 @@ import BlogPosts from "~/components/BlogPosts";
 import { Link } from "react-router-dom";
 import { useUpdateQueryStringValueWithoutNavigation } from "~/utils/misc";
 import { getBlogPosts } from "../../utils/getBlogPosts";
+
+export const meta = () => {
+  return {
+    title: "Tyrel Chambers | Blog",
+    description: "Articles about web development, programming, and life.",
+  };
+};
 
 export const loader = async () => {
   const posts = getBlogPosts();
@@ -43,13 +50,11 @@ const index = () => {
   return (
     <div>
       <Header />
-      <Gap className="h-12" />
+      <Gap height="h-20" />
       <main className="max-w-screen-xl ml-auto mr-auto mb-20">
         <section className="flex desktop:gap-20 gap-8 p-4 flex-col tablet:flex-row">
           <div className="max-w-2xl flex flex-col w-full tablet:w-1/2">
-            <h1 className="text-white text-3xl mt-2 leading-snug tablet:text-5xl">
-              Welcome to my growing collection of articles
-            </h1>
+            <h1 className="h1">Welcome to my growing collection of articles</h1>
             <p className="subtitle">
               I write mainly for myself, but hopefully they help you too!
             </p>

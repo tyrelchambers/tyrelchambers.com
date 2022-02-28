@@ -1709,6 +1709,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1.25rem;
 }
 
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .font-thin {
   font-weight: 100;
 }
@@ -2008,9 +2013,18 @@ Ensure the default browser behavior of the `hidden` attribute.
     align-items: center;
   }
 
+  .tablet\:p-8 {
+    padding: 2rem;
+  }
+
   .tablet\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .tablet\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   .tablet\:text-5xl {
