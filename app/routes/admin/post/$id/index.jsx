@@ -44,6 +44,7 @@ export const action = async ({ request, params }) => {
 
 const $slug = () => {
   const post = useLoaderData();
+  console.log(post);
   const Component = React.useMemo(
     () => getMDXComponent(post.code),
     [post.code]
@@ -56,7 +57,7 @@ const $slug = () => {
       <main className="mt-14 flex gap-10">
         <div className="flex flex-col max-w-2xl">
           <h3 className="h3 mb-6 coloured">{post.post.title}</h3>
-          <div className="prose prose-p:text-gray-400 prose-h2:text-white prose-h3:text-white prose-a:text-yellow-300 prose-a:underline prose-strong:text-white prose-code:text-red-300 prose-h2:font-thin prose-h3:font-thin">
+          <div className="prose prose-p:text-gray-400 prose-h2:text-white prose-h3:text-white prose-a:text-yellow-300 prose-a:underline prose-strong:text-white prose-code:text-red-300 prose-h2:font-thin prose-h3:font-thin break-words prose-h1:text-white prose-h1:font-normal">
             <Component />
           </div>
         </div>

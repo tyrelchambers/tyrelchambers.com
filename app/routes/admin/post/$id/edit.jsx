@@ -1,26 +1,37 @@
 import { bundleMDX } from "~/compile-mdx.server";
-import React, { useState } from "react";
-import { useFetcher, useLoaderData } from "remix";
+import React, { useEffect, useState } from "react";
+import { json, redirect, useFetcher, useLoaderData } from "remix";
 import AdminHeader from "~/layouts/AdminHeader";
 import invariant from "tiny-invariant";
 import TextareaAutosize from "react-textarea-autosize";
 import CustomSelect from "~/components/CustomSelect";
 import { tags } from "~/constants/blogTags";
+import { supabase } from "~/supabase.server";
+import { postToDevTo, postToHashNode } from "~/api";
 
 export const loader = async ({ params }) => {
   invariant(params.id, "expected params.id");
-  const post = await db.post.findUnique({
-    where: {
-      id: Number(params.id),
-    },
-  });
+  let { data: post } = await supabase
+    .from("post")
+    .select()
+    .eq("id", params.id)
+    .single();
 
   return { post, id: params.id };
 };
 
 export const action = async ({ request }) => {
   const {
-    _fields: { title, description, cover_img, markdown, tags, hashNode, devTo },
+    _fields: {
+      title,
+      description,
+      cover_img,
+      markdown,
+      tags,
+      hashNode,
+      devTo,
+      id,
+    },
   } = await request.formData();
 
   const slug = title[0]
@@ -40,24 +51,27 @@ export const action = async ({ request }) => {
 
   const canonical_url = "https://tyrelchambers.com/blog/" + slug;
 
-  const newPost = await db.post.update({
-    where: {
-      id: Number(params.id),
-    },
-    data: {
+  const { data: newPost, error } = await supabase
+    .from("post")
+    .update({
       title: title[0],
       slug: slug[0],
-      content: markdown[0],
+      markdown: markdown[0],
       tags: formattedtags,
       cover_img: cover_img[0],
-      description,
-    },
-  });
+      description: description[0],
+    })
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    return json({ error });
+  }
 
   newPost.devTo = devTo[0] === "true";
   newPost.hashNode = hashNode[0] === "true";
 
-  if (devTo) {
+  if (devTo[0] === "true") {
     await postToDevTo({
       article: {
         body_markdown: markdown[0],
@@ -69,7 +83,7 @@ export const action = async ({ request }) => {
     });
   }
 
-  if (hashNode) {
+  if (hashNode[0] === "true") {
     await postToHashNode({
       title: title[0],
       contentMarkdown: markdown[0],
@@ -79,7 +93,7 @@ export const action = async ({ request }) => {
     });
   }
 
-  return redirect(`/admin`);
+  return redirect("/admin/posts");
 };
 
 const edit = () => {
@@ -89,7 +103,7 @@ const edit = () => {
 
   const submitHandler = async (e) => {
     fetcher.submit(
-      { ...state, tags: JSON.stringify(state.tags) },
+      { ...state, tags: JSON.stringify(state.tags), id: data.id },
       { method: "post" }
     );
   };
@@ -99,7 +113,7 @@ const edit = () => {
 
       <main className="mt-10 max-w-3xl">
         <h2 className="h2">
-          Editing - <span className="text-green-200">{data.post.title}</span>
+          Editing - <span className="text-blue-200">{data.post.title}</span>
         </h2>
         <fetcher.Form
           className="flex flex-col gap-10 mt-8"
@@ -179,7 +193,7 @@ const edit = () => {
               name="markdown"
               placeholder="Markdown"
               onChange={(e) => setState({ ...state, markdown: e.target.value })}
-              value={state.content}
+              value={state.markdown}
             />
           </div>
 
@@ -237,8 +251,14 @@ const edit = () => {
             </fieldset>
           </div>
 
-          <button className="link-button primary small mt-6" type="submit">
-            Update post
+          <button
+            className="link-button primary small mt-6"
+            type="submit"
+            disabled={fetcher.state === "submitting"}
+          >
+            {fetcher.state === "submitting"
+              ? "Updating post..."
+              : " Update post"}
           </button>
         </fetcher.Form>
       </main>
