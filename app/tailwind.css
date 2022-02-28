@@ -1998,6 +1998,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     margin-top: 4rem;
   }
 
+  .tablet\:mt-0 {
+    margin-top: 0px;
+  }
+
   .tablet\:flex {
     display: flex;
   }
@@ -2008,6 +2012,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .tablet\:h-28 {
     height: 7rem;
+  }
+
+  .tablet\:h-\[600px\] {
+    height: 600px;
   }
 
   .tablet\:w-fit {
@@ -2022,6 +2030,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .tablet\:max-w-xs {
     max-width: 20rem;
+  }
+
+  .tablet\:max-w-\[500px\] {
+    max-width: 500px;
   }
 
   .tablet\:grid-cols-2 {
@@ -2070,6 +2082,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .desktop\:h-28 {
     height: 7rem;
+  }
+
+  .desktop\:h-\[800px\] {
+    height: 800px;
+  }
+
+  .desktop\:h-\[600px\] {
+    height: 600px;
   }
 
   .desktop\:w-1\/2 {

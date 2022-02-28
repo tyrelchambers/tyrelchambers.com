@@ -21,9 +21,9 @@ const about = () => {
       <Header />
 
       <main className="w-full max-w-screen-xl ml-auto mr-auto mt-20">
-        <section className="flex gap-20">
-          <div className="flex flex-col max-w-screen-sm">
-            <h1 className="h1">Hey, I'm Tyrel Chambers 👋</h1>
+        <section className="flex gap-8 desktop:gap-20 p-4 flex-col-reverse">
+          <div className="flex flex-col max-w-screen-sm tablet:w-1/2 w-full">
+            <h2 className="h2">Hey, I'm Tyrel Chambers 👋</h2>
             <p className="text-xl text-blue-300 mt-4">
               Software Engineer &amp; DevRel @ This Dot Labs
             </p>
@@ -35,20 +35,22 @@ const about = () => {
 
             <SocialList className="mt-10" />
           </div>
-          <img
-            src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/890717F1-8B22-4767-89CF-897A7B0209EF_1_105_c.jpeg"
-            alt=""
-            className="w-full max-w-[450px] object-cover rounded-lg "
-          />
+          <div className="tablet:w-1/2 w-full max-w-[450px]">
+            <img
+              src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/890717F1-8B22-4767-89CF-897A7B0209EF_1_105_c.jpeg"
+              alt=""
+              className="w-full object-cover rounded-lg "
+            />
+          </div>
         </section>
 
         <Gap />
 
-        <figure>
+        <figure className="p-4">
           <img
             src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/821F0F1E-A38C-4939-A04C-EEB7DA2109FB_1_105_c.jpeg"
             alt=""
-            className="w-full h-[800px] object-cover rounded-lg"
+            className="w-full desktop:h-[800px] object-cover rounded-lg"
           />
           <figcaption className="text-gray-400 text-center mt-4 max-w-xl ml-auto mr-auto">
             My cousin on the tallest cliffs in Ontario in Thunder Bay, Ontario.
@@ -56,22 +58,20 @@ const about = () => {
           </figcaption>
         </figure>
         <Gap />
-        <section>
-          <div className="flex gap-20">
+        <section className="p-4">
+          <div className="flex gap-20 flex-col tablet:flex-row">
             <iframe
-              width="600"
-              height="700"
               src="https://youtube.com/embed/uJiLFua0cww"
-              className="w-full h-[800px] object-cover rounded-lg"
+              className="w-full desktop:h-[800px] object-cover rounded-lg"
             ></iframe>
             <div className="flex flex-col max-w-screen-sm">
-              <h2 className="h1">How I got here</h2>
-              <p className="subtitle">
+              <h2 className="h2 mb-4">How I got here</h2>
+              <p className="text-gray-400 leading-loose">
                 I love playing music, video games and taking pictures. I'm also
                 interesting in writing blogs and teaching people about what I
                 enjoy.
               </p>
-              <p className="subtitle">
+              <p className="text-gray-400 leading-loose">
                 The video here shows me and my cousin walking across the longest
                 foot suspension bridge in Canada (about 700 feet long). It was
                 incredibly windy up at that height (about 150 meters), but it
@@ -81,9 +81,9 @@ const about = () => {
           </div>
         </section>
         <Gap />
-        <section>
+        <section className="p-4">
           <div className="flex flex-col">
-            <h2 className="h1">Where it began</h2>
+            <h2 className="h2">Where it began</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-20 mt-4">
               <p className="text-gray-400 leading-loose">
                 When I graduated from college with a Law and Security
@@ -108,22 +108,25 @@ const about = () => {
           </div>
         </section>
         <Gap />
-        <section>
+        <section className="p-4">
           <div className="flex flex-col">
-            <div className="flex items-center justify-between">
+            <div className="flex tablet:items-center justify-between flex-col  tablet:flex-row">
               <div className="flex flex-col">
-                <h2 className="h1">I enjoy writing and teaching others</h2>
+                <h2 className="h2">I enjoy writing and teaching others</h2>
                 <p className="subtitle">
                   If you'd like, here are a few articles I've wrote...
                 </p>
               </div>
-              <Link to="/blog" className="link-button small secondary">
+              <Link
+                to="/blog"
+                className="link-button small secondary mt-6 tablet:mt-0"
+              >
                 Read more
                 <i className="fa-solid fa-arrow-right-long"></i>
               </Link>
             </div>
 
-            <div className="grid grid-cols-3 gap-10 mt-10">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-10 mt-10">
               {suggestions.map((post) => (
                 <PostItem post={post} />
               ))}
@@ -131,8 +134,8 @@ const about = () => {
           </div>
         </section>
         <Gap />
-        <section>
-          <div className="flex gap-10">
+        <section className="p-4">
+          <div className="flex gap-10 flex-col tablet:flex-row">
             <figure className="w-full max-w-[500px]">
               <img
                 src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/81EEA478-6EC4-4817-B9FA-47D0B5638095_1_105_c.jpeg"
@@ -145,7 +148,7 @@ const about = () => {
             </figure>
 
             <div className="flex flex-col">
-              <h2 className="h1">Some fun facts about me</h2>
+              <h2 className="h2">Some fun facts about me</h2>
               <div className="flex flex-col mt-10 gap-10">
                 <div className="flex flex-col">
                   <p className="text-white text-2xl">I can play guitar</p>
@@ -190,14 +193,16 @@ const about = () => {
           </div>
         </section>
 
-        <img
-          src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/1FBEB87D-AFA9-4D12-AAEE-94027686A3EA_1_105_c.jpeg"
-          alt=""
-          className="w-full rounded-lg h-[600px] mt-20"
-        />
+        <figure className="p-4">
+          <img
+            src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/1FBEB87D-AFA9-4D12-AAEE-94027686A3EA_1_105_c.jpeg"
+            alt=""
+            className="w-full rounded-lg desktop:h-[600px] mt-20"
+          />
+        </figure>
         <Gap />
-        <section>
-          <h2 className="h1 mb-6">Some of my music I enjoy</h2>
+        <section className="p-4">
+          <h2 className="h2 mb-6">Some of my music I enjoy</h2>
           <iframe
             allow="autoplay *; encrypted-media *; fullscreen *"
             frameborder="0"
