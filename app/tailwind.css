@@ -958,6 +958,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 1rem;
   padding-left: 2.5rem;
   padding-right: 2.5rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
@@ -1357,22 +1359,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100%;
 }
 
+.w-\[35px\] {
+  width: 35px;
+}
+
 .w-fit {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
 
-.w-\[35px\] {
-  width: 35px;
-}
-
 .w-32 {
   width: 8rem;
-}
-
-.w-\[200px\] {
-  width: 200px;
 }
 
 .max-w-\[200px\] {
@@ -1527,12 +1525,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-bottom-width: 2px;
 }
 
-.border-t-\[1px\] {
-  border-top-width: 1px;
-}
-
 .border-t-2 {
   border-top-width: 2px;
+}
+
+.border-t-\[1px\] {
+  border-top-width: 1px;
 }
 
 .border-zinc-800 {
@@ -1545,14 +1543,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(55 65 81 / var(--tw-border-opacity));
 }
 
-.border-zinc-600 {
-  --tw-border-opacity: 1;
-  border-color: rgb(82 82 91 / var(--tw-border-opacity));
-}
-
 .border-gray-600 {
   --tw-border-opacity: 1;
   border-color: rgb(75 85 99 / var(--tw-border-opacity));
+}
+
+.border-zinc-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(82 82 91 / var(--tw-border-opacity));
 }
 
 .border-blue-300 {
@@ -1628,11 +1626,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 0.5rem;
 }
 
-.py-10 {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
-}
-
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1641,6 +1634,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .px-10 {
@@ -1675,10 +1673,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pb-2 {
   padding-bottom: 0.5rem;
-}
-
-.pt-4 {
-  padding-top: 1rem;
 }
 
 .text-center {
@@ -1957,12 +1951,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   }
 }
 
-@media (min-width: 1024px) {
-  .lg\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
 @media (min-width: 425px) {
   .mobile\:flex-row {
     flex-direction: row;
@@ -1988,10 +1976,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .tablet\:hidden {
     display: none;
-  }
-
-  .tablet\:h-20 {
-    height: 5rem;
   }
 
   .tablet\:w-fit {
@@ -2020,25 +2004,13 @@ Ensure the default browser behavior of the `hidden` attribute.
     flex-direction: row;
   }
 
-  .tablet\:items-start {
-    align-items: flex-start;
-  }
-
   .tablet\:items-center {
     align-items: center;
-  }
-
-  .tablet\:p-0 {
-    padding: 0px;
   }
 
   .tablet\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
-  }
-
-  .tablet\:text-left {
-    text-align: left;
   }
 
   .tablet\:text-5xl {
@@ -2092,16 +2064,8 @@ Ensure the default browser behavior of the `hidden` attribute.
     flex-direction: row;
   }
 
-  .desktop\:items-start {
-    align-items: flex-start;
-  }
-
   .desktop\:gap-20 {
     gap: 5rem;
-  }
-
-  .desktop\:text-left {
-    text-align: left;
   }
 
   .desktop\:text-xl {
