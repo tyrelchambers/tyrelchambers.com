@@ -14,8 +14,8 @@ const Header = () => {
       <div className="flex items-center gap-4">
         <SocialList />
         {user?.role === "authenticated" && (
-          <Link to="/admin">
-            <i class="fa-solid fa-circle-user text-yellow-100 text-lg ml-8"></i>
+          <Link to="/admin" className="text-gray-200 ml-6">
+            Admin
           </Link>
         )}
       </div>

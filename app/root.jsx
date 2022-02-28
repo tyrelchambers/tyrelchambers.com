@@ -57,6 +57,11 @@ export default function App() {
           src="https://kit.fontawesome.com/5f8ee45a20.js"
           crossOrigin="anonymous"
         ></script>
+        <script
+          defer
+          data-domain="tyrelchambers.com"
+          src="https://plausible.io/js/plausible.js"
+        ></script>
       </head>
       <body className="body">
         <SupabaseProvider supabase={supabase}>

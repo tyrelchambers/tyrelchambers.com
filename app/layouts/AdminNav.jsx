@@ -1,10 +1,13 @@
 import React from "react";
-import { NavLink } from "remix";
+import { Link, NavLink } from "remix";
 
 const AdminNav = () => {
   return (
     <nav className="w-fit">
       <ul className="flex gap-10">
+        <Link to="/" className="nav-link" end>
+          Home
+        </Link>
         <NavLink to="/admin" className="nav-link" end>
           Admin
         </NavLink>
