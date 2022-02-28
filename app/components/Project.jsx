@@ -7,7 +7,9 @@ const Project = ({ project }) => {
       className="bg-zinc-800 p-6 rounded-lg project border-2 border-gray-700 hover:border-yellow-300 transition-all"
     >
       <h3 className="h3 mb-4">{project.title}</h3>
-      <p className="text-gray-400 text-xl h-32">{project.summary}</p>
+      <p className="text-gray-400 text-normal sm:text-xl sm:h-32 h-24">
+        {project.summary}
+      </p>
       <a
         href={project.url}
         className="link-button small outline mt-4"

@@ -3,7 +3,7 @@ import { NavLink } from "remix";
 
 const Nav = () => {
   return (
-    <nav>
+    <nav className="nav">
       <ul className="flex items-center gap-6">
         <li>
           <NavLink to="/" className="nav-link">

@@ -8,8 +8,8 @@ const Footer = () => {
   const supabase = useSupabase();
 
   return (
-    <footer className="border-t-[1px] py-20 border-zinc-600 bg-zinc-800">
-      <div className="max-w-screen-md ml-auto mr-auto grid grid-cols-2 gap-20">
+    <footer className="border-t-[1px] py-10 sm:py-20 border-zinc-600 bg-zinc-800">
+      <div className="max-w-screen-md ml-auto mr-auto grid grid-cols-1 sm:grid-cols-2 sm:gap-20 gap-10 p-4">
         <div className="flex flex-col ">
           <h3 className="h3">Tyrel Chambers</h3>
           <p className="text-gray-400 mt-6 mb-6">

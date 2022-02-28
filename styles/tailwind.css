@@ -8,7 +8,7 @@
     --bg-primary: @apply bg-zinc-900;
   }
   .body {
-    @apply bg-zinc-900;
+    background: #1f2028;
   }
 
   .nav-link {
@@ -160,5 +160,22 @@
   }
   .custom-select [class*="menu"] {
     @apply bg-zinc-800 text-gray-200;
+  }
+
+  .mobile-nav-link {
+    @apply text-gray-200;
+  }
+
+  @media screen and (max-width: 425px) {
+    .h2 {
+      @apply text-2xl;
+    }
+
+    .h3 {
+      @apply text-xl;
+    }
+    .subtitle {
+      @apply text-xl;
+    }
   }
 }
