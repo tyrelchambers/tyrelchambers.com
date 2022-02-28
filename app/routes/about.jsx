@@ -3,10 +3,16 @@ import SocialList from "~/components/SocialList";
 import Header from "~/layouts/Header";
 
 import Footer from "~/layouts/Footer";
-import { Link, useLoaderData } from "remix";
+import { Link, useLoaderData, Meta } from "remix";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
 import PostItem from "~/components/PostItem";
 import { getBlogPosts } from "~/utils/getBlogPosts";
+
+export const meta = () => {
+  return {
+    title: "Tyrel Chambers | About",
+  };
+};
 
 export const loader = async () => {
   const posts = await getBlogPosts();
@@ -21,7 +27,7 @@ const about = () => {
       <Header />
 
       <main className="w-full max-w-screen-xl ml-auto mr-auto mt-20">
-        <section className="flex gap-8 desktop:gap-20 p-4 flex-col-reverse">
+        <section className="flex gap-8 desktop:gap-20 p-4 flex-col-reverse tablet:flex-row">
           <div className="flex flex-col max-w-screen-sm tablet:w-1/2 w-full">
             <h2 className="h2">Hey, I'm Tyrel Chambers 👋</h2>
             <p className="text-xl text-blue-300 mt-4">

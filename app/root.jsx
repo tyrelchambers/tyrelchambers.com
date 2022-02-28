@@ -29,7 +29,7 @@ export function links() {
 }
 
 export function meta() {
-  return { title: "New Remix App" };
+  return { title: "Tyrel Chambers" };
 }
 
 export default function App() {
