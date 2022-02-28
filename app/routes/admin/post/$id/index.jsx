@@ -44,7 +44,7 @@ export const action = async ({ request, params }) => {
 
 const $slug = () => {
   const post = useLoaderData();
-  console.log(post);
+
   const Component = React.useMemo(
     () => getMDXComponent(post.code),
     [post.code]
@@ -61,17 +61,17 @@ const $slug = () => {
             <Component />
           </div>
         </div>
-        <div className="flex flex-col gap-6">
+        <div className="flex w-[200px] rounded-lg flex-col gap-6 border-2 border-gray-700 h-fit p-4">
           <Link
             to={`/admin/post/${post.id}/edit`}
-            className="link-button small outline"
+            className="link-button small primary w-full"
           >
             Edit article
           </Link>
 
-          <Form method="post">
+          <Form method="post" className="w-full">
             <input type="hidden" name="_method" value="delete" />
-            <button type="submit" className="text-red-300 underline">
+            <button type="submit" className="link-button small danger w-full">
               Delete
             </button>
           </Form>
