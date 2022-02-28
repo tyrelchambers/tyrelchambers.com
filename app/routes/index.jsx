@@ -14,10 +14,12 @@ import cousin from "../../public/images/cousin.jpeg";
 import papa from "../../public/images/papa.jpeg";
 import Footer from "~/layouts/Footer";
 import { supabase } from "~/utils/supabase";
+import { useSupabase } from "../utils/supabase-client";
 
 export const loader = async () => {
   const { data: posts } = await supabase.from("post").select();
   const suggestions = getArticleSuggestions({ articles: posts, count: 3 });
+
   return suggestions;
 };
 

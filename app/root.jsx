@@ -5,10 +5,20 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "remix";
 import styles from "./tailwind.css";
 import globalStyles from "../styles/global.css";
 import editorcss from "../styles/editor.css";
+import { createClient } from "@supabase/supabase-js";
+import { SupabaseProvider } from "./utils/supabase-client";
+
+export async function loader() {
+  return {
+    SUPABASE_URL: process.env.SUPABASE_URL,
+    SUPABASE_KEY: process.env.SUPABASE_KEY,
+  };
+}
 
 export function links() {
   return [
@@ -23,6 +33,9 @@ export function meta() {
 }
 
 export default function App() {
+  const data = useLoaderData();
+  const supabase = createClient(data.SUPABASE_URL, data.SUPABASE_KEY);
+
   return (
     <html lang="en">
       <head>
@@ -46,10 +59,13 @@ export default function App() {
         ></script>
       </head>
       <body className="body">
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
+        <SupabaseProvider supabase={supabase}>
+          <Outlet />
+          <ScrollRestoration />
+
+          <Scripts />
+          <LiveReload />
+        </SupabaseProvider>
       </body>
     </html>
   );

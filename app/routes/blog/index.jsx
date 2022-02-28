@@ -43,7 +43,7 @@ const index = () => {
   return (
     <div>
       <Header />
-      <Gap />
+      <Gap height="h-20" />
       <main className="max-w-screen-xl ml-auto mr-auto mb-20">
         <div className="flex gap-20">
           <div className="max-w-2xl flex flex-col w-1/2">

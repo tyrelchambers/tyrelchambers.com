@@ -120,7 +120,7 @@ const newPost = () => {
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="title" className="text-yellow-300  text-xl">
+            <label htmlFor="description" className="text-yellow-300  text-xl">
               Description
             </label>
             <p className="text-gray-400 mb-2">
