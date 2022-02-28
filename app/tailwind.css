@@ -1211,6 +1211,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   z-index: 10;
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -1998,6 +2002,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .tablet\:w-1\/2 {
     width: 50%;
+  }
+
+  .tablet\:w-\[200px\] {
+    width: 200px;
   }
 
   .tablet\:max-w-xs {

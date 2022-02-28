@@ -111,7 +111,7 @@ const edit = () => {
     <div className="max-w-screen-2xl ml-auto mr-auto mt-10">
       <AdminHeader />
 
-      <main className="mt-10 max-w-3xl">
+      <main className="mt-10 max-w-3xl p-4">
         <h2 className="h2">
           Editing - <span className="text-blue-200">{data.post.title}</span>
         </h2>
