@@ -1,8 +1,15 @@
 import React from "react";
+import { redirect } from "remix";
 import AdminHeader from "~/layouts/AdminHeader";
-import AdminNav from "~/layouts/AdminNav";
+import { getSession } from "~/supabase.server";
 
-export const loader = () => {
+export const loader = async ({ request }) => {
+  const session = await getSession(request.headers.get("Cookie"));
+
+  if (!session.has("access_token")) {
+    return redirect("/login");
+  }
+
   return null;
 };
 

@@ -5,3 +5,4 @@ node_modules
 /.netlify
 .DS_Store
 .env
+.DS_Store

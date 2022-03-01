@@ -1269,10 +1269,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 5rem;
 }
 
-.mt-2 {
-  margin-top: 0.5rem;
-}
-
 .mt-16 {
   margin-top: 4rem;
 }
@@ -1287,6 +1283,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .mb-20 {
   margin-bottom: 5rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .mr-2 {
@@ -1413,16 +1413,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   max-width: 32rem;
 }
 
-.max-w-2xl {
-  max-width: 42rem;
-}
-
 .max-w-3xl {
   max-width: 48rem;
 }
 
 .max-w-md {
   max-width: 28rem;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
 }
 
 .grow {
@@ -1694,11 +1694,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1.75rem;
 }
 
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-}
-
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -1707,11 +1702,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
 }
 
 .font-thin {
@@ -1728,10 +1718,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .leading-loose {
   line-height: 2;
-}
-
-.leading-snug {
-  line-height: 1.375;
 }
 
 .text-gray-400 {
@@ -2013,23 +1999,14 @@ Ensure the default browser behavior of the `hidden` attribute.
     align-items: center;
   }
 
-  .tablet\:p-8 {
-    padding: 2rem;
-  }
-
-  .tablet\:px-0 {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-
   .tablet\:py-8 {
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
 
-  .tablet\:text-5xl {
-    font-size: 3rem;
-    line-height: 1;
+  .tablet\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
 
@@ -2085,11 +2062,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   .desktop\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .desktop\:text-5xl {
-    font-size: 3rem;
-    line-height: 1;
   }
 
   .desktop\:text-2xl {

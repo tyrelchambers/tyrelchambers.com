@@ -53,20 +53,21 @@ export default function App() {
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap"
           rel="stylesheet"
         />
+        <script
+          src="https://kit.fontawesome.com/5f8ee45a20.js"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="body">
         <SupabaseProvider supabase={supabase}>
           <Outlet />
           <ScrollRestoration />
-          <script
-            src="https://kit.fontawesome.com/5f8ee45a20.js"
-            crossOrigin="anonymous"
-          ></script>
+
           <script
             defer
             data-domain="tyrelchambers.com"
             src="https://plausible.io/js/plausible.js"
-          ></script>
+          />
           <Scripts />
           <LiveReload />
         </SupabaseProvider>

@@ -6,7 +6,6 @@ import { useSupabase } from "../utils/supabase-client";
 
 const Footer = () => {
   const supabase = useSupabase();
-
   return (
     <footer className="border-t-[1px] py-10 sm:py-20 border-zinc-600 bg-zinc-800">
       <div className="max-w-screen-md ml-auto mr-auto grid grid-cols-1 sm:grid-cols-2 sm:gap-20 gap-10 p-4">
@@ -36,13 +35,7 @@ const Footer = () => {
           <div className="flex flex-col">
             <h4 className="h4">Admin</h4>
             <ul className="mt-4">
-              <li className="w-fit">
-                <Link to="/auth" className="nav-link w-fit">
-                  Login
-                </Link>
-              </li>
-
-              {supabase.auth.session() && (
+              {supabase.auth.currentUser ? (
                 <li className="w-fit">
                   <button
                     type="button"
@@ -51,6 +44,19 @@ const Footer = () => {
                   >
                     Sign out
                   </button>
+                </li>
+              ) : (
+                <li className="w-fit">
+                  <Link to="/login" className="nav-link w-fit">
+                    Login
+                  </Link>
+                </li>
+              )}
+              {supabase.auth.currentUser && (
+                <li className="w-fit">
+                  <Link to="/admin" className="nav-link w-fit">
+                    Admin
+                  </Link>
                 </li>
               )}
             </ul>

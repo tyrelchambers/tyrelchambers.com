@@ -1,23 +1,47 @@
 import { createClient } from "@supabase/supabase-js";
-import { createCookieSessionStorage } from "remix";
+import { createSessionStorage } from "remix";
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 
-const { getSession, commitSession, destroySession } =
-  createCookieSessionStorage({
-    // a Cookie from `createCookie` or the CookieOptions to create one
-    cookie: {
-      name: "supabase-session",
+export const supabase = createClient(supabaseUrl, supabaseKey);
 
-      // all of these are optional
-      expires: new Date(Date.now() + 3600),
-      httpOnly: true,
-      maxAge: 60,
-      path: "/",
+function createDatabaseSessionStorage({ cookie }) {
+  // Configure your database client...
+  const db = supabase.from("sessions");
+
+  return createSessionStorage({
+    cookie,
+    async createData(data, expires) {
+      // `expires` is a Date after which the data should be considered
+      // invalid. You could use it to invalidate the data somehow or
+      // automatically purge this record from your database.
+      const { data: test } = await db.insert(data);
+
+      return test;
+    },
+    async readData(data) {
+      const { body } = await db
+        .select()
+        .eq("user_id", data[0].user_id)
+        .single();
+      return body;
+    },
+    async updateData(id, data, expires) {
+      await db.update(id, data);
+    },
+    async deleteData(data) {
+      await db.delete().eq("id", data[0].id);
+    },
+  });
+}
+
+const { getSession, commitSession, destroySession } =
+  createDatabaseSessionStorage({
+    cookie: {
+      name: "__session",
       sameSite: "lax",
-      secrets: ["s3cret1"],
-      secure: true,
+      secrets: ["JOUUG97gyviF*^F"],
     },
   });
 
@@ -28,7 +52,5 @@ export const setAuthToken = async (request) => {
 
   return session;
 };
-
-export const supabase = createClient(supabaseUrl, supabaseKey);
 
 export { getSession, commitSession, destroySession };

@@ -4,6 +4,21 @@ import { useSupabase } from "~/utils/supabase-client";
 import { commitSession, getSession } from "../supabase.server";
 import { redirect, useSubmit } from "remix";
 
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+
+  const session = await getSession(request.headers.get("Cookie"));
+
+  session.set("access_token", formData.get("access_token"));
+  session.set("user_id", formData.get("user_id"));
+
+  return redirect("/admin", {
+    headers: {
+      "Set-Cookie": await commitSession(session),
+    },
+  });
+};
+
 const Container = ({ children }) => {
   const { user, session } = Auth.useUser();
   const submit = useSubmit();
@@ -18,7 +33,8 @@ const Container = ({ children }) => {
       // as long as it checks if the user is signed in
       if (accessToken) {
         formData.append("access_token", accessToken);
-        submit(formData, { method: "post", action: "/auth" });
+        formData.append("user_id", user.id);
+        submit(formData, { method: "post", action: "/login" });
       }
     }
   }, [user]);
@@ -30,7 +46,7 @@ const Container = ({ children }) => {
   );
 };
 
-export default function AuthBasic() {
+export default function login() {
   const supabase = useSupabase();
 
   return (

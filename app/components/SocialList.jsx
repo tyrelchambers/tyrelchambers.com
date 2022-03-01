@@ -1,8 +1,6 @@
 import React from "react";
 import { socials } from "~/constants/socials";
 
-import { Link } from "remix";
-
 const SocialList = ({ className = "" }) => {
   return (
     <ul className={`flex items-center gap-6 ${className}`}>

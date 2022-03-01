@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useLoaderData, Meta } from "remix";
 import invariant from "tiny-invariant";
 import Header from "~/layouts/Header";
-import { getPost, getPosts } from "~/post";
 import { getMDXComponent } from "mdx-bundler/client";
 import { format } from "date-fns";
 import Gap from "~/components/Gap";
@@ -10,6 +9,7 @@ import PostItem from "~/components/PostItem";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
 import PostFooter from "~/layouts/PostFooter";
 import Footer from "~/layouts/Footer";
+import { supabase } from "~/supabase.server";
 
 export const meta = (props) => {
   console.log(props);
@@ -21,8 +21,8 @@ export const meta = (props) => {
 
 export const loader = async ({ params }) => {
   invariant(params.slug, "expected params.slug");
-  const posts = await getPosts();
-  const post = await getPost(params.slug);
+  const posts = await supabase.from("posts").select();
+  const post = await supabase.from("posts").select().eq("slug", params.slug);
   const suggestions = getArticleSuggestions({ articles: posts, count: 3 });
   return { post, suggestions };
 };

@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { signInWithEmail } from "../../utils/signInWithEmail";
 import { Form } from "remix";
-import { createClient } from "@supabase/supabase-js";
 
 export const action = async ({ request }) => {
   const {
@@ -16,18 +15,6 @@ export const action = async ({ request }) => {
 };
 
 const login = () => {
-  let supabase2;
-
-  useEffect(() => {
-    console.log(window.ENV);
-    let supabase2 = createClient(
-      window.ENV.SUPABASE_URL,
-      window.ENV.SUPABASE_KEY
-    );
-    const user = supabase2.auth.user();
-    console.log(user);
-  }, []);
-
   return (
     <div className="max-w-md ml-auto mr-auto mt-20">
       <h1 className="h2">Admin login</h1>

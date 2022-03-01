@@ -29,11 +29,6 @@ const Header = () => {
         <Nav />
         <div className="flex items-center gap-4">
           <SocialList />
-          {user?.role === "authenticated" && (
-            <Link to="/admin" className="text-gray-200 ml-6">
-              Admin
-            </Link>
-          )}
         </div>
         <div
           className="mobile-toggle w-[35px] h-[25px] flex-col justify-between hidden tablet:flex desktop:hidden"

@@ -9,12 +9,11 @@ import { projects } from "~/constants/projects";
 import Project from "~/components/Project";
 import PostItem from "~/components/PostItem";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
-import mtn from "../../public/images/mtn.jpeg";
+import mtn from "../../public/images/mtn.webp";
 import cousin from "../../public/images/cousin.jpeg";
 import papa from "../../public/images/papa.jpeg";
 import Footer from "~/layouts/Footer";
 import { supabase } from "~/utils/supabase";
-import { useSupabase } from "../utils/supabase-client";
 
 export const loader = async () => {
   const { data: posts } = await supabase.from("post").select();
