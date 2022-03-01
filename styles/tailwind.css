@@ -5,7 +5,7 @@
 @layer components {
   :root {
     --select-highlight: @apply bg-zinc-700;
-    --bg-primary: @apply bg-zinc-900;
+    --bg-primary: #1f2028;
   }
   .body {
     background: #1f2028;
