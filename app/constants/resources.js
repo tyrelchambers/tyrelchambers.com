@@ -278,7 +278,7 @@ export const books = [
   {
     title: "Crushing It!",
     author: "Gary Vaynerchuck",
-    img: "crushingit.jpg",
+    img: "crushingit.webp",
     url: "https://www.amazon.ca/Crushing-Great-Entrepreneurs-Business-Influence-ebook/dp/B072DV2GHG/ref=sr_1_1?s=digital-text&ie=UTF8&qid=1517777443&sr=1-1&keywords=crushing+it",
   },
   {
@@ -296,7 +296,7 @@ export const books = [
   {
     title: "The Rails 5 Way",
     author: "Obie Fernandez",
-    img: "rails5.jpg",
+    img: "rails5.webp",
     url: "https://www.amazon.ca/Rails-5-Way-4th/dp/0134657675/ref=sr_1_1?s=books&ie=UTF8&qid=1517778549&sr=1-1&keywords=rails+5+way",
   },
   {

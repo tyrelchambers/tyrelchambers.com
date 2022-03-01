@@ -1,5 +1,4 @@
 import React from "react";
-import me from "../../public/images/me.jpeg";
 import SocialList from "./SocialList";
 
 const AuthorCard = () => {
