@@ -121,14 +121,14 @@ const about = () => {
               src="https://youtube.com/embed/uJiLFua0cww"
               className="w-full rounded-lg object-cover desktop:h-[800px]"
             ></iframe>
-            <div className="flex max-w-screen-sm flex-col">
+            <div className="flex max-w-screen-sm flex-col gap-8">
               <h2 className="h2 mb-4">How I got here</h2>
-              <p className="leading-loose text-gray-400">
+              <p className="text-xl leading-loose text-gray-400 tablet:text-2xl">
                 I love playing music, video games and taking pictures. I'm also
                 interesting in writing blogs and teaching people about what I
                 enjoy.
               </p>
-              <p className="leading-loose text-gray-400">
+              <p className="text-xl leading-loose text-gray-400 tablet:text-2xl">
                 The video here shows me and my cousin walking across the longest
                 foot suspension bridge in Canada (about 700 feet long). It was
                 incredibly windy up at that height (about 150 meters), but it
