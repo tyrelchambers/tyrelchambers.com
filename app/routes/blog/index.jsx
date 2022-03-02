@@ -51,9 +51,9 @@ const index = () => {
     <div>
       <Header />
       <Gap height="h-20" />
-      <main className="max-w-screen-xl ml-auto mr-auto mb-20">
-        <section className="flex desktop:gap-20 gap-8 p-4 flex-col tablet:flex-row">
-          <div className="max-w-2xl flex flex-col w-full tablet:w-1/2">
+      <main className="ml-auto mr-auto mb-20 max-w-screen-xl">
+        <section className="flex flex-col gap-8 p-4 tablet:flex-row desktop:gap-20">
+          <div className="flex w-full max-w-2xl flex-col tablet:w-1/2">
             <h1 className="h1">Welcome to my growing collection of articles</h1>
             <p className="subtitle">
               I write mainly for myself, but hopefully they help you too!
@@ -67,25 +67,24 @@ const index = () => {
               <input
                 type="search"
                 placeholder="Search for articles"
-                className="mt-6 tablet:mt-16 rounded-full p-6 border-2 border-gray-500 bg-zinc-800 bg-opacity-20 text-white w-full"
+                className="mt-6 w-full rounded-full border-2 border-gray-500 bg-zinc-800 bg-opacity-20 p-6 text-white tablet:mt-16"
                 onChange={(event) =>
                   setQuery(event.currentTarget.value.toLowerCase())
                 }
-                value={query}
               />
             </Form>
           </div>
           <div className="w-full tablet:w-1/2">
             <h2 className="h3 mb-6">Featured article</h2>
-            <div className="flex flex-col w-full bg-zinc-800  rounded-lg shadow-lg">
+            <div className="flex w-full flex-col rounded-lg  bg-zinc-800 shadow-lg">
               <img
                 src={featuredPost.cover_img}
                 alt=""
-                className="w-full h-52 object-cover mb-4  rounded-lg"
+                className="mb-4 h-52 w-full rounded-lg  object-cover"
               />
               <div className="p-6">
                 <h3 className="h3">{featuredPost.title}</h3>
-                <p className="text-xl text-gray-400 mt-4">
+                <p className="mt-4 text-xl text-gray-400">
                   {featuredPost.description}
                 </p>
                 <Link
@@ -104,9 +103,9 @@ const index = () => {
           <div className="flex flex-col">
             <h3 className="h3">Search by tag</h3>
 
-            <div className="flex gap-2 mt-8 max-w-3xl flex-wrap">
+            <div className="mt-8 flex max-w-3xl flex-wrap gap-2">
               <label
-                className={`bg-zinc-800 p-3 px-6 border-2  rounded-full whitespace-nowrap text-gray-200 ${
+                className={`whitespace-nowrap rounded-full border-2 bg-zinc-800  p-3 px-6 text-gray-200 ${
                   query === "" ? "border-yellow-300" : "border-transparent"
                 }`}
                 onClick={() => {
@@ -118,13 +117,13 @@ const index = () => {
               </label>
               {tags.map((tag, id) => (
                 <label
-                  className={`bg-zinc-800 p-3 px-6 border-2  rounded-full whitespace-nowrap text-gray-200 ${
-                    query.includes(encodeURIComponent(tag.name.toLowerCase()))
+                  className={`whitespace-nowrap rounded-full border-2 bg-zinc-800  p-3 px-6 text-gray-200 ${
+                    query.includes(tag.name.toLowerCase())
                       ? "border-yellow-300"
                       : "border-transparent"
                   }`}
                   onClick={() => {
-                    setQuery(encodeURIComponent(tag.name.toLowerCase()));
+                    setQuery(tag.name.toLowerCase());
                   }}
                   key={id}
                 >
@@ -139,12 +138,10 @@ const index = () => {
         <section className="p-4">
           <h3 className="h3">
             Showing{" "}
-            <span className="text-sky-300 italic">
-              {query ? decodeURIComponent(query) : "all"}
-            </span>{" "}
+            <span className="italic text-sky-300">{query ? query : "all"}</span>{" "}
             articles
           </h3>
-          <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-10 mt-10">
+          <div className="mt-10 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3">
             <BlogPosts posts={posts} query={query} />
           </div>
         </section>

@@ -27,7 +27,7 @@ export const tags = [
   {
     name: "Beginner Developers",
     _id: "56744723958ef13879b955a9",
-    slug: "beginners",
+    slug: "beginner-developers",
   },
   {
     name: "Java",

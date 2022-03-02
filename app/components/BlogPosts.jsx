@@ -18,12 +18,12 @@ export function ErrorBoundary({ error }) {
   );
 }
 const BlogPosts = ({ posts, query }) => {
-  const tagRegex = new RegExp(decodeURIComponent(query), "i");
+  const tagRegex = new RegExp(query, "i");
 
   return posts
     .filter((post) =>
       query
-        ? post.title.toLowerCase().includes(decodeURIComponent(query)) ||
+        ? post.title.toLowerCase().includes(query) ||
           post.tags.filter((tag) => tagRegex.test(tag.name)).length > 0
         : post
     )
