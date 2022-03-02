@@ -127,7 +127,7 @@
     position: absolute;
     top: 0;
     opacity: 0;
-    @apply bg-gradient-to-t from-zinc-900 bg-transparent transition-all;
+    @apply bg-gradient-to-t from-background-primary bg-transparent transition-all;
   }
 
   .post-item-body {

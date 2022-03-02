@@ -1102,8 +1102,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   opacity: 0;
   background-color: transparent;
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
-  --tw-gradient-from: #18181b;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(24 24 27 / 0));
+  --tw-gradient-from: #1f2028;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(31 32 40 / 0));
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;

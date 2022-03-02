@@ -8,6 +8,11 @@ module.exports = {
         desktop: "1024px",
         large: "1440px",
       },
+      colors: {
+        background: {
+          primary: "#1f2028",
+        },
+      },
     },
   },
 
