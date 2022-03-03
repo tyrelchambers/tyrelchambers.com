@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import { Auth } from "@supabase/ui";
-import { useSupabase } from "~/utils/supabase-client";
 import { commitSession, getSession } from "../supabase.server";
 import { redirect, useSubmit } from "remix";
+
+import { Auth } from "@supabase/ui";
+import { useSupabase } from "~/utils/supabase-client";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
 
   const session = await getSession(request.headers.get("Cookie"));
-
   session.set("access_token", formData.get("access_token"));
   session.set("user_id", formData.get("user_id"));
 
@@ -40,7 +40,7 @@ const Container = ({ children }) => {
   }, [user]);
 
   return (
-    <div className="max-w-lg ml-auto mr-auto mt-20 p-6 bg-zinc-100 rounded-lg">
+    <div className="ml-auto mr-auto mt-20 max-w-lg rounded-lg bg-zinc-100 p-6">
       {children}
     </div>
   );
