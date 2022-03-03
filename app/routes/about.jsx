@@ -1,11 +1,11 @@
-import Gap from "~/components/Gap";
-import SocialList from "~/components/SocialList";
-import Header from "~/layouts/Header";
+import { Link, Meta, useLoaderData } from "remix";
 
 import Footer from "~/layouts/Footer";
-import { Link, useLoaderData, Meta } from "remix";
-import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
+import Gap from "~/components/Gap";
+import Header from "~/layouts/Header";
 import PostItem from "~/components/PostItem";
+import SocialList from "~/components/SocialList";
+import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
 import { getBlogPosts } from "~/utils/getBlogPosts";
 
 export const meta = () => {
@@ -257,22 +257,7 @@ const about = () => {
             className="mt-20 w-full rounded-lg desktop:h-[600px]"
           />
         </figure>
-        <Gap />
-        <section className="p-4">
-          <h2 className="h2 mb-6">Some of my music I enjoy</h2>
-          <iframe
-            allow="autoplay *; encrypted-media *; fullscreen *"
-            frameBorder="0"
-            height="450"
-            style={{
-              width: "100%",
-              overflow: "hidden",
-              background: "transparent",
-            }}
-            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-            src="https://embed.music.apple.com/ca/playlist/untitled-playlist/pl.u-mJy8gdrtGv0RXm"
-          ></iframe>
-        </section>
+
         <Gap />
       </main>
       <Footer />

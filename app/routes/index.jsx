@@ -1,15 +1,14 @@
 import { Link, useLoaderData } from "remix";
-import ScrollIcon from "~/components/ScrollIcon";
-import Header from "~/layouts/Header";
-
-import SocialList from "~/components/SocialList";
-import Gap from "~/components/Gap";
-import { projects } from "~/constants/projects";
-import Project from "~/components/Project";
-import PostItem from "~/components/PostItem";
-import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
 
 import Footer from "~/layouts/Footer";
+import Gap from "~/components/Gap";
+import Header from "~/layouts/Header";
+import PostItem from "~/components/PostItem";
+import Project from "~/components/Project";
+import ScrollIcon from "~/components/ScrollIcon";
+import SocialList from "~/components/SocialList";
+import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
+import { projects } from "~/constants/projects";
 import { supabase } from "~/utils/supabase";
 
 export const loader = async () => {
@@ -26,13 +25,13 @@ export default function Index() {
     <div>
       <Header />
 
-      <main className="mt-4 desktop:mt-14 max-w-screen-xl ml-auto mr-auto py-8">
-        <section className=" w-full flex items-center max-w-screen-xl ml-auto mr-auto gap-8 desktop:gap-20 p-4 flex-col-reverse tablet:flex-row">
-          <div className="flex flex-col items-start w-full desktop:w-1/2">
+      <main className="mt-4 ml-auto mr-auto max-w-screen-xl py-8 desktop:mt-14">
+        <section className=" ml-auto mr-auto flex w-full max-w-screen-xl flex-col-reverse items-center gap-8 p-4 tablet:flex-row desktop:gap-20">
+          <div className="flex w-full flex-col items-start desktop:w-1/2">
             <h1 className="h1">
               Building software and teaching people about what I love the most
             </h1>
-            <div className="flex flex-col items-center mt-10 w-full gap-6 desktop:flex-row">
+            <div className="mt-10 flex w-full flex-col items-center gap-6 desktop:flex-row">
               <Link to="/blog" className="link-button primary large w-full">
                 Read my blog
                 <i className="fa-solid fa-arrow-right-long"></i>
@@ -45,7 +44,7 @@ export default function Index() {
               </Link>
             </div>
           </div>
-          <div className="w-full desktop:w-1/2  max-w-lg ml-auto mr-auto">
+          <div className="ml-auto mr-auto  w-full max-w-lg desktop:w-1/2">
             <img
               src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/me2.webp"
               alt=""
@@ -53,24 +52,24 @@ export default function Index() {
             />
           </div>
         </section>
-        <section className="mt-20 flex justify-center items-center flex-col">
+        <section className="mt-20 flex flex-col items-center justify-center">
           <ScrollIcon />
         </section>
         <Gap />
         <section className="p-4">
-          <div className="flex gap-8 desktop:gap-20 flex-col tablet:flex-row">
+          <div className="flex flex-col gap-8 tablet:flex-row desktop:gap-20">
             <img
               src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/me.webp"
               alt=""
-              className="rounded-lg w-full object-cover tablet:max-w-xs ml-auto mr-auto"
+              className="ml-auto mr-auto w-full rounded-lg object-cover tablet:max-w-xs"
             />
             <div className="flex flex-col gap-8">
               <h2 className="h2">Hey, I'm Tyrel Chambers 👋</h2>
-              <p className="text-normal desktop:text-2xl font-thin text-gray-400">
+              <p className="text-normal font-thin text-gray-400 desktop:text-2xl">
                 I'm a programmer at heart and that's what you can usually find
                 me doing as a profession and a hobby.
               </p>
-              <p className="text-normal desktop:text-2xl  text-gray-400">
+              <p className="text-normal text-gray-400  desktop:text-2xl">
                 Outside of programming I enjoy playing music, video games and
                 taking photographs. I also have a{" "}
                 <a href="https://youtube.com/storiesaftermidnight">
@@ -93,7 +92,7 @@ export default function Index() {
             These are entirely made up of personal projects or technically
             challenges.
           </p>
-          <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3  gap-8 desktop:gap-20 mt-16">
+          <div className="mt-16 grid grid-cols-1 gap-8  tablet:grid-cols-2 desktop:grid-cols-3 desktop:gap-20">
             {projects.map((project, index) => (
               <Project project={project} key={index} />
             ))}
@@ -102,7 +101,7 @@ export default function Index() {
         <Gap />
         <section className="p-4">
           <div className="flex items-center">
-            <div className="flex flex-col w-full justify-between">
+            <div className="flex w-full flex-col justify-between">
               <h2 className="h2">Recently published posts</h2>
               <p className="subtitle">Take a look at these recent articles</p>
             </div>
@@ -112,7 +111,7 @@ export default function Index() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-10 mt-10">
+          <div className="mt-10 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3">
             {posts.map((post, index) => (
               <PostItem post={post} key={index} />
             ))}
@@ -137,21 +136,21 @@ export default function Index() {
             <img
               src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/mtn.webp"
               alt=""
-              className="w-full h-[500px] object-cover rounded-lg mt-8"
+              className="mt-8 h-[500px] w-full rounded-lg object-cover"
             />
-            <figcaption className="text-center text-white opacity-40 font-thin mt-4">
+            <figcaption className="mt-4 text-center font-thin text-white opacity-40">
               Taken in 2019 in Thunder Bay, Ontario
             </figcaption>
           </figure>
 
-          <div className="grid grid-cols-1 tablet:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 gap-10 tablet:grid-cols-2">
             <figure>
               <img
                 src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/cousin.webp"
                 alt=""
-                className="w-full h-[500px] object-cover rounded-lg mt-8"
+                className="mt-8 h-[500px] w-full rounded-lg object-cover"
               />
-              <figcaption className="text-center text-white opacity-40 font-thin mt-4">
+              <figcaption className="mt-4 text-center font-thin text-white opacity-40">
                 Taken in 2021. My cousin and I hiking in our home town
               </figcaption>
             </figure>
@@ -160,9 +159,9 @@ export default function Index() {
               <img
                 src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/papa.webp"
                 alt=""
-                className="w-full h-[500px] object-cover rounded-lg mt-8"
+                className="mt-8 h-[500px] w-full rounded-lg object-cover"
               />
-              <figcaption className="text-center text-white opacity-40 font-thin mt-4">
+              <figcaption className="mt-4 text-center font-thin text-white opacity-40">
                 Taken in 2018. My papa and I hiking by his house
               </figcaption>
             </figure>
@@ -170,33 +169,18 @@ export default function Index() {
         </section>
         <Gap />
         <section className="p-4">
-          <div className="flex tablet:items-center justify-between gap-8 flex-col tablet:flex-row">
-            <div className="flex flex-col max-w-3xl">
+          <div className="flex flex-col justify-between gap-8 tablet:flex-row tablet:items-center">
+            <div className="flex max-w-3xl flex-col">
               <h2 className="h2">Resources I've collected</h2>
               <p className="subtitle">
                 If you're looking for some handy links to helpful resources,
                 check them out
               </p>
             </div>
-            <Link to="/resources" className="link-button small outline h-fit">
+            <Link to="/resources" className="link-button small h-fit outline">
               See resources
               <i className="fa-solid fa-arrow-right-long"></i>
             </Link>
-          </div>
-        </section>
-        <Gap />
-        <section className="p-4">
-          <h2 className="h2">Some media I listen to</h2>
-          <div className="mt-10">
-            <iframe
-              className="rounded-lg"
-              src="https://open.spotify.com/embed/show/4kYCRYJ3yK5DQbP5tbfZby?utm_source=generator&theme=0"
-              width="100%"
-              height="232"
-              frameBorder="0"
-              allowFullScreen=""
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            ></iframe>
           </div>
         </section>
         <Gap />
