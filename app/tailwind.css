@@ -1720,10 +1720,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 2;
 }
 
-.leading-snug {
-  line-height: 1.375;
-}
-
 .text-gray-400 {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
@@ -2001,6 +1997,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .tablet\:flex-row {
     flex-direction: row;
+  }
+
+  .tablet\:items-start {
+    align-items: flex-start;
   }
 
   .tablet\:items-center {

@@ -1,7 +1,7 @@
-import React from "react";
-import { redirect } from "remix";
 import AdminHeader from "~/layouts/AdminHeader";
+import React from "react";
 import { getSession } from "~/supabase.server";
+import { redirect } from "remix";
 
 export const loader = async ({ request }) => {
   const session = await getSession(request.headers.get("Cookie"));
@@ -15,7 +15,7 @@ export const loader = async ({ request }) => {
 
 const admin = () => {
   return (
-    <div className="max-w-screen-2xl ml-auto mr-auto mt-10">
+    <div className="ml-auto mr-auto mt-10 max-w-screen-2xl">
       <AdminHeader />
     </div>
   );
