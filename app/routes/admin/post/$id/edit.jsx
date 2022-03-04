@@ -1,18 +1,18 @@
-import { bundleMDX } from "~/compile-mdx.server";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { json, redirect, useFetcher, useLoaderData } from "remix";
-import AdminHeader from "~/layouts/AdminHeader";
-import invariant from "tiny-invariant";
-import TextareaAutosize from "react-textarea-autosize";
-import CustomSelect from "~/components/CustomSelect";
-import { tags } from "~/constants/blogTags";
-import { supabase } from "~/supabase.server";
 import { postToDevTo, postToHashNode } from "~/api";
+
+import AdminHeader from "~/layouts/AdminHeader";
+import CustomSelect from "~/components/CustomSelect";
+import TextareaAutosize from "react-textarea-autosize";
+import invariant from "tiny-invariant";
+import { supabase } from "~/supabase.server";
+import { tags } from "~/constants/blogTags";
 
 export const loader = async ({ params }) => {
   invariant(params.id, "expected params.id");
   let { data: post } = await supabase
-    .from("post")
+    .from("posts")
     .select()
     .eq("id", params.id)
     .single();
@@ -45,14 +45,10 @@ export const action = async ({ request }) => {
     slug: tag.slug,
   }));
 
-  await bundleMDX({
-    source: markdown[0],
-  });
-
   const canonical_url = "https://tyrelchambers.com/blog/" + slug;
 
   const { data: newPost, error } = await supabase
-    .from("post")
+    .from("posts")
     .update({
       title: title[0],
       slug,
@@ -108,7 +104,7 @@ const edit = () => {
     );
   };
   return (
-    <div className="max-w-screen-2xl ml-auto mr-auto mt-10">
+    <div className="ml-auto mr-auto mt-10 max-w-screen-2xl">
       <AdminHeader />
 
       <main className="mt-10 max-w-3xl p-4">
@@ -116,25 +112,25 @@ const edit = () => {
           Editing - <span className="text-blue-200">{data.post.title}</span>
         </h2>
         <fetcher.Form
-          className="flex flex-col gap-10 mt-8"
+          className="mt-8 flex flex-col gap-10"
           onSubmit={submitHandler}
         >
           <div className="flex flex-col">
-            <label htmlFor="title" className="text-yellow-300  text-xl">
+            <label htmlFor="title" className="text-xl  text-yellow-300">
               Title
             </label>
-            <p className="text-gray-400 mb-2">
+            <p className="mb-2 text-gray-400">
               This title is used for cross-posting to other platforms
             </p>
             <input
               type="text"
               name="title"
-              className="rounded-lg p-4 bg-zinc-700 w-full text-white"
+              className="w-full rounded-lg bg-zinc-700 p-4 text-white"
               placeholder="Post title"
               onChange={(e) => setState({ ...state, title: e.target.value })}
               value={state.title}
             />
-            <p className="text-gray-300 font-thin text-sm mt-2">
+            <p className="mt-2 text-sm font-thin text-gray-300">
               https://tyrelchambers.com/blog/
               {state.title
                 .replace(/\s+/g, "-")
@@ -144,16 +140,16 @@ const edit = () => {
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="title" className="text-yellow-300  text-xl">
+            <label htmlFor="title" className="text-xl  text-yellow-300">
               Description
             </label>
-            <p className="text-gray-400 mb-2">
+            <p className="mb-2 text-gray-400">
               A brief summary of what this article is about
             </p>
             <input
               type="text"
               name="description"
-              className="rounded-lg p-4 bg-zinc-700 w-full text-white"
+              className="w-full rounded-lg bg-zinc-700 p-4 text-white"
               placeholder="Post description"
               onChange={(e) =>
                 setState({ ...state, description: e.target.value })
@@ -163,17 +159,17 @@ const edit = () => {
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="cover_img" className="text-yellow-300  text-xl">
+            <label htmlFor="cover_img" className="text-xl  text-yellow-300">
               Cover image URL
             </label>
-            <p className="text-gray-400 mb-2">
+            <p className="mb-2 text-gray-400">
               This is the image that will be used as the cover image for your
               post
             </p>
             <input
               type="text"
               name="cover_img"
-              className="rounded-lg p-4 bg-zinc-700 w-full text-white"
+              className="w-full rounded-lg bg-zinc-700 p-4 text-white"
               placeholder="Cover image url"
               onChange={(e) =>
                 setState({ ...state, cover_img: e.target.value })
@@ -183,10 +179,10 @@ const edit = () => {
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="markdown" className="text-yellow-300  text-xl">
+            <label htmlFor="markdown" className="text-xl  text-yellow-300">
               Markdown
             </label>
-            <p className="text-gray-400 mb-2">Your markdown</p>
+            <p className="mb-2 text-gray-400">Your markdown</p>
             <TextareaAutosize
               minRows={10}
               className="w-full max-w-3xl rounded-lg bg-zinc-700 p-2 text-white"
@@ -197,8 +193,8 @@ const edit = () => {
             />
           </div>
 
-          <div className="flex flex-col mt-4 gap-2">
-            <label htmlFor="tags" className="text-yellow-300 text-xl">
+          <div className="mt-4 flex flex-col gap-2">
+            <label htmlFor="tags" className="text-xl text-yellow-300">
               Tags
             </label>
             <CustomSelect
@@ -218,12 +214,12 @@ const edit = () => {
           </div>
 
           <div className="flex flex-col">
-            <label className="text-yellow-300  text-xl">Platforms</label>
-            <p className="text-gray-400 mb-2">
+            <label className="text-xl  text-yellow-300">Platforms</label>
+            <p className="mb-2 text-gray-400">
               Select which platforms to cross-post to
             </p>
             <fieldset className="flex gap-4">
-              <label className="text-gray-400 mr-2">
+              <label className="mr-2 text-gray-400">
                 <input
                   type="checkbox"
                   name="devTo"
@@ -236,7 +232,7 @@ const edit = () => {
                 Dev.to
               </label>
 
-              <label className="text-gray-400 mr-2">
+              <label className="mr-2 text-gray-400">
                 <input
                   type="checkbox"
                   name="hashNode"

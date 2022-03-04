@@ -1,22 +1,19 @@
-import React from "react";
-import AdminHeader from "~/layouts/AdminHeader";
 import { Form, Link, redirect, useLoaderData } from "remix";
+
+import AdminHeader from "~/layouts/AdminHeader";
+import Markdown from "markdown-to-jsx";
+import React from "react";
 import invariant from "tiny-invariant";
-import { bundleMDX } from "~/compile-mdx.server";
-import { getMDXComponent } from "mdx-bundler/client";
+import { overrides } from "~/constants/markdownOverrides";
 import { supabase } from "~/utils/supabase";
 
 export const loader = async ({ params }) => {
   invariant(params.id, "expected params.slug");
-  const { data } = await supabase.from("post").select().eq("id", params.id);
+  const { data } = await supabase.from("posts").select().eq("id", params.id);
 
   const post = data[0];
 
-  const { code } = await bundleMDX({
-    source: post.markdown,
-  });
-
-  return { code, post, id: params.id };
+  return { post, id: params.id };
 };
 
 export const action = async ({ request, params }) => {
@@ -28,7 +25,7 @@ export const action = async ({ request, params }) => {
     });
   }
 
-  const { data } = await supabase.from("post").select().eq("id", params.id);
+  const { data } = await supabase.from("posts").select().eq("id", params.id);
   const post = data[0];
 
   if (!post) {
@@ -37,7 +34,7 @@ export const action = async ({ request, params }) => {
     });
   }
 
-  await supabase.from("post").delete().eq("id", params.id);
+  await supabase.from("posts").delete().eq("id", params.id);
 
   return redirect("/admin/posts");
 };
@@ -45,23 +42,18 @@ export const action = async ({ request, params }) => {
 const $slug = () => {
   const post = useLoaderData();
 
-  const Component = React.useMemo(
-    () => getMDXComponent(post.code),
-    [post.code]
-  );
-
   return (
-    <div className="max-w-screen-2xl ml-auto mr-auto mt-10">
+    <div className="ml-auto mr-auto mt-10 max-w-screen-2xl">
       <AdminHeader />
 
-      <main className="mt-14 flex gap-10 flex-col-reverse tablet:flex-row">
-        <div className="flex flex-col max-w-2xl p-4 ">
-          <h3 className="h3 mb-6 coloured">{post.post.title}</h3>
-          <div className="prose prose-p:text-gray-400 prose-h2:text-white prose-h3:text-white prose-a:text-yellow-300 prose-a:underline prose-strong:text-white prose-code:text-red-300 prose-h2:font-thin prose-h3:font-thin break-words prose-h1:text-white prose-h1:font-normal">
-            <Component />
+      <main className="mt-14 flex flex-col-reverse gap-10 tablet:flex-row">
+        <div className="flex max-w-2xl flex-col p-4 ">
+          <h3 className="h3 coloured mb-6">{post.post.title}</h3>
+          <div className="prose break-words prose-h1:font-normal prose-h1:text-white prose-h2:font-thin prose-h2:text-white prose-h3:font-thin prose-h3:text-white prose-p:text-gray-400 prose-a:text-yellow-300 prose-a:underline prose-strong:text-white prose-code:text-sky-300">
+            <Markdown options={{ ...overrides }}>{post.post.markdown}</Markdown>
           </div>
         </div>
-        <div className="flex tablet:w-[200px]  m-4 rounded-lg flex-col gap-6 border-2 border-gray-700 h-fit p-4">
+        <div className="sticky top-10  m-4 flex h-fit flex-col gap-6 rounded-lg border-2 border-gray-700 p-4 tablet:w-[200px]">
           <Link
             to={`/admin/post/${post.id}/edit`}
             className="link-button small primary w-full"
