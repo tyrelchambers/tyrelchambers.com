@@ -5,9 +5,20 @@ import AdminHeader from "~/layouts/AdminHeader";
 import CustomSelect from "~/components/CustomSelect";
 import Gap from "~/components/Gap";
 import TextareaAutosize from "react-textarea-autosize";
+import { getSession } from "~/supabase.server";
 import { supabase } from "~/utils/supabase";
 import { tags } from "~/constants/blogTags";
 import { useState } from "react";
+
+export const loader = async () => {
+  const session = await getSession(request.headers.get("Cookie"));
+
+  if (!session.has("access_token")) {
+    return redirect("/login");
+  }
+
+  return null;
+};
 
 export const action = async ({ request }) => {
   const {

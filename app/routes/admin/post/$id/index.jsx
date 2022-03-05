@@ -4,12 +4,19 @@ import AdminHeader from "~/layouts/AdminHeader";
 import React from "react";
 import { getMDXComponent } from "mdx-bundler/client";
 import { getPostById } from "~/blogPosts-server";
+import { getSession } from "~/supabase.server";
 import invariant from "tiny-invariant";
 import { supabase } from "~/utils/supabase";
 
 export const loader = async ({ params }) => {
   invariant(params.id, "expected params.slug");
   const post = await getPostById(params.id);
+
+  const session = await getSession(request.headers.get("Cookie"));
+
+  if (!session.has("access_token")) {
+    return redirect("/login");
+  }
 
   return { post, id: params.id };
 };

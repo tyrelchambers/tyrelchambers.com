@@ -5,6 +5,7 @@ import { postToDevTo, postToHashNode } from "~/api";
 import AdminHeader from "~/layouts/AdminHeader";
 import CustomSelect from "~/components/CustomSelect";
 import TextareaAutosize from "react-textarea-autosize";
+import { getSession } from "~/supabase.server";
 import invariant from "tiny-invariant";
 import { supabase } from "~/supabase.server";
 import { tags } from "~/constants/blogTags";
@@ -16,6 +17,12 @@ export const loader = async ({ params }) => {
     .select()
     .eq("id", params.id)
     .single();
+
+  const session = await getSession(request.headers.get("Cookie"));
+
+  if (!session.has("access_token")) {
+    return redirect("/login");
+  }
 
   return { post, id: params.id };
 };
