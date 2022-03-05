@@ -28,7 +28,7 @@ export const action = async ({ request }) => {
 
   const { error } = await supabase.from("posts").insert({
     title: title[0],
-    slug: slug[0],
+    slug,
     markdown: markdown[0],
     tags: formattedtags,
     cover_img: cover_img[0],

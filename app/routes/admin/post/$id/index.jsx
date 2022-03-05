@@ -1,7 +1,6 @@
 import { Form, Link, redirect, useLoaderData } from "remix";
 
 import AdminHeader from "~/layouts/AdminHeader";
-import Markdown from "markdown-to-jsx";
 import React from "react";
 import invariant from "tiny-invariant";
 import { overrides } from "~/constants/markdownOverrides";
@@ -50,7 +49,7 @@ const $slug = () => {
         <div className="flex max-w-2xl flex-col p-4 ">
           <h3 className="h3 coloured mb-6">{post.post.title}</h3>
           <div className="prose break-words prose-h1:font-normal prose-h1:text-white prose-h2:font-thin prose-h2:text-white prose-h3:font-thin prose-h3:text-white prose-p:text-gray-400 prose-a:text-yellow-300 prose-a:underline prose-strong:text-white prose-code:text-sky-300">
-            <Markdown options={{ ...overrides }}>{post.post.markdown}</Markdown>
+            {/* {markdown(post.post.markdown)} */}
           </div>
         </div>
         <div className="sticky top-10  m-4 flex h-fit flex-col gap-6 rounded-lg border-2 border-gray-700 p-4 tablet:w-[200px]">
