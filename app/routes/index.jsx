@@ -180,7 +180,7 @@ export default function Index() {
                 check them out
               </p>
             </div>
-            <Link to="/resources" className="link-button small h-fit outline">
+            <Link to="/resources" className="link-button small secondary h-fit">
               See resources
               <i className="fa-solid fa-arrow-right-long"></i>
             </Link>
