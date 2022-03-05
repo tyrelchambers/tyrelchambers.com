@@ -1,19 +1,23 @@
-import React from "react";
 import { Link } from "remix";
+import React from "react";
 import { truncateString } from "~/utils/truncateString";
 
 const PostItem = ({ post }) => {
   return (
     <div className="post-item">
-      <img src={post.cover_img} alt="" className="w-full object-cover h-full" />
-      <div className="absolute  flex flex-col justify-start p-6 z-10 post-item-body w-full h-[250px]">
+      <img
+        src={post.cover_img}
+        alt=""
+        className="h-full w-full object-cover transition-all"
+      />
+      <div className="post-item-body  absolute z-10 flex h-[250px] w-full flex-col justify-start p-6">
         <h3 className="h3 post-item-title transition-all">{post.title}</h3>
-        <p className="text-gray-400 mt-4 opacity-0  post-item-description">
+        <p className="post-item-description mt-4 text-gray-400  opacity-0">
           {truncateString(post.description, 50)}
         </p>
         <Link
           to={`/blog/${post.slug}`}
-          className="link-button small secondary mt-8 post-item-cta opacity-0"
+          className="link-button small secondary post-item-cta mt-8 opacity-0"
         >
           Read post <i className="fa-solid fa-arrow-right-long"></i>
         </Link>
