@@ -2,13 +2,12 @@ import { Link, useLoaderData } from "remix";
 
 import AdminHeader from "~/layouts/AdminHeader";
 import React from "react";
-import { supabase } from "~/utils/supabase";
+import { getPosts } from "~/blogPosts-server";
 import { truncateString } from "~/utils/truncateString";
+
 export const loader = async () => {
-  let { data: posts, error } = await supabase
-    .from("posts")
-    .select()
-    .order("id", { ascending: false });
+  let { posts, error } = await getPosts();
+
   if (error) {
     return { error };
   }

@@ -23,7 +23,7 @@ export const meta = (props) => {
 
 export const loader = async ({ params }) => {
   invariant(params.slug, "expected params.slug");
-  const posts = await getPosts();
+  const { posts } = await getPosts();
   const { post, markdown } = await getPost(params.slug);
 
   if (!post) {

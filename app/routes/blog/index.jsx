@@ -1,13 +1,15 @@
-import React from "react";
-import { Form, useLoaderData, Meta } from "remix";
+import { Form, Meta, useLoaderData } from "remix";
+
+import BlogPosts from "~/components/BlogPosts";
+import Footer from "~/layouts/Footer";
 import Gap from "~/components/Gap";
 import Header from "~/layouts/Header";
-import { useSearchParams } from "remix";
-import Footer from "~/layouts/Footer";
-import BlogPosts from "~/components/BlogPosts";
 import { Link } from "react-router-dom";
-import { useUpdateQueryStringValueWithoutNavigation } from "~/utils/misc";
+import React from "react";
 import { getBlogPosts } from "../../utils/getBlogPosts";
+import { getPosts } from "~/blogPosts-server";
+import { useSearchParams } from "remix";
+import { useUpdateQueryStringValueWithoutNavigation } from "~/utils/misc";
 
 export const meta = () => {
   return {
@@ -17,12 +19,13 @@ export const meta = () => {
 };
 
 export const loader = async () => {
-  const posts = getBlogPosts();
-  return posts;
+  const { posts } = await getPosts();
+  return { posts };
 };
 
 const index = () => {
-  const posts = useLoaderData();
+  const { posts } = useLoaderData();
+
   const postsTags = posts.reduce((acc, post) => {
     post.tags.forEach((tag) => {
       if (!acc.includes(tag)) {
