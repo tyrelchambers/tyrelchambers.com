@@ -1330,8 +1330,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 250px;
 }
 
-.h-24 {
-  height: 6rem;
+.h-40 {
+  height: 10rem;
 }
 
 .h-\[25px\] {
@@ -1358,10 +1358,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-52 {
   height: 13rem;
-}
-
-.h-40 {
-  height: 10rem;
 }
 
 .w-full {
@@ -1428,6 +1424,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .max-w-2xl {
   max-width: 42rem;
+}
+
+.max-w-sm {
+  max-width: 24rem;
 }
 
 .grow {
@@ -1581,6 +1581,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: transparent;
 }
 
+.border-zinc-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(63 63 70 / var(--tw-border-opacity));
+}
+
 .bg-zinc-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(39 39 42 / var(--tw-bg-opacity));
@@ -1615,10 +1620,6 @@ Ensure the default browser behavior of the `hidden` attribute.
      object-fit: cover;
 }
 
-.p-10 {
-  padding: 2.5rem;
-}
-
 .p-4 {
   padding: 1rem;
 }
@@ -1648,16 +1649,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-10 {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
-}
-
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
 }
 
 .py-8 {
@@ -1782,6 +1773,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-blue-200 {
   --tw-text-opacity: 1;
   color: rgb(191 219 254 / var(--tw-text-opacity));
+}
+
+.text-gray-100 {
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
 }
 
 .underline {
