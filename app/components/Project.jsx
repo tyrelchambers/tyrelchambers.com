@@ -4,15 +4,15 @@ const Project = ({ project }) => {
   return (
     <div
       key={project.title}
-      className="bg-zinc-800 p-6 rounded-lg project border-2 border-gray-700 hover:border-yellow-300 transition-all"
+      className="project rounded-lg border-2 border-gray-700 bg-zinc-800 p-6 transition-all hover:border-yellow-300"
     >
       <h3 className="h3 mb-4">{project.title}</h3>
-      <p className="text-gray-400 text-normal desktop:text-xl sm:h-32 h-24">
+      <p className="text-normal h-40 text-gray-400 sm:h-32 desktop:text-xl">
         {project.summary}
       </p>
       <a
         href={project.url}
-        className="link-button small outline mt-4"
+        className="link-button small mt-4 outline"
         target="_blank"
         rel="noopenerr noreferrer"
       >

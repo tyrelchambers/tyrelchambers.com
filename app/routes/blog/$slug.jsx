@@ -44,7 +44,7 @@ const PostSlug = () => {
   return (
     <div>
       <Header />
-      <div className="ml-auto mr-auto mt-20 max-w-screen-md">
+      <div className="ml-auto mr-auto mt-20 max-w-screen-md p-4">
         <Link to="/blog" className="text-white">
           <i className="fa-solid fa-arrow-left-long mr-8"></i>
           Back to blogs
@@ -66,10 +66,10 @@ const PostSlug = () => {
       <Gap />
       <PostFooter postTitle={post.title} slug={post.slug} />
       <Gap />
-      <div className="ml-auto mr-auto flex max-w-screen-xl flex-col">
+      <div className="ml-auto mr-auto flex max-w-screen-xl flex-col p-4">
         <h2 className="h2">If you enjoyed this article</h2>
         <p className="subtitle">You might enjoy one of these suggestions</p>
-        <div className="mt-10 grid grid-cols-3 gap-10">
+        <div className="mt-10 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3">
           {suggestions.map((post) => (
             <PostItem key={post.slug} post={post} />
           ))}

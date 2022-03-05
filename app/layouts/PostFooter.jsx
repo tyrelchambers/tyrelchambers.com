@@ -3,8 +3,8 @@ import React from "react";
 
 const PostFooter = ({ postTitle, slug }) => {
   return (
-    <div className="ml-auto mr-auto w-full max-w-screen-lg">
-      <div className="flex justify-between px-10 py-5">
+    <div className="ml-auto mr-auto w-full max-w-screen-lg p-4">
+      <div className="tablrt:px-10 flex flex-col gap-4 p-4 tablet:flex-row tablet:justify-between tablet:py-5">
         <a
           href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
             `"I just read ${postTitle}" 🥳 by @imtyrelchambers \n\n`

@@ -1360,6 +1360,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 13rem;
 }
 
+.h-40 {
+  height: 10rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -2017,6 +2021,14 @@ Ensure the default browser behavior of the `hidden` attribute.
     align-items: center;
   }
 
+  .tablet\:justify-between {
+    justify-content: space-between;
+  }
+
+  .tablet\:p-10 {
+    padding: 2.5rem;
+  }
+
   .tablet\:py-8 {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -2025,6 +2037,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   .tablet\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .tablet\:py-5 {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
   }
 
   .tablet\:text-2xl {

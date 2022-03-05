@@ -100,12 +100,15 @@ export default function Index() {
         </section>
         <Gap />
         <section className="p-4">
-          <div className="flex items-center">
+          <div className="flex flex-col tablet:flex-row tablet:items-center">
             <div className="flex w-full flex-col justify-between">
               <h2 className="h2">Recently published posts</h2>
               <p className="subtitle">Take a look at these recent articles</p>
             </div>
-            <Link to="/blog" className="link-button small secondary">
+            <Link
+              to="/blog"
+              className="link-button small secondary mt-6 tablet:mt-0"
+            >
               See all posts
               <i className="fa-solid fa-arrow-right-long"></i>
             </Link>
