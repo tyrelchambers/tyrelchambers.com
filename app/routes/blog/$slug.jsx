@@ -34,6 +34,8 @@ export const meta = ({ data }) => {
     "og:site_name": "Tyrel Chambers",
     "og:locale": "en_US",
     "og:type": "article",
+    "og:title": data.post.title,
+    "og:description": data.post.description,
   };
 };
 
