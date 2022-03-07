@@ -1,4 +1,4 @@
-import { Link, Meta, useLoaderData } from "remix";
+import { Link, useLoaderData } from "remix";
 import { getPost, getPosts } from "../../blogPosts-server";
 
 import Footer from "~/layouts/Footer";
@@ -7,17 +7,33 @@ import Header from "~/layouts/Header";
 import PostFooter from "~/layouts/PostFooter";
 import PostItem from "~/components/PostItem";
 import React from "react";
-import { bundleMdx } from "~/compile-mdx.server";
 import { format } from "date-fns";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
 import { getMDXComponent } from "mdx-bundler/client";
 import invariant from "tiny-invariant";
-import { supabase } from "~/supabase.server";
 
-export const meta = (props) => {
+export const meta = ({ data }) => {
+  if (!data) {
+    return {
+      title: "No post found",
+      description: "No post found",
+    };
+  }
+
   return {
-    title: "Tyrel Chambers | Blog",
-    description: "",
+    title: data.post.title,
+    description: data.post.description,
+    "og:image": data.post.cover_img,
+    "og:url": `https://tyrelchambers.com/blog/${data.post.slug}`,
+    "twitter:card": "summary",
+    "twitter:title": data.post.title,
+    "twitter:description": data.post.description,
+    "twitter:image": data.post.cover_img,
+    "twitter:site": "@imtyrelchambers",
+    "twitter:creator": "@imtyrelchambers",
+    "og:site_name": "Tyrel Chambers",
+    "og:locale": "en_US",
+    "og:type": "article",
   };
 };
 
@@ -44,6 +60,7 @@ const PostSlug = () => {
   return (
     <div>
       <Header />
+
       <div className="ml-auto mr-auto mt-20 max-w-screen-md p-4">
         <Link to="/blog" className="text-white">
           <i className="fa-solid fa-arrow-left-long mr-8"></i>
