@@ -8,7 +8,7 @@ import { getSession } from "~/supabase.server";
 import invariant from "tiny-invariant";
 import { supabase } from "~/utils/supabase";
 
-export const loader = async ({ params }) => {
+export const loader = async ({ params, request }) => {
   invariant(params.id, "expected params.slug");
   const post = await getPostById(params.id);
 

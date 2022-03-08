@@ -10,7 +10,7 @@ import { supabase } from "~/utils/supabase";
 import { tags } from "~/constants/blogTags";
 import { useState } from "react";
 
-export const loader = async () => {
+export const loader = async ({ request }) => {
   const session = await getSession(request.headers.get("Cookie"));
 
   if (!session.has("access_token")) {

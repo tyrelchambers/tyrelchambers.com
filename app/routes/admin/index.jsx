@@ -7,13 +7,13 @@ import { getSession } from "~/supabase.server";
 
 export const loader = async ({ request }) => {
   const session = await getSession(request.headers.get("Cookie"));
-  const devToStats = await getDevToStats();
-  const hashnodeStats = await hashNodeStats();
 
   if (!session.has("access_token")) {
     return redirect("/login");
   }
 
+  const devToStats = await getDevToStats();
+  const hashnodeStats = await hashNodeStats();
   return { devToStats, hashnodeStats };
 };
 

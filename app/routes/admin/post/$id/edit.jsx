@@ -10,7 +10,7 @@ import invariant from "tiny-invariant";
 import { supabase } from "~/supabase.server";
 import { tags } from "~/constants/blogTags";
 
-export const loader = async ({ params }) => {
+export const loader = async ({ params, request }) => {
   invariant(params.id, "expected params.id");
   let { data: post } = await supabase
     .from("posts")

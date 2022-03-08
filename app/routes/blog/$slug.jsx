@@ -25,7 +25,7 @@ export const meta = ({ data }) => {
     description: data.post.description,
     "og:image": data.post.cover_img,
     "og:url": `https://tyrelchambers.com/blog/${data.post.slug}`,
-    "twitter:card": "summary",
+    "twitter:card": data.post.cover_img ? "summary_large_image" : "summary",
     "twitter:title": data.post.title,
     "twitter:description": data.post.description,
     "twitter:image": data.post.cover_img,
@@ -78,7 +78,7 @@ const PostSlug = () => {
         <p className="mb-10 text-teal-400">
           {format(new Date(post.created_at), "MMMM do, yyyy")}
         </p>
-        <div className="prose prose-h2:font-thin prose-h2:text-white prose-h3:font-thin prose-h3:text-white prose-p:text-gray-400 prose-a:text-yellow-300 prose-a:underline prose-strong:text-white prose-code:text-red-300">
+        <div className="prose prose-h2:font-thin prose-h2:text-white prose-h3:font-thin prose-h3:text-white prose-p:text-gray-400 prose-a:text-yellow-300 prose-a:underline prose-strong:text-white prose-code:text-red-300 prose-li:text-gray-400">
           <Component />
         </div>
       </div>

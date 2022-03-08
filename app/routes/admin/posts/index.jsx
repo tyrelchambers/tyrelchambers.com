@@ -5,7 +5,13 @@ import React from "react";
 import { getPosts } from "~/blogPosts-server";
 import { truncateString } from "~/utils/truncateString";
 
-export const loader = async () => {
+export const loader = async ({ request }) => {
+  const session = await getSession(request.headers.get("Cookie"));
+
+  if (!session.has("access_token")) {
+    return redirect("/login");
+  }
+
   let { posts, error } = await getPosts();
 
   if (error) {
