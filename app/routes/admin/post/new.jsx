@@ -100,7 +100,7 @@ const newPost = () => {
   return (
     <div className="ml-auto mr-auto mt-10 max-w-screen-2xl">
       <AdminHeader />
-      <Gap height="h-12 desktop:h-20" />
+      <Gap height="h-12" />
       <main className="p-4">
         <h3 className="h3 mt-4">Create a post</h3>
         <div className="mt-8 w-full max-w-2xl">
