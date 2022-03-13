@@ -3,8 +3,13 @@ import { motion } from "framer-motion";
 
 const SectionHero = ({ leftCol, rightCol, maxWidth = "max-w-screen-xl" }) => {
   const variants = {
-    hidden: { opacity: 0, y: 25 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    hidden: { opacity: 0, y: 25, filter: "blur(4px)" },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { duration: 0.5 },
+    },
   };
   return (
     <motion.section
