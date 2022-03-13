@@ -6,6 +6,7 @@ import Gap from "~/components/Gap";
 import Header from "~/layouts/Header";
 import { Link } from "react-router-dom";
 import React from "react";
+import SectionHero from "~/layouts/SectionHero";
 import { getBlogPosts } from "../../utils/getBlogPosts";
 import { getPosts } from "~/blogPosts-server";
 import { useSearchParams } from "remix";
@@ -55,52 +56,59 @@ const index = () => {
       <Header />
       <Gap height="h-20" />
       <main className="ml-auto mr-auto mb-20 max-w-screen-xl">
-        <section className="flex flex-col gap-8 p-4 tablet:flex-row desktop:gap-20">
-          <div className="flex w-full max-w-2xl flex-col tablet:w-1/2">
-            <h1 className="h1">Welcome to my growing collection of articles</h1>
-            <p className="subtitle">
-              I write mainly for myself, but hopefully they help you too!
-            </p>
-            <Form
-              action="/blog"
-              method="GET"
-              onSubmit={(e) => e.preventDefault()}
-              className="w-full"
-            >
-              <input
-                type="search"
-                placeholder="Search for articles"
-                className="mt-6 w-full rounded-full border-2 border-gray-500 bg-zinc-800 bg-opacity-20 p-6 text-white tablet:mt-16"
-                onChange={(event) =>
-                  setQuery(event.currentTarget.value.toLowerCase())
-                }
-              />
-            </Form>
-          </div>
-          <div className="w-full tablet:w-1/2">
-            <h2 className="h3 mb-6">Featured article</h2>
-            <div className="flex w-full flex-col rounded-lg  bg-zinc-800 shadow-lg">
-              <img
-                src={featuredPost.cover_img}
-                alt=""
-                className="mb-4 h-52 w-full rounded-lg  object-cover"
-              />
-              <div className="p-6">
-                <h3 className="h3">{featuredPost.title}</h3>
-                <p className="mt-4 text-xl text-gray-400">
-                  {featuredPost.description}
-                </p>
-                <Link
-                  to={`/blog/${featuredPost.slug}`}
-                  className="link-button small secondary mt-6"
-                >
-                  Read post
-                  <i className="fa-solid fa-arrow-right-long"></i>
-                </Link>
+        <SectionHero
+          leftCol={
+            <>
+              <h1 className="h1">
+                Welcome to my growing collection of articles
+              </h1>
+              <p className="subtitle">
+                I write mainly for myself, but hopefully they help you too!
+              </p>
+              <Form
+                action="/blog"
+                method="GET"
+                onSubmit={(e) => e.preventDefault()}
+                className="w-full"
+              >
+                <input
+                  type="search"
+                  placeholder="Search for articles"
+                  className="mt-6 w-full rounded-full border-2 border-gray-500 bg-zinc-800 bg-opacity-20 p-6 text-white tablet:mt-16"
+                  onChange={(event) =>
+                    setQuery(event.currentTarget.value.toLowerCase())
+                  }
+                />
+              </Form>
+            </>
+          }
+          rightCol={
+            <>
+              <h2 className="h3 mb-6">Featured article</h2>
+              <div className="flex w-full flex-col rounded-lg  bg-zinc-800 shadow-lg">
+                <img
+                  src={featuredPost.cover_img}
+                  alt=""
+                  className="mb-4 h-52 w-full rounded-lg  object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="h3">{featuredPost.title}</h3>
+                  <p className="mt-4 text-xl text-gray-400">
+                    {featuredPost.description}
+                  </p>
+                  <Link
+                    to={`/blog/${featuredPost.slug}`}
+                    className="link-button small secondary mt-6"
+                  >
+                    Read post
+                    <i className="fa-solid fa-arrow-right-long"></i>
+                  </Link>
+                </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </>
+          }
+        />
+
         <Gap height="h-12 desktop:h-28" className="" />
         <section className="p-4">
           <div className="flex flex-col">

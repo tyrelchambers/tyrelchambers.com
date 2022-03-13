@@ -6,8 +6,10 @@ import Header from "~/layouts/Header";
 import PostItem from "~/components/PostItem";
 import Project from "~/components/Project";
 import ScrollIcon from "~/components/ScrollIcon";
+import SectionHero from "../layouts/SectionHero";
 import SocialList from "~/components/SocialList";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
+import { motion } from "framer-motion";
 import { projects } from "~/constants/projects";
 import { supabase } from "~/utils/supabase";
 
@@ -21,37 +23,45 @@ export const loader = async () => {
 export default function Index() {
   const posts = useLoaderData();
 
+  const variants = {
+    hidden: { opacity: 0, y: 25 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
     <div>
       <Header />
 
       <main className="mt-4 ml-auto mr-auto max-w-screen-xl py-8 desktop:mt-14">
-        <section className=" ml-auto mr-auto flex w-full max-w-screen-xl flex-col-reverse items-center gap-8 p-4 tablet:flex-row desktop:gap-20">
-          <div className="flex w-full flex-col items-start desktop:w-1/2">
-            <h1 className="h1">
-              Building software and teaching people about what I love the most
-            </h1>
-            <div className="mt-10 flex w-full flex-col items-center gap-6 desktop:flex-row">
-              <Link to="/blog" className="link-button primary large w-full">
-                Read my blog
-                <i className="fa-solid fa-arrow-right-long"></i>
-              </Link>
-              <Link
-                to="/resources"
-                className="link-button secondary large w-full"
-              >
-                View some resources
-              </Link>
-            </div>
-          </div>
-          <div className="ml-auto mr-auto  w-full max-w-lg desktop:w-1/2">
+        <SectionHero
+          leftCol={
+            <>
+              <h1 className="h1">
+                Building software and teaching people about what I love the most
+              </h1>
+              <div className="mt-10 flex w-full flex-col items-center gap-6 desktop:flex-row">
+                <Link to="/blog" className="link-button primary large w-full">
+                  Read my blog
+                  <i className="fa-solid fa-arrow-right-long"></i>
+                </Link>
+                <Link
+                  to="/resources"
+                  className="link-button secondary large w-full"
+                >
+                  View some resources
+                </Link>
+              </div>
+            </>
+          }
+          rightCol={
             <img
               src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/me2.webp"
               alt=""
               className="w-full rounded-lg"
             />
-          </div>
-        </section>
+          }
+        />
+
         <section className="mt-20 flex flex-col items-center justify-center">
           <ScrollIcon />
         </section>

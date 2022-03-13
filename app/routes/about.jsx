@@ -4,6 +4,7 @@ import Footer from "~/layouts/Footer";
 import Gap from "~/components/Gap";
 import Header from "~/layouts/Header";
 import PostItem from "~/components/PostItem";
+import SectionHero from "~/layouts/SectionHero";
 import SocialList from "~/components/SocialList";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
 import { getBlogPosts } from "~/utils/getBlogPosts";
@@ -28,28 +29,30 @@ const about = () => {
       <Header />
 
       <main className="ml-auto mr-auto mt-20 w-full max-w-screen-xl">
-        <section className="flex flex-col-reverse gap-8 p-4 tablet:flex-row desktop:gap-20">
-          <div className="flex w-full max-w-screen-sm flex-col tablet:w-1/2">
-            <h1 className="h1">Hey, I'm Tyrel Chambers 👋</h1>
-            <p className="mt-4 text-xl text-blue-300">
-              Software Engineer &amp; DevRel @ This Dot Labs
-            </p>
-            <p className="subtitle">
-              I'm a full-stack developer living in Ontario, Canada. I'm a
-              self-taught indie developer and I love day-dreaming new ideas and
-              using my free time to bring them to life.
-            </p>
+        <SectionHero
+          leftCol={
+            <>
+              <h1 className="h1">Hey, I'm Tyrel Chambers 👋</h1>
+              <p className="mt-4 text-xl text-blue-300">
+                Software Engineer &amp; DevRel @ This Dot Labs
+              </p>
+              <p className="subtitle">
+                I'm a full-stack developer living in Ontario, Canada. I'm a
+                self-taught indie developer and I love day-dreaming new ideas
+                and using my free time to bring them to life.
+              </p>
 
-            <SocialList className="mt-10" />
-          </div>
-          <div className="w-full max-w-[450px] tablet:w-1/2">
+              <SocialList className="mt-10" />
+            </>
+          }
+          rightCol={
             <img
               src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/890717F1-8B22-4767-89CF-897A7B0209EF_1_105_c.webp"
               alt=""
               className="w-full rounded-lg object-cover "
             />
-          </div>
-        </section>
+          }
+        />
 
         <Gap height="h-20" />
         <section className="p-4">

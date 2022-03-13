@@ -6,6 +6,7 @@ import Footer from "~/layouts/Footer";
 import Gap from "~/components/Gap";
 import Header from "~/layouts/Header";
 import React from "react";
+import SectionHero from "~/layouts/SectionHero";
 import { getImage } from "~/utils/getImage";
 
 export const loader = async () => {
@@ -39,27 +40,32 @@ const resources = () => {
     <div>
       <Header />
       <main className="ml-auto mr-auto mt-10 max-w-screen-2xl p-4">
-        <div className="w-full max-w-3xl">
-          <h1 className="h1">A curated list of resources</h1>
-          <p className="subtitle">
-            These lists consist of my favourite bookmarks, services and other
-            helpful stuff
-          </p>
+        <SectionHero
+          maxWidth="max-w-screen-3xl"
+          leftCol={
+            <>
+              <h1 className="h1">A curated list of resources</h1>
+              <p className="subtitle">
+                These lists consist of my favourite bookmarks, services and
+                other helpful stuff
+              </p>
 
-          <p className="mt-8 text-gray-400">
-            If there are any resources that you love and would like to see in
-            this list. I'd love it if you'd open an issue or submit a PR over on
-            the{" "}
-            <a
-              href="https://github.com/tyrelchambers/tyrelchambers.com"
-              className="text-blue-300 underline"
-              target="_blank"
-              rel="noopenner noreferrer"
-            >
-              Github repo.
-            </a>
-          </p>
-        </div>
+              <p className="mt-8 text-gray-400">
+                If there are any resources that you love and would like to see
+                in this list. I'd love it if you'd open an issue or submit a PR
+                over on the{" "}
+                <a
+                  href="https://github.com/tyrelchambers/tyrelchambers.com"
+                  className="text-blue-300 underline"
+                  target="_blank"
+                  rel="noopenner noreferrer"
+                >
+                  Github repo.
+                </a>
+              </p>
+            </>
+          }
+        />
 
         <Gap />
         <div className="flex flex-col gap-20">
