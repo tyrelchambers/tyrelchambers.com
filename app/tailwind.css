@@ -1406,24 +1406,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   max-width: 1280px;
 }
 
-.max-w-screen-sm {
-  max-width: 640px;
-}
-
-.max-w-\[450px\] {
-  max-width: 450px;
+.max-w-lg {
+  max-width: 32rem;
 }
 
 .max-w-xl {
   max-width: 36rem;
 }
 
-.max-w-\[500px\] {
-  max-width: 500px;
+.max-w-screen-sm {
+  max-width: 640px;
 }
 
-.max-w-lg {
-  max-width: 32rem;
+.max-w-\[500px\] {
+  max-width: 500px;
 }
 
 .max-w-3xl {
@@ -1912,6 +1908,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.prose-h4\:text-white :is(:where(h4):not(:where([class~="not-prose"] *))) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 .prose-p\:text-gray-400 :is(:where(p):not(:where([class~="not-prose"] *))) {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
@@ -2005,10 +2006,6 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
-  }
-
-  .tablet\:w-1\/2 {
-    width: 50%;
   }
 
   .tablet\:w-\[200px\] {

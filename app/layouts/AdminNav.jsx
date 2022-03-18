@@ -1,5 +1,6 @@
-import React from "react";
 import { Form, Link, NavLink } from "remix";
+
+import React from "react";
 import { useSupabase } from "~/utils/supabase-client";
 
 const AdminNav = () => {
@@ -12,8 +13,8 @@ const AdminNav = () => {
   };
 
   return (
-    <nav className="w-fit mt-4 tablet:mt-0 tablet:flex hidden">
-      <ul className="flex gap-10 flex-wrap">
+    <nav className="mt-4 hidden tablet:mt-0 tablet:flex">
+      <ul className="flex  gap-10">
         <li>
           <Link to="/" className="nav-link" end="true">
             Home

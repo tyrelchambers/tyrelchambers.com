@@ -18,6 +18,7 @@ const PostItem = ({ post }) => {
         <Link
           to={`/blog/${post.slug}`}
           className="link-button small secondary post-item-cta mt-8 opacity-0"
+          prefetch="intent"
         >
           Read post <i className="fa-solid fa-arrow-right-long"></i>
         </Link>
