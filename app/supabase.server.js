@@ -20,10 +20,10 @@ function createDatabaseSessionStorage({ cookie }) {
 
       return test;
     },
-    async readData(data) {
+    async readData(obj) {
       const { data, error } = await db
         .select()
-        .eq("access_token", data[0].access_token);
+        .eq("access_token", obj[0].access_token);
       console.log(error);
       const cookie = data.length > 0 ? data[data.length - 1] : null;
       return cookie;
