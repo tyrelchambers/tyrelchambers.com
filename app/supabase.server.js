@@ -25,7 +25,7 @@ function createDatabaseSessionStorage({ cookie }) {
         .select()
         .eq("access_token", obj[0].access_token);
       console.log(error);
-      const cookie = data.length > 0 ? data[data.length - 1] : null;
+      const cookie = data && data.length > 0 ? data[data.length - 1] : null;
       return cookie;
     },
     async updateData(id, data, expires) {
