@@ -21,10 +21,11 @@ function createDatabaseSessionStorage({ cookie }) {
       return test;
     },
     async readData(data) {
-      const data2 = await db.select().eq("access_token", data[0].access_token);
-      console.log(await db.select(), "--- call to db ---");
-      console.log(data2, data);
-      const cookie = data2.length > 0 ? data2[data2.length - 1] : null;
+      const { data, error } = await db
+        .select()
+        .eq("access_token", data[0].access_token);
+      console.log(error);
+      const cookie = data.length > 0 ? data[data.length - 1] : null;
       return cookie;
     },
     async updateData(id, data, expires) {
