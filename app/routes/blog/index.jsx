@@ -7,7 +7,6 @@ import Header from "~/layouts/Header";
 import { Link } from "react-router-dom";
 import React from "react";
 import SectionHero from "~/layouts/SectionHero";
-import { getBlogPosts } from "../../utils/getBlogPosts";
 import { getPosts } from "~/blogPosts-server";
 import { useSearchParams } from "remix";
 import { useUpdateQueryStringValueWithoutNavigation } from "~/utils/misc";

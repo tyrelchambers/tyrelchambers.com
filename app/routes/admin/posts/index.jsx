@@ -2,8 +2,8 @@ import { Link, useLoaderData } from "remix";
 
 import AdminHeader from "~/layouts/AdminHeader";
 import React from "react";
-import { getPosts } from "~/blogPosts-server";
 import { getSession } from "~/supabase.server";
+import { supabase } from "~/supabase.server";
 import { truncateString } from "~/utils/truncateString";
 
 export const loader = async ({ request }) => {
@@ -13,7 +13,12 @@ export const loader = async ({ request }) => {
     return redirect("/login");
   }
 
-  let { posts, error } = await getPosts();
+  const { body: posts, error } = await supabase
+    .from("posts")
+    .select()
+    .order("created_at", {
+      ascending: false,
+    });
 
   if (error) {
     return { error };
@@ -47,6 +52,11 @@ const index = () => {
                 <p className="text-center text-gray-400 large:text-left">
                   {truncateString(post.description, 100)}
                 </p>
+                {post.published ? (
+                  <p className=" text-green-300">published</p>
+                ) : (
+                  <p className=" text-orange-300">draft</p>
+                )}
               </div>
             </Link>
           ))}

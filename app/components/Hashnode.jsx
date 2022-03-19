@@ -1,36 +1,27 @@
+import CustomSelect from "./CustomSelect";
 import React from "react";
+import { hashNodeTags } from "~/constants/blogTags";
 
-const Hashnode = () => {
+const Hashnode = ({ state, setState }) => {
   return (
-    <div className="flex flex-col mt-10 bg-zinc-800 p-4 rounded-lg ">
-      <h4 className="text-white  text-xl border-b-2 border-gray-700 pb-2">
+    <div className="mt-2 flex flex-col rounded-lg bg-zinc-800 p-4 ">
+      <h4 className="border-b-2  border-gray-700 pb-2 text-xl text-white">
         HashNode
       </h4>
 
-      <div className="flex flex-col mt-4 gap-2">
-        <label htmlFor="markdown" className="text-yellow-300  text-xl">
-          Tags
-        </label>
-        <input
-          type="text"
-          name="hashNodeTags"
-          className="rounded-lg p-4 bg-zinc-700 w-full text-white"
-          placeholder="Comma separated tags with a space"
-        />
-      </div>
+      <p htmlFor="devToTags" className="mt-4 mb-2 text-yellow-300 ">
+        Tags
+      </p>
 
-      <div className="flex flex-col mt-4 gap-2">
-        <label htmlFor="markdown" className="text-yellow-300  ">
-          Canonical URL
-        </label>
-        <input
-          type="text"
-          name="originalArticleURL"
-          className="rounded-lg p-4 bg-zinc-700 w-full text-white"
-          value={`https://tyrelchambers.com/blog/`}
-          placeholder="https://tyrelchambers.com/blog/"
-        />
-      </div>
+      <CustomSelect
+        options={hashNodeTags.map((tag) => ({
+          ...tag,
+          value: tag.slug,
+          label: tag.name,
+        }))}
+        isMulti
+        onChange={(e) => setState({ ...state, hashNodeTags: e })}
+      />
     </div>
   );
 };

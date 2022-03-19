@@ -57,10 +57,20 @@ const $slug = () => {
       <AdminHeader />
 
       <main className="mt-14 flex flex-col-reverse gap-10 tablet:flex-row">
-        <div className="flex max-w-2xl flex-col p-4 ">
+        <div className="flex w-full max-w-2xl flex-col p-4 ">
           <h3 className="h3 coloured mb-6">{post.post.title}</h3>
           <div className="prose break-words prose-h1:font-normal prose-h1:text-white prose-h2:font-thin prose-h2:text-white prose-h3:font-thin prose-h3:text-white prose-p:text-gray-400 prose-a:text-yellow-300 prose-a:underline prose-strong:text-white prose-code:text-sky-300">
             <Component />
+          </div>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            {post.post.tags.map((tag, i) => (
+              <p
+                className="flex w-fit items-center justify-center rounded-full bg-slate-700 px-4 py-2 text-sm text-white"
+                key={i}
+              >
+                {tag.value || tag.name}
+              </p>
+            ))}
           </div>
         </div>
         <div className="sticky top-10  m-4 flex h-fit flex-col gap-6 rounded-lg border-2 border-gray-700 p-4 tablet:w-[200px]">
@@ -77,6 +87,11 @@ const $slug = () => {
               Delete
             </button>
           </Form>
+          {post.post.published ? (
+            <p className=" text-green-300">published</p>
+          ) : (
+            <p className=" text-orange-300">draft</p>
+          )}
         </div>
       </main>
     </div>

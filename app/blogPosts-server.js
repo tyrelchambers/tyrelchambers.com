@@ -44,6 +44,7 @@ export async function getPosts() {
   const { body: posts, error } = await supabase
     .from("posts")
     .select()
+    .eq("published", true)
     .order("created_at", {
       ascending: false,
     });

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { json, redirect, useFetcher, useLoaderData } from "remix";
 import { postToDevTo, postToHashNode } from "~/api";
 
@@ -9,6 +8,7 @@ import { getSession } from "~/supabase.server";
 import invariant from "tiny-invariant";
 import { supabase } from "~/supabase.server";
 import { tags } from "~/constants/blogTags";
+import { useState } from "react";
 
 export const loader = async ({ params, request }) => {
   invariant(params.id, "expected params.id");
@@ -38,6 +38,7 @@ export const action = async ({ request }) => {
       hashNode,
       devTo,
       id,
+      published,
     },
   } = await request.formData();
 
@@ -46,10 +47,9 @@ export const action = async ({ request }) => {
     .replace(/[^a-zA-Z0-9\-]/g, "")
     .toLowerCase();
 
-  const formattedtags = JSON.parse(tags).map((tag) => ({
-    name: tag.name,
-    _id: tag._id,
-    slug: tag.slug,
+  const formattedTags = JSON.parse(tags).map((tag) => ({
+    value: tag.value,
+    label: tag.label,
   }));
 
   const canonical_url = "https://tyrelchambers.com/blog/" + slug;
@@ -60,9 +60,10 @@ export const action = async ({ request }) => {
       title: title[0],
       slug,
       markdown: markdown[0],
-      tags: formattedtags,
+      tags: formattedTags,
       cover_img: cover_img[0],
       description: description[0],
+      published: published[0],
     })
     .eq("id", id)
     .single();
@@ -79,7 +80,7 @@ export const action = async ({ request }) => {
       article: {
         body_markdown: markdown[0],
         title: title[0],
-        tags: formattedtags,
+        tags: formattedDevToTags,
         main_img: cover_img[0],
         canonical_url,
       },
@@ -92,7 +93,7 @@ export const action = async ({ request }) => {
       contentMarkdown: markdown[0],
       coverImageURL: cover_img[0],
       originalArticleURL: canonical_url,
-      tags: formattedtags,
+      tags: formattedHashNodeTags,
     });
   }
 
@@ -106,7 +107,11 @@ const edit = () => {
 
   const submitHandler = async (e) => {
     fetcher.submit(
-      { ...state, tags: JSON.stringify(state.tags), id: data.id },
+      {
+        ...state,
+        tags: JSON.stringify(state.tags),
+        id: data.id,
+      },
       { method: "post" }
     );
   };
@@ -207,15 +212,11 @@ const edit = () => {
             <CustomSelect
               options={tags.map((tag) => ({
                 ...tag,
-                value: tag.slug,
-                label: tag.name,
               }))}
               isMulti
               onChange={(e) => setState({ ...state, tags: e })}
               value={state.tags.map((tag) => ({
                 ...tag,
-                label: tag.name,
-                value: tag.slug,
               }))}
             />
           </div>
@@ -231,9 +232,6 @@ const edit = () => {
                   type="checkbox"
                   name="devTo"
                   className="mr-4"
-                  onChange={(e) =>
-                    setState({ ...state, devTo: e.target.checked })
-                  }
                   checked={state.devTo}
                 />
                 Dev.to
@@ -245,24 +243,35 @@ const edit = () => {
                   name="hashNode"
                   className="mr-4"
                   checked={state.hashNode}
-                  onChange={(e) =>
-                    setState({ ...state, hashNode: e.target.checked })
-                  }
                 />
                 Hashnode
               </label>
             </fieldset>
           </div>
 
-          <button
-            className="link-button primary small mt-6"
-            type="submit"
-            disabled={fetcher.state === "submitting"}
-          >
-            {fetcher.state === "submitting"
-              ? "Updating post..."
-              : " Update post"}
-          </button>
+          <div className="mt-6 flex items-center gap-6">
+            <button
+              className="link-button primary small"
+              type="submit"
+              disabled={fetcher.state === "submitting"}
+            >
+              {fetcher.state === "submitting"
+                ? "Updating post..."
+                : " Update post"}
+            </button>
+            <label className="text-gray-400">
+              <input
+                type="checkbox"
+                name="published"
+                className="mr-2"
+                onClick={(e) =>
+                  setState({ ...state, published: e.target.checked })
+                }
+                checked={state.published}
+              />
+              Publish now
+            </label>
+          </div>
         </fetcher.Form>
       </main>
     </div>

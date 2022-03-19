@@ -3,7 +3,9 @@ import { postToDevTo, postToHashNode } from "~/api/index";
 
 import AdminHeader from "~/layouts/AdminHeader";
 import CustomSelect from "~/components/CustomSelect";
+import DevTo from "../../../components/DevTo";
 import Gap from "~/components/Gap";
+import Hashnode from "../../../components/Hashnode";
 import TextareaAutosize from "react-textarea-autosize";
 import { getSession } from "~/supabase.server";
 import { supabase } from "~/utils/supabase";
@@ -22,7 +24,18 @@ export const loader = async ({ request }) => {
 
 export const action = async ({ request }) => {
   const {
-    _fields: { title, description, cover_img, markdown, tags, hashNode, devTo },
+    _fields: {
+      title,
+      description,
+      cover_img,
+      markdown,
+      tags,
+      hashNode,
+      devTo,
+      devToTags,
+      hashNodeTags,
+      published,
+    },
   } = await request.formData();
 
   const slug = title[0]
@@ -30,9 +43,16 @@ export const action = async ({ request }) => {
     .replace(/[^a-zA-Z0-9\-]/g, "")
     .toLowerCase();
 
-  const formattedtags = JSON.parse(tags).map((tag) => ({
+  const formattedHashNodeTags = JSON.parse(hashNodeTags).map((tag) => ({
     name: tag.name,
     _id: tag._id,
+  }));
+
+  const formattedDevToTags = JSON.parse(devToTags).map((tag) => tag.value);
+
+  const formattedTags = JSON.parse(tags).map((tag) => ({
+    value: tag.value,
+    label: tag.label,
   }));
 
   const canonical_url = "https://tyrelchambers.com/blog/" + slug;
@@ -41,14 +61,16 @@ export const action = async ({ request }) => {
     title: title[0],
     slug,
     markdown: markdown[0],
-    tags: formattedtags,
+    tags: formattedTags,
     cover_img: cover_img[0],
     description: description[0],
     devTo: devTo[0],
     hashNode: hashNode[0],
+    published: published[0],
   });
 
   if (error) {
+    console.log(error);
     return { error };
   }
 
@@ -57,7 +79,7 @@ export const action = async ({ request }) => {
       article: {
         body_markdown: markdown[0],
         title: title[0],
-        tags: formattedtags,
+        tags: formattedDevToTags,
         main_img: cover_img[0],
         canonical_url,
       },
@@ -70,7 +92,7 @@ export const action = async ({ request }) => {
       contentMarkdown: markdown[0],
       coverImageURL: cover_img[0],
       originalArticleURL: canonical_url,
-      tags: formattedtags,
+      tags: formattedHashNodeTags,
       publicationId: "6096b94d1ea29f2c341e0420",
     });
   }
@@ -87,12 +109,20 @@ const newPost = () => {
     markdown: "",
     hashNode: false,
     devTo: false,
+    devToTags: [],
+    hashNodeTags: [],
+    published: false,
   });
   const fetcher = useFetcher();
 
   const submitHandler = async (e) => {
     fetcher.submit(
-      { ...state, tags: JSON.stringify(state.tags) },
+      {
+        ...state,
+        tags: JSON.stringify(state.tags),
+        devToTags: JSON.stringify(state.devToTags),
+        hashNodeTags: JSON.stringify(state.hashNodeTags),
+      },
       { method: "post" }
     );
   };
@@ -195,8 +225,6 @@ const newPost = () => {
               <CustomSelect
                 options={tags.map((tag) => ({
                   ...tag,
-                  value: tag.slug,
-                  label: tag.name,
                 }))}
                 isMulti
                 onChange={(e) => setState({ ...state, tags: e })}
@@ -236,16 +264,33 @@ const newPost = () => {
                 </label>
               </fieldset>
             </div>
+            {state.devTo && <DevTo state={state} setState={setState} />}
+            {state.hashNode && <Hashnode state={state} setState={setState} />}
 
-            <button
-              className="link-button primary small mt-6"
-              type="submit"
-              disabled={fetcher.state === "submitting"}
-            >
-              {fetcher.state === "submitting"
-                ? "Creating post..."
-                : "Create post"}
-            </button>
+            <div className="mt-6 flex items-center gap-6">
+              <button
+                className="link-button primary small "
+                type="submit"
+                disabled={fetcher.state === "submitting"}
+              >
+                {fetcher.state === "submitting"
+                  ? "Creating post..."
+                  : "Create post"}
+              </button>
+
+              <label className="text-gray-400">
+                <input
+                  type="checkbox"
+                  name="published"
+                  className="mr-2"
+                  onClick={(e) =>
+                    setState({ ...state, published: e.target.checked })
+                  }
+                  checked={state.published}
+                />
+                Publish now
+              </label>
+            </div>
           </fetcher.Form>
         </div>
       </main>
