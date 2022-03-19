@@ -12,7 +12,7 @@
   }
 
   .nav-link {
-    @apply text-lg text-white opacity-70 transition-all hover:text-white hover:opacity-100;
+    @apply whitespace-nowrap text-lg text-white opacity-70 transition-all hover:text-white hover:opacity-100;
   }
 
   .nav-link.active {
