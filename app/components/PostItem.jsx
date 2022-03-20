@@ -1,10 +1,17 @@
 import { Link } from "remix";
 import React from "react";
+import { motion } from "framer-motion";
 import { truncateString } from "~/utils/truncateString";
-
 const PostItem = ({ post }) => {
   return (
-    <div className="post-item">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{
+        amount: 0.05,
+      }}
+      className="post-item"
+    >
       <img
         src={post.cover_img}
         alt=""
@@ -24,7 +31,7 @@ const PostItem = ({ post }) => {
         </Link>
       </div>
       <div className="gradient"></div>
-    </div>
+    </motion.div>
   );
 };
 

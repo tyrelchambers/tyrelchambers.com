@@ -23,9 +23,16 @@ export const loader = async () => {
 export default function Index() {
   const posts = useLoaderData();
 
-  const variants = {
-    hidden: { opacity: 0, y: 25 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  const container = {
+    hidden: { opacity: 1, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.1,
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   return (
@@ -67,8 +74,20 @@ export default function Index() {
         </section>
         <Gap />
         <section className="p-4">
-          <div className="flex flex-col gap-8 tablet:flex-row desktop:gap-20">
-            <img
+          <motion.div
+            className="flex flex-col gap-8 tablet:flex-row desktop:gap-20"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{
+              amount: 0.5,
+            }}
+          >
+            <motion.img
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{
+                amount: 0.5,
+              }}
               src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/me.webp"
               alt=""
               className="ml-auto mr-auto w-full rounded-lg object-cover tablet:max-w-xs"
@@ -93,10 +112,17 @@ export default function Index() {
                 <i className="fa-solid fa-arrow-right-long"></i>
               </Link>
             </div>
-          </div>
+          </motion.div>
         </section>
         <Gap />
-        <section className="p-4">
+        <motion.section
+          className="p-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{
+            amount: 0.05,
+          }}
+        >
           <h2 className="h2">I've made some pretty cool things!</h2>
           <p className="subtitle">
             These are entirely made up of personal projects or technical
@@ -107,7 +133,7 @@ export default function Index() {
               <Project project={project} key={index} />
             ))}
           </div>
-        </section>
+        </motion.section>
         <Gap />
         <section className="p-4">
           <div className="flex flex-col tablet:flex-row tablet:items-center">
@@ -124,14 +150,28 @@ export default function Index() {
             </Link>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{
+              amount: 0.05,
+            }}
+            className="mt-10 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3"
+          >
             {posts.map((post, index) => (
               <PostItem post={post} key={index} />
             ))}
-          </div>
+          </motion.div>
         </section>
         <Gap />
-        <section className="p-4">
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{
+            amount: 0.05,
+          }}
+          className="p-4"
+        >
           <h2 className="h2">I love taking photos</h2>
           <p className="subtitle">
             If you'd like to see more, check out my{" "}
@@ -179,7 +219,7 @@ export default function Index() {
               </figcaption>
             </figure>
           </div>
-        </section>
+        </motion.section>
         <Gap />
         <section className="p-4">
           <div className="flex flex-col justify-between gap-8 tablet:flex-row tablet:items-center">

@@ -49,6 +49,10 @@
     margin-left: 1em;
   }
 
+  .link-button.outline:hover {
+    @apply border-white;
+  }
+
   .link-button {
     @apply flex w-fit items-center justify-center gap-6 whitespace-nowrap rounded-full border-2   p-4 px-10 outline-none transition-all hover:bg-opacity-10;
   }
