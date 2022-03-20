@@ -1,0 +1,48 @@
+---
+title: Reddex
+---
+
+# What is Reddex?
+
+[Visit Reddex](https://reddex.app)
+
+Reddex was built for Youtube narrators who source their stories from Reddit. It's a very niche product, but the time it saves is invaluable.
+
+## Tech stack
+
+- Docker
+- DigitalOcean
+- PostgresQL
+- Sequelize
+- TailwindCSS
+- React
+- Express
+- Node.js
+- Styled-components
+- React Query
+- React Location
+- NGINX
+
+## The problem
+
+The current process for acquiring permission to read a fiction story from any particular subreddit goes a little something like this:
+
+1. Scroll through hundreds of stories to find one that meets a certain criteria. This could be number of upvotes, number of comments, or the story's title.
+2. Either come up with a new DM message every time, or open a notepad with your saved greetings (with potentially more than one depending on if you've introduced yourself before).
+3. Go back to the story and copy the title into the DM subject line
+4. Copy your greeting into the body of the DM.
+5. Send.
+
+This process can take a relatively long time; maybe anywhere from a couple minutes to over 5 minutes. If you're doing this for every story, you're going to be doing it for a while.
+
+## How Reddex solves this problem
+
+Reddex allows the user to input the subreddit they'd like to query. It then returns up to 1,000 posts from that subreddit and gives the user sorting options via upvotes, reading time (calculated in-app), whether it's a series or not, or keywords.
+
+Reddit doesn't provide such features, so on its own, it's still a handy tool.
+
+When you register, you're able to queue an unlimited amount of stories. Each story will pre-load one of two greetings saved to your profile based on if you've contacted them through the app before. This takes the burden off the user to decide which message to send.
+
+If there are no saved messages, the user can also input their own.
+
+This takes the 2-5 minute process and allows the user to theoretically find any number of stories very quickly using the sorting options. The time it takes to go through a of 25 stories (for example) would take on average 1 second per story if the user has pre-saved introductions.

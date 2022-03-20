@@ -99,7 +99,7 @@ export default function Index() {
         <section className="p-4">
           <h2 className="h2">I've made some pretty cool things!</h2>
           <p className="subtitle">
-            These are entirely made up of personal projects or technically
+            These are entirely made up of personal projects or technical
             challenges.
           </p>
           <div className="mt-16 grid grid-cols-1 gap-8  tablet:grid-cols-2 desktop:grid-cols-3 desktop:gap-20">

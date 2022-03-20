@@ -5,6 +5,8 @@ export const projects = [
     summary:
       "Filter and search posts from Reddit. Filter by keywords, upvote count or read time. Made for Narrators.",
     url: "https://reddex.app",
+
+    slug: "reddex",
   },
   {
     title: "Kanlen",
