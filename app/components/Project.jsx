@@ -1,4 +1,3 @@
-import { Link } from "remix";
 import React from "react";
 
 const Project = ({ project }) => {
@@ -11,14 +10,15 @@ const Project = ({ project }) => {
       <p className="text-normal h-40 text-gray-400 sm:h-32 desktop:text-xl">
         {project.summary}
       </p>
-      <Link
-        to={`/case-study/${project.slug}`}
+      <a
+        href={project.url}
         className="link-button small mt-4 outline"
-        prefetch="intent"
+        target="_blank"
+        rel="noopenerr noreferrer"
       >
         See more
         <i className="fa-solid fa-arrow-right-long"></i>
-      </Link>
+      </a>
     </div>
   );
 };
