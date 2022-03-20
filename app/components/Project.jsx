@@ -1,13 +1,7 @@
 import React from "react";
-import { motion } from "framer-motion";
 const Project = ({ project }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{
-        amount: 0.1,
-      }}
+    <div
       key={project.title}
       className="project rounded-lg border-2 border-gray-700 bg-zinc-800 p-6 transition-all "
     >
@@ -24,7 +18,7 @@ const Project = ({ project }) => {
         See more
         <i className="fa-solid fa-arrow-right-long"></i>
       </a>
-    </motion.div>
+    </div>
   );
 };
 
