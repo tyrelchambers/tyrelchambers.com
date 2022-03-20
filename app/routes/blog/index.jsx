@@ -35,11 +35,13 @@ const index = () => {
     return acc;
   }, []);
 
-  const tags = postsTags.filter(
-    (value, index, self) =>
-      index ===
-      self.findIndex((t) => t.slug === value.slug && t.name === value.name)
-  );
+  const tagsNoDuplicates = postsTags.reduce((acc, tag) => {
+    if (!acc.find((t) => t.name === tag.name)) {
+      acc.push(tag);
+    }
+    return acc;
+  }, []);
+
   let [searchParams] = useSearchParams();
   const featuredPost = posts.filter((post) => post.featured)[0];
 
@@ -125,7 +127,7 @@ const index = () => {
                 <input type="checkbox" name="" id="" className="sr-only" />
                 <span>All</span>
               </label>
-              {tags.map((tag, id) => (
+              {tagsNoDuplicates.map((tag, id) => (
                 <label
                   className={`whitespace-nowrap rounded-full border-2 bg-zinc-800  p-3 px-6 text-gray-200 ${
                     query.includes(tag.name.toLowerCase())
