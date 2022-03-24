@@ -4,41 +4,46 @@ import { getHashnodeStats } from "./api/getHashnodeStats";
 import { supabase } from "~/supabase.server";
 
 export async function getPost(slug) {
+  const { default: rehypeStringify } = await import("rehype-stringify");
+  const { default: remarkParse } = await import("remark-parse");
+  const { default: remarkRehype } = await import("remark-rehype");
+  const { unified } = await import("unified");
+
   const { body: post, error } = await supabase
     .from("posts")
     .select()
     .eq("slug", slug)
     .single();
 
-  const { code: markdown } = await bundleMdx({
-    source: post.markdown,
-    xdmOptions(options) {
-      options.rehypePlugins = [...(options.rehypePlugins ?? [])];
-      options.remarkPlugins = [...(options.remarkPlugins ?? [])];
-      return options;
-    },
-  });
+  const markdown = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeStringify)
+    .process(post.markdown);
 
-  return { post, error, markdown };
+  return { post, error, markdown: markdown.value };
 }
 
 export async function getPostById(id) {
+  const { default: rehypeStringify } = await import("rehype-stringify");
+  const { default: remarkParse } = await import("remark-parse");
+  const { default: remarkRehype } = await import("remark-rehype");
+
+  const { unified } = await import("unified");
+
   const { body: post, error } = await supabase
     .from("posts")
     .select()
     .eq("id", id)
     .single();
 
-  const { code: markdown } = await bundleMdx({
-    source: post.markdown,
-    xdmOptions(options) {
-      options.rehypePlugins = [...(options.rehypePlugins ?? [])];
-      options.remarkPlugins = [...(options.remarkPlugins ?? [])];
-      return options;
-    },
-  });
+  const markdown = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeStringify)
+    .process(post.markdown);
 
-  return { ...post, error, markdown };
+  return { ...post, error, markdown: markdown.value };
 }
 export async function getPosts() {
   const { body: posts, error } = await supabase

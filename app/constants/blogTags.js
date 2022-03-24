@@ -107,47 +107,47 @@ export const hashNodeTags = [
 ];
 export const tags = [
   {
-    label: "JavaScript",
+    name: "JavaScript",
     value: "javascript",
   },
   {
-    label: "React",
+    name: "React",
     value: "react",
   },
   {
-    label: "Node.js",
+    name: "Node.js",
     value: "nodejs",
   },
   {
-    label: "CSS",
+    name: "CSS",
     value: "css",
   },
   {
-    label: "Beginner",
+    name: "Beginner",
     value: "beginner",
   },
   {
-    label: "HTML",
+    name: "HTML",
     value: "html",
   },
   {
-    label: "Personal Development",
+    name: "Personal Development",
     value: "personal-development",
   },
   {
-    label: "Career",
+    name: "Career",
     value: "career",
   },
   {
-    label: "Remix",
+    name: "Remix",
     value: "remix",
   },
   {
-    label: "Web Development",
+    name: "Web Development",
     value: "web-development",
   },
   {
-    label: "Testing",
+    name: "Testing",
     value: "testing",
   },
 ];

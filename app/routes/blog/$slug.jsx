@@ -10,7 +10,6 @@ import PostItem from "~/components/PostItem";
 import React from "react";
 import { format } from "date-fns";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
-import { getMDXComponent } from "mdx-bundler/client";
 import invariant from "tiny-invariant";
 
 export const meta = ({ data }) => {
@@ -77,9 +76,9 @@ const PostSlug = () => {
         <p className="mb-10 text-teal-400">
           {format(new Date(post.created_at), "MMMM do, yyyy")}
         </p>
-        <MarkdownRender markdown={markdown} />
+        <MarkdownRender html={markdown} />
       </div>
-      <Gap />
+      <Gap height="h-12" />
       <PostFooter postTitle={post.title} slug={post.slug} />
       <Gap />
       <div className="ml-auto mr-auto flex max-w-screen-xl flex-col p-4">

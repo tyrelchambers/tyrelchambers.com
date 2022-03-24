@@ -1,4 +1,4 @@
-import { Form, Meta, useLoaderData } from "remix";
+import { Form, Links, Meta, Scripts, useLoaderData } from "remix";
 
 import BlogPosts from "~/components/BlogPosts";
 import Footer from "~/layouts/Footer";
@@ -10,6 +10,23 @@ import SectionHero from "~/layouts/SectionHero";
 import { getPosts } from "~/blogPosts-server";
 import { useSearchParams } from "remix";
 import { useUpdateQueryStringValueWithoutNavigation } from "~/utils/misc";
+
+export function ErrorBoundary({ error }) {
+  console.log(error);
+  return (
+    <html>
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        {/* add the UI you want your users to see */}
+        <p className="text-white">Oh dang it!</p>
+        <Scripts />
+      </body>
+    </html>
+  );
+}
 
 export const meta = () => {
   return {
@@ -130,17 +147,17 @@ const index = () => {
               {tagsNoDuplicates.map((tag, id) => (
                 <label
                   className={`whitespace-nowrap rounded-full border-2 bg-zinc-800  p-3 px-6 text-gray-200 ${
-                    query.includes(tag.name.toLowerCase())
+                    query.includes((tag.name || tag.label).toLowerCase())
                       ? "border-yellow-300"
                       : "border-transparent"
                   }`}
                   onClick={() => {
-                    setQuery(tag.name.toLowerCase());
+                    setQuery((tag.name || tag.label).toLowerCase());
                   }}
                   key={id}
                 >
                   <input type="checkbox" name="" id="" className="sr-only" />
-                  <span>{tag.name}</span>
+                  <span>{tag.name.toLowerCase()}</span>
                 </label>
               ))}
             </div>

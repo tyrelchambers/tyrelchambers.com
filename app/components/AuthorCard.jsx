@@ -3,7 +3,7 @@ import SocialList from "./SocialList";
 
 const AuthorCard = () => {
   return (
-    <div className="w-full rounded-3xl border-2 border-zinc-800 p-4 tablet:p-10">
+    <div className="w-full rounded-3xl border-2 border-zinc-700 p-4 tablet:p-10">
       <div className="flex flex-col gap-20 tablet:flex-row">
         <img
           src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/me.webp"
