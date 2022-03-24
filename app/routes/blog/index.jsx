@@ -11,23 +11,6 @@ import { getPosts } from "~/blogPosts-server";
 import { useSearchParams } from "remix";
 import { useUpdateQueryStringValueWithoutNavigation } from "~/utils/misc";
 
-export function ErrorBoundary({ error }) {
-  console.log(error);
-  return (
-    <html>
-      <head>
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        {/* add the UI you want your users to see */}
-        <p className="text-white">Oh dang it!</p>
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
 export const meta = () => {
   return {
     title: "Tyrel Chambers | Blog",

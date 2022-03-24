@@ -1342,6 +1342,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 2.5rem;
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
 .mt-16 {
   margin-top: 4rem;
 }
@@ -1590,9 +1594,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-top-width: 1px;
 }
 
-.border-zinc-800 {
+.border-zinc-700 {
   --tw-border-opacity: 1;
-  border-color: rgb(39 39 42 / var(--tw-border-opacity));
+  border-color: rgb(63 63 70 / var(--tw-border-opacity));
 }
 
 .border-gray-700 {
@@ -1613,11 +1617,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-blue-300 {
   --tw-border-opacity: 1;
   border-color: rgb(147 197 253 / var(--tw-border-opacity));
-}
-
-.border-zinc-700 {
-  --tw-border-opacity: 1;
-  border-color: rgb(63 63 70 / var(--tw-border-opacity));
 }
 
 .border-gray-500 {
