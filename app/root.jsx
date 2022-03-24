@@ -7,11 +7,12 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "remix";
-import styles from "./tailwind.css";
-import globalStyles from "../styles/global.css";
-import editorcss from "../styles/editor.css";
-import { createClient } from "@supabase/supabase-js";
+
 import { SupabaseProvider } from "./utils/supabase-client";
+import { createClient } from "@supabase/supabase-js";
+import editorcss from "../styles/editor.css";
+import globalStyles from "../styles/global.css";
+import styles from "./tailwind.css";
 
 export async function loader() {
   return {
@@ -53,10 +54,6 @@ export default function App() {
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap"
           rel="stylesheet"
         />
-        <script
-          src="https://kit.fontawesome.com/5f8ee45a20.js"
-          crossOrigin="anonymous"
-        />
       </head>
       <body className="body">
         <SupabaseProvider supabase={supabase}>
@@ -67,6 +64,10 @@ export default function App() {
             defer
             data-domain="tyrelchambers.com"
             src="https://plausible.io/js/plausible.js"
+          />
+          <script
+            src="https://kit.fontawesome.com/5f8ee45a20.js"
+            crossOrigin="anonymous"
           />
           <Scripts />
           <LiveReload />
