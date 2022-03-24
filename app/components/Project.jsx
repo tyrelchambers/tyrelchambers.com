@@ -15,7 +15,7 @@ const Project = ({ project }) => {
         target="_blank"
         rel="noopenerr noreferrer"
       >
-        See more
+        See {project.title}
         <i className="fa-solid fa-arrow-right-long"></i>
       </a>
     </div>
