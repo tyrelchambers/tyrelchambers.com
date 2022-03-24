@@ -9,7 +9,6 @@ import ScrollIcon from "~/components/ScrollIcon";
 import SectionHero from "../layouts/SectionHero";
 import SocialList from "~/components/SocialList";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
-import { motion } from "framer-motion";
 import { projects } from "~/constants/projects";
 import { supabase } from "~/utils/supabase";
 
