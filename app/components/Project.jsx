@@ -3,7 +3,7 @@ const Project = ({ project }) => {
   return (
     <div
       key={project.title}
-      className="project rounded-lg border-2 border-gray-700 bg-zinc-800 p-6 transition-all "
+      className="project rounded-lg border-2 border-gray-700 bg-gray-800 p-6 transition-all "
     >
       <h3 className="h3 mb-4">{project.title}</h3>
       <p className="text-normal h-40 text-gray-400 sm:h-32 desktop:text-xl">

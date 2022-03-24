@@ -1,5 +1,5 @@
-import React from "react";
 import { Link } from "remix";
+import React from "react";
 import SocialList from "~/components/SocialList";
 import { handleSignOut } from "../utils/handleSignout";
 import { useSupabase } from "../utils/supabase-client";
@@ -7,11 +7,11 @@ import { useSupabase } from "../utils/supabase-client";
 const Footer = () => {
   const supabase = useSupabase();
   return (
-    <footer className="border-t-[1px] py-10 sm:py-20 border-zinc-600 bg-zinc-800">
-      <div className="max-w-screen-md ml-auto mr-auto grid grid-cols-1 sm:grid-cols-2 sm:gap-20 gap-10 p-4">
+    <footer className="border-t-[1px] border-zinc-600 bg-zinc-800 py-10 sm:py-20">
+      <div className="ml-auto mr-auto grid max-w-screen-md grid-cols-1 gap-10 p-4 sm:grid-cols-2 sm:gap-20">
         <div className="flex flex-col ">
           <h3 className="h3">Tyrel Chambers</h3>
-          <p className="text-gray-400 mt-6 mb-6">
+          <p className="mt-6 mb-6 text-gray-400">
             Building software and teaching people about what I love the most
           </p>
           <SocialList />
@@ -63,7 +63,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <p className="text-center text-gray-500 mt-6">
+      <p className="mt-6 text-center text-gray-500">
         All rights reserved &copy; {new Date(Date.now()).getFullYear()}. Tyrel
         Chambers.
       </p>
