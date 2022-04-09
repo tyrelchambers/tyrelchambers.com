@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "remix";
+import { Link, redirect, useLoaderData } from "remix";
 
 import AdminHeader from "~/layouts/AdminHeader";
 import React from "react";
