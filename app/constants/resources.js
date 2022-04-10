@@ -434,7 +434,7 @@ export const baas = {
       title: "Supabase",
       url: "https://supabase.com/",
       description:
-        "Supabase is a cloud database that enables developers to build, run, and operate applications entirely in the cloud.",
+        "Supabase is an open-source PaaS that provides a fully-managed, cloud-based database for your applications.",
     },
   ],
 };
