@@ -171,6 +171,11 @@ const colourPickers = {
       url: "https://color.adobe.com/create/color-wheel/?base=2&rule=Analogous&selected=4&name=My%20Color%20Theme&mode=rgb&rgbvalues=1,0.8120800903086206,0.050000000000000044,0.91,0.4345013792222775,0.04550000000000004,1,0,0,0.6540623557406823,0.04550000000000004,0.91,0.11441763017496764,0.2319640517053544,1&swatchOrder=0,1,2,3,4",
       description: "Tool for finding the right colour combinations",
     },
+    {
+      title: "Coolors",
+      url: "https://coolors.co/",
+      description: "Find beautiful colours",
+    },
   ],
 };
 
@@ -434,6 +439,17 @@ export const baas = {
   ],
 };
 
+const photoEditors = {
+  title: "Photo Editors",
+  children: [
+    {
+      title: "Edit.photo",
+      url: "https://edit.photo/",
+      description: "Edit.photo is a free online photo editor.",
+    },
+  ],
+};
+
 export const resources = [
   analytics,
   photography,
@@ -449,4 +465,5 @@ export const resources = [
   projectManagement,
   books,
   baas,
+  photoEditors,
 ];
