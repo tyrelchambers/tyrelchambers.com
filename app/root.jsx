@@ -68,6 +68,7 @@ export default function App() {
           <script
             src="https://kit.fontawesome.com/5f8ee45a20.js"
             crossOrigin="anonymous"
+            defer
           />
           <Scripts />
           <LiveReload />
