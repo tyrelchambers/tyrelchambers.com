@@ -270,12 +270,6 @@ const communication = {
       url: "https://slack.com/",
       description: "Incredibly useful tool for team communication",
     },
-    {
-      title: "Clickup",
-      url: "https://clickup.com",
-      description:
-        "Plan, track, and manage any type of work with project management that flexes to your team's needs.",
-    },
   ],
 };
 
@@ -327,6 +321,12 @@ const projectManagement = {
       title: "Trello",
       url: "https://trello.com/",
       description: "Simple Kanban software for easy project management",
+    },
+    {
+      title: "Clickup",
+      url: "https://clickup.com",
+      description:
+        "Plan, track, and manage any type of work with project management that flexes to your team's needs.",
     },
   ],
 };
