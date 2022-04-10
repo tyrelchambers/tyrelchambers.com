@@ -94,3 +94,13 @@ export async function hashNodeStats() {
 
   return stats;
 }
+
+export async function triggerView(id) {
+  const { data } = await supabase.from("posts").select().eq("id", id).single();
+  await supabase
+    .from("posts")
+    .update({
+      views: data.views + 1,
+    })
+    .eq("id", id);
+}

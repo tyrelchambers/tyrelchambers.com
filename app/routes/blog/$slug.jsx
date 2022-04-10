@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from "remix";
-import { getPost, getPosts } from "../../blogPosts-server";
+import { getPost, getPosts, triggerView } from "../../blogPosts-server";
 
+import Divider from "~/components/Divider";
 import Footer from "~/layouts/Footer";
 import Gap from "~/components/Gap";
 import Header from "~/layouts/Header";
@@ -44,6 +45,10 @@ export const loader = async ({ params }) => {
   const { posts } = await getPosts();
   const { post, markdown } = await getPost(params.slug);
 
+  if (process.env.NODE_ENV !== "development") {
+    await triggerView(post.id);
+  }
+
   if (!post) {
     throw new Response("Not Found", {
       status: 404,
@@ -73,9 +78,17 @@ const PostSlug = () => {
           className="mb-10 h-[500px] w-full rounded-lg object-cover shadow-lg"
         />
         <h1 className="h1 ">{post.title}</h1>
-        <p className="mb-10 text-teal-400">
-          {format(new Date(post.created_at), "MMMM do, yyyy")}
-        </p>
+        <div className="mb-10 flex items-center gap-4 ">
+          <p className="text-teal-400">
+            {format(new Date(post.created_at), "MMMM do, yyyy")}
+          </p>
+          <Divider />
+
+          <div className="flex items-center gap-2">
+            <i className="fa-solid fa-face-grin-hearts text-yellow-500"></i>
+            <p className="text-gray-300">{post.views}</p>
+          </div>
+        </div>
         <MarkdownRender html={markdown} />
       </div>
       <Gap height="h-12" />

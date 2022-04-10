@@ -1374,6 +1374,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 13rem;
 }
 
+.h-\[1px\] {
+  height: 1px;
+}
+
 .w-full {
   width: 100%;
 }
@@ -1438,6 +1442,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .max-w-2xl {
   max-width: 42rem;
+}
+
+.max-w-\[20px\] {
+  max-width: 20px;
+}
+
+.max-w-\[30px\] {
+  max-width: 30px;
 }
 
 .grow {
@@ -1616,6 +1628,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-slate-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+
+.bg-gray-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-20 {
@@ -1800,6 +1817,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-blue-200 {
   --tw-text-opacity: 1;
   color: rgb(191 219 254 / var(--tw-text-opacity));
+}
+
+.text-yellow-500 {
+  --tw-text-opacity: 1;
+  color: rgb(234 179 8 / var(--tw-text-opacity));
 }
 
 .underline {
