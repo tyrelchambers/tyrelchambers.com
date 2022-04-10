@@ -1,7 +1,6 @@
 import { Link, useLoaderData, useSearchParams } from "remix";
 
 import Footer from "~/layouts/Footer";
-import Gap from "~/components/Gap";
 import Header from "~/layouts/Header";
 import React from "react";
 import SectionHero from "~/layouts/SectionHero";

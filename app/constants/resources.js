@@ -265,6 +265,12 @@ const communication = {
       url: "https://slack.com/",
       description: "Incredibly useful tool for team communication",
     },
+    {
+      title: "Clickup",
+      url: "https://clickup.com",
+      description:
+        "Plan, track, and manage any type of work with project management that flexes to your team's needs.",
+    },
   ],
 };
 
@@ -386,6 +392,48 @@ const books = {
   ],
 };
 
+export const baas = {
+  title: "BaaS / PaaS",
+  children: [
+    {
+      title: "Firebase",
+      url: "https://firebase.google.com/",
+      description:
+        "Firebase is a platform developed by Google for creating mobile and web applications. ",
+    },
+    {
+      title: "AWS",
+      url: "https://aws.amazon.com/",
+      description:
+        "Amazon Web Services (AWS) is a web-based cloud computing platform that allows you to develop, host, and manage applications and services on the Internet.",
+    },
+    {
+      title: "Google Cloud Platform",
+      url: "https://cloud.google.com/",
+      description:
+        "Google Cloud Platform is a suite of cloud computing services and products that enable developers to build, deploy, and manage cloud applications.",
+    },
+    {
+      title: "Microsoft Azure",
+      url: "https://azure.microsoft.com/en-us/",
+      description:
+        "Microsoft Azure is a cloud computing platform that provides a secure, scalable, and reliable cloud infrastructure for building, deploying, and managing applications and services.",
+    },
+    {
+      title: "Heroku",
+      url: "https://www.heroku.com/",
+      description:
+        "Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.",
+    },
+    {
+      title: "Supabase",
+      url: "https://supabase.com/",
+      description:
+        "Supabase is a cloud database that enables developers to build, run, and operate applications entirely in the cloud.",
+    },
+  ],
+};
+
 export const resources = [
   analytics,
   photography,
@@ -400,4 +448,5 @@ export const resources = [
   designSoftware,
   projectManagement,
   books,
+  baas,
 ];
