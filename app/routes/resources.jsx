@@ -10,7 +10,8 @@ import { useUpdateQueryStringValueWithoutNavigation } from "~/utils/misc";
 
 export const meta = () => {
   return {
-    "og:image": data.post.cover_img,
+    "og:image":
+      "https://images.unsplash.com/photo-1499744349893-0c6de53516e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80",
     "og:url": `https://tyrelchambers.com/resources`,
     "twitter:card": "summary_large_image",
     "twitter:title": "Wonderfully curated resources",
