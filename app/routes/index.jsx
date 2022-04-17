@@ -13,7 +13,11 @@ import { projects } from "~/constants/projects";
 import { supabase } from "~/utils/supabase";
 
 export const loader = async () => {
-  const { data: posts } = await supabase.from("posts").select();
+  const { data: posts } = await supabase
+    .from("posts")
+    .select()
+    .order("id", "desc");
+
   const suggestions = getArticleSuggestions({
     articles: posts,
     count: 3,
