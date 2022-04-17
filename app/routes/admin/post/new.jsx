@@ -225,6 +225,7 @@ const newPost = () => {
               <CustomSelect
                 options={tags.map((tag) => ({
                   ...tag,
+                  label: tag.name,
                 }))}
                 isMulti
                 onChange={(e) => setState({ ...state, tags: e })}
