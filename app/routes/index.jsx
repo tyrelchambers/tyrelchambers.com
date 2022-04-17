@@ -14,7 +14,11 @@ import { supabase } from "~/utils/supabase";
 
 export const loader = async () => {
   const { data: posts } = await supabase.from("posts").select();
-  const suggestions = getArticleSuggestions({ articles: posts, count: 3 });
+  const suggestions = getArticleSuggestions({
+    articles: posts,
+    count: 3,
+    recent: true,
+  });
 
   return suggestions;
 };
