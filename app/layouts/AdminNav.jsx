@@ -16,25 +16,25 @@ const AdminNav = () => {
     <nav className="mt-4 hidden tablet:mt-0 tablet:flex">
       <ul className="flex  gap-10">
         <li>
-          <Link to="/" className="nav-link" end="true">
+          <Link to="/" className="nav-link" end="true" prefetch="intent">
             Home
           </Link>
         </li>
 
         <li>
-          <NavLink to="/admin" className="nav-link" end>
+          <NavLink to="/admin" className="nav-link" end prefetch="intent">
             Admin
           </NavLink>
         </li>
 
         <li>
-          <NavLink to="/admin/post/new" className="nav-link">
+          <NavLink to="/admin/post/new" className="nav-link" prefetch="intent">
             New Post
           </NavLink>
         </li>
 
         <li>
-          <NavLink to="/admin/posts" className="nav-link">
+          <NavLink to="/admin/posts" className="nav-link" prefetch="intent">
             Posts
           </NavLink>
         </li>
