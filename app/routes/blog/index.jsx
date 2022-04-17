@@ -140,7 +140,9 @@ const index = () => {
                   key={id}
                 >
                   <input type="checkbox" name="" id="" className="sr-only" />
-                  <span>{tag.name.toLowerCase()}</span>
+                  <span>
+                    {tag.name?.toLowerCase() || tag.label?.toLowerCase()}
+                  </span>
                 </label>
               ))}
             </div>
