@@ -1,4 +1,4 @@
-import { json, useFetcher } from "remix";
+import { json, redirect, useFetcher } from "remix";
 import { postToDevTo, postToHashNode } from "~/api/index";
 
 import AdminHeader from "~/layouts/AdminHeader";
