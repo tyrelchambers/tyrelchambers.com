@@ -36,7 +36,7 @@ const index = () => {
   }, []);
 
   const tagsNoDuplicates = postsTags.reduce((acc, tag) => {
-    if (!acc.find((t) => t.name === tag.name)) {
+    if (!acc.find((t) => (t.name || t.label) === tag.name)) {
       acc.push(tag);
     }
     return acc;
@@ -150,11 +150,9 @@ const index = () => {
         </section>
         <Gap height="h-12 desktop:h-28" />
         <section className="p-4">
-          <h3 className="h3">
-            Showing{" "}
-            <span className="italic text-sky-300">{query ? query : "all"}</span>{" "}
-            articles
-          </h3>
+          <p className="h3">
+            Showing <span>{query ? `{ ${query} }` : "{ all }"}</span> articles
+          </p>
           <div className="mt-10 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3">
             <BlogPosts posts={posts} query={query} />
           </div>
