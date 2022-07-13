@@ -8,6 +8,10 @@ import SectionHero from "~/layouts/SectionHero";
 import SocialList from "~/components/SocialList";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
 import { getBlogPosts } from "~/utils/getBlogPosts";
+import mtn from "../../public/images/890717F1-8B22-4767-89CF-897A7B0209EF_1_105_c.webp";
+import jesseMtn from "../../public/images/821F0F1E-A38C-4939-A04C-EEB7DA2109FB_1_105_c.webp";
+import theVoid from "../../public/images/81EEA478-6EC4-4817-B9FA-47D0B5638095_1_105_c.webp";
+import mtnView from "../../public/images/1FBEB87D-AFA9-4D12-AAEE-94027686A3EA_1_105_c.webp";
 
 export const meta = () => {
   return {
@@ -46,11 +50,7 @@ const about = () => {
             </>
           }
           rightCol={
-            <img
-              src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/890717F1-8B22-4767-89CF-897A7B0209EF_1_105_c.webp"
-              alt=""
-              className="w-full rounded-lg object-cover "
-            />
+            <img src={mtn} alt="" className="w-full rounded-lg object-cover " />
           }
         />
 
@@ -108,7 +108,7 @@ const about = () => {
 
         <figure className="p-4">
           <img
-            src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/821F0F1E-A38C-4939-A04C-EEB7DA2109FB_1_105_c.webp"
+            src={jesseMtn}
             alt=""
             className="w-full rounded-lg object-cover desktop:h-[800px]"
           />
@@ -188,7 +188,7 @@ const about = () => {
 
             <div className="mt-10 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3">
               {suggestions.map((post) => (
-                <PostItem post={post} />
+                <PostItem key={post.title} post={post} />
               ))}
             </div>
           </div>
@@ -198,7 +198,7 @@ const about = () => {
           <div className="flex flex-col gap-10 tablet:flex-row">
             <figure className="w-full max-w-[500px]">
               <img
-                src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/81EEA478-6EC4-4817-B9FA-47D0B5638095_1_105_c.webp"
+                src={theVoid}
                 alt=""
                 className="w-full  rounded-lg object-cover"
               />
@@ -255,7 +255,7 @@ const about = () => {
 
         <figure className="p-4">
           <img
-            src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/1FBEB87D-AFA9-4D12-AAEE-94027686A3EA_1_105_c.webp"
+            src={mtnView}
             alt=""
             className="mt-20 w-full rounded-lg desktop:h-[600px]"
           />

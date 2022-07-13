@@ -4,9 +4,10 @@ import Footer from "~/layouts/Footer";
 import Header from "~/layouts/Header";
 import React from "react";
 import SectionHero from "~/layouts/SectionHero";
-import { getImage } from "~/utils/getImage";
 import { resources as resourceList } from "~/constants/resources";
 import { useUpdateQueryStringValueWithoutNavigation } from "~/utils/misc";
+
+import { getImage } from "../images.server.js";
 
 export const meta = () => {
   return {
@@ -134,7 +135,7 @@ const resources = () => {
                     >
                       {item.imageURL && (
                         <img
-                          src={item.imageURL}
+                          src={`data:image/webp;base64, ${item.imageURL}`}
                           alt=""
                           className="aspect-[4/6] w-32  rounded-lg object-cover"
                         />
