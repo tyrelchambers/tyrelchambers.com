@@ -1,4 +1,4 @@
-import { Form, Link, NavLink } from "remix";
+import { Form, Link, NavLink } from "@remix-run/react";
 
 import React from "react";
 import { useSupabase } from "~/utils/supabase-client";

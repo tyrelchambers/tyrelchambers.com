@@ -1,4 +1,4 @@
-import { Form, Links, Meta, Scripts, useLoaderData } from "remix";
+import { Form, useLoaderData } from "@remix-run/react";
 
 import BlogPosts from "~/components/BlogPosts";
 import Footer from "~/layouts/Footer";
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import SectionHero from "~/layouts/SectionHero";
 import { getPosts } from "~/blogPosts-server";
-import { useSearchParams } from "remix";
+import { useSearchParams } from "@remix-run/react";
 import { useUpdateQueryStringValueWithoutNavigation } from "~/utils/misc";
 
 export const meta = () => {

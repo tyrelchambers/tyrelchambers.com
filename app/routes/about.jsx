@@ -1,4 +1,4 @@
-import { Link, Meta, useLoaderData } from "remix";
+import { Link, Meta, useLoaderData } from "@remix-run/react";
 
 import Footer from "~/layouts/Footer";
 import Gap from "~/components/Gap";

@@ -1,7 +1,7 @@
 import { destroySession, getSession } from "../supabase.server";
-
+import { redirect } from "@remix-run/node";
 import React from "react";
-import { redirect } from "remix";
+import { logout } from "../session.server";
 
 export const loader = () => {
   // Redirect to `/` if user tried to access `/signout`
@@ -9,11 +9,5 @@ export const loader = () => {
 };
 
 export const action = async ({ request }) => {
-  let session = await getSession(request.headers.get("Cookie"));
-
-  return redirect("/", {
-    headers: {
-      "Set-Cookie": await destroySession(session),
-    },
-  });
+  return logout(request);
 };

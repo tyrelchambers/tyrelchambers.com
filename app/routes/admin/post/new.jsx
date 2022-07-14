@@ -1,26 +1,18 @@
-import { json, redirect, useFetcher } from "remix";
-import { postToDevTo, postToHashNode } from "~/api/index";
+import { useFetcher } from "@remix-run/react";
 
 import AdminHeader from "~/layouts/AdminHeader";
 import CustomSelect from "~/components/CustomSelect";
-import DevTo from "../../../components/DevTo";
 import Gap from "~/components/Gap";
-import Hashnode from "../../../components/Hashnode";
 import TextareaAutosize from "react-textarea-autosize";
-import { getSession } from "~/supabase.server";
 import { supabase } from "~/utils/supabase";
 import { tags } from "~/constants/blogTags";
 import { useState } from "react";
+import { requireUser } from "../../../session.server";
 
-export const loader = async ({ request }) => {
-  const session = await getSession(request.headers.get("Cookie"));
-
-  if (!session.has("access_token")) {
-    return redirect("/login");
-  }
-
-  return null;
-};
+export const loader = ({request}) => {
+  const user = requireUser(request)
+  return user
+}
 
 export const action = async ({ request }) => {
   const {
@@ -30,10 +22,7 @@ export const action = async ({ request }) => {
       cover_img,
       markdown,
       tags,
-      hashNode,
-      devTo,
-      devToTags,
-      hashNodeTags,
+      
       published,
     },
   } = await request.formData();
@@ -43,19 +32,13 @@ export const action = async ({ request }) => {
     .replace(/[^a-zA-Z0-9\-]/g, "")
     .toLowerCase();
 
-  const formattedHashNodeTags = JSON.parse(hashNodeTags).map((tag) => ({
-    name: tag.name,
-    _id: tag._id,
-  }));
 
-  const formattedDevToTags = JSON.parse(devToTags).map((tag) => tag.value);
 
   const formattedTags = JSON.parse(tags).map((tag) => ({
     value: tag.value,
     label: tag.label,
   }));
 
-  const canonical_url = "https://tyrelchambers.com/blog/" + slug;
 
   const { error } = await supabase.from("posts").insert({
     title: title[0],
@@ -64,8 +47,6 @@ export const action = async ({ request }) => {
     tags: formattedTags,
     cover_img: cover_img[0],
     description: description[0],
-    devTo: devTo[0],
-    hashNode: hashNode[0],
     published: published[0],
   });
 
@@ -74,28 +55,6 @@ export const action = async ({ request }) => {
     return { error };
   }
 
-  if (devTo[0] === "true") {
-    await postToDevTo({
-      article: {
-        body_markdown: markdown[0],
-        title: title[0],
-        tags: formattedDevToTags,
-        main_img: cover_img[0],
-        canonical_url,
-      },
-    });
-  }
-
-  if (hashNode[0] === "true") {
-    await postToHashNode({
-      title: title[0],
-      contentMarkdown: markdown[0],
-      coverImageURL: cover_img[0],
-      originalArticleURL: canonical_url,
-      tags: formattedHashNodeTags,
-      publicationId: "6096b94d1ea29f2c341e0420",
-    });
-  }
 
   return json({ ok: true });
 };
@@ -107,10 +66,7 @@ const newPost = () => {
     description: "",
     cover_img: "",
     markdown: "",
-    hashNode: false,
-    devTo: false,
-    devToTags: [],
-    hashNodeTags: [],
+  
     published: false,
   });
   const fetcher = useFetcher();
@@ -120,8 +76,7 @@ const newPost = () => {
       {
         ...state,
         tags: JSON.stringify(state.tags),
-        devToTags: JSON.stringify(state.devToTags),
-        hashNodeTags: JSON.stringify(state.hashNodeTags),
+       
       },
       { method: "post" }
     );
@@ -232,41 +187,6 @@ const newPost = () => {
               />
             </div>
 
-            <div className="flex flex-col">
-              <label className="text-xl  text-yellow-300">Platforms</label>
-              <p className="mb-2 text-gray-400">
-                Select which platforms to cross-post to
-              </p>
-              <fieldset className="flex gap-4">
-                <label className="mr-2 text-gray-400">
-                  <input
-                    type="checkbox"
-                    name="devTo"
-                    className="mr-4"
-                    onClick={(e) =>
-                      setState({ ...state, devTo: e.target.checked })
-                    }
-                    checked={state.devTo}
-                  />
-                  Dev.to
-                </label>
-
-                <label className="mr-2 text-gray-400">
-                  <input
-                    type="checkbox"
-                    name="hashNode"
-                    className="mr-4"
-                    checked={state.hashNode}
-                    onClick={(e) =>
-                      setState({ ...state, hashNode: e.target.checked })
-                    }
-                  />
-                  Hashnode
-                </label>
-              </fieldset>
-            </div>
-            {state.devTo && <DevTo state={state} setState={setState} />}
-            {state.hashNode && <Hashnode state={state} setState={setState} />}
 
             <div className="mt-6 flex items-center gap-6">
               <button

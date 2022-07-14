@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "remix";
+import { Link } from "@remix-run/react";
 import SocialList from "~/components/SocialList";
 import { useSupabase } from "../utils/supabase-client";
 import MobileNav from "./MobileNav";
@@ -11,19 +11,19 @@ const Header = () => {
   const { isMobileNavOpen, toggleMobileNav } = useMobileNav();
 
   return (
-    <header className="max-w-screen-2xl ml-auto mr-auto flex flex-col items-center justify-between w-full p-4 tablet:py-8">
-      <section className="w-full flex items-center justify-between flex-col tablet:flex-row">
-        <div className="flex w-full items-center px-4 tablet:px-0 justify-between tablet:w-fit">
-          <h1 className="text-white text-2xl mb-4 sm:mb-0 mt-4 sm:mt-0">
+    <header className="ml-auto mr-auto flex w-full max-w-screen-2xl flex-col items-center justify-between p-4 tablet:py-8">
+      <section className="flex w-full flex-col items-center justify-between tablet:flex-row">
+        <div className="flex w-full items-center justify-between px-4 tablet:w-fit tablet:px-0">
+          <h1 className="mb-4 mt-4 text-2xl text-white sm:mb-0 sm:mt-0">
             Tyrel Chambers
           </h1>
           <div
-            className="mobile-toggle w-[35px] h-[25px] flex flex-col justify-between tablet:hidden"
+            className="mobile-toggle flex h-[25px] w-[35px] flex-col justify-between tablet:hidden"
             onClick={() => toggleMobileNav()}
           >
-            <span className="h-[3px] bg-gray-400 w-full"></span>
-            <span className="h-[3px] bg-gray-400 w-full"></span>
-            <span className="h-[3px] bg-gray-400 w-full"></span>
+            <span className="h-[3px] w-full bg-gray-400"></span>
+            <span className="h-[3px] w-full bg-gray-400"></span>
+            <span className="h-[3px] w-full bg-gray-400"></span>
           </div>
         </div>
         <Nav />
@@ -31,12 +31,12 @@ const Header = () => {
           <SocialList />
         </div>
         <div
-          className="mobile-toggle w-[35px] h-[25px] flex-col justify-between hidden tablet:flex desktop:hidden"
+          className="mobile-toggle hidden h-[25px] w-[35px] flex-col justify-between tablet:flex desktop:hidden"
           onClick={() => toggleMobileNav()}
         >
-          <span className="h-[3px] bg-gray-400 w-full"></span>
-          <span className="h-[3px] bg-gray-400 w-full"></span>
-          <span className="h-[3px] bg-gray-400 w-full"></span>
+          <span className="h-[3px] w-full bg-gray-400"></span>
+          <span className="h-[3px] w-full bg-gray-400"></span>
+          <span className="h-[3px] w-full bg-gray-400"></span>
         </div>
       </section>
       {isMobileNavOpen && <MobileNav />}

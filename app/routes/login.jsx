@@ -1,59 +1,51 @@
-import React, { useEffect } from "react";
-import { commitSession, getSession } from "../supabase.server";
-import { redirect, useSubmit } from "remix";
+import React from "react";
 
-import { Auth } from "@supabase/ui";
-import { useSupabase } from "~/utils/supabase-client";
+import { createUserSession } from "~/session.server";
+import { Form } from "@remix-run/react";
+import { getUserId, verifyLogin } from "../session.server";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
+  const password = formData.get("password");
+  const redirectTo ="/";
+  const user = await verifyLogin(password);
 
-  const session = await getSession(request.headers.get("Cookie"));
-  session.set("access_token", formData.get("access_token"));
-  session.set("user_id", formData.get("user_id"));
+  if (!user) {
+    return null;
+  }
 
-  return redirect("/admin", {
-    headers: {
-      "Set-Cookie": await commitSession(session),
-    },
+  return createUserSession({
+    request,
+    userId: process.env.USER_KEY,
+    redirectTo,
   });
 };
 
-const Container = ({ children }) => {
-  const { user, session } = Auth.useUser();
-  const submit = useSubmit();
-
-  useEffect(() => {
-    if (user) {
-      const formData = new FormData();
-
-      const accessToken = session?.access_token;
-
-      // you can choose whatever conditions you want
-      // as long as it checks if the user is signed in
-      if (accessToken) {
-        formData.append("access_token", accessToken);
-        formData.append("user_id", user.id);
-        submit(formData, { method: "post", action: "/login" });
-      }
-    }
-  }, [user]);
-
-  return (
-    <div className="ml-auto mr-auto mt-20 max-w-lg rounded-lg bg-zinc-100 p-6">
-      {children}
-    </div>
-  );
-};
-
 export default function login() {
-  const supabase = useSupabase();
-
   return (
-    <Auth.UserContextProvider supabaseClient={supabase}>
-      <Container>
-        <Auth supabaseClient={supabase} magicLink={true} />
-      </Container>
-    </Auth.UserContextProvider>
+    <div className="ml-auto mr-auto mt-10 w-full max-w-lg">
+      <h1 className="h1">Login</h1>
+
+      <Form className="mt-6" method="post">
+        <div className="mt-4 flex flex-col">
+          <label className=" text-xl text-gray-300" htmlFor="password">
+            Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            className="mt-2 rounded-md border-[1px] border-gray-700 bg-gray-800 p-3"
+            placeholder="Password"
+          />
+        </div>
+
+        <button
+          className="mt-4 w-full rounded-lg bg-yellow-300 p-4"
+          type="submit"
+        >
+          Login
+        </button>
+      </Form>
+    </div>
   );
 }

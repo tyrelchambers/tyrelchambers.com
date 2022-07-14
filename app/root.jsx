@@ -13,11 +13,13 @@ import { createClient } from "@supabase/supabase-js";
 import editorcss from "../styles/editor.css";
 import globalStyles from "../styles/global.css";
 import styles from "./tailwind.css";
+import { getUserId } from "./session.server";
 
-export async function loader() {
+export async function loader({ request }) {
   return {
     SUPABASE_URL: process.env.SUPABASE_URL,
     SUPABASE_KEY: process.env.SUPABASE_KEY,
+    user: (await getUserId(request)) === process.env.USER_KEY,
   };
 }
 

@@ -1,9 +1,9 @@
 import React from "react";
-import { Link, NavLink } from "remix";
+import { Link, NavLink } from "@remix-run/react";
 
 const AdminMobileNav = () => {
   return (
-    <nav className="w-full mt-4 tablet:mt-0 tablet:hidden">
+    <nav className="mt-4 w-full tablet:mt-0 tablet:hidden">
       <ul className="flex flex-col border-t-2 border-gray-600">
         <li className="border-b-2 border-gray-600 ">
           <Link to="/" className="mobile-nav-link p-4 py-6" end>

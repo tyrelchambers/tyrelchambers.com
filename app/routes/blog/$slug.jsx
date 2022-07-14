@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "remix";
+import { Link, useLoaderData } from "@remix-run/react";
 import { getPost, getPosts, triggerView } from "../../blogPosts-server";
 
 import Divider from "~/components/Divider";
