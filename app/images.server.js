@@ -1,7 +1,8 @@
 import fs from "fs";
 export function getImage(filename) {
-  const images = fs.readdirSync("public/images");
+  const imagesPath = `${__dirname}/../../public/images/`;
+  const images = fs.readdirSync(imagesPath);
   const image = images.find((image) => image.includes(filename));
 
-  return fs.readFileSync(`public/images/${image}`, "base64");
+  return fs.readFileSync(`${imagesPath}${image}`, "base64");
 }
