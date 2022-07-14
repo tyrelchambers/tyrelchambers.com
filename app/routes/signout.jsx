@@ -1,4 +1,3 @@
-import { destroySession, getSession } from "../supabase.server";
 import { redirect } from "@remix-run/node";
 import React from "react";
 import { logout } from "../session.server";

@@ -2,7 +2,6 @@ import { Link, useLoaderData } from "@remix-run/react";
 
 import AdminHeader from "~/layouts/AdminHeader";
 import React from "react";
-import { getSession } from "~/supabase.server";
 import { supabase } from "~/supabase.server";
 import { truncateString } from "~/utils/truncateString";
 import { requireUser } from "../../../session.server";

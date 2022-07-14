@@ -2,8 +2,6 @@
 
 import AdminHeader from "~/layouts/AdminHeader";
 import React from "react";
-import {  useOptionalUser } from "../../utils";
-import { Outlet, useMatches } from "@remix-run/react";
 import { requireUser } from "../../session.server";
 
 
