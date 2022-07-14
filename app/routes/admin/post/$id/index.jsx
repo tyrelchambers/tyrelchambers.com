@@ -1,23 +1,19 @@
-import { Form, Link, redirect, useLoaderData } from "remix";
+import { Form, Link, useLoaderData } from "@remix-run/react";
 
 import AdminHeader from "~/layouts/AdminHeader";
 import MarkdownRender from "~/components/MarkdownRender";
 import React from "react";
-import { getMDXComponent } from "mdx-bundler/client";
 import { getPostById } from "~/blogPosts-server";
-import { getSession } from "~/supabase.server";
 import invariant from "tiny-invariant";
 import { supabase } from "~/utils/supabase";
+import { redirect } from "@remix-run/node"
+import { requireUser } from "../../../../session.server";
 
 export const loader = async ({ params, request }) => {
+   requireUser(request)
+
   invariant(params.id, "expected params.slug");
   const post = await getPostById(params.id);
-
-  const session = await getSession(request.headers.get("Cookie"));
-
-  if (!session.has("access_token")) {
-    return redirect("/login");
-  }
 
   return { post, id: params.id };
 };

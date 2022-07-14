@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "remix";
+import { Link, useLoaderData } from "@remix-run/react";
 
 import Footer from "~/layouts/Footer";
 import Gap from "~/components/Gap";
@@ -11,6 +11,11 @@ import SocialList from "~/components/SocialList";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
 import { projects } from "~/constants/projects";
 import { supabase } from "~/utils/supabase";
+import me from "../../public/images/me2.webp";
+import me2 from "../../public/images/me.webp";
+import mtn from "../../public/images/mtn.webp";
+import cousin from "../../public/images/cousin.webp";
+import papa from "../../public/images/papa.webp";
 
 export const loader = async () => {
   const { data: posts } = await supabase
@@ -55,13 +60,7 @@ export default function Index() {
               </div>
             </>
           }
-          rightCol={
-            <img
-              src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/me2.webp"
-              alt=""
-              className="w-full rounded-lg"
-            />
-          }
+          rightCol={<img src={me} alt="" className="w-full rounded-lg" />}
         />
 
         <section className="mt-20 flex flex-col items-center justify-center">
@@ -71,7 +70,7 @@ export default function Index() {
         <section className="p-4">
           <div className="flex flex-col gap-8 tablet:flex-row desktop:gap-20">
             <img
-              src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/me.webp"
+              src={me2}
               alt=""
               className="ml-auto mr-auto w-full rounded-lg object-cover tablet:max-w-xs"
             />
@@ -149,7 +148,7 @@ export default function Index() {
           </p>
           <figure>
             <img
-              src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/mtn.webp"
+              src={mtn}
               alt=""
               className="mt-8 h-[500px] w-full rounded-lg object-cover"
             />
@@ -161,7 +160,7 @@ export default function Index() {
           <div className="grid grid-cols-1 gap-10 tablet:grid-cols-2">
             <figure>
               <img
-                src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/cousin.webp"
+                src={cousin}
                 alt=""
                 className="mt-8 h-[500px] w-full rounded-lg object-cover"
               />
@@ -172,7 +171,7 @@ export default function Index() {
 
             <figure>
               <img
-                src="https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/papa.webp"
+                src={papa}
                 alt=""
                 className="mt-8 h-[500px] w-full rounded-lg object-cover"
               />

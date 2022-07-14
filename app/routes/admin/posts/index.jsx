@@ -1,17 +1,14 @@
-import { Link, redirect, useLoaderData } from "remix";
+import { Link, useLoaderData } from "@remix-run/react";
 
 import AdminHeader from "~/layouts/AdminHeader";
 import React from "react";
-import { getSession } from "~/supabase.server";
 import { supabase } from "~/supabase.server";
 import { truncateString } from "~/utils/truncateString";
+import { requireUser } from "../../../session.server";
 
-export const loader = async ({ request }) => {
-  const session = await getSession(request.headers.get("Cookie"));
 
-  if (!session.has("access_token")) {
-    return redirect("/login");
-  }
+export const loader = async ({request}) => {
+   await requireUser(request)
 
   const { body: posts, error } = await supabase
     .from("posts")

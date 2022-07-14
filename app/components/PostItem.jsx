@@ -1,4 +1,4 @@
-import { Link } from "remix";
+import { Link } from "@remix-run/react";
 import React from "react";
 import { truncateString } from "~/utils/truncateString";
 const PostItem = ({ post }) => {

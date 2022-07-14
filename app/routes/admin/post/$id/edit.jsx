@@ -1,28 +1,24 @@
-import { json, redirect, useFetcher, useLoaderData } from "remix";
-import { postToDevTo, postToHashNode } from "~/api";
+import { useFetcher, useLoaderData } from "@remix-run/react";
 
 import AdminHeader from "~/layouts/AdminHeader";
 import CustomSelect from "~/components/CustomSelect";
 import TextareaAutosize from "react-textarea-autosize";
-import { getSession } from "~/supabase.server";
 import invariant from "tiny-invariant";
 import { supabase } from "~/supabase.server";
 import { tags } from "~/constants/blogTags";
 import { useState } from "react";
+import { requireUser } from "../../../../session.server";
+
 
 export const loader = async ({ params, request }) => {
+    requireUser(request)
+
   invariant(params.id, "expected params.id");
   let { data: post } = await supabase
     .from("posts")
     .select()
     .eq("id", params.id)
     .single();
-
-  const session = await getSession(request.headers.get("Cookie"));
-
-  if (!session.has("access_token")) {
-    return redirect("/login");
-  }
 
   return { post, id: params.id };
 };
@@ -35,8 +31,7 @@ export const action = async ({ request }) => {
       cover_img,
       markdown,
       tags,
-      hashNode,
-      devTo,
+      
       id,
       published,
     },
@@ -70,31 +65,6 @@ export const action = async ({ request }) => {
 
   if (error) {
     return json({ error });
-  }
-
-  newPost.devTo = devTo[0] === "true";
-  newPost.hashNode = hashNode[0] === "true";
-
-  if (devTo[0] === "true") {
-    await postToDevTo({
-      article: {
-        body_markdown: markdown[0],
-        title: title[0],
-        tags: formattedDevToTags,
-        main_img: cover_img[0],
-        canonical_url,
-      },
-    });
-  }
-
-  if (hashNode[0] === "true") {
-    await postToHashNode({
-      title: title[0],
-      contentMarkdown: markdown[0],
-      coverImageURL: cover_img[0],
-      originalArticleURL: canonical_url,
-      tags: formattedHashNodeTags,
-    });
   }
 
   return redirect("/admin/posts");
@@ -221,33 +191,7 @@ const edit = () => {
             />
           </div>
 
-          <div className="flex flex-col">
-            <label className="text-xl  text-yellow-300">Platforms</label>
-            <p className="mb-2 text-gray-400">
-              Select which platforms to cross-post to
-            </p>
-            <fieldset className="flex gap-4">
-              <label className="mr-2 text-gray-400">
-                <input
-                  type="checkbox"
-                  name="devTo"
-                  className="mr-4"
-                  checked={state.devTo}
-                />
-                Dev.to
-              </label>
-
-              <label className="mr-2 text-gray-400">
-                <input
-                  type="checkbox"
-                  name="hashNode"
-                  className="mr-4"
-                  checked={state.hashNode}
-                />
-                Hashnode
-              </label>
-            </fieldset>
-          </div>
+          
 
           <div className="mt-6 flex items-center gap-6">
             <button

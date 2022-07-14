@@ -1,11 +1,14 @@
-import { Link } from "remix";
+import { Form, Link } from "@remix-run/react";
 import React from "react";
 import SocialList from "~/components/SocialList";
+import { useOptionalUser } from "../utils";
 import { handleSignOut } from "../utils/handleSignout";
 import { useSupabase } from "../utils/supabase-client";
 
 const Footer = () => {
   const supabase = useSupabase();
+  const user =useOptionalUser()
+
   return (
     <footer className="border-t-[1px] border-zinc-600 bg-zinc-800 py-10 sm:py-20">
       <div className="ml-auto mr-auto grid max-w-screen-md grid-cols-1 gap-10 p-4 sm:grid-cols-2 sm:gap-20">
@@ -35,15 +38,16 @@ const Footer = () => {
           <div className="flex flex-col">
             <h4 className="h4">Admin</h4>
             <ul className="mt-4">
-              {supabase.auth.currentUser ? (
+              {user ? (
                 <li className="w-fit">
-                  <button
-                    type="button"
-                    onClick={() => handleSignOut(supabase)}
+                  <Form method="delete" action="/signout">
+                    <button
+                    type="submit"
                     className="nav-link w-fit"
                   >
                     Sign out
                   </button>
+                  </Form>
                 </li>
               ) : (
                 <li className="w-fit">
@@ -52,7 +56,7 @@ const Footer = () => {
                   </Link>
                 </li>
               )}
-              {supabase.auth.currentUser && (
+              {user && (
                 <li className="w-fit">
                   <Link to="/admin" className="nav-link w-fit">
                     Admin

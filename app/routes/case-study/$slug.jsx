@@ -2,7 +2,7 @@ import Header from "../../layouts/Header";
 import MarkdownRender from "../../components/MarkdownRender";
 import React from "react";
 import { getCaseStudy } from "../../case-study.server";
-import { useLoaderData } from "remix";
+import { useLoaderData } from "@remix-run/react";
 
 export const loader = async () => {
   const caseStudy = await getCaseStudy("reddex");
