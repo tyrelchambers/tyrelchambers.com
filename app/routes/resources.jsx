@@ -130,7 +130,7 @@ const resources = () => {
                       href={item.url}
                       key={index}
                       target="_blank"
-                      className="flex flex-col items-center gap-6 rounded-lg border-2 border-gray-700 p-6 transition-all hover:border-yellow-300 mobile:flex-row tablet:items-start"
+                      className="flex flex-col items-center gap-6 rounded-2xl border-2 border-gray-700 p-6 transition-all hover:border-yellow-300 mobile:flex-row tablet:items-start"
                     >
                       {item.imageURL && (
                         <img
