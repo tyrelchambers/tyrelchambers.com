@@ -8,53 +8,46 @@ import { supabase } from "~/utils/supabase";
 import { tags } from "~/constants/blogTags";
 import { useState } from "react";
 import { requireUser } from "../../../session.server";
+import { json } from "remix";
 
-export const loader = ({request}) => {
-  const user = requireUser(request)
-  return user
-}
+export const loader = ({ request }) => {
+  const user = requireUser(request);
+  return user;
+};
 
 export const action = async ({ request }) => {
-  const {
-    _fields: {
-      title,
-      description,
-      cover_img,
-      markdown,
-      tags,
-      
-      published,
-    },
-  } = await request.formData();
+  const formData = await request.formData();
+  const title = formData.get("title");
+  const description = formData.get("description");
+  const cover_img = formData.get("cover_img");
+  const markdown = formData.get("markdown");
+  const tags = formData.get("tags");
+  const published = formData.get("published");
 
-  const slug = title[0]
+  const slug = title
     .replace(/\s+/g, "-")
     .replace(/[^a-zA-Z0-9\-]/g, "")
     .toLowerCase();
-
-
 
   const formattedTags = JSON.parse(tags).map((tag) => ({
     value: tag.value,
     label: tag.label,
   }));
 
-
   const { error } = await supabase.from("posts").insert({
-    title: title[0],
+    title: title,
     slug,
-    markdown: markdown[0],
+    markdown: markdown,
     tags: formattedTags,
-    cover_img: cover_img[0],
-    description: description[0],
-    published: published[0],
+    cover_img: cover_img,
+    description: description,
+    published: published,
   });
 
   if (error) {
     console.log(error);
     return { error };
   }
-
 
   return json({ ok: true });
 };
@@ -66,7 +59,7 @@ const newPost = () => {
     description: "",
     cover_img: "",
     markdown: "",
-  
+
     published: false,
   });
   const fetcher = useFetcher();
@@ -76,7 +69,6 @@ const newPost = () => {
       {
         ...state,
         tags: JSON.stringify(state.tags),
-       
       },
       { method: "post" }
     );
@@ -185,7 +177,6 @@ const newPost = () => {
                 onChange={(e) => setState({ ...state, tags: e })}
               />
             </div>
-
 
             <div className="mt-6 flex items-center gap-6">
               <button

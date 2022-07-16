@@ -24,20 +24,17 @@ export const loader = async ({ params, request }) => {
 };
 
 export const action = async ({ request }) => {
-  const {
-    _fields: {
-      title,
-      description,
-      cover_img,
-      markdown,
-      tags,
-      
-      id,
-      published,
-    },
-  } = await request.formData();
 
-  const slug = title[0]
+  const formData = await request.formData();
+  const title = formData.get("title");
+  const description = formData.get("description");
+  const cover_img = formData.get("cover_img");
+  const markdown = formData.get("markdown");
+  const tags = formData.get("tags");
+  const id = formData.get("id");
+  const published = formData.get("published");
+
+  const slug = title
     .replace(/\s+/g, "-")
     .replace(/[^a-zA-Z0-9\-]/g, "")
     .toLowerCase();
@@ -47,18 +44,16 @@ export const action = async ({ request }) => {
     label: tag.label,
   }));
 
-  const canonical_url = "https://tyrelchambers.com/blog/" + slug;
-
-  const { data: newPost, error } = await supabase
+  const { error } = await supabase
     .from("posts")
     .update({
-      title: title[0],
+      title: title,
       slug,
-      markdown: markdown[0],
+      markdown: markdown,
       tags: formattedTags,
-      cover_img: cover_img[0],
-      description: description[0],
-      published: published[0],
+      cover_img: cover_img,
+      description: description,
+      published: published,
     })
     .eq("id", id)
     .single();

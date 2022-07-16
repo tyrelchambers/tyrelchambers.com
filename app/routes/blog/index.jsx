@@ -130,7 +130,7 @@ const index = () => {
               {tagsNoDuplicates.map((tag, id) => (
                 <label
                   className={`whitespace-nowrap rounded-full border-2 bg-zinc-800  p-3 px-6 text-gray-200 ${
-                    query.includes((tag.name || tag.label).toLowerCase())
+                    query.includes((tag.name || tag.label)?.toLowerCase())
                       ? "border-yellow-300"
                       : "border-transparent"
                   }`}
@@ -141,7 +141,9 @@ const index = () => {
                 >
                   <input type="checkbox" name="" id="" className="sr-only" />
                   <span>
-                    {tag.name?.toLowerCase() || tag.label?.toLowerCase()}
+                    {tag.name?.toLowerCase() ||
+                      tag.label?.toLowerCase() ||
+                      null}
                   </span>
                 </label>
               ))}
