@@ -4,7 +4,7 @@
   publish = "public"
 
 [functions]
-  included_files = ["app/case-studies-md/**"]
+  included_files = ["/app/case-studies-md/**"]
 
 
 [dev]
