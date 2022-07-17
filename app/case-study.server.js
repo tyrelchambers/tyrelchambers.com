@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { bundleMDX } from "mdx-bundler";
 
-const caseStudyiesPath = `${__dirname}../../../app/case-studies-md/`;
+const caseStudyiesPath = `./case-studies-md/`;
 
 export const getCaseStudy = async (slug) => {
   const filepath = path.join(caseStudyiesPath, slug + ".mdx");
