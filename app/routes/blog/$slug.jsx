@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from "@remix-run/react";
-import { getPost, getPosts, triggerView } from "../../blogPosts-server";
+import { getPost, getPosts, triggerView } from "../../blogPosts.server";
 
 import Divider from "~/components/Divider";
 import Footer from "~/layouts/Footer";
@@ -89,7 +89,7 @@ const PostSlug = () => {
             <p className="text-gray-300">{post.views}</p>
           </div>
         </div>
-        <MarkdownRender html={markdown} />
+        <MarkdownRender markdown={markdown} />
       </div>
       <Gap height="h-12" />
       <PostFooter postTitle={post.title} slug={post.slug} />

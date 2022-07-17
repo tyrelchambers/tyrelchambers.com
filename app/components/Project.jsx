@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "remix";
 const Project = ({ project }) => {
   return (
     <div
@@ -18,6 +19,7 @@ const Project = ({ project }) => {
         See {project.title}
         <i className="fa-solid fa-arrow-right-long"></i>
       </a>
+      <Link to={`/case-study/reddex`}>See case study</Link>
     </div>
   );
 };

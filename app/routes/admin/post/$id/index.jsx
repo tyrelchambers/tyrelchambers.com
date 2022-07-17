@@ -3,7 +3,7 @@ import { Form, Link, useLoaderData } from "@remix-run/react";
 import AdminHeader from "~/layouts/AdminHeader";
 import MarkdownRender from "~/components/MarkdownRender";
 import React from "react";
-import { getPostById } from "~/blogPosts-server";
+import { getPostById } from "~/blogPosts.server";
 import invariant from "tiny-invariant";
 import { supabase } from "~/utils/supabase";
 import { redirect } from "@remix-run/node";

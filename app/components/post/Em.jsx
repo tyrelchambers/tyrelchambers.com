@@ -6,7 +6,9 @@ const Em = ({ text }) => {
       <span className="absolute top-[-10px] left-[-10px] rounded-full bg-blue-300 py-1 px-3 text-xs font-bold text-blue-900  shadow-md">
         info
       </span>
-      <p style={{ color: "white" }}>{text}</p>
+      <p style={{ color: "white" }} className="mt-6 mb-6">
+        {text}
+      </p>
     </div>
   );
 };

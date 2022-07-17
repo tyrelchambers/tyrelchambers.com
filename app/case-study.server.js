@@ -1,22 +1,17 @@
 import fs from "fs";
-import { marked } from "marked";
-import parseFrontMatter from "front-matter";
 import path from "path";
+import { bundleMDX } from "mdx-bundler";
 
-const caseStudyiesPath = path.join(
-  __dirname,
-  "..",
-  "..",
-  "..",
-  "app",
-  "case-studies-md"
-);
+const caseStudyiesPath = `${__dirname}../../../app/case-studies-md/`;
 
 export const getCaseStudy = async (slug) => {
   const filepath = path.join(caseStudyiesPath, slug + ".mdx");
-  const file = await fs.readFileSync(filepath);
+  const file = await fs.readFileSync(filepath, "utf-8");
 
-  const { attributes, body } = parseFrontMatter(file.toString());
+  const { code, frontmatter } = await bundleMDX({
+    source: file,
+    cwd: caseStudyiesPath,
+  });
 
-  return { slug, title: attributes.title, markdown: marked(body) };
+  return { slug, title: frontmatter.title, code };
 };
