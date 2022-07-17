@@ -26,21 +26,20 @@ export const loader = async () => {
 const index = () => {
   const { posts } = useLoaderData();
 
-  const postsTags = posts.reduce((acc, post) => {
-    post.tags.forEach((tag) => {
-      if (!acc.includes(tag)) {
-        acc.push(tag);
-      }
-    });
-    return acc;
-  }, []);
+  const postsTags = posts
+    .reduce((acc, post, i) => {
+      post.tags.forEach((tag) => {
+        if (!acc.includes(tag)) {
+          acc.push(tag);
+        }
+      });
+      return acc;
+    }, [])
+    .filter(
+      (tag, i, self) => i === self.findIndex((t) => t.value === tag.value)
+    );
 
-  const tagsNoDuplicates = postsTags.reduce((acc, tag) => {
-    if (!acc.find((t) => (t.name || t.label) === tag.name)) {
-      acc.push(tag);
-    }
-    return acc;
-  }, []);
+  console.log(postsTags);
 
   let [searchParams] = useSearchParams();
   const featuredPost = posts.filter((post) => post.featured)[0];
@@ -127,7 +126,7 @@ const index = () => {
                 <input type="checkbox" name="" id="" className="sr-only" />
                 <span>All</span>
               </label>
-              {tagsNoDuplicates.map((tag, id) => (
+              {postsTags.map((tag, id) => (
                 <label
                   className={`whitespace-nowrap rounded-full border-2 bg-zinc-800  p-3 px-6 text-gray-200 ${
                     query.includes((tag.name || tag.label)?.toLowerCase())

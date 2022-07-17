@@ -9,9 +9,8 @@ import { tags } from "~/constants/blogTags";
 import { useState } from "react";
 import { requireUser } from "../../../../session.server";
 
-
 export const loader = async ({ params, request }) => {
-    requireUser(request)
+  requireUser(request);
 
   invariant(params.id, "expected params.id");
   let { data: post } = await supabase
@@ -24,7 +23,6 @@ export const loader = async ({ params, request }) => {
 };
 
 export const action = async ({ request }) => {
-
   const formData = await request.formData();
   const title = formData.get("title");
   const description = formData.get("description");
@@ -170,23 +168,23 @@ const edit = () => {
             />
           </div>
 
+          {console.log(tags)}
+
           <div className="mt-4 flex flex-col gap-2">
             <label htmlFor="tags" className="text-xl text-yellow-300">
               Tags
             </label>
             <CustomSelect
-              options={tags.map((tag) => ({
-                ...tag,
-              }))}
+              options={tags}
               isMulti
               onChange={(e) => setState({ ...state, tags: e })}
-              value={state.tags.map((tag) => ({
-                ...tag,
-              }))}
+              value={
+                state.tags?.map((tag) => ({
+                  ...tag,
+                })) || null
+              }
             />
           </div>
-
-          
 
           <div className="mt-6 flex items-center gap-6">
             <button

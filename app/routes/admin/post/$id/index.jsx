@@ -6,11 +6,11 @@ import React from "react";
 import { getPostById } from "~/blogPosts-server";
 import invariant from "tiny-invariant";
 import { supabase } from "~/utils/supabase";
-import { redirect } from "@remix-run/node"
+import { redirect } from "@remix-run/node";
 import { requireUser } from "../../../../session.server";
 
 export const loader = async ({ params, request }) => {
-   requireUser(request)
+  requireUser(request);
 
   invariant(params.id, "expected params.slug");
   const post = await getPostById(params.id);
@@ -54,14 +54,14 @@ const $slug = () => {
           <MarkdownRender html={post.post.markdown} />
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            {post.post.tags.map((tag, i) => (
+            {post.post.tags?.map((tag, i) => (
               <p
                 className="flex w-fit items-center justify-center rounded-full bg-slate-700 px-4 py-2 text-sm text-white"
                 key={i}
               >
-                {tag.value || tag.name}
+                {tag.name}
               </p>
-            ))}
+            )) || null}
           </div>
         </div>
         <div className="sticky top-10  m-4 flex h-fit flex-col gap-6 rounded-lg border-2 border-gray-700 p-4 tablet:w-[200px]">
