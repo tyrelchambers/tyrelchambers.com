@@ -10,15 +10,25 @@ const Project = ({ project }) => {
       <p className="text-normal h-40 text-gray-400 sm:h-32 desktop:text-xl">
         {project.summary}
       </p>
-      <a
-        href={project.url}
-        className="link-button small mt-4 outline"
-        target="_blank"
-        rel="noopenerr noreferrer"
-      >
-        See {project.title}
-        <i className="fa-solid fa-arrow-right-long"></i>
-      </a>
+      {project?.caseStudy ? (
+        <Link
+          to={`/case-study/${project.caseStudy}`}
+          className="link-button small mt-4 outline"
+        >
+          See {project.title} case study
+          <i className="fa-solid fa-arrow-right-long"></i>
+        </Link>
+      ) : (
+        <a
+          href={project.url}
+          className="link-button small mt-4 outline"
+          target="_blank"
+          rel="noopenerr noreferrer"
+        >
+          See {project.title}
+          <i className="fa-solid fa-arrow-right-long"></i>
+        </a>
+      )}
     </div>
   );
 };
