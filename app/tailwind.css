@@ -1626,6 +1626,10 @@ video {
   aspect-ratio: 4/6;
 }
 
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
 .h-\[1px\] {
   height: 1px;
 }
@@ -1670,6 +1674,10 @@ video {
 
 .h-52 {
   height: 13rem;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .w-full {
@@ -1806,6 +1814,10 @@ video {
   gap: 2rem;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .whitespace-nowrap {
   white-space: nowrap;
 }
@@ -1931,6 +1943,11 @@ video {
 .bg-slate-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-20 {
