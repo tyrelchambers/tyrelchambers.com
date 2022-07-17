@@ -31,7 +31,7 @@ export async function getPostById(id) {
     source: post.markdown,
   });
 
-  return { ...post, error, markdown: markdown.value };
+  return { ...post, error, markdown: code };
 }
 export async function getPosts() {
   const { body: posts, error } = await supabase
