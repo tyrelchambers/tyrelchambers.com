@@ -39,8 +39,6 @@ const index = () => {
       (tag, i, self) => i === self.findIndex((t) => t.value === tag.value)
     );
 
-  console.log(postsTags);
-
   let [searchParams] = useSearchParams();
   const featuredPost = posts.filter((post) => post.featured)[0];
 
