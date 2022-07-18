@@ -5,12 +5,13 @@
   "license": "",
   "sideEffects": false,
   "scripts": {
-    "build": "npm run build:css && remix build",
     "build:css": "tailwindcss -i ./styles/tailwind.css -o ./app/tailwind.css --minify",
-    "dev": "concurrently \"node -r dotenv/config\" \"npm run dev:css\" \"netlify dev\"",
     "dev:css": "tailwindcss -i ./styles/tailwind.css -o ./app/tailwind.css --watch",
     "postinstall": "remix setup node",
-    "start": "cross-env NODE_ENV=production netlify dev"
+    "build": "remix build",
+    "deploy": "fly deploy --remote-only",
+    "dev": "remix dev",
+    "start": "remix-serve build"
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.18",
