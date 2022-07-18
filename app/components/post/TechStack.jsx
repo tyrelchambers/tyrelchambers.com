@@ -2,14 +2,14 @@ import React from "react";
 
 const TechStack = ({ list }) => {
   return (
-    <ul className="flex list-none flex-wrap gap-1 p-0">
+    <ul className="flex list-none flex-wrap gap-2 p-0">
       {list.map((l) => (
-        <p
+        <li
           key={l}
-          className="whitespace-nowrap rounded-full bg-gradient-to-r from-teal-300 to-teal-600 py-1 px-3 text-sm !text-zinc-900"
+          className="m-0 whitespace-nowrap rounded-full border-2 border-teal-400 px-4 !text-teal-400"
         >
           {l}
-        </p>
+        </li>
       ))}
     </ul>
   );
