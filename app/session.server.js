@@ -1,5 +1,9 @@
 import { createCookieSessionStorage } from "remix";
 import { redirect } from "@remix-run/node";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 export const sessionStorage = createCookieSessionStorage({
   cookie: {
     name: "__session",

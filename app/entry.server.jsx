@@ -1,5 +1,5 @@
 import { renderToString } from "react-dom/server";
-import { RemixServer } from "remix";
+import { RemixServer } from "@remix-run/react";
 
 export default function handleRequest(
   request,
@@ -15,6 +15,6 @@ export default function handleRequest(
 
   return new Response("<!DOCTYPE html>" + markup, {
     status: responseStatusCode,
-    headers: responseHeaders
+    headers: responseHeaders,
   });
 }
