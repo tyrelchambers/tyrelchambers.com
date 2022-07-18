@@ -14,6 +14,7 @@ export const projects = [
     summary:
       "Connect with developers and store your code snippets. Develop with peace.",
     url: "https://kanlen.ca",
+    caseStudy: "kanlen",
   },
   {
     title: "Alysha Kyle",

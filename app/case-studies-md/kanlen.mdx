@@ -1,0 +1,59 @@
+# What is Kanlen?
+
+import TechStack from '../components/post/TechStack.jsx';
+
+Kanlen was created for developers to share their code snippets among each other. The goal was the help facilitate learning in a platform that was built specifically for it.
+
+Kanlen is currently out of commission. I think it was a fun idea, but it wasn't something I could picture going the distance or atleast wasn't something I wanted to focus on just yet. I believe that with current technology, I'm not sure there would've been a place for it.
+
+## Tech Stack
+
+<TechStack list={[
+"DigitalOcean",
+"PostgresQL",
+"Sequelize",
+"TailwindCSS",
+"React",
+"Express",
+"Node.js",
+"Web sockets"]} />
+
+## The idea
+
+The idea behind this app was to give developers a timeline. This timeline was in a Twitter style and the point was to allow users to share and save their favourite snippets of code (or other information, whatever the user posted really).
+
+You could bookmark snippets, follow other devs and engage with other people. 
+
+## Features
+
+### Environment variables
+
+I implemented a system to encrypt environment variables and save them. I'm not sure if it was the best, but it was interesting to say the least.
+
+Essentially, I used the crypto library within Node to encrypt the text that you upload. The secret was then stored in AWS while everything else lived on the server.
+
+I thought it would be the start to separating the concerns and seemed better than just trying to store everything in one place. It worked, which was cool.
+
+The idea was you could store these variables online so that if your computer crashed and you had a ton of different variables, you wouldn't have to hunt for them.
+
+Maybe there should be something like this on its own somewhere. It sure would help me.
+
+### Notification system
+
+I built my own notification system with web-sockets. That was a fun challenge. If someone followed you for example, you would get a colourful ping on your notification page.
+
+### Scaffold out your projects
+
+There was a brief period where you could use the site to build and scaffold out projects in Angular and React using their respective CLI commands.
+
+I executed these commands in a Node process and gave the user the ability to fill out their project name and other project flags right in the UI.
+
+In the end, it took too much time to created the folder structure, send it back, then have the browser download the files.
+
+## VSCode extension
+
+I built an extension for Kanlen which was actually pretty slick. Essentially, you could install this extension and it would allow you to sign into your account in order to create snippets right in your editor.
+
+You could then upload these snippets to your account in one click. It worked well.
+
+You could also insert any saved snippets wherever your cursor was. This made it super easy and fast to implement your favourite code snippets.

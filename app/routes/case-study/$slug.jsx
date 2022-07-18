@@ -4,8 +4,9 @@ import { getCaseStudy } from "../../case-study.server";
 import { useLoaderData } from "@remix-run/react";
 import { getMDXComponent } from "mdx-bundler/client";
 import Footer from "../../layouts/Footer";
-export const loader = async () => {
-  const caseStudy = await getCaseStudy("reddex");
+
+export const loader = async ({ params }) => {
+  const caseStudy = await getCaseStudy(params.slug);
 
   return { caseStudy };
 };
