@@ -1,7 +1,7 @@
 import React from "react";
 import { getMDXComponent } from "mdx-bundler/client";
 
-const MarkdownRender = ({ markdown, html }) => {
+const MarkdownRender = ({ markdown }) => {
   const Component = markdown
     ? React.useMemo(() => getMDXComponent(markdown), [markdown])
     : null;

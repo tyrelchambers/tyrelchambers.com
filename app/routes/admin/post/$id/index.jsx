@@ -51,7 +51,7 @@ const $slug = () => {
       <main className="mt-14 flex flex-col-reverse gap-10 tablet:flex-row">
         <div className="flex w-full max-w-2xl flex-col p-4 ">
           <h3 className="h3 coloured mb-6">{post.post.title}</h3>
-          <MarkdownRender html={post.post.markdown} />
+          <MarkdownRender markdown={post.post.markdown} />
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             {post.post.tags?.map((tag, i) => (
