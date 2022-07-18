@@ -337,9 +337,9 @@ __export(entry_server_exports, {
   default: () => handleRequest
 });
 init_react();
-var import_server = require("react-dom/server"), import_remix = __toESM(require_dist());
+var import_server = require("react-dom/server"), import_react = require("@remix-run/react");
 function handleRequest(request, responseStatusCode, responseHeaders, remixContext) {
-  let markup = (0, import_server.renderToString)(/* @__PURE__ */ React.createElement(import_remix.RemixServer, {
+  let markup = (0, import_server.renderToString)(/* @__PURE__ */ React.createElement(import_react.RemixServer, {
     context: remixContext,
     url: request.url
   }));
@@ -358,13 +358,13 @@ __export(root_exports, {
   meta: () => meta
 });
 init_react();
-var import_remix3 = __toESM(require_dist());
+var import_react3 = require("@remix-run/react");
 
 // app/utils/supabase-client.js
 init_react();
-var import_react = __toESM(require("react")), SupabaseContext = import_react.default.createContext(), SupabaseProvider = ({ supabase: supabase3, children }) => /* @__PURE__ */ import_react.default.createElement(SupabaseContext.Provider, {
+var import_react2 = __toESM(require("react")), SupabaseContext = import_react2.default.createContext(), SupabaseProvider = ({ supabase: supabase3, children }) => /* @__PURE__ */ import_react2.default.createElement(SupabaseContext.Provider, {
   value: supabase3
-}, children), useSupabase = () => import_react.default.useContext(SupabaseContext);
+}, children), useSupabase = () => import_react2.default.useContext(SupabaseContext);
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/root.jsx
 var import_supabase_js = require("@supabase/supabase-js");
@@ -380,7 +380,9 @@ var tailwind_default = "/build/_assets/tailwind-N2PIIUMO.css";
 
 // app/session.server.js
 init_react();
-var import_remix2 = __toESM(require_dist()), import_node = require("@remix-run/node"), sessionStorage = (0, import_remix2.createCookieSessionStorage)({
+var import_remix = __toESM(require_dist()), import_node = require("@remix-run/node"), import_dotenv = __toESM(require("dotenv"));
+import_dotenv.default.config();
+var sessionStorage = (0, import_remix.createCookieSessionStorage)({
   cookie: {
     name: "__session",
     httpOnly: !0,
@@ -456,7 +458,7 @@ function meta() {
   return { title: "Tyrel Chambers" };
 }
 function App() {
-  let data = (0, import_remix3.useLoaderData)(), supabase3 = (0, import_supabase_js.createClient)(data.SUPABASE_URL, data.SUPABASE_KEY);
+  let data = (0, import_react3.useLoaderData)(), supabase3 = (0, import_supabase_js.createClient)(data.SUPABASE_URL, data.SUPABASE_KEY);
   return /* @__PURE__ */ React.createElement("html", {
     lang: "en"
   }, /* @__PURE__ */ React.createElement("head", null, /* @__PURE__ */ React.createElement("meta", {
@@ -464,7 +466,7 @@ function App() {
   }), /* @__PURE__ */ React.createElement("meta", {
     name: "viewport",
     content: "width=device-width,initial-scale=1"
-  }), /* @__PURE__ */ React.createElement(import_remix3.Meta, null), /* @__PURE__ */ React.createElement(import_remix3.Links, null), /* @__PURE__ */ React.createElement("link", {
+  }), /* @__PURE__ */ React.createElement(import_react3.Meta, null), /* @__PURE__ */ React.createElement(import_react3.Links, null), /* @__PURE__ */ React.createElement("link", {
     rel: "preconnect",
     href: "https://fonts.googleapis.com"
   }), /* @__PURE__ */ React.createElement("link", {
@@ -478,7 +480,7 @@ function App() {
     className: "body"
   }, /* @__PURE__ */ React.createElement(SupabaseProvider, {
     supabase: supabase3
-  }, /* @__PURE__ */ React.createElement(import_remix3.Outlet, null), /* @__PURE__ */ React.createElement(import_remix3.ScrollRestoration, null), /* @__PURE__ */ React.createElement("script", {
+  }, /* @__PURE__ */ React.createElement(import_react3.Outlet, null), /* @__PURE__ */ React.createElement(import_react3.ScrollRestoration, null), /* @__PURE__ */ React.createElement("script", {
     defer: !0,
     "data-domain": "tyrelchambers.com",
     src: "https://plausible.io/js/plausible.js"
@@ -486,7 +488,7 @@ function App() {
     src: "https://kit.fontawesome.com/5f8ee45a20.js",
     crossOrigin: "anonymous",
     defer: !0
-  }), /* @__PURE__ */ React.createElement(import_remix3.Scripts, null), /* @__PURE__ */ React.createElement(import_remix3.LiveReload, null))));
+  }), /* @__PURE__ */ React.createElement(import_react3.Scripts, null), /* @__PURE__ */ React.createElement(import_react3.LiveReload, null))));
 }
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/admin/post/$id/index.jsx
@@ -497,90 +499,90 @@ __export(id_exports, {
   loader: () => loader2
 });
 init_react();
-var import_react10 = require("@remix-run/react");
+var import_react12 = require("@remix-run/react");
 
 // app/layouts/AdminHeader.jsx
 init_react();
 
 // app/layouts/AdminMobileNav.jsx
 init_react();
-var import_react2 = __toESM(require("react")), import_react3 = require("@remix-run/react"), AdminMobileNav = () => /* @__PURE__ */ import_react2.default.createElement("nav", {
+var import_react4 = __toESM(require("react")), import_react5 = require("@remix-run/react"), AdminMobileNav = () => /* @__PURE__ */ import_react4.default.createElement("nav", {
   className: "mt-4 w-full tablet:mt-0 tablet:hidden"
-}, /* @__PURE__ */ import_react2.default.createElement("ul", {
+}, /* @__PURE__ */ import_react4.default.createElement("ul", {
   className: "flex flex-col border-t-2 border-gray-600"
-}, /* @__PURE__ */ import_react2.default.createElement("li", {
+}, /* @__PURE__ */ import_react4.default.createElement("li", {
   className: "border-b-2 border-gray-600 "
-}, /* @__PURE__ */ import_react2.default.createElement(import_react3.Link, {
+}, /* @__PURE__ */ import_react4.default.createElement(import_react5.Link, {
   to: "/",
   className: "mobile-nav-link p-4 py-6",
   end: !0
-}, "Home")), /* @__PURE__ */ import_react2.default.createElement("li", {
+}, "Home")), /* @__PURE__ */ import_react4.default.createElement("li", {
   className: "border-b-2 border-gray-600 "
-}, /* @__PURE__ */ import_react2.default.createElement(import_react3.NavLink, {
+}, /* @__PURE__ */ import_react4.default.createElement(import_react5.NavLink, {
   to: "/admin",
   className: "mobile-nav-link p-4 py-6",
   end: !0
-}, "Admin")), /* @__PURE__ */ import_react2.default.createElement("li", {
+}, "Admin")), /* @__PURE__ */ import_react4.default.createElement("li", {
   className: "border-b-2 border-gray-600 "
-}, /* @__PURE__ */ import_react2.default.createElement(import_react3.NavLink, {
+}, /* @__PURE__ */ import_react4.default.createElement(import_react5.NavLink, {
   to: "/admin/post/new",
   className: "mobile-nav-link p-4 py-6"
-}, "New Post")), /* @__PURE__ */ import_react2.default.createElement("li", {
+}, "New Post")), /* @__PURE__ */ import_react4.default.createElement("li", {
   className: "border-b-2 border-gray-600 "
-}, /* @__PURE__ */ import_react2.default.createElement(import_react3.NavLink, {
+}, /* @__PURE__ */ import_react4.default.createElement(import_react5.NavLink, {
   to: "/admin/posts",
   className: "mobile-nav-link p-4 py-6"
 }, "Posts")))), AdminMobileNav_default = AdminMobileNav;
 
 // app/layouts/AdminNav.jsx
 init_react();
-var import_react4 = require("@remix-run/react"), import_react5 = __toESM(require("react"));
+var import_react6 = require("@remix-run/react"), import_react7 = __toESM(require("react"));
 var AdminNav = () => {
   let supabase3 = useSupabase(), handleSignout = () => {
     supabase3.auth.signOut().then(() => {
       submit(null, { method: "post", action: "/signout" });
     });
   };
-  return /* @__PURE__ */ import_react5.default.createElement("nav", {
+  return /* @__PURE__ */ import_react7.default.createElement("nav", {
     className: "mt-4 hidden tablet:mt-0 tablet:flex"
-  }, /* @__PURE__ */ import_react5.default.createElement("ul", {
+  }, /* @__PURE__ */ import_react7.default.createElement("ul", {
     className: "flex  gap-10"
-  }, /* @__PURE__ */ import_react5.default.createElement("li", null, /* @__PURE__ */ import_react5.default.createElement(import_react4.Link, {
+  }, /* @__PURE__ */ import_react7.default.createElement("li", null, /* @__PURE__ */ import_react7.default.createElement(import_react6.Link, {
     to: "/",
     className: "nav-link",
     end: "true",
     prefetch: "intent"
-  }, "Home")), /* @__PURE__ */ import_react5.default.createElement("li", null, /* @__PURE__ */ import_react5.default.createElement(import_react4.NavLink, {
+  }, "Home")), /* @__PURE__ */ import_react7.default.createElement("li", null, /* @__PURE__ */ import_react7.default.createElement(import_react6.NavLink, {
     to: "/admin",
     className: "nav-link",
     end: !0,
     prefetch: "intent"
-  }, "Admin")), /* @__PURE__ */ import_react5.default.createElement("li", null, /* @__PURE__ */ import_react5.default.createElement(import_react4.NavLink, {
+  }, "Admin")), /* @__PURE__ */ import_react7.default.createElement("li", null, /* @__PURE__ */ import_react7.default.createElement(import_react6.NavLink, {
     to: "/admin/post/new",
     className: "nav-link",
     prefetch: "intent"
-  }, "New Post")), /* @__PURE__ */ import_react5.default.createElement("li", null, /* @__PURE__ */ import_react5.default.createElement(import_react4.NavLink, {
+  }, "New Post")), /* @__PURE__ */ import_react7.default.createElement("li", null, /* @__PURE__ */ import_react7.default.createElement(import_react6.NavLink, {
     to: "/admin/posts",
     className: "nav-link",
     prefetch: "intent"
-  }, "Posts")), supabase3.auth.session() && /* @__PURE__ */ import_react5.default.createElement("li", {
+  }, "Posts")), supabase3.auth.session() && /* @__PURE__ */ import_react7.default.createElement("li", {
     className: "w-fit"
-  }, /* @__PURE__ */ import_react5.default.createElement(import_react4.Form, {
+  }, /* @__PURE__ */ import_react7.default.createElement(import_react6.Form, {
     action: "/signout",
     method: "post"
-  }, /* @__PURE__ */ import_react5.default.createElement("button", {
+  }, /* @__PURE__ */ import_react7.default.createElement("button", {
     type: "submit",
     className: "nav-link w-fit"
   }, "Sign out")))));
 }, AdminNav_default = AdminNav;
 
 // app/layouts/AdminHeader.jsx
-var import_react7 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 
 // app/hooks/useMobileNav.js
 init_react();
-var import_react6 = require("react"), useMobileNav = () => {
-  let [isMobileNavOpen, setIsMobileNavOpen] = (0, import_react6.useState)(!1);
+var import_react8 = require("react"), useMobileNav = () => {
+  let [isMobileNavOpen, setIsMobileNavOpen] = (0, import_react8.useState)(!1);
   return { isMobileNavOpen, toggleMobileNav: () => {
     setIsMobileNavOpen(!isMobileNavOpen);
   } };
@@ -589,46 +591,48 @@ var import_react6 = require("react"), useMobileNav = () => {
 // app/layouts/AdminHeader.jsx
 var AdminHeader = () => {
   let { isMobileNavOpen, toggleMobileNav } = useMobileNav();
-  return /* @__PURE__ */ import_react7.default.createElement("header", {
+  return /* @__PURE__ */ import_react9.default.createElement("header", {
     className: "flex justify-between px-4"
-  }, /* @__PURE__ */ import_react7.default.createElement("div", {
+  }, /* @__PURE__ */ import_react9.default.createElement("div", {
     className: "flex w-full items-center justify-between"
-  }, /* @__PURE__ */ import_react7.default.createElement("h1", {
+  }, /* @__PURE__ */ import_react9.default.createElement("h1", {
     className: "h3"
-  }, "Admin dashboard"), /* @__PURE__ */ import_react7.default.createElement("div", {
+  }, "Admin dashboard"), /* @__PURE__ */ import_react9.default.createElement("div", {
     className: "mobile-toggle flex h-[25px] w-[35px] flex-col justify-between tablet:hidden",
     onClick: () => toggleMobileNav()
-  }, /* @__PURE__ */ import_react7.default.createElement("span", {
+  }, /* @__PURE__ */ import_react9.default.createElement("span", {
     className: "h-[3px] w-full bg-gray-400"
-  }), /* @__PURE__ */ import_react7.default.createElement("span", {
+  }), /* @__PURE__ */ import_react9.default.createElement("span", {
     className: "h-[3px] w-full bg-gray-400"
-  }), /* @__PURE__ */ import_react7.default.createElement("span", {
+  }), /* @__PURE__ */ import_react9.default.createElement("span", {
     className: "h-[3px] w-full bg-gray-400"
-  }))), /* @__PURE__ */ import_react7.default.createElement(AdminNav_default, null), isMobileNavOpen && /* @__PURE__ */ import_react7.default.createElement(AdminMobileNav_default, null));
+  }))), /* @__PURE__ */ import_react9.default.createElement(AdminNav_default, null), isMobileNavOpen && /* @__PURE__ */ import_react9.default.createElement(AdminMobileNav_default, null));
 }, AdminHeader_default = AdminHeader;
 
 // app/components/MarkdownRender.jsx
 init_react();
-var import_react8 = __toESM(require("react")), import_client = require("mdx-bundler/client"), MarkdownRender = ({ markdown, html }) => {
-  let Component = markdown ? import_react8.default.useMemo(() => (0, import_client.getMDXComponent)(markdown), [markdown]) : null;
-  return /* @__PURE__ */ import_react8.default.createElement("div", {
+var import_react10 = __toESM(require("react")), import_client = require("mdx-bundler/client"), MarkdownRender = ({ markdown, html }) => {
+  let Component = markdown ? import_react10.default.useMemo(() => (0, import_client.getMDXComponent)(markdown), [markdown]) : null;
+  return /* @__PURE__ */ import_react10.default.createElement("div", {
     className: "prose prose-h1:font-normal prose-h1:text-white prose-h2:font-thin prose-h2:text-white prose-h3:font-thin prose-h3:text-white prose-h4:text-white prose-p:text-gray-400 prose-a:text-yellow-300 prose-a:underline prose-strong:text-white prose-code:text-white prose-li:text-gray-400"
-  }, /* @__PURE__ */ import_react8.default.createElement(Component, null));
+  }, /* @__PURE__ */ import_react10.default.createElement(Component, null));
 }, MarkdownRender_default = MarkdownRender;
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/admin/post/$id/index.jsx
-var import_react11 = __toESM(require("react"));
+var import_react13 = __toESM(require("react"));
 
 // app/blogPosts.server.js
 init_react();
-var import_mdx_bundler = require("mdx-bundler"), import_react9 = require("react");
+var import_mdx_bundler = require("mdx-bundler"), import_react11 = require("react");
 
 // app/supabase.server.js
 init_react();
-var import_supabase_js2 = require("@supabase/supabase-js"), import_remix4 = __toESM(require_dist()), supabaseUrl = process.env.SUPABASE_URL, supabaseKey = process.env.SUPABASE_KEY, supabase = (0, import_supabase_js2.createClient)(supabaseUrl, supabaseKey);
+var import_supabase_js2 = require("@supabase/supabase-js"), import_remix2 = __toESM(require_dist()), import_dotenv2 = __toESM(require("dotenv"));
+import_dotenv2.default.config();
+var supabaseUrl = process.env.SUPABASE_URL, supabaseKey = process.env.SUPABASE_KEY, supabase = (0, import_supabase_js2.createClient)(supabaseUrl, supabaseKey);
 function createDatabaseSessionStorage({ cookie }) {
   let db = supabase.from("sessions");
-  return (0, import_remix4.createSessionStorage)({
+  return (0, import_remix2.createSessionStorage)({
     cookie,
     async createData(data, expires) {
       let { data: test } = await db.insert(data);
@@ -707,40 +711,40 @@ var loader2 = async ({ params, request }) => (requireUser(request), (0, import_t
   return await supabase2.from("posts").delete().eq("id", params.id), (0, import_node2.redirect)("/admin/posts");
 }, $slug = () => {
   var _a;
-  let post = (0, import_react10.useLoaderData)();
-  return /* @__PURE__ */ import_react11.default.createElement("div", {
+  let post = (0, import_react12.useLoaderData)();
+  return /* @__PURE__ */ import_react13.default.createElement("div", {
     className: "ml-auto mr-auto mt-10 max-w-screen-2xl"
-  }, /* @__PURE__ */ import_react11.default.createElement(AdminHeader_default, null), /* @__PURE__ */ import_react11.default.createElement("main", {
+  }, /* @__PURE__ */ import_react13.default.createElement(AdminHeader_default, null), /* @__PURE__ */ import_react13.default.createElement("main", {
     className: "mt-14 flex flex-col-reverse gap-10 tablet:flex-row"
-  }, /* @__PURE__ */ import_react11.default.createElement("div", {
+  }, /* @__PURE__ */ import_react13.default.createElement("div", {
     className: "flex w-full max-w-2xl flex-col p-4 "
-  }, /* @__PURE__ */ import_react11.default.createElement("h3", {
+  }, /* @__PURE__ */ import_react13.default.createElement("h3", {
     className: "h3 coloured mb-6"
-  }, post.post.title), /* @__PURE__ */ import_react11.default.createElement(MarkdownRender_default, {
+  }, post.post.title), /* @__PURE__ */ import_react13.default.createElement(MarkdownRender_default, {
     html: post.post.markdown
-  }), /* @__PURE__ */ import_react11.default.createElement("div", {
+  }), /* @__PURE__ */ import_react13.default.createElement("div", {
     className: "mt-8 flex flex-wrap items-center gap-4"
-  }, ((_a = post.post.tags) == null ? void 0 : _a.map((tag, i) => /* @__PURE__ */ import_react11.default.createElement("p", {
+  }, ((_a = post.post.tags) == null ? void 0 : _a.map((tag, i) => /* @__PURE__ */ import_react13.default.createElement("p", {
     className: "flex w-fit items-center justify-center rounded-full bg-slate-700 px-4 py-2 text-sm text-white",
     key: i
-  }, tag.name))) || null)), /* @__PURE__ */ import_react11.default.createElement("div", {
+  }, tag.name))) || null)), /* @__PURE__ */ import_react13.default.createElement("div", {
     className: "sticky top-10  m-4 flex h-fit flex-col gap-6 rounded-lg border-2 border-gray-700 p-4 tablet:w-[200px]"
-  }, /* @__PURE__ */ import_react11.default.createElement(import_react10.Link, {
+  }, /* @__PURE__ */ import_react13.default.createElement(import_react12.Link, {
     to: `/admin/post/${post.id}/edit`,
     className: "link-button small primary w-full"
-  }, "Edit article"), /* @__PURE__ */ import_react11.default.createElement(import_react10.Form, {
+  }, "Edit article"), /* @__PURE__ */ import_react13.default.createElement(import_react12.Form, {
     method: "post",
     className: "w-full"
-  }, /* @__PURE__ */ import_react11.default.createElement("input", {
+  }, /* @__PURE__ */ import_react13.default.createElement("input", {
     type: "hidden",
     name: "_method",
     value: "delete"
-  }), /* @__PURE__ */ import_react11.default.createElement("button", {
+  }), /* @__PURE__ */ import_react13.default.createElement("button", {
     type: "submit",
     className: "link-button small danger w-full"
-  }, "Delete")), post.post.published ? /* @__PURE__ */ import_react11.default.createElement("p", {
+  }, "Delete")), post.post.published ? /* @__PURE__ */ import_react13.default.createElement("p", {
     className: " text-green-300"
-  }, "published") : /* @__PURE__ */ import_react11.default.createElement("p", {
+  }, "published") : /* @__PURE__ */ import_react13.default.createElement("p", {
     className: " text-orange-300"
   }, "draft"))));
 }, id_default = $slug;
@@ -753,13 +757,13 @@ __export(edit_exports, {
   loader: () => loader3
 });
 init_react();
-var import_react13 = require("@remix-run/react");
+var import_react15 = require("@remix-run/react");
 
 // app/components/CustomSelect.jsx
 init_react();
-var import_react12 = __toESM(require("react")), import_react_select = __toESM(require("react-select")), CustomSelect = (_a) => {
+var import_react14 = __toESM(require("react")), import_react_select = __toESM(require("react-select")), CustomSelect = (_a) => {
   var _b = _a, { isMulti, options, name } = _b, props = __objRest(_b, ["isMulti", "options", "name"]);
-  return /* @__PURE__ */ import_react12.default.createElement(import_react_select.default, __spreadValues({
+  return /* @__PURE__ */ import_react14.default.createElement(import_react_select.default, __spreadValues({
     isMulti,
     options,
     className: "custom-select",
@@ -825,7 +829,7 @@ var tags = [
 ];
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/admin/post/$id/edit.jsx
-var import_react14 = require("react");
+var import_react16 = require("react");
 var loader3 = async ({ params, request }) => {
   requireUser(request), (0, import_tiny_invariant2.default)(params.id, "expected params.id");
   let { data: post } = await supabase.from("posts").select().eq("id", params.id).single();
@@ -846,7 +850,7 @@ var loader3 = async ({ params, request }) => {
   return error ? json({ error }) : redirect("/admin/posts");
 }, edit = () => {
   var _a;
-  let data = (0, import_react13.useLoaderData)(), [state, setState] = (0, import_react14.useState)(__spreadValues({}, data.post)), fetcher = (0, import_react13.useFetcher)(), submitHandler = async (e) => {
+  let data = (0, import_react15.useLoaderData)(), [state, setState] = (0, import_react16.useState)(__spreadValues({}, data.post)), fetcher = (0, import_react15.useFetcher)(), submitHandler = async (e) => {
     fetcher.submit(__spreadProps(__spreadValues({}, state), {
       tags: JSON.stringify(state.tags),
       id: data.id
@@ -955,8 +959,8 @@ __export(posts_exports, {
   loader: () => loader4
 });
 init_react();
-var import_react15 = require("@remix-run/react");
-var import_react16 = __toESM(require("react"));
+var import_react17 = require("@remix-run/react");
+var import_react18 = __toESM(require("react"));
 
 // app/utils/truncateString.js
 init_react();
@@ -970,28 +974,28 @@ var loader4 = async ({ request }) => {
   });
   return error ? { error } : posts;
 }, index = () => {
-  let posts = (0, import_react15.useLoaderData)();
-  return /* @__PURE__ */ import_react16.default.createElement("div", {
+  let posts = (0, import_react17.useLoaderData)();
+  return /* @__PURE__ */ import_react18.default.createElement("div", {
     className: "ml-auto mr-auto mt-10 max-w-screen-2xl"
-  }, /* @__PURE__ */ import_react16.default.createElement(AdminHeader_default, null), /* @__PURE__ */ import_react16.default.createElement("div", {
+  }, /* @__PURE__ */ import_react18.default.createElement(AdminHeader_default, null), /* @__PURE__ */ import_react18.default.createElement("div", {
     className: "mt-10 grid grid-cols-1 gap-10 p-4 tablet:grid-cols-2 desktop:grid-cols-3"
-  }, posts.length > 0 && posts.map((post) => /* @__PURE__ */ import_react16.default.createElement(import_react15.Link, {
+  }, posts.length > 0 && posts.map((post) => /* @__PURE__ */ import_react18.default.createElement(import_react17.Link, {
     to: `/admin/post/${post.id}`,
     className: "flex flex-col items-center gap-4 rounded-lg border-2 border-gray-500 p-4 large:flex-row large:items-start",
     key: post.id
-  }, /* @__PURE__ */ import_react16.default.createElement("img", {
+  }, /* @__PURE__ */ import_react18.default.createElement("img", {
     src: post.cover_img,
     className: "aspect-[4/6] w-32 rounded-lg object-cover",
     alt: ""
-  }), /* @__PURE__ */ import_react16.default.createElement("div", {
+  }), /* @__PURE__ */ import_react18.default.createElement("div", {
     className: "flex flex-col gap-2"
-  }, /* @__PURE__ */ import_react16.default.createElement("h4", {
+  }, /* @__PURE__ */ import_react18.default.createElement("h4", {
     className: "h4 text-center large:text-left"
-  }, post.title), /* @__PURE__ */ import_react16.default.createElement("p", {
+  }, post.title), /* @__PURE__ */ import_react18.default.createElement("p", {
     className: "text-center text-gray-400 large:text-left"
-  }, truncateString(post.description, 100)), post.published ? /* @__PURE__ */ import_react16.default.createElement("p", {
+  }, truncateString(post.description, 100)), post.published ? /* @__PURE__ */ import_react18.default.createElement("p", {
     className: " text-green-300"
-  }, "published") : /* @__PURE__ */ import_react16.default.createElement("p", {
+  }, "published") : /* @__PURE__ */ import_react18.default.createElement("p", {
     className: " text-orange-300"
   }, "draft"))))));
 }, posts_default = index;
@@ -1006,11 +1010,11 @@ init_react();
 
 // app/layouts/Header.jsx
 init_react();
-var import_react22 = __toESM(require("react")), import_react23 = require("@remix-run/react");
+var import_react24 = __toESM(require("react")), import_react25 = require("@remix-run/react");
 
 // app/components/SocialList.jsx
 init_react();
-var import_react17 = __toESM(require("react"));
+var import_react19 = __toESM(require("react"));
 
 // app/constants/socials.js
 init_react();
@@ -1053,12 +1057,12 @@ var socials = [
 ];
 
 // app/components/SocialList.jsx
-var SocialList = ({ className = "" }) => /* @__PURE__ */ import_react17.default.createElement("ul", {
+var SocialList = ({ className = "" }) => /* @__PURE__ */ import_react19.default.createElement("ul", {
   className: `flex items-center gap-6 ${className}`
-}, socials.map((social) => /* @__PURE__ */ import_react17.default.createElement("li", {
+}, socials.map((social) => /* @__PURE__ */ import_react19.default.createElement("li", {
   className: "text-xl",
   key: social.label
-}, /* @__PURE__ */ import_react17.default.createElement("a", {
+}, /* @__PURE__ */ import_react19.default.createElement("a", {
   href: social.url,
   target: "_blank",
   rel: "noopenner noreferrer"
@@ -1068,51 +1072,51 @@ var SocialList = ({ className = "" }) => /* @__PURE__ */ import_react17.default.
 
 // app/layouts/MobileNav.jsx
 init_react();
-var import_react18 = __toESM(require("react")), import_react19 = require("@remix-run/react"), MobileNav = () => /* @__PURE__ */ import_react18.default.createElement("nav", {
+var import_react20 = __toESM(require("react")), import_react21 = require("@remix-run/react"), MobileNav = () => /* @__PURE__ */ import_react20.default.createElement("nav", {
   className: "mobile-nav mt-6 w-full "
-}, /* @__PURE__ */ import_react18.default.createElement("ul", {
+}, /* @__PURE__ */ import_react20.default.createElement("ul", {
   className: "flex flex-col  border-t-2 border-gray-600"
-}, /* @__PURE__ */ import_react18.default.createElement("li", {
+}, /* @__PURE__ */ import_react20.default.createElement("li", {
   className: "border-b-2 border-gray-600 "
-}, /* @__PURE__ */ import_react18.default.createElement(import_react19.NavLink, {
+}, /* @__PURE__ */ import_react20.default.createElement(import_react21.NavLink, {
   to: "/",
   className: "mobile-nav-link p-4 py-6"
-}, "Home")), /* @__PURE__ */ import_react18.default.createElement("li", {
+}, "Home")), /* @__PURE__ */ import_react20.default.createElement("li", {
   className: "border-b-2 border-gray-600 "
-}, /* @__PURE__ */ import_react18.default.createElement(import_react19.NavLink, {
+}, /* @__PURE__ */ import_react20.default.createElement(import_react21.NavLink, {
   to: "/blog",
   className: "mobile-nav-link p-4 py-6"
-}, "Blog")), /* @__PURE__ */ import_react18.default.createElement("li", {
+}, "Blog")), /* @__PURE__ */ import_react20.default.createElement("li", {
   className: "border-b-2 border-gray-600 "
-}, /* @__PURE__ */ import_react18.default.createElement(import_react19.NavLink, {
+}, /* @__PURE__ */ import_react20.default.createElement(import_react21.NavLink, {
   to: "/resources",
   className: "mobile-nav-link p-4 py-6"
-}, "Resources")), /* @__PURE__ */ import_react18.default.createElement("li", {
+}, "Resources")), /* @__PURE__ */ import_react20.default.createElement("li", {
   className: "border-b-2 border-gray-600 "
-}, /* @__PURE__ */ import_react18.default.createElement(import_react19.NavLink, {
+}, /* @__PURE__ */ import_react20.default.createElement(import_react21.NavLink, {
   to: "/about",
   className: "mobile-nav-link p-4 py-6"
 }, "About")))), MobileNav_default = MobileNav;
 
 // app/layouts/Nav.jsx
 init_react();
-var import_react20 = require("@remix-run/react"), import_react21 = __toESM(require("react")), Nav = () => /* @__PURE__ */ import_react21.default.createElement("nav", {
+var import_react22 = require("@remix-run/react"), import_react23 = __toESM(require("react")), Nav = () => /* @__PURE__ */ import_react23.default.createElement("nav", {
   className: "nav hidden desktop:flex"
-}, /* @__PURE__ */ import_react21.default.createElement("ul", {
+}, /* @__PURE__ */ import_react23.default.createElement("ul", {
   className: "flex items-center gap-6"
-}, /* @__PURE__ */ import_react21.default.createElement("li", null, /* @__PURE__ */ import_react21.default.createElement(import_react20.NavLink, {
+}, /* @__PURE__ */ import_react23.default.createElement("li", null, /* @__PURE__ */ import_react23.default.createElement(import_react22.NavLink, {
   to: "/",
   className: "nav-link",
   prefetch: "intent"
-}, "Home")), /* @__PURE__ */ import_react21.default.createElement("li", null, /* @__PURE__ */ import_react21.default.createElement(import_react20.NavLink, {
+}, "Home")), /* @__PURE__ */ import_react23.default.createElement("li", null, /* @__PURE__ */ import_react23.default.createElement(import_react22.NavLink, {
   to: "/blog",
   className: "nav-link",
   prefetch: "intent"
-}, "Blog")), /* @__PURE__ */ import_react21.default.createElement("li", null, /* @__PURE__ */ import_react21.default.createElement(import_react20.NavLink, {
+}, "Blog")), /* @__PURE__ */ import_react23.default.createElement("li", null, /* @__PURE__ */ import_react23.default.createElement(import_react22.NavLink, {
   to: "/resources",
   className: "nav-link",
   prefetch: "intent"
-}, "Resources")), /* @__PURE__ */ import_react21.default.createElement("li", null, /* @__PURE__ */ import_react21.default.createElement(import_react20.NavLink, {
+}, "Resources")), /* @__PURE__ */ import_react23.default.createElement("li", null, /* @__PURE__ */ import_react23.default.createElement(import_react22.NavLink, {
   to: "/about",
   className: "nav-link",
   prefetch: "intent"
@@ -1121,43 +1125,43 @@ var import_react20 = require("@remix-run/react"), import_react21 = __toESM(requi
 // app/layouts/Header.jsx
 var Header = () => {
   let user = useSupabase().auth.currentUser, { isMobileNavOpen, toggleMobileNav } = useMobileNav();
-  return /* @__PURE__ */ import_react22.default.createElement("header", {
+  return /* @__PURE__ */ import_react24.default.createElement("header", {
     className: "ml-auto mr-auto flex w-full max-w-screen-2xl flex-col items-center justify-between p-4 tablet:py-8"
-  }, /* @__PURE__ */ import_react22.default.createElement("section", {
+  }, /* @__PURE__ */ import_react24.default.createElement("section", {
     className: "flex w-full flex-col items-center justify-between tablet:flex-row"
-  }, /* @__PURE__ */ import_react22.default.createElement("div", {
+  }, /* @__PURE__ */ import_react24.default.createElement("div", {
     className: "flex w-full items-center justify-between px-4 tablet:w-fit tablet:px-0"
-  }, /* @__PURE__ */ import_react22.default.createElement("h1", {
+  }, /* @__PURE__ */ import_react24.default.createElement("h1", {
     className: "mb-4 mt-4 text-2xl text-white sm:mb-0 sm:mt-0"
-  }, "Tyrel Chambers"), /* @__PURE__ */ import_react22.default.createElement("div", {
+  }, "Tyrel Chambers"), /* @__PURE__ */ import_react24.default.createElement("div", {
     className: "mobile-toggle flex h-[25px] w-[35px] flex-col justify-between tablet:hidden",
     onClick: () => toggleMobileNav()
-  }, /* @__PURE__ */ import_react22.default.createElement("span", {
+  }, /* @__PURE__ */ import_react24.default.createElement("span", {
     className: "h-[3px] w-full bg-gray-400"
-  }), /* @__PURE__ */ import_react22.default.createElement("span", {
+  }), /* @__PURE__ */ import_react24.default.createElement("span", {
     className: "h-[3px] w-full bg-gray-400"
-  }), /* @__PURE__ */ import_react22.default.createElement("span", {
+  }), /* @__PURE__ */ import_react24.default.createElement("span", {
     className: "h-[3px] w-full bg-gray-400"
-  }))), /* @__PURE__ */ import_react22.default.createElement(Nav_default, null), /* @__PURE__ */ import_react22.default.createElement("div", {
+  }))), /* @__PURE__ */ import_react24.default.createElement(Nav_default, null), /* @__PURE__ */ import_react24.default.createElement("div", {
     className: "flex items-center gap-4"
-  }, /* @__PURE__ */ import_react22.default.createElement(SocialList_default, null)), /* @__PURE__ */ import_react22.default.createElement("div", {
+  }, /* @__PURE__ */ import_react24.default.createElement(SocialList_default, null)), /* @__PURE__ */ import_react24.default.createElement("div", {
     className: "mobile-toggle hidden h-[25px] w-[35px] flex-col justify-between tablet:flex desktop:hidden",
     onClick: () => toggleMobileNav()
-  }, /* @__PURE__ */ import_react22.default.createElement("span", {
+  }, /* @__PURE__ */ import_react24.default.createElement("span", {
     className: "h-[3px] w-full bg-gray-400"
-  }), /* @__PURE__ */ import_react22.default.createElement("span", {
+  }), /* @__PURE__ */ import_react24.default.createElement("span", {
     className: "h-[3px] w-full bg-gray-400"
-  }), /* @__PURE__ */ import_react22.default.createElement("span", {
+  }), /* @__PURE__ */ import_react24.default.createElement("span", {
     className: "h-[3px] w-full bg-gray-400"
-  }))), isMobileNavOpen && /* @__PURE__ */ import_react22.default.createElement(MobileNav_default, null));
+  }))), isMobileNavOpen && /* @__PURE__ */ import_react24.default.createElement(MobileNav_default, null));
 }, Header_default = Header;
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/case-study/$slug.jsx
-var import_react24 = __toESM(require("react"));
+var import_react26 = __toESM(require("react"));
 
 // app/case-study.server.js
 init_react();
-var import_fs = __toESM(require("fs")), import_path = __toESM(require("path")), import_mdx_bundler2 = require("mdx-bundler"), caseStudyiesPath = import_path.default.join(__dirname, "../..", "app", "/case-studies-md"), getCaseStudy = async (slug) => {
+var import_fs = __toESM(require("fs")), import_path = __toESM(require("path")), import_mdx_bundler2 = require("mdx-bundler"), caseStudyiesPath = import_path.default.join(__dirname, "../", "app", "/case-studies-md"), getCaseStudy = async (slug) => {
   let filepath = import_path.default.join(caseStudyiesPath, slug + ".mdx"), file = await import_fs.default.readFileSync(filepath, "utf-8"), { code, frontmatter } = await (0, import_mdx_bundler2.bundleMDX)({
     source: file,
     cwd: caseStudyiesPath
@@ -1166,13 +1170,13 @@ var import_fs = __toESM(require("fs")), import_path = __toESM(require("path")), 
 };
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/case-study/$slug.jsx
-var import_react25 = require("@remix-run/react"), import_client2 = require("mdx-bundler/client"), loader5 = async () => ({ caseStudy: await getCaseStudy("reddex") }), $slug2 = () => {
-  let { caseStudy } = (0, import_react25.useLoaderData)(), Component = import_react24.default.useMemo(() => (0, import_client2.getMDXComponent)(caseStudy.code), [caseStudy.code]);
-  return /* @__PURE__ */ import_react24.default.createElement("div", null, /* @__PURE__ */ import_react24.default.createElement(Header_default, null), /* @__PURE__ */ import_react24.default.createElement("main", {
+var import_react27 = require("@remix-run/react"), import_client2 = require("mdx-bundler/client"), loader5 = async () => ({ caseStudy: await getCaseStudy("reddex") }), $slug2 = () => {
+  let { caseStudy } = (0, import_react27.useLoaderData)(), Component = import_react26.default.useMemo(() => (0, import_client2.getMDXComponent)(caseStudy.code), [caseStudy.code]);
+  return /* @__PURE__ */ import_react26.default.createElement("div", null, /* @__PURE__ */ import_react26.default.createElement(Header_default, null), /* @__PURE__ */ import_react26.default.createElement("main", {
     className: "ml-auto mr-auto mt-10 max-w-screen-xl p-4"
-  }, /* @__PURE__ */ import_react24.default.createElement("div", {
+  }, /* @__PURE__ */ import_react26.default.createElement("div", {
     className: "prose prose-h1:font-normal prose-h1:text-white prose-h2:font-thin prose-h2:text-white prose-h3:font-thin prose-h3:text-white prose-h4:text-white prose-p:text-gray-400 prose-a:text-yellow-300 prose-a:underline prose-strong:text-white prose-code:text-white prose-li:text-gray-400"
-  }, /* @__PURE__ */ import_react24.default.createElement(Component, null))));
+  }, /* @__PURE__ */ import_react26.default.createElement(Component, null))));
 }, slug_default = $slug2;
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/admin/post/new.jsx
@@ -1183,18 +1187,18 @@ __export(new_exports, {
   loader: () => loader6
 });
 init_react();
-var import_react27 = require("@remix-run/react");
+var import_react29 = require("@remix-run/react");
 
 // app/components/Gap.jsx
 init_react();
-var import_react26 = __toESM(require("react")), Gap = ({ height = "h-12 desktop:h-48", className = "" }) => /* @__PURE__ */ import_react26.default.createElement("div", {
+var import_react28 = __toESM(require("react")), Gap = ({ height = "h-12 desktop:h-48", className = "" }) => /* @__PURE__ */ import_react28.default.createElement("div", {
   className: `w-full ${height} ${className}`
 }), Gap_default = Gap;
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/admin/post/new.jsx
 var import_react_textarea_autosize2 = __toESM(require("react-textarea-autosize"));
-var import_react28 = require("react");
-var import_remix5 = __toESM(require_dist()), loader6 = ({ request }) => requireUser(request), action3 = async ({ request }) => {
+var import_react30 = require("react");
+var loader6 = ({ request }) => requireUser(request), action3 = async ({ request }) => {
   let formData = await request.formData(), title = formData.get("title"), description = formData.get("description"), cover_img = formData.get("cover_img"), markdown = formData.get("markdown"), tags2 = formData.get("tags"), published = formData.get("published"), slug = title.replace(/\s+/g, "-").replace(/[^a-zA-Z0-9\-]/g, "").toLowerCase(), formattedTags = JSON.parse(tags2).map((tag) => ({
     value: tag.value,
     label: tag.label
@@ -1207,16 +1211,16 @@ var import_remix5 = __toESM(require_dist()), loader6 = ({ request }) => requireU
     description,
     published
   });
-  return error ? (console.log(error), { error }) : (0, import_remix5.json)({ ok: !0 });
+  return error ? (console.log(error), { error }) : { ok: !0 };
 }, newPost = () => {
-  let [state, setState] = (0, import_react28.useState)({
+  let [state, setState] = (0, import_react30.useState)({
     title: "",
     tags: [],
     description: "",
     cover_img: "",
     markdown: "",
     published: !1
-  }), fetcher = (0, import_react27.useFetcher)(), submitHandler = async (e) => {
+  }), fetcher = (0, import_react29.useFetcher)(), submitHandler = async (e) => {
     fetcher.submit(__spreadProps(__spreadValues({}, state), {
       tags: JSON.stringify(state.tags)
     }), { method: "post" });
@@ -1325,10 +1329,10 @@ __export(admin_exports, {
   loader: () => loader7
 });
 init_react();
-var import_react29 = __toESM(require("react"));
-var loader7 = ({ request }) => requireUser(request), admin = () => /* @__PURE__ */ import_react29.default.createElement("div", {
+var import_react31 = __toESM(require("react"));
+var loader7 = ({ request }) => requireUser(request), admin = () => /* @__PURE__ */ import_react31.default.createElement("div", {
   className: "ml-auto mr-auto mt-10 max-w-screen-2xl"
-}, /* @__PURE__ */ import_react29.default.createElement(AdminHeader_default, null)), admin_default = admin;
+}, /* @__PURE__ */ import_react31.default.createElement(AdminHeader_default, null)), admin_default = admin;
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/blog/$slug.jsx
 var slug_exports2 = {};
@@ -1338,23 +1342,23 @@ __export(slug_exports2, {
   meta: () => meta2
 });
 init_react();
-var import_react39 = require("@remix-run/react");
+var import_react41 = require("@remix-run/react");
 
 // app/components/Divider.jsx
 init_react();
-var import_react30 = __toESM(require("react")), Divider = () => /* @__PURE__ */ import_react30.default.createElement("div", {
+var import_react32 = __toESM(require("react")), Divider = () => /* @__PURE__ */ import_react32.default.createElement("div", {
   className: "h-[1px] w-full max-w-[30px] rounded-lg bg-gray-500"
 }), Divider_default = Divider;
 
 // app/layouts/Footer.jsx
 init_react();
-var import_react33 = require("@remix-run/react"), import_react34 = __toESM(require("react"));
+var import_react35 = require("@remix-run/react"), import_react36 = __toESM(require("react"));
 
 // app/utils/index.js
 init_react();
-var import_react31 = require("@remix-run/react"), import_react32 = require("react");
+var import_react33 = require("@remix-run/react"), import_react34 = require("react");
 function useMatchesData(id) {
-  let matchingRoutes = (0, import_react31.useMatches)(), route = (0, import_react32.useMemo)(() => matchingRoutes.find((route2) => route2.id === id), [matchingRoutes, id]);
+  let matchingRoutes = (0, import_react33.useMatches)(), route = (0, import_react34.useMemo)(() => matchingRoutes.find((route2) => route2.id === id), [matchingRoutes, id]);
   return route == null ? void 0 : route.data;
 }
 function useOptionalUser() {
@@ -1366,54 +1370,54 @@ function useOptionalUser() {
 // app/layouts/Footer.jsx
 var Footer = () => {
   let supabase3 = useSupabase(), user = useOptionalUser();
-  return /* @__PURE__ */ import_react34.default.createElement("footer", {
+  return /* @__PURE__ */ import_react36.default.createElement("footer", {
     className: "border-t-[1px] border-zinc-600 bg-zinc-800 py-10 sm:py-20"
-  }, /* @__PURE__ */ import_react34.default.createElement("div", {
+  }, /* @__PURE__ */ import_react36.default.createElement("div", {
     className: "ml-auto mr-auto grid max-w-screen-md grid-cols-1 gap-10 p-4 sm:grid-cols-2 sm:gap-20"
-  }, /* @__PURE__ */ import_react34.default.createElement("div", {
+  }, /* @__PURE__ */ import_react36.default.createElement("div", {
     className: "flex flex-col "
-  }, /* @__PURE__ */ import_react34.default.createElement("h3", {
+  }, /* @__PURE__ */ import_react36.default.createElement("h3", {
     className: "h3"
-  }, "Tyrel Chambers"), /* @__PURE__ */ import_react34.default.createElement("p", {
+  }, "Tyrel Chambers"), /* @__PURE__ */ import_react36.default.createElement("p", {
     className: "mt-6 mb-6 text-gray-400"
-  }, "Building software and teaching people about what I love the most"), /* @__PURE__ */ import_react34.default.createElement(SocialList_default, null)), /* @__PURE__ */ import_react34.default.createElement("div", {
+  }, "Building software and teaching people about what I love the most"), /* @__PURE__ */ import_react36.default.createElement(SocialList_default, null)), /* @__PURE__ */ import_react36.default.createElement("div", {
     className: "flex gap-10"
-  }, /* @__PURE__ */ import_react34.default.createElement("div", {
+  }, /* @__PURE__ */ import_react36.default.createElement("div", {
     className: "flex flex-col"
-  }, /* @__PURE__ */ import_react34.default.createElement("h4", {
+  }, /* @__PURE__ */ import_react36.default.createElement("h4", {
     className: "h4"
-  }, "Contact"), /* @__PURE__ */ import_react34.default.createElement("ul", {
+  }, "Contact"), /* @__PURE__ */ import_react36.default.createElement("ul", {
     className: "mt-4"
-  }, /* @__PURE__ */ import_react34.default.createElement("li", {
+  }, /* @__PURE__ */ import_react36.default.createElement("li", {
     className: "w-fit"
-  }, /* @__PURE__ */ import_react34.default.createElement("a", {
+  }, /* @__PURE__ */ import_react36.default.createElement("a", {
     href: "mailto:tychambers3@gmail.com",
     className: "nav-link w-fit"
-  }, "Email me")))), /* @__PURE__ */ import_react34.default.createElement("div", {
+  }, "Email me")))), /* @__PURE__ */ import_react36.default.createElement("div", {
     className: "flex flex-col"
-  }, /* @__PURE__ */ import_react34.default.createElement("h4", {
+  }, /* @__PURE__ */ import_react36.default.createElement("h4", {
     className: "h4"
-  }, "Admin"), /* @__PURE__ */ import_react34.default.createElement("ul", {
+  }, "Admin"), /* @__PURE__ */ import_react36.default.createElement("ul", {
     className: "mt-4"
-  }, user ? /* @__PURE__ */ import_react34.default.createElement("li", {
+  }, user ? /* @__PURE__ */ import_react36.default.createElement("li", {
     className: "w-fit"
-  }, /* @__PURE__ */ import_react34.default.createElement(import_react33.Form, {
+  }, /* @__PURE__ */ import_react36.default.createElement(import_react35.Form, {
     method: "delete",
     action: "/signout"
-  }, /* @__PURE__ */ import_react34.default.createElement("button", {
+  }, /* @__PURE__ */ import_react36.default.createElement("button", {
     type: "submit",
     className: "nav-link w-fit"
-  }, "Sign out"))) : /* @__PURE__ */ import_react34.default.createElement("li", {
+  }, "Sign out"))) : /* @__PURE__ */ import_react36.default.createElement("li", {
     className: "w-fit"
-  }, /* @__PURE__ */ import_react34.default.createElement(import_react33.Link, {
+  }, /* @__PURE__ */ import_react36.default.createElement(import_react35.Link, {
     to: "/login",
     className: "nav-link w-fit"
-  }, "Login")), user && /* @__PURE__ */ import_react34.default.createElement("li", {
+  }, "Login")), user && /* @__PURE__ */ import_react36.default.createElement("li", {
     className: "w-fit"
-  }, /* @__PURE__ */ import_react34.default.createElement(import_react33.Link, {
+  }, /* @__PURE__ */ import_react36.default.createElement(import_react35.Link, {
     to: "/admin",
     className: "nav-link w-fit"
-  }, "Admin")))))), /* @__PURE__ */ import_react34.default.createElement("p", {
+  }, "Admin")))))), /* @__PURE__ */ import_react36.default.createElement("p", {
     className: "mt-6 text-center text-gray-500"
   }, "All rights reserved \xA9 ", new Date(Date.now()).getFullYear(), ". Tyrel Chambers."));
 }, Footer_default = Footer;
@@ -1423,65 +1427,65 @@ init_react();
 
 // app/components/AuthorCard.jsx
 init_react();
-var import_react35 = __toESM(require("react"));
-var AuthorCard = () => /* @__PURE__ */ import_react35.default.createElement("div", {
+var import_react37 = __toESM(require("react"));
+var AuthorCard = () => /* @__PURE__ */ import_react37.default.createElement("div", {
   className: "w-full rounded-3xl border-2 border-zinc-700 p-4 tablet:p-10"
-}, /* @__PURE__ */ import_react35.default.createElement("div", {
+}, /* @__PURE__ */ import_react37.default.createElement("div", {
   className: "flex flex-col gap-20 tablet:flex-row"
-}, /* @__PURE__ */ import_react35.default.createElement("img", {
+}, /* @__PURE__ */ import_react37.default.createElement("img", {
   src: "https://kmlstyxpbbsgbimyxphk.supabase.in/storage/v1/object/public/tyrel-chambers/images/me.webp",
   alt: "",
   className: "w-full max-w-[200px] rounded-lg object-cover shadow-lg"
-}), /* @__PURE__ */ import_react35.default.createElement("div", {
+}), /* @__PURE__ */ import_react37.default.createElement("div", {
   className: "flex flex-col"
-}, /* @__PURE__ */ import_react35.default.createElement("h3", {
+}, /* @__PURE__ */ import_react37.default.createElement("h3", {
   className: "h3"
-}, "Tyrel Chambers"), /* @__PURE__ */ import_react35.default.createElement("p", {
+}, "Tyrel Chambers"), /* @__PURE__ */ import_react37.default.createElement("p", {
   className: "mt-4 mb-10 text-xl text-gray-400"
-}, "I'm a software engineer and indie developer living in Ontario, Canada. I love day-dreaming new ideas and using my free time to bring them to life."), /* @__PURE__ */ import_react35.default.createElement(SocialList_default, null)))), AuthorCard_default = AuthorCard;
+}, "I'm a software engineer and indie developer living in Ontario, Canada. I love day-dreaming new ideas and using my free time to bring them to life."), /* @__PURE__ */ import_react37.default.createElement(SocialList_default, null)))), AuthorCard_default = AuthorCard;
 
 // app/layouts/PostFooter.jsx
-var import_react36 = __toESM(require("react")), PostFooter = ({ postTitle, slug }) => /* @__PURE__ */ import_react36.default.createElement("div", {
+var import_react38 = __toESM(require("react")), PostFooter = ({ postTitle, slug }) => /* @__PURE__ */ import_react38.default.createElement("div", {
   className: "ml-auto mr-auto w-full max-w-screen-lg p-4"
-}, /* @__PURE__ */ import_react36.default.createElement("div", {
+}, /* @__PURE__ */ import_react38.default.createElement("div", {
   className: "tablrt:px-10 flex flex-col gap-4 p-4 tablet:flex-row tablet:justify-between tablet:py-5"
-}, /* @__PURE__ */ import_react36.default.createElement("a", {
+}, /* @__PURE__ */ import_react38.default.createElement("a", {
   href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`"I just read ${postTitle}" \u{1F973} by @imtyrelchambers 
 
 `)}&url=${encodeURIComponent(`https://tyrelchambers/blog/${slug}`)}`,
   className: " text-lg text-yellow-300 opacity-80 transition-all hover:opacity-100"
-}, "Tweet this article"), /* @__PURE__ */ import_react36.default.createElement("a", {
+}, "Tweet this article"), /* @__PURE__ */ import_react38.default.createElement("a", {
   href: "https://www.github.com/tyrelchambers/tyrelchambers.com",
   className: " text-lg text-yellow-300 opacity-80 transition-all hover:opacity-100"
-}, "See an issue? Open one on Github.")), /* @__PURE__ */ import_react36.default.createElement(AuthorCard_default, null)), PostFooter_default = PostFooter;
+}, "See an issue? Open one on Github.")), /* @__PURE__ */ import_react38.default.createElement(AuthorCard_default, null)), PostFooter_default = PostFooter;
 
 // app/components/PostItem.jsx
 init_react();
-var import_react37 = require("@remix-run/react"), import_react38 = __toESM(require("react"));
-var PostItem = ({ post }) => /* @__PURE__ */ import_react38.default.createElement("div", {
+var import_react39 = require("@remix-run/react"), import_react40 = __toESM(require("react"));
+var PostItem = ({ post }) => /* @__PURE__ */ import_react40.default.createElement("div", {
   className: "post-item"
-}, /* @__PURE__ */ import_react38.default.createElement("img", {
+}, /* @__PURE__ */ import_react40.default.createElement("img", {
   src: post.cover_img,
   alt: "",
   className: "h-full w-full object-cover transition-all"
-}), /* @__PURE__ */ import_react38.default.createElement("div", {
+}), /* @__PURE__ */ import_react40.default.createElement("div", {
   className: "post-item-body  absolute z-10 flex h-[250px] w-full flex-col justify-start p-6"
-}, /* @__PURE__ */ import_react38.default.createElement("h3", {
+}, /* @__PURE__ */ import_react40.default.createElement("h3", {
   className: "h3 post-item-title transition-all"
-}, post.title), /* @__PURE__ */ import_react38.default.createElement("p", {
+}, post.title), /* @__PURE__ */ import_react40.default.createElement("p", {
   className: "post-item-description mt-4 text-gray-400  opacity-0"
-}, truncateString(post.description, 50)), /* @__PURE__ */ import_react38.default.createElement(import_react37.Link, {
+}, truncateString(post.description, 50)), /* @__PURE__ */ import_react40.default.createElement(import_react39.Link, {
   to: `/blog/${post.slug}`,
   className: "link-button small secondary post-item-cta mt-8 opacity-0",
   prefetch: "intent"
-}, "Read post ", /* @__PURE__ */ import_react38.default.createElement("i", {
+}, "Read post ", /* @__PURE__ */ import_react40.default.createElement("i", {
   className: "fa-solid fa-arrow-right-long"
-}))), /* @__PURE__ */ import_react38.default.createElement("div", {
+}))), /* @__PURE__ */ import_react40.default.createElement("div", {
   className: "gradient"
 })), PostItem_default = PostItem;
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/blog/$slug.jsx
-var import_react40 = __toESM(require("react")), import_date_fns = require("date-fns");
+var import_react42 = __toESM(require("react")), import_date_fns = require("date-fns");
 
 // app/utils/getArticleSuggestions.js
 init_react();
@@ -1538,51 +1542,51 @@ var import_tiny_invariant3 = __toESM(require("tiny-invariant")), meta2 = ({ data
   let suggestions = getArticleSuggestions({ articles: posts, count: 3 });
   return { post, suggestions, markdown };
 }, PostSlug = () => {
-  let { post, suggestions, markdown } = (0, import_react39.useLoaderData)();
-  return /* @__PURE__ */ import_react40.default.createElement("div", null, /* @__PURE__ */ import_react40.default.createElement(Header_default, null), /* @__PURE__ */ import_react40.default.createElement("div", {
+  let { post, suggestions, markdown } = (0, import_react41.useLoaderData)();
+  return /* @__PURE__ */ import_react42.default.createElement("div", null, /* @__PURE__ */ import_react42.default.createElement(Header_default, null), /* @__PURE__ */ import_react42.default.createElement("div", {
     className: "ml-auto mr-auto mt-20 max-w-screen-md p-4"
-  }, /* @__PURE__ */ import_react40.default.createElement(import_react39.Link, {
+  }, /* @__PURE__ */ import_react42.default.createElement(import_react41.Link, {
     to: "/blog",
     className: "text-white"
-  }, /* @__PURE__ */ import_react40.default.createElement("i", {
+  }, /* @__PURE__ */ import_react42.default.createElement("i", {
     className: "fa-solid fa-arrow-left-long mr-8"
-  }), "Back to blogs"), /* @__PURE__ */ import_react40.default.createElement(Gap_default, {
+  }), "Back to blogs"), /* @__PURE__ */ import_react42.default.createElement(Gap_default, {
     height: "h-20"
-  }), /* @__PURE__ */ import_react40.default.createElement("img", {
+  }), /* @__PURE__ */ import_react42.default.createElement("img", {
     src: post.cover_img,
     alt: "",
     className: "mb-10 h-[500px] w-full rounded-lg object-cover shadow-lg"
-  }), /* @__PURE__ */ import_react40.default.createElement("h1", {
+  }), /* @__PURE__ */ import_react42.default.createElement("h1", {
     className: "h1 "
-  }, post.title), /* @__PURE__ */ import_react40.default.createElement("div", {
+  }, post.title), /* @__PURE__ */ import_react42.default.createElement("div", {
     className: "mb-10 flex items-center gap-4 "
-  }, /* @__PURE__ */ import_react40.default.createElement("p", {
+  }, /* @__PURE__ */ import_react42.default.createElement("p", {
     className: "text-teal-400"
-  }, (0, import_date_fns.format)(new Date(post.created_at), "MMMM do, yyyy")), /* @__PURE__ */ import_react40.default.createElement(Divider_default, null), /* @__PURE__ */ import_react40.default.createElement("div", {
+  }, (0, import_date_fns.format)(new Date(post.created_at), "MMMM do, yyyy")), /* @__PURE__ */ import_react42.default.createElement(Divider_default, null), /* @__PURE__ */ import_react42.default.createElement("div", {
     className: "flex items-center gap-2"
-  }, /* @__PURE__ */ import_react40.default.createElement("i", {
+  }, /* @__PURE__ */ import_react42.default.createElement("i", {
     className: "fa-solid fa-face-grin-hearts text-yellow-500"
-  }), /* @__PURE__ */ import_react40.default.createElement("p", {
+  }), /* @__PURE__ */ import_react42.default.createElement("p", {
     className: "text-gray-300"
-  }, post.views))), /* @__PURE__ */ import_react40.default.createElement(MarkdownRender_default, {
+  }, post.views))), /* @__PURE__ */ import_react42.default.createElement(MarkdownRender_default, {
     markdown
-  })), /* @__PURE__ */ import_react40.default.createElement(Gap_default, {
+  })), /* @__PURE__ */ import_react42.default.createElement(Gap_default, {
     height: "h-12"
-  }), /* @__PURE__ */ import_react40.default.createElement(PostFooter_default, {
+  }), /* @__PURE__ */ import_react42.default.createElement(PostFooter_default, {
     postTitle: post.title,
     slug: post.slug
-  }), /* @__PURE__ */ import_react40.default.createElement(Gap_default, null), /* @__PURE__ */ import_react40.default.createElement("div", {
+  }), /* @__PURE__ */ import_react42.default.createElement(Gap_default, null), /* @__PURE__ */ import_react42.default.createElement("div", {
     className: "ml-auto mr-auto flex max-w-screen-xl flex-col p-4"
-  }, /* @__PURE__ */ import_react40.default.createElement("h2", {
+  }, /* @__PURE__ */ import_react42.default.createElement("h2", {
     className: "h2"
-  }, "If you enjoyed this article"), /* @__PURE__ */ import_react40.default.createElement("p", {
+  }, "If you enjoyed this article"), /* @__PURE__ */ import_react42.default.createElement("p", {
     className: "subtitle"
-  }, "You might enjoy one of these suggestions"), /* @__PURE__ */ import_react40.default.createElement("div", {
+  }, "You might enjoy one of these suggestions"), /* @__PURE__ */ import_react42.default.createElement("div", {
     className: "mt-10 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3"
-  }, suggestions.map((post2) => /* @__PURE__ */ import_react40.default.createElement(PostItem_default, {
+  }, suggestions.map((post2) => /* @__PURE__ */ import_react42.default.createElement(PostItem_default, {
     key: post2.slug,
     post: post2
-  })))), /* @__PURE__ */ import_react40.default.createElement(Gap_default, null), /* @__PURE__ */ import_react40.default.createElement(Footer_default, null));
+  })))), /* @__PURE__ */ import_react42.default.createElement(Gap_default, null), /* @__PURE__ */ import_react42.default.createElement(Footer_default, null));
 }, slug_default2 = PostSlug;
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/blog/index.jsx
@@ -1593,24 +1597,24 @@ __export(blog_exports, {
   meta: () => meta3
 });
 init_react();
-var import_react43 = require("@remix-run/react");
+var import_react45 = require("@remix-run/react");
 
 // app/components/BlogPosts.jsx
 init_react();
-var import_react41 = __toESM(require("react")), BlogPosts = ({ posts, query }) => {
+var import_react43 = __toESM(require("react")), BlogPosts = ({ posts, query }) => {
   let tagRegex = new RegExp(query, "i");
-  return posts.filter((post) => query ? post.title.toLowerCase().includes(query) || post.tags.filter((tag) => tagRegex.test(tag.name || tag.label)).length > 0 : post).map((post) => /* @__PURE__ */ import_react41.default.createElement(PostItem_default, {
+  return posts.filter((post) => query ? post.title.toLowerCase().includes(query) || post.tags.filter((tag) => tagRegex.test(tag.name || tag.label)).length > 0 : post).map((post) => /* @__PURE__ */ import_react43.default.createElement(PostItem_default, {
     key: post.title + "_" + post.id,
     post
   }));
 }, BlogPosts_default = BlogPosts;
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/blog/index.jsx
-var import_react_router_dom = require("react-router-dom"), import_react44 = __toESM(require("react"));
+var import_react_router_dom = require("react-router-dom"), import_react46 = __toESM(require("react"));
 
 // app/layouts/SectionHero.jsx
 init_react();
-var import_react42 = __toESM(require("react")), import_framer_motion = require("framer-motion"), SectionHero = ({ leftCol, rightCol, maxWidth = "max-w-screen-xl" }) => {
+var import_react44 = __toESM(require("react")), import_framer_motion = require("framer-motion"), SectionHero = ({ leftCol, rightCol, maxWidth = "max-w-screen-xl" }) => {
   let variants = {
     hidden: { opacity: 0, y: 25, filter: "blur(4px)" },
     visible: {
@@ -1620,20 +1624,20 @@ var import_react42 = __toESM(require("react")), import_framer_motion = require("
       transition: { duration: 0.5 }
     }
   };
-  return /* @__PURE__ */ import_react42.default.createElement(import_framer_motion.motion.section, {
+  return /* @__PURE__ */ import_react44.default.createElement(import_framer_motion.motion.section, {
     initial: "hidden",
     animate: "visible",
     variants,
     className: `ml-auto mr-auto flex w-full ${maxWidth} flex-col-reverse items-center gap-8 p-4 tablet:flex-row desktop:gap-20`
-  }, /* @__PURE__ */ import_react42.default.createElement("div", {
+  }, /* @__PURE__ */ import_react44.default.createElement("div", {
     className: "flex w-full flex-col items-start desktop:w-1/2"
-  }, leftCol), /* @__PURE__ */ import_react42.default.createElement("div", {
+  }, leftCol), /* @__PURE__ */ import_react44.default.createElement("div", {
     className: "ml-auto mr-auto  w-full max-w-lg desktop:w-1/2"
   }, rightCol));
 }, SectionHero_default = SectionHero;
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/blog/index.jsx
-var import_react45 = require("@remix-run/react");
+var import_react47 = require("@remix-run/react");
 
 // app/utils/misc.js
 init_react();
@@ -1656,96 +1660,96 @@ var meta3 = () => ({
   let { posts } = await getPosts();
   return { posts };
 }, index2 = () => {
-  let { posts } = (0, import_react43.useLoaderData)(), postsTags = posts.reduce((acc, post, i) => (post.tags.forEach((tag) => {
+  let { posts } = (0, import_react45.useLoaderData)(), postsTags = posts.reduce((acc, post, i) => (post.tags.forEach((tag) => {
     acc.includes(tag) || acc.push(tag);
-  }), acc), []).filter((tag, i, self) => i === self.findIndex((t) => t.value === tag.value)), [searchParams] = (0, import_react45.useSearchParams)(), featuredPost = posts.filter((post) => post.featured)[0], [queryValue, setQuery] = import_react44.default.useState(() => searchParams.get("q") ?? ""), query = queryValue.trim();
-  return useUpdateQueryStringValueWithoutNavigation("q", query), /* @__PURE__ */ import_react44.default.createElement("div", null, /* @__PURE__ */ import_react44.default.createElement(Header_default, null), /* @__PURE__ */ import_react44.default.createElement(Gap_default, {
+  }), acc), []).filter((tag, i, self) => i === self.findIndex((t) => t.value === tag.value)), [searchParams] = (0, import_react47.useSearchParams)(), featuredPost = posts.filter((post) => post.featured)[0], [queryValue, setQuery] = import_react46.default.useState(() => searchParams.get("q") ?? ""), query = queryValue.trim();
+  return useUpdateQueryStringValueWithoutNavigation("q", query), /* @__PURE__ */ import_react46.default.createElement("div", null, /* @__PURE__ */ import_react46.default.createElement(Header_default, null), /* @__PURE__ */ import_react46.default.createElement(Gap_default, {
     height: "h-20"
-  }), /* @__PURE__ */ import_react44.default.createElement("main", {
+  }), /* @__PURE__ */ import_react46.default.createElement("main", {
     className: "ml-auto mr-auto mb-20 max-w-screen-xl"
-  }, /* @__PURE__ */ import_react44.default.createElement(SectionHero_default, {
-    leftCol: /* @__PURE__ */ import_react44.default.createElement(import_react44.default.Fragment, null, /* @__PURE__ */ import_react44.default.createElement("h1", {
+  }, /* @__PURE__ */ import_react46.default.createElement(SectionHero_default, {
+    leftCol: /* @__PURE__ */ import_react46.default.createElement(import_react46.default.Fragment, null, /* @__PURE__ */ import_react46.default.createElement("h1", {
       className: "h1"
-    }, "Welcome to my growing collection of articles"), /* @__PURE__ */ import_react44.default.createElement("p", {
+    }, "Welcome to my growing collection of articles"), /* @__PURE__ */ import_react46.default.createElement("p", {
       className: "subtitle"
-    }, "I write mainly for myself, but hopefully they help you too!"), /* @__PURE__ */ import_react44.default.createElement(import_react43.Form, {
+    }, "I write mainly for myself, but hopefully they help you too!"), /* @__PURE__ */ import_react46.default.createElement(import_react45.Form, {
       action: "/blog",
       method: "GET",
       onSubmit: (e) => e.preventDefault(),
       className: "w-full"
-    }, /* @__PURE__ */ import_react44.default.createElement("input", {
+    }, /* @__PURE__ */ import_react46.default.createElement("input", {
       type: "search",
       placeholder: "Search for articles",
       className: "mt-6 w-full rounded-full border-2 border-gray-500 bg-zinc-800 bg-opacity-20 p-6 text-white tablet:mt-16",
       onChange: (event) => setQuery(event.currentTarget.value.toLowerCase())
     }))),
-    rightCol: /* @__PURE__ */ import_react44.default.createElement(import_react44.default.Fragment, null, /* @__PURE__ */ import_react44.default.createElement("h2", {
+    rightCol: /* @__PURE__ */ import_react46.default.createElement(import_react46.default.Fragment, null, /* @__PURE__ */ import_react46.default.createElement("h2", {
       className: "h3 mb-6"
-    }, "Featured article"), /* @__PURE__ */ import_react44.default.createElement("div", {
+    }, "Featured article"), /* @__PURE__ */ import_react46.default.createElement("div", {
       className: "flex w-full flex-col rounded-lg  bg-zinc-800 shadow-lg"
-    }, /* @__PURE__ */ import_react44.default.createElement("img", {
+    }, /* @__PURE__ */ import_react46.default.createElement("img", {
       src: featuredPost.cover_img,
       alt: "",
       className: "mb-4 h-52 w-full rounded-lg  object-cover"
-    }), /* @__PURE__ */ import_react44.default.createElement("div", {
+    }), /* @__PURE__ */ import_react46.default.createElement("div", {
       className: "p-6"
-    }, /* @__PURE__ */ import_react44.default.createElement("h3", {
+    }, /* @__PURE__ */ import_react46.default.createElement("h3", {
       className: "h3"
-    }, featuredPost.title), /* @__PURE__ */ import_react44.default.createElement("p", {
+    }, featuredPost.title), /* @__PURE__ */ import_react46.default.createElement("p", {
       className: "mt-4 text-xl text-gray-400"
-    }, featuredPost.description), /* @__PURE__ */ import_react44.default.createElement(import_react_router_dom.Link, {
+    }, featuredPost.description), /* @__PURE__ */ import_react46.default.createElement(import_react_router_dom.Link, {
       to: `/blog/${featuredPost.slug}`,
       className: "link-button small secondary mt-6"
-    }, "Read post", /* @__PURE__ */ import_react44.default.createElement("i", {
+    }, "Read post", /* @__PURE__ */ import_react46.default.createElement("i", {
       className: "fa-solid fa-arrow-right-long"
     })))))
-  }), /* @__PURE__ */ import_react44.default.createElement(Gap_default, {
+  }), /* @__PURE__ */ import_react46.default.createElement(Gap_default, {
     height: "h-12 desktop:h-28",
     className: ""
-  }), /* @__PURE__ */ import_react44.default.createElement("section", {
+  }), /* @__PURE__ */ import_react46.default.createElement("section", {
     className: "p-4"
-  }, /* @__PURE__ */ import_react44.default.createElement("div", {
+  }, /* @__PURE__ */ import_react46.default.createElement("div", {
     className: "flex flex-col"
-  }, /* @__PURE__ */ import_react44.default.createElement("h3", {
+  }, /* @__PURE__ */ import_react46.default.createElement("h3", {
     className: "h3"
-  }, "Search by tag"), /* @__PURE__ */ import_react44.default.createElement("div", {
+  }, "Search by tag"), /* @__PURE__ */ import_react46.default.createElement("div", {
     className: "mt-8 flex max-w-3xl flex-wrap gap-2"
-  }, /* @__PURE__ */ import_react44.default.createElement("label", {
+  }, /* @__PURE__ */ import_react46.default.createElement("label", {
     className: `whitespace-nowrap rounded-full border-2 bg-zinc-800  p-3 px-6 text-gray-200 ${query === "" ? "border-yellow-300" : "border-transparent"}`,
     onClick: () => {
       setQuery("");
     }
-  }, /* @__PURE__ */ import_react44.default.createElement("input", {
+  }, /* @__PURE__ */ import_react46.default.createElement("input", {
     type: "checkbox",
     name: "",
     id: "",
     className: "sr-only"
-  }), /* @__PURE__ */ import_react44.default.createElement("span", null, "All")), postsTags.map((tag, id) => {
+  }), /* @__PURE__ */ import_react46.default.createElement("span", null, "All")), postsTags.map((tag, id) => {
     var _a, _b, _c;
-    return /* @__PURE__ */ import_react44.default.createElement("label", {
+    return /* @__PURE__ */ import_react46.default.createElement("label", {
       className: `whitespace-nowrap rounded-full border-2 bg-zinc-800  p-3 px-6 text-gray-200 ${query.includes((_a = tag.name || tag.label) == null ? void 0 : _a.toLowerCase()) ? "border-yellow-300" : "border-transparent"}`,
       onClick: () => {
         setQuery((tag.name || tag.label).toLowerCase());
       },
       key: id
-    }, /* @__PURE__ */ import_react44.default.createElement("input", {
+    }, /* @__PURE__ */ import_react46.default.createElement("input", {
       type: "checkbox",
       name: "",
       id: "",
       className: "sr-only"
-    }), /* @__PURE__ */ import_react44.default.createElement("span", null, ((_b = tag.name) == null ? void 0 : _b.toLowerCase()) || ((_c = tag.label) == null ? void 0 : _c.toLowerCase()) || null));
-  })))), /* @__PURE__ */ import_react44.default.createElement(Gap_default, {
+    }), /* @__PURE__ */ import_react46.default.createElement("span", null, ((_b = tag.name) == null ? void 0 : _b.toLowerCase()) || ((_c = tag.label) == null ? void 0 : _c.toLowerCase()) || null));
+  })))), /* @__PURE__ */ import_react46.default.createElement(Gap_default, {
     height: "h-12 desktop:h-28"
-  }), /* @__PURE__ */ import_react44.default.createElement("section", {
+  }), /* @__PURE__ */ import_react46.default.createElement("section", {
     className: "p-4"
-  }, /* @__PURE__ */ import_react44.default.createElement("p", {
+  }, /* @__PURE__ */ import_react46.default.createElement("p", {
     className: "h3"
-  }, "Showing ", /* @__PURE__ */ import_react44.default.createElement("span", null, query ? `{ ${query} }` : "{ all }"), " articles"), /* @__PURE__ */ import_react44.default.createElement("div", {
+  }, "Showing ", /* @__PURE__ */ import_react46.default.createElement("span", null, query ? `{ ${query} }` : "{ all }"), " articles"), /* @__PURE__ */ import_react46.default.createElement("div", {
     className: "mt-10 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3"
-  }, /* @__PURE__ */ import_react44.default.createElement(BlogPosts_default, {
+  }, /* @__PURE__ */ import_react46.default.createElement(BlogPosts_default, {
     posts,
     query
-  })))), /* @__PURE__ */ import_react44.default.createElement(Footer_default, null));
+  })))), /* @__PURE__ */ import_react46.default.createElement(Footer_default, null));
 }, blog_default = index2;
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/resources.jsx
@@ -1756,11 +1760,11 @@ __export(resources_exports, {
   meta: () => meta4
 });
 init_react();
-var import_react47 = __toESM(require("react"));
+var import_react49 = __toESM(require("react"));
 
 // app/constants/resources.js
 init_react();
-var import_react46 = require("react"), analytics = {
+var import_react48 = require("react"), analytics = {
   title: "Analytics",
   children: [
     {
@@ -2196,7 +2200,7 @@ function getImage(filename) {
 }
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/resources.jsx
-var import_react48 = require("@remix-run/react"), meta4 = () => ({
+var import_react50 = require("@remix-run/react"), meta4 = () => ({
   "og:image": "https://images.unsplash.com/photo-1499744349893-0c6de53516e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80",
   "og:url": "https://tyrelchambers.com/resources",
   "twitter:card": "summary_large_image",
@@ -2221,55 +2225,55 @@ var import_react48 = require("@remix-run/react"), meta4 = () => ({
   }
   return data;
 }, resources2 = () => {
-  let data = (0, import_react48.useLoaderData)(), [searchParams] = (0, import_react48.useSearchParams)(), filteredList = data.sort((a, b) => a.title < b.title ? -1 : a.title > b.title ? 1 : 0).map((item) => item.title), [queryValue, setQuery] = import_react47.default.useState(() => searchParams.get("q") ?? "");
-  return useUpdateQueryStringValueWithoutNavigation("q", queryValue), /* @__PURE__ */ import_react47.default.createElement("div", null, /* @__PURE__ */ import_react47.default.createElement(Header_default, null), /* @__PURE__ */ import_react47.default.createElement("main", {
+  let data = (0, import_react50.useLoaderData)(), [searchParams] = (0, import_react50.useSearchParams)(), filteredList = data.sort((a, b) => a.title < b.title ? -1 : a.title > b.title ? 1 : 0).map((item) => item.title), [queryValue, setQuery] = import_react49.default.useState(() => searchParams.get("q") ?? "");
+  return useUpdateQueryStringValueWithoutNavigation("q", queryValue), /* @__PURE__ */ import_react49.default.createElement("div", null, /* @__PURE__ */ import_react49.default.createElement(Header_default, null), /* @__PURE__ */ import_react49.default.createElement("main", {
     className: "ml-auto mr-auto mt-10 max-w-screen-2xl p-4"
-  }, /* @__PURE__ */ import_react47.default.createElement(SectionHero_default, {
+  }, /* @__PURE__ */ import_react49.default.createElement(SectionHero_default, {
     maxWidth: "max-w-screen-3xl",
-    leftCol: /* @__PURE__ */ import_react47.default.createElement(import_react47.default.Fragment, null, /* @__PURE__ */ import_react47.default.createElement("h1", {
+    leftCol: /* @__PURE__ */ import_react49.default.createElement(import_react49.default.Fragment, null, /* @__PURE__ */ import_react49.default.createElement("h1", {
       className: "h1"
-    }, "A curated list of resources"), /* @__PURE__ */ import_react47.default.createElement("p", {
+    }, "A curated list of resources"), /* @__PURE__ */ import_react49.default.createElement("p", {
       className: "subtitle"
-    }, "These lists consist of my favourite bookmarks, services and other helpful stuff"), /* @__PURE__ */ import_react47.default.createElement("p", {
+    }, "These lists consist of my favourite bookmarks, services and other helpful stuff"), /* @__PURE__ */ import_react49.default.createElement("p", {
       className: "mt-8 text-gray-400"
-    }, "If there are any resources that you love and would like to see in this list. I'd love it if you'd open an issue or submit a PR over on the", " ", /* @__PURE__ */ import_react47.default.createElement("a", {
+    }, "If there are any resources that you love and would like to see in this list. I'd love it if you'd open an issue or submit a PR over on the", " ", /* @__PURE__ */ import_react49.default.createElement("a", {
       href: "https://github.com/tyrelchambers/tyrelchambers.com",
       className: "text-blue-300 underline",
       target: "_blank",
       rel: "noopenner noreferrer"
     }, "Github repo.")))
-  }), /* @__PURE__ */ import_react47.default.createElement("div", {
+  }), /* @__PURE__ */ import_react49.default.createElement("div", {
     className: "mt-16 mb-16 flex flex-wrap items-center gap-6"
-  }, filteredList.map((item) => /* @__PURE__ */ import_react47.default.createElement("button", {
+  }, filteredList.map((item) => /* @__PURE__ */ import_react49.default.createElement("button", {
     className: `whitespace-nowrap rounded-full  py-2 px-4  transition-all  hover:text-white ${queryValue === item ? "bg-yellow-300 text-gray-800 hover:bg-red-300" : "bg-gray-800 text-gray-300 hover:bg-gray-700"}`,
     onClick: () => setQuery(queryValue === item ? "" : item),
     key: item
-  }, item))), /* @__PURE__ */ import_react47.default.createElement("div", {
+  }, item))), /* @__PURE__ */ import_react49.default.createElement("div", {
     className: "flex flex-col gap-20"
-  }, data.filter((item) => queryValue ? item.title === queryValue : item).map((resource) => /* @__PURE__ */ import_react47.default.createElement("section", {
+  }, data.filter((item) => queryValue ? item.title === queryValue : item).map((resource) => /* @__PURE__ */ import_react49.default.createElement("section", {
     key: resource.title
-  }, /* @__PURE__ */ import_react47.default.createElement("h2", {
+  }, /* @__PURE__ */ import_react49.default.createElement("h2", {
     className: "h2 coloured"
-  }, resource.title), /* @__PURE__ */ import_react47.default.createElement("div", {
+  }, resource.title), /* @__PURE__ */ import_react49.default.createElement("div", {
     className: "mt-8 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3"
-  }, resource.children.map((item, index3) => /* @__PURE__ */ import_react47.default.createElement("a", {
+  }, resource.children.map((item, index3) => /* @__PURE__ */ import_react49.default.createElement("a", {
     href: item.url,
     key: index3,
     target: "_blank",
     className: "flex flex-col items-center gap-6 rounded-2xl border-2 border-gray-700 p-6 transition-all hover:border-yellow-300 mobile:flex-row tablet:items-start"
-  }, item.imageURL && /* @__PURE__ */ import_react47.default.createElement("img", {
+  }, item.imageURL && /* @__PURE__ */ import_react49.default.createElement("img", {
     src: `data:image/webp;base64, ${item.imageURL}`,
     alt: "",
     className: "aspect-[4/6] w-32  rounded-lg object-cover"
-  }), /* @__PURE__ */ import_react47.default.createElement("div", {
+  }), /* @__PURE__ */ import_react49.default.createElement("div", {
     className: "flex flex-col"
-  }, /* @__PURE__ */ import_react47.default.createElement("h3", {
+  }, /* @__PURE__ */ import_react49.default.createElement("h3", {
     className: "h3 text-center mobile:text-left"
-  }, item.title), item.author && /* @__PURE__ */ import_react47.default.createElement("p", {
+  }, item.title), item.author && /* @__PURE__ */ import_react49.default.createElement("p", {
     className: "mt-4 text-center text-xl text-gray-400 mobile:text-left"
-  }, item.author), item.description && /* @__PURE__ */ import_react47.default.createElement("p", {
+  }, item.author), item.description && /* @__PURE__ */ import_react49.default.createElement("p", {
     className: "mt-4 text-center text-xl text-gray-400 mobile:text-left"
-  }, item.description))))))))), /* @__PURE__ */ import_react47.default.createElement(Footer_default, null));
+  }, item.description))))))))), /* @__PURE__ */ import_react49.default.createElement(Footer_default, null));
 }, resources_default = resources2;
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/signout.jsx
@@ -2279,7 +2283,7 @@ __export(signout_exports, {
   loader: () => loader11
 });
 init_react();
-var import_node3 = require("@remix-run/node"), import_react49 = require("react");
+var import_node3 = require("@remix-run/node"), import_react51 = require("react");
 var loader11 = () => (0, import_node3.redirect)("/"), action4 = async ({ request }) => logout(request);
 
 // route:/Users/tyrelchambers/home/tyrelchambers.com/app/routes/about.jsx
@@ -2290,7 +2294,7 @@ __export(about_exports, {
   meta: () => meta5
 });
 init_react();
-var import_react50 = require("@remix-run/react");
+var import_react52 = require("@remix-run/react");
 
 // app/utils/getBlogPosts.js
 init_react();
@@ -2319,7 +2323,7 @@ var meta5 = () => ({
   let posts = await getBlogPosts();
   return getArticleSuggestions({ articles: posts, count: 3 });
 }, about = () => {
-  let suggestions = (0, import_react50.useLoaderData)();
+  let suggestions = (0, import_react52.useLoaderData)();
   return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Header_default, null), /* @__PURE__ */ React.createElement("main", {
     className: "ml-auto mr-auto mt-20 w-full max-w-screen-xl"
   }, /* @__PURE__ */ React.createElement(SectionHero_default, {
@@ -2432,7 +2436,7 @@ var meta5 = () => ({
     className: "h2"
   }, "I enjoy writing and teaching others"), /* @__PURE__ */ React.createElement("p", {
     className: "subtitle"
-  }, "If you'd like, here are a few articles I've wrote...")), /* @__PURE__ */ React.createElement(import_react50.Link, {
+  }, "If you'd like, here are a few articles I've wrote...")), /* @__PURE__ */ React.createElement(import_react52.Link, {
     to: "/blog",
     className: "link-button small secondary mt-6 tablet:mt-0"
   }, "Read more", /* @__PURE__ */ React.createElement("i", {
@@ -2499,36 +2503,36 @@ __export(routes_exports, {
   loader: () => loader13
 });
 init_react();
-var import_react53 = require("@remix-run/react");
+var import_react56 = require("@remix-run/react");
 
 // app/components/Project.jsx
 init_react();
-var import_react51 = __toESM(require("react")), import_remix6 = __toESM(require_dist()), Project = ({ project }) => /* @__PURE__ */ import_react51.default.createElement("div", {
+var import_react53 = __toESM(require("react")), import_react54 = require("@remix-run/react"), Project = ({ project }) => /* @__PURE__ */ import_react53.default.createElement("div", {
   key: project.title,
   className: "project rounded-lg border-2 border-gray-700 bg-zinc-800 p-6 transition-all "
-}, /* @__PURE__ */ import_react51.default.createElement("h3", {
+}, /* @__PURE__ */ import_react53.default.createElement("h3", {
   className: "h3 mb-4"
-}, project.title), /* @__PURE__ */ import_react51.default.createElement("p", {
+}, project.title), /* @__PURE__ */ import_react53.default.createElement("p", {
   className: "text-normal h-40 text-gray-400 sm:h-32 desktop:text-xl"
-}, project.summary), (project == null ? void 0 : project.caseStudy) ? /* @__PURE__ */ import_react51.default.createElement(import_remix6.Link, {
+}, project.summary), (project == null ? void 0 : project.caseStudy) ? /* @__PURE__ */ import_react53.default.createElement(import_react54.Link, {
   to: `/case-study/${project.caseStudy}`,
   className: "link-button small mt-4 outline"
-}, "See ", project.title, " case study", /* @__PURE__ */ import_react51.default.createElement("i", {
+}, "See ", project.title, " case study", /* @__PURE__ */ import_react53.default.createElement("i", {
   className: "fa-solid fa-arrow-right-long"
-})) : /* @__PURE__ */ import_react51.default.createElement("a", {
+})) : /* @__PURE__ */ import_react53.default.createElement("a", {
   href: project.url,
   className: "link-button small mt-4 outline",
   target: "_blank",
   rel: "noopenerr noreferrer"
-}, "See ", project.title, /* @__PURE__ */ import_react51.default.createElement("i", {
+}, "See ", project.title, /* @__PURE__ */ import_react53.default.createElement("i", {
   className: "fa-solid fa-arrow-right-long"
 }))), Project_default = Project;
 
 // app/components/ScrollIcon.jsx
 init_react();
-var import_react52 = __toESM(require("react")), ScrollIcon = () => /* @__PURE__ */ import_react52.default.createElement("div", {
+var import_react55 = __toESM(require("react")), ScrollIcon = () => /* @__PURE__ */ import_react55.default.createElement("div", {
   className: "flex w-full items-center before:h-[1px] before:w-full before:bg-gray-700   after:h-[1px] after:w-full after:bg-gray-700"
-}, /* @__PURE__ */ import_react52.default.createElement("p", {
+}, /* @__PURE__ */ import_react55.default.createElement("p", {
   className: "text-gray-500 whitespace-nowrap ml-4 mr-4"
 }, "Scroll me")), ScrollIcon_default = ScrollIcon;
 
@@ -2617,7 +2621,7 @@ var loader13 = async () => {
   });
 };
 function Index() {
-  let posts = (0, import_react53.useLoaderData)();
+  let posts = (0, import_react56.useLoaderData)();
   return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Header_default, null), /* @__PURE__ */ React.createElement("main", {
     className: "mt-4 ml-auto mr-auto max-w-screen-xl py-8 desktop:mt-14"
   }, /* @__PURE__ */ React.createElement(SectionHero_default, {
@@ -2625,12 +2629,12 @@ function Index() {
       className: "h1"
     }, "Building software and teaching people about what I love the most"), /* @__PURE__ */ React.createElement("div", {
       className: "mt-10 flex w-full flex-col items-center gap-6 desktop:flex-row"
-    }, /* @__PURE__ */ React.createElement(import_react53.Link, {
+    }, /* @__PURE__ */ React.createElement(import_react56.Link, {
       to: "/blog",
       className: "link-button primary large w-full"
     }, "Read my blog", /* @__PURE__ */ React.createElement("i", {
       className: "fa-solid fa-arrow-right-long"
-    })), /* @__PURE__ */ React.createElement(import_react53.Link, {
+    })), /* @__PURE__ */ React.createElement(import_react56.Link, {
       to: "/resources",
       className: "link-button secondary large w-full"
     }, "View some resources"))),
@@ -2659,7 +2663,7 @@ function Index() {
     className: "text-normal text-gray-400  desktop:text-2xl"
   }, "Outside of programming I enjoy playing music, video games and taking photographs. I also have a", " ", /* @__PURE__ */ React.createElement("a", {
     href: "https://youtube.com/storiesaftermidnight"
-  }, "Youtube channel"), " ", "where I flex and grow my narration skills!"), /* @__PURE__ */ React.createElement(SocialList_default, null), /* @__PURE__ */ React.createElement(import_react53.Link, {
+  }, "Youtube channel"), " ", "where I flex and grow my narration skills!"), /* @__PURE__ */ React.createElement(SocialList_default, null), /* @__PURE__ */ React.createElement(import_react56.Link, {
     to: "/about",
     className: "link-button outline"
   }, "Learn more about me", /* @__PURE__ */ React.createElement("i", {
@@ -2685,7 +2689,7 @@ function Index() {
     className: "h2"
   }, "Recently published posts"), /* @__PURE__ */ React.createElement("p", {
     className: "subtitle"
-  }, "Take a look at these recent articles")), /* @__PURE__ */ React.createElement(import_react53.Link, {
+  }, "Take a look at these recent articles")), /* @__PURE__ */ React.createElement(import_react56.Link, {
     to: "/blog",
     className: "link-button small secondary mt-6 tablet:mt-0"
   }, "See all posts", /* @__PURE__ */ React.createElement("i", {
@@ -2736,7 +2740,7 @@ function Index() {
     className: "h2"
   }, "Resources I've collected"), /* @__PURE__ */ React.createElement("p", {
     className: "subtitle"
-  }, "If you're looking for some handy links to helpful resources, check them out")), /* @__PURE__ */ React.createElement(import_react53.Link, {
+  }, "If you're looking for some handy links to helpful resources, check them out")), /* @__PURE__ */ React.createElement(import_react56.Link, {
     to: "/resources",
     className: "link-button small secondary h-fit"
   }, "See resources", /* @__PURE__ */ React.createElement("i", {
@@ -2751,8 +2755,8 @@ __export(login_exports, {
   default: () => login
 });
 init_react();
-var import_react54 = __toESM(require("react"));
-var import_react55 = require("@remix-run/react");
+var import_react57 = __toESM(require("react"));
+var import_react58 = require("@remix-run/react");
 var action5 = async ({ request }) => {
   let password = (await request.formData()).get("password"), redirectTo = "/";
   return await verifyLogin(password) ? createUserSession({
@@ -2762,24 +2766,24 @@ var action5 = async ({ request }) => {
   }) : null;
 };
 function login() {
-  return /* @__PURE__ */ import_react54.default.createElement("div", {
+  return /* @__PURE__ */ import_react57.default.createElement("div", {
     className: "ml-auto mr-auto mt-10 w-full max-w-lg"
-  }, /* @__PURE__ */ import_react54.default.createElement("h1", {
+  }, /* @__PURE__ */ import_react57.default.createElement("h1", {
     className: "h1"
-  }, "Login"), /* @__PURE__ */ import_react54.default.createElement(import_react55.Form, {
+  }, "Login"), /* @__PURE__ */ import_react57.default.createElement(import_react58.Form, {
     className: "mt-6",
     method: "post"
-  }, /* @__PURE__ */ import_react54.default.createElement("div", {
+  }, /* @__PURE__ */ import_react57.default.createElement("div", {
     className: "mt-4 flex flex-col"
-  }, /* @__PURE__ */ import_react54.default.createElement("label", {
+  }, /* @__PURE__ */ import_react57.default.createElement("label", {
     className: " text-xl text-gray-300",
     htmlFor: "password"
-  }, "Password"), /* @__PURE__ */ import_react54.default.createElement("input", {
+  }, "Password"), /* @__PURE__ */ import_react57.default.createElement("input", {
     type: "password",
     name: "password",
     className: "mt-2 rounded-md border-[1px] border-gray-700 bg-gray-800 p-3",
     placeholder: "Password"
-  })), /* @__PURE__ */ import_react54.default.createElement("button", {
+  })), /* @__PURE__ */ import_react57.default.createElement("button", {
     className: "mt-4 w-full rounded-lg bg-yellow-300 p-4",
     type: "submit"
   }, "Login")));
@@ -2787,7 +2791,7 @@ function login() {
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
 init_react();
-var assets_manifest_default = { version: "743c2bba", entry: { module: "/build/entry.client-74MTXT7N.js", imports: ["/build/_shared/chunk-SDCIVS77.js", "/build/_shared/chunk-NUTN2VOP.js", "/build/_shared/chunk-T4G3O5J3.js", "/build/_shared/chunk-BQCUINC5.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-VBWY5WB7.js", imports: ["/build/_shared/chunk-4VYM3NBW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-WQGLBIBH.js", imports: ["/build/_shared/chunk-W52WZJTP.js", "/build/_shared/chunk-MWMN4VJE.js", "/build/_shared/chunk-4LX5HSBO.js", "/build/_shared/chunk-XILY6LVZ.js", "/build/_shared/chunk-M252VCJO.js", "/build/_shared/chunk-VITVGEWW.js", "/build/_shared/chunk-RFKPYEPB.js", "/build/_shared/chunk-7UQOVAUD.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin/index": { id: "routes/admin/index", parentId: "root", path: "admin", index: !0, caseSensitive: void 0, module: "/build/routes/admin/index-ZKJHQVXU.js", imports: ["/build/_shared/chunk-BM24CYLC.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin/post/$id/edit": { id: "routes/admin/post/$id/edit", parentId: "root", path: "admin/post/:id/edit", index: void 0, caseSensitive: void 0, module: "/build/routes/admin/post/$id/edit-KOAWFVHV.js", imports: ["/build/_shared/chunk-MN5KMBNN.js", "/build/_shared/chunk-DFFI7QUZ.js", "/build/_shared/chunk-JJH4METM.js", "/build/_shared/chunk-7UQOVAUD.js", "/build/_shared/chunk-BM24CYLC.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin/post/$id/index": { id: "routes/admin/post/$id/index", parentId: "root", path: "admin/post/:id", index: !0, caseSensitive: void 0, module: "/build/routes/admin/post/$id/index-O4HCLTFW.js", imports: ["/build/_shared/chunk-2L5ODSZN.js", "/build/_shared/chunk-YX5GRXMF.js", "/build/_shared/chunk-MN5KMBNN.js", "/build/_shared/chunk-HNV5RUWW.js", "/build/_shared/chunk-BM24CYLC.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin/post/new": { id: "routes/admin/post/new", parentId: "root", path: "admin/post/new", index: void 0, caseSensitive: void 0, module: "/build/routes/admin/post/new-AY2VHBOV.js", imports: ["/build/_shared/chunk-RFKPYEPB.js", "/build/_shared/chunk-JJH4METM.js", "/build/_shared/chunk-7UQOVAUD.js", "/build/_shared/chunk-7G3WXXZM.js", "/build/_shared/chunk-BM24CYLC.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin/posts/index": { id: "routes/admin/posts/index", parentId: "root", path: "admin/posts", index: !0, caseSensitive: void 0, module: "/build/routes/admin/posts/index-32KQPJQI.js", imports: ["/build/_shared/chunk-M252VCJO.js", "/build/_shared/chunk-DFFI7QUZ.js", "/build/_shared/chunk-7G3WXXZM.js", "/build/_shared/chunk-BM24CYLC.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/blog/$slug": { id: "routes/blog/$slug", parentId: "root", path: "blog/:slug", index: void 0, caseSensitive: void 0, module: "/build/routes/blog/$slug-FHM534IG.js", imports: ["/build/_shared/chunk-W52WZJTP.js", "/build/_shared/chunk-4LX5HSBO.js", "/build/_shared/chunk-XILY6LVZ.js", "/build/_shared/chunk-2L5ODSZN.js", "/build/_shared/chunk-M252VCJO.js", "/build/_shared/chunk-VITVGEWW.js", "/build/_shared/chunk-HNV5RUWW.js", "/build/_shared/chunk-RFKPYEPB.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/blog/index": { id: "routes/blog/index", parentId: "root", path: "blog", index: !0, caseSensitive: void 0, module: "/build/routes/blog/index-TP3G3CR5.js", imports: ["/build/_shared/chunk-ZRT7UKPZ.js", "/build/_shared/chunk-W52WZJTP.js", "/build/_shared/chunk-MWMN4VJE.js", "/build/_shared/chunk-4LX5HSBO.js", "/build/_shared/chunk-XILY6LVZ.js", "/build/_shared/chunk-YX5GRXMF.js", "/build/_shared/chunk-M252VCJO.js", "/build/_shared/chunk-VITVGEWW.js", "/build/_shared/chunk-RFKPYEPB.js", "/build/_shared/chunk-7UQOVAUD.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/case-study/$slug": { id: "routes/case-study/$slug", parentId: "root", path: "case-study/:slug", index: void 0, caseSensitive: void 0, module: "/build/routes/case-study/$slug-CAUPSZVO.js", imports: ["/build/_shared/chunk-VITVGEWW.js", "/build/_shared/chunk-HNV5RUWW.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-DIC4Y6N4.js", imports: ["/build/_shared/chunk-W52WZJTP.js", "/build/_shared/chunk-MWMN4VJE.js", "/build/_shared/chunk-4LX5HSBO.js", "/build/_shared/chunk-XILY6LVZ.js", "/build/_shared/chunk-M252VCJO.js", "/build/_shared/chunk-VITVGEWW.js", "/build/_shared/chunk-RFKPYEPB.js", "/build/_shared/chunk-7UQOVAUD.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-BNMU4DNP.js", imports: ["/build/_shared/chunk-XILY6LVZ.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/resources": { id: "routes/resources", parentId: "root", path: "resources", index: void 0, caseSensitive: void 0, module: "/build/routes/resources-DZXI2RMA.js", imports: ["/build/_shared/chunk-ZRT7UKPZ.js", "/build/_shared/chunk-MWMN4VJE.js", "/build/_shared/chunk-4LX5HSBO.js", "/build/_shared/chunk-XILY6LVZ.js", "/build/_shared/chunk-VITVGEWW.js", "/build/_shared/chunk-7UQOVAUD.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/signout": { id: "routes/signout", parentId: "root", path: "signout", index: void 0, caseSensitive: void 0, module: "/build/routes/signout-QRVUXS3U.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-743C2BBA.js" };
+var assets_manifest_default = { version: "97bfdcc8", entry: { module: "/build/entry.client-RUYHYLSC.js", imports: ["/build/_shared/chunk-NUTN2VOP.js", "/build/_shared/chunk-T4G3O5J3.js", "/build/_shared/chunk-BQCUINC5.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-CKAHXTY2.js", imports: ["/build/_shared/chunk-4VYM3NBW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-WQGLBIBH.js", imports: ["/build/_shared/chunk-W52WZJTP.js", "/build/_shared/chunk-MWMN4VJE.js", "/build/_shared/chunk-4LX5HSBO.js", "/build/_shared/chunk-XILY6LVZ.js", "/build/_shared/chunk-M252VCJO.js", "/build/_shared/chunk-VITVGEWW.js", "/build/_shared/chunk-RFKPYEPB.js", "/build/_shared/chunk-7UQOVAUD.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin/index": { id: "routes/admin/index", parentId: "root", path: "admin", index: !0, caseSensitive: void 0, module: "/build/routes/admin/index-ZKJHQVXU.js", imports: ["/build/_shared/chunk-BM24CYLC.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin/post/$id/edit": { id: "routes/admin/post/$id/edit", parentId: "root", path: "admin/post/:id/edit", index: void 0, caseSensitive: void 0, module: "/build/routes/admin/post/$id/edit-KOAWFVHV.js", imports: ["/build/_shared/chunk-MN5KMBNN.js", "/build/_shared/chunk-DFFI7QUZ.js", "/build/_shared/chunk-JJH4METM.js", "/build/_shared/chunk-7UQOVAUD.js", "/build/_shared/chunk-BM24CYLC.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin/post/$id/index": { id: "routes/admin/post/$id/index", parentId: "root", path: "admin/post/:id", index: !0, caseSensitive: void 0, module: "/build/routes/admin/post/$id/index-O4HCLTFW.js", imports: ["/build/_shared/chunk-2L5ODSZN.js", "/build/_shared/chunk-YX5GRXMF.js", "/build/_shared/chunk-MN5KMBNN.js", "/build/_shared/chunk-HNV5RUWW.js", "/build/_shared/chunk-BM24CYLC.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin/post/new": { id: "routes/admin/post/new", parentId: "root", path: "admin/post/new", index: void 0, caseSensitive: void 0, module: "/build/routes/admin/post/new-M3J6PSI6.js", imports: ["/build/_shared/chunk-RFKPYEPB.js", "/build/_shared/chunk-JJH4METM.js", "/build/_shared/chunk-7UQOVAUD.js", "/build/_shared/chunk-7G3WXXZM.js", "/build/_shared/chunk-BM24CYLC.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin/posts/index": { id: "routes/admin/posts/index", parentId: "root", path: "admin/posts", index: !0, caseSensitive: void 0, module: "/build/routes/admin/posts/index-32KQPJQI.js", imports: ["/build/_shared/chunk-M252VCJO.js", "/build/_shared/chunk-DFFI7QUZ.js", "/build/_shared/chunk-7G3WXXZM.js", "/build/_shared/chunk-BM24CYLC.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/blog/$slug": { id: "routes/blog/$slug", parentId: "root", path: "blog/:slug", index: void 0, caseSensitive: void 0, module: "/build/routes/blog/$slug-FHM534IG.js", imports: ["/build/_shared/chunk-W52WZJTP.js", "/build/_shared/chunk-4LX5HSBO.js", "/build/_shared/chunk-XILY6LVZ.js", "/build/_shared/chunk-2L5ODSZN.js", "/build/_shared/chunk-M252VCJO.js", "/build/_shared/chunk-VITVGEWW.js", "/build/_shared/chunk-HNV5RUWW.js", "/build/_shared/chunk-RFKPYEPB.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/blog/index": { id: "routes/blog/index", parentId: "root", path: "blog", index: !0, caseSensitive: void 0, module: "/build/routes/blog/index-TP3G3CR5.js", imports: ["/build/_shared/chunk-ZRT7UKPZ.js", "/build/_shared/chunk-W52WZJTP.js", "/build/_shared/chunk-MWMN4VJE.js", "/build/_shared/chunk-4LX5HSBO.js", "/build/_shared/chunk-XILY6LVZ.js", "/build/_shared/chunk-YX5GRXMF.js", "/build/_shared/chunk-M252VCJO.js", "/build/_shared/chunk-VITVGEWW.js", "/build/_shared/chunk-RFKPYEPB.js", "/build/_shared/chunk-7UQOVAUD.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/case-study/$slug": { id: "routes/case-study/$slug", parentId: "root", path: "case-study/:slug", index: void 0, caseSensitive: void 0, module: "/build/routes/case-study/$slug-CAUPSZVO.js", imports: ["/build/_shared/chunk-VITVGEWW.js", "/build/_shared/chunk-HNV5RUWW.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-ZNUDV6PO.js", imports: ["/build/_shared/chunk-W52WZJTP.js", "/build/_shared/chunk-MWMN4VJE.js", "/build/_shared/chunk-4LX5HSBO.js", "/build/_shared/chunk-XILY6LVZ.js", "/build/_shared/chunk-M252VCJO.js", "/build/_shared/chunk-VITVGEWW.js", "/build/_shared/chunk-RFKPYEPB.js", "/build/_shared/chunk-7UQOVAUD.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-BNMU4DNP.js", imports: ["/build/_shared/chunk-XILY6LVZ.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/resources": { id: "routes/resources", parentId: "root", path: "resources", index: void 0, caseSensitive: void 0, module: "/build/routes/resources-DZXI2RMA.js", imports: ["/build/_shared/chunk-ZRT7UKPZ.js", "/build/_shared/chunk-MWMN4VJE.js", "/build/_shared/chunk-4LX5HSBO.js", "/build/_shared/chunk-XILY6LVZ.js", "/build/_shared/chunk-VITVGEWW.js", "/build/_shared/chunk-7UQOVAUD.js", "/build/_shared/chunk-PXIYREOT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/signout": { id: "routes/signout", parentId: "root", path: "signout", index: void 0, caseSensitive: void 0, module: "/build/routes/signout-QRVUXS3U.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-97BFDCC8.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

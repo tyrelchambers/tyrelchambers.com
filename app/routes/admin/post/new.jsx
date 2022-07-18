@@ -8,7 +8,6 @@ import { supabase } from "~/utils/supabase";
 import { tags } from "~/constants/blogTags";
 import { useState } from "react";
 import { requireUser } from "../../../session.server";
-import { json } from "remix";
 
 export const loader = ({ request }) => {
   const user = requireUser(request);
@@ -49,7 +48,7 @@ export const action = async ({ request }) => {
     return { error };
   }
 
-  return json({ ok: true });
+  return { ok: true };
 };
 
 const newPost = () => {

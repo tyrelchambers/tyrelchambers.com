@@ -6,7 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
-} from "remix";
+} from "@remix-run/react";
 
 import { SupabaseProvider } from "./utils/supabase-client";
 import { createClient } from "@supabase/supabase-js";
