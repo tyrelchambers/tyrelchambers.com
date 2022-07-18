@@ -38,7 +38,7 @@ const about = () => {
             <>
               <h1 className="h1">Hey, I'm Tyrel Chambers 👋</h1>
               <p className="mt-4 text-xl text-blue-300">
-                Software Engineer &amp; DevRel @ This Dot Labs
+                Software Engineer @ This Dot Labs
               </p>
               <p className="subtitle">
                 I'm a full-stack developer living in Ontario, Canada. I'm a
