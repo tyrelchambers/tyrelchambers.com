@@ -2193,9 +2193,9 @@ var import_react48 = require("react"), analytics = {
 
 // app/images.server.js
 init_react();
-var import_fs2 = __toESM(require("fs"));
+var import_fs2 = __toESM(require("fs")), import_path2 = __toESM(require("path"));
 function getImage(filename) {
-  let imagesPath = `${__dirname}/../../public/images/`, image = import_fs2.default.readdirSync(imagesPath).find((image2) => image2.includes(filename));
+  let imagesPath = import_path2.default.join(__dirname, "../public", "/images/"), image = import_fs2.default.readdirSync(imagesPath).find((image2) => image2.includes(filename));
   return import_fs2.default.readFileSync(`${imagesPath}${image}`, "base64");
 }
 
