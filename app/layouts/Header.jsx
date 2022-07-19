@@ -6,12 +6,14 @@ import MobileNav from "./MobileNav";
 import Nav from "./Nav";
 import { useMobileNav } from "~/hooks/useMobileNav";
 
-const Header = () => {
-  const user = useSupabase().auth.currentUser;
+const Header = ({ isDim }) => {
   const { isMobileNavOpen, toggleMobileNav } = useMobileNav();
 
+  const isDimClasses = isDim ? "absolute right-0 left-0 z-10" : "";
   return (
-    <header className="ml-auto mr-auto flex w-full max-w-screen-2xl flex-col items-center justify-between p-4 tablet:py-8">
+    <header
+      className={`ml-auto mr-auto  flex w-full max-w-screen-2xl flex-col items-center justify-between p-4 tablet:py-8 ${isDimClasses}`}
+    >
       <section className="flex w-full flex-col items-center justify-between tablet:flex-row">
         <div className="flex w-full items-center justify-between px-4 tablet:w-fit tablet:px-0">
           <h1 className="mb-4 mt-4 text-2xl text-white sm:mb-0 sm:mt-0">

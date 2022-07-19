@@ -64,47 +64,45 @@ const PostSlug = () => {
 
   return (
     <div>
-      <Header />
-
-      <div className="ml-auto mr-auto mt-20 max-w-screen-md p-4">
-        <Link to="/blog" className="text-white">
-          <i className="fa-solid fa-arrow-left-long mr-8"></i>
-          Back to blogs
-        </Link>
-        <Gap height="h-20" />
+      <Header isDim />
+      <div className="blog-post-bg relative flex h-[500px] items-center">
         <img
           src={post.cover_img}
           alt=""
-          className="mb-10 h-[500px] w-full rounded-lg object-cover shadow-lg"
+          className="mb-10 w-full rounded-lg object-cover shadow-lg"
         />
-        <h1 className="h1 ">{post.title}</h1>
-        <div className="mb-10 flex items-center gap-4 ">
-          <p className="text-teal-400">
-            {format(new Date(post.created_at), "MMMM do, yyyy")}
-          </p>
-          <Divider />
+      </div>
+      <div className="absolute top-1/3 z-10 flex w-full flex-col items-center">
+        <div className="mt-10 max-w-screen-md p-4">
+          <h1 className="h1 ">{post.title}</h1>
+          <div className="mb-10 flex items-center gap-4 ">
+            <p className="text-teal-400">
+              {format(new Date(post.created_at), "MMMM do, yyyy")}
+            </p>
+            <Divider />
 
-          <div className="flex items-center gap-2">
-            <i className="fa-solid fa-face-grin-hearts text-yellow-500"></i>
-            <p className="text-gray-300">{post.views}</p>
+            <div className="flex items-center gap-2">
+              <i className="fa-solid fa-face-grin-hearts text-yellow-500"></i>
+              <p className="text-gray-300">{post.views}</p>
+            </div>
+          </div>
+          <MarkdownRender markdown={markdown} />
+        </div>
+        <Gap height="h-12" />
+        <PostFooter postTitle={post.title} slug={post.slug} />
+        <Gap />
+        <div className="ml-auto mr-auto flex max-w-screen-xl flex-col p-4">
+          <h2 className="h2">If you enjoyed this article</h2>
+          <p className="subtitle">You might enjoy one of these suggestions</p>
+          <div className="mt-10 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3">
+            {suggestions.map((post) => (
+              <PostItem key={post.slug} post={post} />
+            ))}
           </div>
         </div>
-        <MarkdownRender markdown={markdown} />
+        <Gap />
+        <Footer />
       </div>
-      <Gap height="h-12" />
-      <PostFooter postTitle={post.title} slug={post.slug} />
-      <Gap />
-      <div className="ml-auto mr-auto flex max-w-screen-xl flex-col p-4">
-        <h2 className="h2">If you enjoyed this article</h2>
-        <p className="subtitle">You might enjoy one of these suggestions</p>
-        <div className="mt-10 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3">
-          {suggestions.map((post) => (
-            <PostItem key={post.slug} post={post} />
-          ))}
-        </div>
-      </div>
-      <Gap />
-      <Footer />
     </div>
   );
 };
