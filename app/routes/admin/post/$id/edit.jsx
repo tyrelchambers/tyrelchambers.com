@@ -168,8 +168,6 @@ const edit = () => {
             />
           </div>
 
-          {console.log(tags)}
-
           <div className="mt-4 flex flex-col gap-2">
             <label htmlFor="tags" className="text-xl text-yellow-300">
               Tags

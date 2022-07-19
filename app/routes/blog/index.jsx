@@ -40,7 +40,7 @@ const index = () => {
     );
 
   let [searchParams] = useSearchParams();
-  const featuredPost = posts.filter((post) => post.featured)[0];
+  const featuredPost = posts[0];
 
   const [queryValue, setQuery] = React.useState(() => {
     return searchParams.get("q") ?? "";
