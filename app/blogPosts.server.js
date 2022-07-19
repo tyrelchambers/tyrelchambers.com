@@ -53,3 +53,30 @@ export async function triggerView(id) {
     })
     .eq("id", id);
 }
+
+export async function likePost(ipAddress, slug) {
+  await supabase.from("PostLikes").insert({
+    slug,
+    ip_address: ipAddress,
+  });
+}
+
+export async function dislikePost(ipAddress, slug) {
+  await supabase
+    .from("PostLikes")
+    .delete()
+    .eq("slug", slug)
+    .eq("ip_address", ipAddress);
+}
+
+export async function getLikes(ipAddress, slug) {
+  const { body: liked } = await supabase
+    .from("PostLikes")
+    .select()
+    .eq("slug", slug)
+    .eq("ip_address", ipAddress)
+    .limit(1)
+    .single();
+
+  return liked;
+}

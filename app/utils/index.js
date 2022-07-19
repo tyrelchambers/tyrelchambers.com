@@ -1,4 +1,5 @@
 import { useMatches } from "@remix-run/react";
+import axios from "axios";
 import { useMemo } from "react";
 import { getSession } from "../session.server";
 
@@ -18,4 +19,10 @@ export function useOptionalUser() {
     return undefined;
   }
   return data.user;
+}
+
+export async function getIPAddress() {
+  return axios
+    .get("https://api.ipify.org?format=json")
+    .then((res) => res.data.ip);
 }
