@@ -155,7 +155,10 @@ const PostSlug = () => {
             <div className="flex items-center gap-2">
               <i class="fa-solid fa-heart text-xl text-red-400"></i>
               <p className="text-sm font-semibold text-gray-300">
-                {likes} <span className="font-thin">likes</span>
+                {likes}{" "}
+                <span className="font-thin">
+                  {likes > 1 ? "likes" : "like"}
+                </span>
               </p>
             </div>
           </div>
