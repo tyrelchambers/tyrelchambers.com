@@ -9,6 +9,11 @@ export async function getPost(slug) {
     .eq("slug", slug)
     .single();
 
+  const { body: likes } = await supabase
+    .from("PostLikes")
+    .select()
+    .eq("slug", slug);
+
   const { code } = await bundleMDX({
     source: post.markdown,
   });
@@ -17,6 +22,7 @@ export async function getPost(slug) {
     post,
     error,
     markdown: code,
+    likes: likes.length,
   };
 }
 
@@ -69,7 +75,7 @@ export async function dislikePost(ipAddress, slug) {
     .eq("ip_address", ipAddress);
 }
 
-export async function getLikes(ipAddress, slug) {
+export async function isPostLikedByUser(ipAddress, slug) {
   const { body: liked } = await supabase
     .from("PostLikes")
     .select()
@@ -79,4 +85,13 @@ export async function getLikes(ipAddress, slug) {
     .single();
 
   return liked;
+}
+
+export async function getPostLikes(slug) {
+  const { body: likes } = await supabase
+    .from("PostLikes")
+    .select()
+    .eq("slug", slug);
+
+  return likes;
 }

@@ -1,14 +1,13 @@
 import { Form, Link, useLoaderData } from "@remix-run/react";
 import {
   dislikePost,
-  getLikes,
+  isPostLikedByUser,
   getPost,
   getPosts,
   likePost,
   triggerView,
 } from "../../blogPosts.server";
 
-import Divider from "~/components/Divider";
 import Footer from "~/layouts/Footer";
 import Gap from "~/components/Gap";
 import Header from "~/layouts/Header";
@@ -51,10 +50,10 @@ export const meta = ({ data }) => {
 export const loader = async ({ params }) => {
   invariant(params.slug, "expected params.slug");
   const { posts } = await getPosts();
-  const { post, markdown } = await getPost(params.slug);
+  const { post, markdown, likes } = await getPost(params.slug);
   const ipAddress = await getIPAddress();
 
-  const liked = await getLikes(ipAddress, post.slug);
+  const liked = await isPostLikedByUser(ipAddress, post.slug);
 
   if (process.env.NODE_ENV !== "development") {
     await triggerView(post.id);
@@ -67,7 +66,7 @@ export const loader = async ({ params }) => {
   }
 
   const suggestions = getArticleSuggestions({ articles: posts, count: 3 });
-  return { post, suggestions, markdown, isLiked: !!liked };
+  return { post, suggestions, markdown, isLiked: !!liked, likes };
 };
 
 export const action = async ({ request, params }) => {
@@ -88,7 +87,7 @@ export const action = async ({ request, params }) => {
   return null;
 };
 const PostSlug = () => {
-  const { post, suggestions, markdown, isLiked } = useLoaderData();
+  const { post, suggestions, markdown, isLiked, likes } = useLoaderData();
 
   return (
     <div>
@@ -110,12 +109,12 @@ const PostSlug = () => {
           </div>
           <MarkdownRender markdown={markdown} />
           <hr className="mt-20 mb-10 border-zinc-700" />
-          <div className="flex w-full items-center justify-between rounded-xl bg-gray-800 p-6">
-            <div className="flex flex-col gap-2">
-              <p className="text-xl font-normal text-white">
+          <div className="flex w-full flex-col items-center justify-between gap-4 rounded-xl bg-gradient-to-r from-gray-800 to-zinc-900 p-6 shadow-md md:flex-row">
+            <div className="flex flex-col gap-2 ">
+              <p className="text-center text-xl font-normal text-white md:text-left">
                 Did you enjoy this article?
               </p>
-              <p className="text-sm text-gray-400">
+              <p className="text-center text-sm text-gray-400 md:text-left">
                 Consider liking it! I'd surely appreciate the love.
               </p>
             </div>
@@ -141,11 +140,20 @@ const PostSlug = () => {
               )}
             </Form>
           </div>
-          <div className="mt-8 flex items-center gap-2">
-            <i class="fa-solid fa-face-grin-hearts text-xl text-teal-400"></i>
-            <p className="text-sm font-semibold text-gray-300">
-              {post.views} <span className="font-thin">views</span>
-            </p>
+
+          <div className="mt-8 flex w-full gap-6">
+            <div className="flex items-center gap-2">
+              <i class="fa-solid fa-face-grin-hearts text-xl text-teal-400"></i>
+              <p className="text-sm font-semibold text-gray-300">
+                {post.views} <span className="font-thin">views</span>
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <i class="fa-solid fa-heart text-xl text-red-400"></i>
+              <p className="text-sm font-semibold text-gray-300">
+                {likes} <span className="font-thin">likes</span>
+              </p>
+            </div>
           </div>
         </div>
         <Gap height="h-12" />
