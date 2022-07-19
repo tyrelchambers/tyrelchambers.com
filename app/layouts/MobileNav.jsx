@@ -3,7 +3,7 @@ import { NavLink } from "@remix-run/react";
 
 const MobileNav = () => {
   return (
-    <nav className="mobile-nav mt-6 w-full ">
+    <nav className="mobile-nav absolute top-20 z-20 w-full bg-zinc-800">
       <ul className="flex flex-col  border-t-2 border-gray-600">
         <li className="border-b-2 border-gray-600 ">
           <NavLink to="/" className="mobile-nav-link p-4 py-6">
