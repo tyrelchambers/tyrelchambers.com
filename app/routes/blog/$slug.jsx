@@ -19,6 +19,7 @@ import { format } from "date-fns";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
 import invariant from "tiny-invariant";
 import { getIPAddress } from "../../utils";
+import { motion } from "framer-motion";
 
 export const meta = ({ data }) => {
   if (!data) {
@@ -93,10 +94,13 @@ const PostSlug = () => {
     <div>
       <Header isDim />
       <div className="blog-post-bg relative flex h-[500px] items-center">
-        <img
+        <motion.img
           src={post.cover_img}
           alt=""
           className="mb-10 w-full rounded-lg object-cover shadow-lg"
+          initial={{ opacity: 0, filter: "blur(10px)", scale: 1.1 }}
+          animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
+          transition={{ duration: 1 }}
         />
       </div>
       <div className="absolute top-1/3 z-10 flex w-full flex-col items-center">
