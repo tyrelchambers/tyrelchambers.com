@@ -117,15 +117,7 @@
   }
 
   .post-item {
-    @apply relative h-[550px] w-full overflow-hidden rounded-lg opacity-50 transition-all hover:opacity-100;
-  }
-
-  .post-item:hover .gradient {
-    @apply opacity-100;
-  }
-
-  .post-item:hover > img {
-    transform: translateY(-10px);
+    @apply relative h-[550px] w-full overflow-hidden rounded-lg;
   }
 
   .post-item .gradient {
@@ -134,8 +126,8 @@
     background: #000;
     position: absolute;
     top: 0;
-    opacity: 0;
-    @apply bg-transparent bg-gradient-to-t from-background-primary transition-all;
+
+    @apply bg-transparent bg-gradient-to-t from-background-primary opacity-0 transition-all;
   }
 
   .post-item-body {
@@ -146,16 +138,6 @@
   .post-item-title {
     text-shadow: 0 3px 10px rgba(0, 0, 0, 8);
   }
-
-  .post-item:hover .post-item-body {
-    bottom: 40px !important;
-  }
-
-  .post-item:hover .post-item-description,
-  .post-item:hover .post-item-cta {
-    @apply opacity-100;
-  }
-
   .custom-select [class*="control"] {
     @apply border-zinc-400 bg-zinc-700;
   }
