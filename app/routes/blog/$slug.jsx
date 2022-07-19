@@ -147,13 +147,13 @@ const PostSlug = () => {
 
           <div className="mt-8 flex w-full gap-6">
             <div className="flex items-center gap-2">
-              <i class="fa-solid fa-face-grin-hearts text-xl text-teal-400"></i>
+              <i className="fa-solid fa-face-grin-hearts text-xl text-teal-400"></i>
               <p className="text-sm font-semibold text-gray-300">
                 {post.views} <span className="font-thin">views</span>
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <i class="fa-solid fa-heart text-xl text-red-400"></i>
+              <i className="fa-solid fa-heart text-xl text-red-400"></i>
               <p className="text-sm font-semibold text-gray-300">
                 {likes}{" "}
                 <span className="font-thin">
