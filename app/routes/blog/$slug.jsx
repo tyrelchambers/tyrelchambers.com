@@ -51,7 +51,7 @@ export const meta = ({ data }) => {
 export const loader = async ({ params }) => {
   invariant(params.slug, "expected params.slug");
   const { posts } = await getPosts();
-  const { post, markdown, likes } = await getPost(params.slug);
+  const { post, markdown, likes, readingTime } = await getPost(params.slug);
   const ipAddress = await getIPAddress();
 
   const liked = await isPostLikedByUser(ipAddress, post.slug);
@@ -67,7 +67,7 @@ export const loader = async ({ params }) => {
   }
 
   const suggestions = getArticleSuggestions({ articles: posts, count: 3 });
-  return { post, suggestions, markdown, isLiked: !!liked, likes };
+  return { post, suggestions, markdown, isLiked: !!liked, likes, readingTime };
 };
 
 export const action = async ({ request, params }) => {
@@ -88,7 +88,8 @@ export const action = async ({ request, params }) => {
   return null;
 };
 const PostSlug = () => {
-  const { post, suggestions, markdown, isLiked, likes } = useLoaderData();
+  const { post, suggestions, markdown, isLiked, likes, readingTime } =
+    useLoaderData();
 
   return (
     <div>
@@ -110,6 +111,11 @@ const PostSlug = () => {
             <p className="text-teal-400">
               {format(new Date(post.created_at), "MMMM do, yyyy")}
             </p>
+
+            <p className="flex items-center gap-2 text-gray-300">
+              <i class="fa-solid fa-book-open"></i> ~{readingTime}{" "}
+              {readingTime !== 1 ? "minutes" : "minute"}
+            </p>
           </div>
           <MarkdownRender markdown={markdown} />
           <hr className="mt-20 mb-10 border-zinc-700" />
@@ -129,7 +135,7 @@ const PostSlug = () => {
                   value="dislike-post"
                   name="action"
                 >
-                  <i class="fa-solid fa-heart  text-red-400"></i>
+                  <i className="fa-solid fa-heart  text-red-400"></i>
                   glad you liked it!
                 </button>
               ) : (
@@ -138,7 +144,7 @@ const PostSlug = () => {
                   value="like-post"
                   name="action"
                 >
-                  <i class="fa-solid fa-heart  text-gray-400"></i>
+                  <i className="fa-solid fa-heart  text-gray-400"></i>
                   press me
                 </button>
               )}

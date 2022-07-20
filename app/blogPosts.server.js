@@ -23,6 +23,7 @@ export async function getPost(slug) {
     error,
     markdown: code,
     likes: likes.length,
+    readingTime: Math.ceil(post.markdown.split(" ").length / 200),
   };
 }
 
