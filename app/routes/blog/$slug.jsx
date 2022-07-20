@@ -113,7 +113,7 @@ const PostSlug = () => {
             </p>
 
             <p className="flex items-center gap-2 text-gray-300">
-              <i class="fa-solid fa-book-open"></i> ~{readingTime}{" "}
+              <i className="fa-solid fa-book-open"></i> ~{readingTime}{" "}
               {readingTime !== 1 ? "minutes" : "minute"}
             </p>
           </div>
