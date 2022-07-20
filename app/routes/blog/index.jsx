@@ -53,7 +53,8 @@ const index = () => {
     <div>
       <Header />
       <Gap height="h-20" />
-      <main className="ml-auto mr-auto mb-20 max-w-screen-xl">
+
+      <main className="relative z-10 ml-auto mr-auto mb-20 max-w-screen-xl">
         <SectionHero
           leftCol={
             <>
@@ -107,7 +108,7 @@ const index = () => {
           }
         />
 
-        <Gap height="h-12 desktop:h-28" className="" />
+        <Gap height="h-12 desktop:h-28" />
         <section className="p-4">
           <div className="flex flex-col">
             <h3 className="h3">Search by tag</h3>
@@ -121,7 +122,7 @@ const index = () => {
                   setQuery("");
                 }}
               >
-                <input type="checkbox" name="" id="" className="sr-only" />
+                <input type="checkbox" id="" className="sr-only" />
                 <span>All</span>
               </label>
               {postsTags.map((tag, id) => (
@@ -136,7 +137,7 @@ const index = () => {
                   }}
                   key={id}
                 >
-                  <input type="checkbox" name="" id="" className="sr-only" />
+                  <input type="checkbox" id="" className="sr-only" />
                   <span>
                     {tag.name?.toLowerCase() ||
                       tag.label?.toLowerCase() ||

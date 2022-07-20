@@ -58,7 +58,7 @@ const Header = ({ isDim }) => {
   return (
     <>
       <header
-        className={`flex w-full  flex-col items-center justify-between p-2 px-4 tablet:py-8 ${isDimClasses}`}
+        className={`flex w-full flex-col items-center justify-between p-2 px-4 tablet:py-8 ${isDimClasses}`}
       >
         <section className="flex w-full flex-col items-center justify-between tablet:flex-row">
           <div className="flex w-full items-center justify-between px-4 tablet:w-fit tablet:px-0">
