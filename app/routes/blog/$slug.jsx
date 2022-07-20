@@ -157,7 +157,7 @@ const PostSlug = () => {
               <p className="text-sm font-semibold text-gray-300">
                 {likes}{" "}
                 <span className="font-thin">
-                  {likes > 1 ? "likes" : "like"}
+                  {likes !== 1 ? "likes" : "like"}
                 </span>
               </p>
             </div>

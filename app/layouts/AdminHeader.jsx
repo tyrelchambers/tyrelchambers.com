@@ -11,7 +11,7 @@ const AdminHeader = () => {
       <div className="flex w-full items-center justify-between">
         <h1 className="h3">Admin dashboard</h1>
         <div
-          className="mobile-toggle flex h-[25px] w-[35px] flex-col justify-between tablet:hidden"
+          className="flex h-[25px] w-[35px] flex-col justify-between tablet:hidden"
           onClick={() => toggleMobileNav()}
         >
           <span className="h-[3px] w-full bg-gray-400"></span>
