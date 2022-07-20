@@ -1498,8 +1498,7 @@ video {
   background: linear-gradient(
       0deg,
       rgba(31, 32, 40, 1) 0%,
-      rgba(31, 32, 40, 0.5) 50%,
-      rgba(31, 32, 40, 0) 100%
+      rgba(31, 32, 40, 0) 50%
     );
 }
 
