@@ -170,7 +170,7 @@ const PostSlug = () => {
             </div>
           </div>
         </div>
-        <div className="ml-auto mr-auto mt-6 w-full max-w-screen-lg">
+        <div className="ml-auto mr-auto mt-6 w-full max-w-screen-md">
           <Comments />
         </div>
 
