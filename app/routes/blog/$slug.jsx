@@ -20,6 +20,7 @@ import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
 import invariant from "tiny-invariant";
 import { getIPAddress } from "../../utils";
 import { motion } from "framer-motion";
+import Comments from "../../components/Comments";
 
 export const meta = ({ data }) => {
   if (!data) {
@@ -169,6 +170,10 @@ const PostSlug = () => {
             </div>
           </div>
         </div>
+        <div className="ml-auto mr-auto mt-6 w-full max-w-screen-lg">
+          <Comments />
+        </div>
+
         <Gap height="h-12" />
         <PostFooter postTitle={post.title} slug={post.slug} />
         <Gap />
