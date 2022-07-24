@@ -78,12 +78,16 @@ const PostItem = ({ post }) => {
           variants={titleMotion}
         >
           <h3 className="h3 post-item-title transition-all">{post.title}</h3>
-          <motion.p
+          <motion.ul
             variants={descriptionMotion}
-            className="post-item-description mt-4 text-gray-400 "
+            className="mt-4 flex flex-wrap gap-2"
           >
-            {truncateString(post.description, 50)}
-          </motion.p>
+            {post.tags.map((tag) => (
+              <li className="w-fit rounded-full border-2 border-teal-400 py-1 px-3 text-xs text-teal-400">
+                {tag.label}
+              </li>
+            ))}
+          </motion.ul>
         </motion.div>
         <motion.div className="gradient" variants={gradient}></motion.div>
       </motion.div>
