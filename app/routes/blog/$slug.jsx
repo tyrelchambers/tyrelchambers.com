@@ -107,7 +107,14 @@ const PostSlug = () => {
       </div>
       <div className="absolute top-1/3 z-10 flex w-full flex-col items-center">
         <div className="mt-10 max-w-screen-md p-4">
-          <h1 className="h1 ">{post.title}</h1>
+          <h1
+            className="h1"
+            style={{
+              textShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
+            }}
+          >
+            {post.title}
+          </h1>
           <div className="mb-10 flex items-center gap-4 ">
             <p className="text-teal-400">
               {format(new Date(post.created_at), "MMMM do, yyyy")}

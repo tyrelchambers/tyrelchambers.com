@@ -58,11 +58,11 @@ const Header = ({ isDim }) => {
   return (
     <>
       <header
-        className={`flex w-full flex-col items-center justify-between p-2 px-4 tablet:py-8 ${isDimClasses}`}
+        className={`flex w-full flex-col items-center justify-between  px-4 tablet:py-5 ${isDimClasses}`}
       >
         <section className="flex w-full flex-col items-center justify-between tablet:flex-row">
           <div className="flex w-full items-center justify-between px-4 tablet:w-fit tablet:px-0">
-            <h1 className="text-md mb-4 mt-4 text-white sm:mb-0 sm:mt-0 md:text-2xl">
+            <h1 className="text-md mb-4 mt-4 text-white sm:mb-0 sm:mt-0 md:text-xl">
               Tyrel Chambers
             </h1>
             <motion.div
