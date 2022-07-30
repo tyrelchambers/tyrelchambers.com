@@ -168,12 +168,14 @@ const newPost = () => {
                 Tags
               </label>
               <CustomSelect
-                options={tags.map((tag) => ({
-                  ...tag,
-                  label: tag.name,
-                }))}
+                options={tags}
                 isMulti
                 onChange={(e) => setState({ ...state, tags: e })}
+                value={
+                  state.tags?.map((tag) => ({
+                    ...tag,
+                  })) || null
+                }
               />
             </div>
 
