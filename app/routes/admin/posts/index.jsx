@@ -2,25 +2,14 @@ import { Link, useLoaderData } from "@remix-run/react";
 
 import AdminHeader from "~/layouts/AdminHeader";
 import React from "react";
-import { supabase } from "~/supabase.server";
 import { truncateString } from "~/utils/truncateString";
 import { requireUser } from "../../../session.server";
+import { getPosts } from "../../../blogPosts.server";
 
+export const loader = async ({ request }) => {
+  await requireUser(request);
 
-export const loader = async ({request}) => {
-   await requireUser(request)
-
-  const { body: posts, error } = await supabase
-    .from("posts")
-    .select()
-    .order("created_at", {
-      ascending: false,
-    });
-
-  if (error) {
-    return { error };
-  }
-
+  const posts = await getPosts();
   return posts;
 };
 
@@ -54,6 +43,17 @@ const index = () => {
                 ) : (
                   <p className=" text-orange-300">draft</p>
                 )}
+                <div className="flex gap-4">
+                  <div className="flex items-center gap-2 text-gray-400">
+                    <i className="fa-solid fa-chart-simple"></i>
+                    <p>{post.views}</p>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-gray-400">
+                    <i className="fa-solid fa-heart"></i>
+                    <p>{post.PostLikes.length}</p>
+                  </div>
+                </div>
               </div>
             </Link>
           ))}

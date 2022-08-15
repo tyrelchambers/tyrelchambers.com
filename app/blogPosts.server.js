@@ -43,12 +43,15 @@ export async function getPostById(id) {
 export async function getPosts() {
   const { body: posts, error } = await supabase
     .from("posts")
-    .select()
+    .select("*, PostLikes (*)")
     .eq("published", true)
     .order("created_at", {
       ascending: false,
     });
-  return { posts, error };
+
+  if (error) throw new Error(error);
+
+  return posts;
 }
 
 export async function triggerView(id) {
@@ -95,4 +98,16 @@ export async function getPostLikes(slug) {
     .eq("slug", slug);
 
   return likes;
+}
+
+export async function getPostsLikesCount() {
+  const { body: likes } = await supabase.from("PostLikes").select();
+
+  return likes.length;
+}
+
+export async function getPostsViewsCount() {
+  const { body: views } = await supabase.from("posts").select();
+
+  return views.reduce((acc, curr) => acc + curr.views, 0);
 }
