@@ -8,10 +8,6 @@ import SectionHero from "~/layouts/SectionHero";
 import SocialList from "~/components/SocialList";
 import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
 import { getBlogPosts } from "~/utils/getBlogPosts";
-import mtn from "../../public/images/890717F1-8B22-4767-89CF-897A7B0209EF_1_105_c.webp";
-import jesseMtn from "../../public/images/821F0F1E-A38C-4939-A04C-EEB7DA2109FB_1_105_c.webp";
-import theVoid from "../../public/images/81EEA478-6EC4-4817-B9FA-47D0B5638095_1_105_c.webp";
-import mtnView from "../../public/images/1FBEB87D-AFA9-4D12-AAEE-94027686A3EA_1_105_c.webp";
 
 export const meta = () => {
   return {
@@ -107,11 +103,6 @@ const about = () => {
         <Gap />
 
         <figure className="p-4">
-          <img
-            src={jesseMtn}
-            alt=""
-            className="w-full rounded-lg object-cover desktop:h-[800px]"
-          />
           <figcaption className="mt-4 ml-auto mr-auto max-w-xl text-center text-gray-400">
             My cousin on the tallest cliffs in Ontario in Thunder Bay, Ontario.
             It was a 28km round trip hike that took us all day to complete.
@@ -197,11 +188,6 @@ const about = () => {
         <section className="p-4">
           <div className="flex flex-col gap-10 tablet:flex-row">
             <figure className="w-full max-w-[500px]">
-              <img
-                src={theVoid}
-                alt=""
-                className="w-full  rounded-lg object-cover"
-              />
               <figcaption className="mt-4 text-gray-400">
                 Just before the void. Thunder Bay, Ontario
               </figcaption>
@@ -253,13 +239,7 @@ const about = () => {
           </div>
         </section>
 
-        <figure className="p-4">
-          <img
-            src={mtnView}
-            alt=""
-            className="mt-20 w-full rounded-lg desktop:h-[600px]"
-          />
-        </figure>
+        <figure className="p-4"></figure>
 
         <Gap />
       </main>

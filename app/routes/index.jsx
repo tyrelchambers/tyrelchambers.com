@@ -1,205 +1,145 @@
 import { Link, useLoaderData } from "@remix-run/react";
 
-import Footer from "~/layouts/Footer";
-import Gap from "~/components/Gap";
 import Header from "~/layouts/Header";
 import PostItem from "~/components/PostItem";
-import Project from "~/components/Project";
-import ScrollIcon from "~/components/ScrollIcon";
-import SectionHero from "../layouts/SectionHero";
 import SocialList from "~/components/SocialList";
-import { getArticleSuggestions } from "~/utils/getArticleSuggestions";
-import { projects } from "~/constants/projects";
 import { supabase } from "~/utils/supabase";
-import me from "../../public/images/me2.webp";
-import me2 from "../../public/images/me.webp";
-import mtn from "../../public/images/mtn.webp";
-import cousin from "../../public/images/cousin.webp";
-import papa from "../../public/images/papa.webp";
+import Section from "../layouts/Section";
+import Newsletter from "../components/Newsletter";
+import { projects } from "../constants/projects";
+import Project from "../components/Project";
+import { format } from "date-fns";
+import ResumeWidget from "../components/ResumeWidget";
+import { jobXp } from "../constants/jobXp";
+import { getIGPhotos, getJobLogo } from "../images.server";
 
 export const loader = async () => {
   const { data: posts } = await supabase
     .from("posts")
     .select()
-    .order("id", "desc");
+    .order("views", {
+      ascending: false,
+    })
+    .limit(3);
 
-  const suggestions = getArticleSuggestions({
-    articles: posts,
-    count: 3,
-    recent: true,
+  const { data: recentPost } = await supabase
+    .from("posts")
+    .select()
+    .order("created_at", {
+      ascending: false,
+    })
+    .limit(1)
+    .single();
+
+  const IGphotos = await getIGPhotos();
+
+  const jobs = jobXp;
+  jobs.map(async (j) => {
+    j.logoUrl = await getJobLogo(j.logo);
+
+    return j;
   });
 
-  return suggestions;
+  return { posts, recentPost, jobs };
 };
 
 export default function Index() {
-  const posts = useLoaderData();
+  const { posts, recentPost, jobs } = useLoaderData();
 
   return (
     <div>
       <Header />
 
-      <main className="mt-4 ml-auto mr-auto max-w-screen-xl py-8 desktop:mt-14">
-        <SectionHero
-          leftCol={
-            <>
-              <h1 className="h1">
-                Building software and teaching people about what I love the most
-              </h1>
-              <div className="mt-10 flex w-full flex-col items-center gap-6 desktop:flex-row">
-                <Link to="/blog" className="link-button primary large w-full">
-                  Read my blog
-                  <i className="fa-solid fa-arrow-right-long"></i>
-                </Link>
+      <main className="ml-auto mr-auto w-full max-w-screen-2xl">
+        <Section className="max-w-4xl gap-6">
+          <h1 className="text-6xl font-bold leading-normal text-gray-700 ">
+            Software developer, runner, and photographer.
+          </h1>
+          <p className="text-xl leading-relaxed text-gray-500">
+            I'm a programmer at heart and that's what you can usually find me
+            doing as a profession and a hobby. Outside of programming I enjoy
+            playing music, video games and taking photographs.
+          </p>
+          <SocialList />
+        </Section>
+
+        <Section className="my-20">
+          <div className="rounded-3xl bg-gray-50 p-10">
+            <div className="flex gap-10">
+              <img
+                src={recentPost.cover_img}
+                alt=""
+                className="w-full max-w-sm rounded-3xl shadow-lg"
+              />
+
+              <div className="flex w-full max-w-2xl flex-col gap-4">
+                <p className="text-sm text-indigo-300">
+                  {format(new Date(recentPost.created_at), "MMM do, yyyy")}
+                </p>
+                <h3 className="mb-4 text-3xl font-bold">{recentPost.title}</h3>
+                <p className="text-gray-500">{recentPost.description}</p>
+
                 <Link
-                  to="/resources"
-                  className="link-button secondary large w-full"
+                  to={`/blog/${recentPost.slug}`}
+                  prefetch="intent"
+                  className="mt-4 flex w-fit items-center gap-4 rounded-full border-[1px] border-indigo-400 py-2 px-4 text-sm text-indigo-400 transition-all hover:bg-indigo-400 hover:text-white"
                 >
-                  View some resources
+                  <i class="fa-solid fa-link-simple"></i>
+                  Read article
                 </Link>
               </div>
-            </>
-          }
-          rightCol={<img src={me} alt="" className="w-full rounded-lg" />}
-        />
+            </div>
+          </div>
+        </Section>
 
-        <section className="mt-20 flex flex-col items-center justify-center">
-          <ScrollIcon />
-        </section>
-        <Gap />
-        <section className="p-4">
-          <div className="flex flex-col gap-8 tablet:flex-row desktop:gap-20">
-            <img
-              src={me2}
-              alt=""
-              className="ml-auto mr-auto w-full rounded-lg object-cover tablet:max-w-xs"
-            />
-            <div className="flex flex-col gap-8">
-              <h2 className="h2">Hey, I'm Tyrel Chambers 👋</h2>
-              <p className="text-normal font-thin text-gray-400 desktop:text-2xl">
-                I'm a programmer at heart and that's what you can usually find
-                me doing as a profession and a hobby.
-              </p>
-              <p className="text-normal text-gray-400  desktop:text-2xl">
-                Outside of programming I enjoy playing music, video games and
-                taking photographs. I also have a{" "}
-                <a href="https://youtube.com/storiesaftermidnight">
-                  Youtube channel
-                </a>{" "}
-                where I flex and grow my narration skills!
-              </p>
-              <SocialList />
-              <Link to="/about" className="link-button outline">
-                Learn more about me
-                <i className="fa-solid fa-arrow-right-long"></i>
+        <Section className="my-32" title="Most popular articles">
+          <div className=" grid w-full grid-cols-3 gap-10">
+            {posts.map((p) => (
+              <PostItem post={p} />
+            ))}
+          </div>
+          <div className="mt-20">
+            <Newsletter />
+          </div>
+        </Section>
+
+        <Section
+          title="Some projects I've worked on"
+          subtitle="These are entirely made up of personal projects or technical challenges."
+        >
+          <div className="grid grid-cols-3 gap-10">
+            {projects.slice(0, 3).map((p) => (
+              <Project project={p} />
+            ))}
+          </div>
+        </Section>
+
+        <Section className="my-20">
+          <div className="grid grid-cols-12 gap-6">
+            <div className="col-span-4">
+              <ResumeWidget jobs={jobs} />
+            </div>
+
+            <div className="roudned-3xl col-span-8 flex h-fit justify-between gap-6 rounded-3xl bg-gray-50 p-10">
+              <div className="flex flex-col">
+                <h3 className="text-xl font-bold text-gray-700">
+                  Resources I've collected
+                </h3>
+                <p className="mt-2 text-gray-500">
+                  If you're looking for some handy links to helpful resources,
+                  check them out
+                </p>
+              </div>
+              <Link
+                to="/resources"
+                className="mt-6 h-fit w-fit rounded-full bg-indigo-400  py-3 px-6 text-center text-white"
+              >
+                See resources
               </Link>
             </div>
           </div>
-        </section>
-        <Gap />
-        <section className="p-4">
-          <h2 className="h2">I've made some pretty cool things!</h2>
-          <p className="subtitle">
-            These are entirely made up of personal projects or technical
-            challenges.
-          </p>
-          <div className="mt-16 grid grid-cols-1 gap-8  tablet:grid-cols-2 desktop:grid-cols-3 desktop:gap-20">
-            {projects.map((project, index) => (
-              <Project project={project} key={index} />
-            ))}
-          </div>
-        </section>
-        <Gap />
-        <section className="p-4">
-          <div className="flex flex-col tablet:flex-row tablet:items-center">
-            <div className="flex w-full flex-col justify-between">
-              <h2 className="h2">Recently published posts</h2>
-              <p className="subtitle">Take a look at these recent articles</p>
-            </div>
-            <Link
-              to="/blog"
-              className="link-button small secondary mt-6 tablet:mt-0"
-            >
-              See all posts
-              <i className="fa-solid fa-arrow-right-long"></i>
-            </Link>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3">
-            {posts.map((post, index) => (
-              <PostItem post={post} key={index} />
-            ))}
-          </div>
-        </section>
-        <Gap />
-        <section className="p-4">
-          <h2 className="h2">I love taking photos</h2>
-          <p className="subtitle">
-            If you'd like to see more, check out my{" "}
-            <a
-              href="https://instagram.com/imtyrelchambers"
-              rel="noopenner noreferrer"
-              target="_blank"
-              className="underline"
-            >
-              instagram
-            </a>
-            .
-          </p>
-          <figure>
-            <img
-              src={mtn}
-              alt=""
-              className="mt-8 h-[500px] w-full rounded-lg object-cover"
-            />
-            <figcaption className="mt-4 text-center font-thin text-white opacity-40">
-              Taken in 2019 in Thunder Bay, Ontario
-            </figcaption>
-          </figure>
-
-          <div className="grid grid-cols-1 gap-10 tablet:grid-cols-2">
-            <figure>
-              <img
-                src={cousin}
-                alt=""
-                className="mt-8 h-[500px] w-full rounded-lg object-cover"
-              />
-              <figcaption className="mt-4 text-center font-thin text-white opacity-40">
-                Taken in 2021. My cousin and I hiking in our home town
-              </figcaption>
-            </figure>
-
-            <figure>
-              <img
-                src={papa}
-                alt=""
-                className="mt-8 h-[500px] w-full rounded-lg object-cover"
-              />
-              <figcaption className="mt-4 text-center font-thin text-white opacity-40">
-                Taken in 2018. My papa and I hiking by his house
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-        <Gap />
-        <section className="p-4">
-          <div className="flex flex-col justify-between gap-8 tablet:flex-row tablet:items-center">
-            <div className="flex max-w-3xl flex-col">
-              <h2 className="h2">Resources I've collected</h2>
-              <p className="subtitle">
-                If you're looking for some handy links to helpful resources,
-                check them out
-              </p>
-            </div>
-            <Link to="/resources" className="link-button small secondary h-fit">
-              See resources
-              <i className="fa-solid fa-arrow-right-long"></i>
-            </Link>
-          </div>
-        </section>
-        <Gap />
+        </Section>
       </main>
-      <Footer />
     </div>
   );
 }
