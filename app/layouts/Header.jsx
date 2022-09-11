@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MobileNav from "./MobileNav";
 import { useMobileNav } from "~/hooks/useMobileNav";
 import { motion } from "framer-motion";
@@ -54,12 +54,15 @@ const Header = () => {
   return (
     <>
       <header
-        className={`flex w-full flex-col items-center justify-between  px-4 tablet:py-5 `}
+        className={`sticky top-0 z-10 flex w-full flex-col items-center justify-between bg-white px-4 tablet:py-5`}
       >
         <section className="flex w-full flex-col items-center justify-between tablet:flex-row">
-          <div className="flex w-full items-center justify-between px-4 tablet:w-fit tablet:px-0">
-            <img src={headshot} alt="" className="h-16 w-16 rounded-full" />
-          </div>
+          <Link
+            to="/"
+            className="flex w-full items-center justify-between px-4 tablet:w-fit tablet:px-0"
+          >
+            <img src={headshot} alt="" className="h-12 w-12 rounded-full" />
+          </Link>
           <div className="flex gap-4">
             <Link
               to="/gallery"
@@ -67,7 +70,7 @@ const Header = () => {
             >
               The Gallery
             </Link>
-            <div className="relative flex flex-col">
+            <div className="relative z-10 flex flex-col">
               <div
                 className={`flex items-center gap-4 rounded-full bg-gray-100 py-2 px-4 ${
                   isMobileNavOpen ? "bg-indigo-500" : ""
