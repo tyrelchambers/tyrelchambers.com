@@ -15,7 +15,7 @@ const Comments = () => {
       reactionsEnabled="0"
       emitMetadata="0"
       inputPosition="bottom"
-      theme="dark_dimmed"
+      theme="light"
       lang="en"
       crossOrigin="anonymous"
       term="Let me know what you thought of this article :)"

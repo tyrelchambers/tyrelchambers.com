@@ -7,7 +7,6 @@ import {
   likePost,
   triggerView,
 } from "../../blogPosts.server";
-
 import Footer from "~/layouts/Footer";
 import Gap from "~/components/Gap";
 import Header from "~/layouts/Header";
@@ -51,7 +50,7 @@ export const meta = ({ data }) => {
 
 export const loader = async ({ params }) => {
   invariant(params.slug, "expected params.slug");
-  const { posts } = await getPosts();
+  const posts = await getPosts();
   const { post, markdown, likes, readingTime } = await getPost(params.slug);
   const ipAddress = await getIPAddress();
 
@@ -94,108 +93,104 @@ const PostSlug = () => {
 
   return (
     <div>
-      <Header isDim />
-      <div className="blog-post-bg relative flex h-[500px] items-center">
+      <Header />
+      <main className="ml-auto mr-auto max-w-screen-xl">
         <motion.img
           src={post.cover_img}
           alt=""
-          className="mb-10 w-full rounded-lg object-cover shadow-lg"
+          className="mb-10 h-[400px] w-full  rounded-lg object-cover shadow-lg"
           initial={{ opacity: 0, filter: "blur(10px)", scale: 1.1 }}
           animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
           transition={{ duration: 1 }}
         />
-      </div>
-      <div className="absolute top-1/3 z-10 flex w-full flex-col items-center">
-        <div className="mt-10 max-w-screen-md p-4">
-          <h1
-            className="h1"
-            style={{
-              textShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
-            }}
-          >
-            {post.title}
-          </h1>
-          <div className="mb-10 flex items-center gap-4 ">
-            <p className="text-teal-400">
-              {format(new Date(post.created_at), "MMMM do, yyyy")}
+        <div className="flex w-full flex-col items-center">
+          <div className="mt-10 max-w-screen-md p-4">
+            <h1 className="text-4xl font-bold text-gray-800">{post.title}</h1>
+            <div className="mb-10 mt-4 flex items-center gap-4">
+              <p className="text-teal-400">
+                {format(new Date(post.created_at), "MMMM do, yyyy")}
+              </p>
+
+              <p className="flex items-center gap-2 text-gray-500">
+                <i className="fa-solid fa-book-open"></i> ~{readingTime}{" "}
+                {readingTime !== 1 ? "minutes" : "minute"}
+              </p>
+            </div>
+            <MarkdownRender markdown={markdown} />
+            <hr className="mt-20 mb-10 border-zinc-700" />
+            <div className="flex w-full flex-col items-center justify-between gap-4 rounded-xl bg-gradient-to-r from-gray-800 to-zinc-900 p-6 shadow-md md:flex-row">
+              <div className="flex flex-col gap-2 ">
+                <p className="text-center text-xl font-normal text-white md:text-left">
+                  Did you enjoy this article?
+                </p>
+                <p className="text-center text-sm text-gray-400 md:text-left">
+                  Consider liking it! I'd surely appreciate the love.
+                </p>
+              </div>
+              <Form method="post">
+                {isLiked ? (
+                  <button
+                    className="flex items-center gap-2 rounded-full border-2 border-red-400 bg-red-900 bg-opacity-30 py-1 px-3 text-gray-100"
+                    value="dislike-post"
+                    name="action"
+                  >
+                    <i className="fa-solid fa-heart  text-red-400"></i>
+                    glad you liked it!
+                  </button>
+                ) : (
+                  <button
+                    className="flex items-center gap-2 rounded-full border-2 border-gray-400 py-1 px-3 text-gray-400"
+                    value="like-post"
+                    name="action"
+                  >
+                    <i className="fa-solid fa-heart  text-gray-400"></i>
+                    press me
+                  </button>
+                )}
+              </Form>
+            </div>
+
+            <div className="mt-8 flex w-full gap-6">
+              <div className="flex items-center gap-2">
+                <i className="fa-solid fa-face-grin-hearts text-xl text-teal-400"></i>
+                <p className="text-sm font-semibold text-gray-600">
+                  {post.views} <span className="font-thin">views</span>
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <i className="fa-solid fa-heart text-xl text-red-400"></i>
+                <p className="text-sm font-semibold text-gray-600">
+                  {likes}{" "}
+                  <span className="font-thin">
+                    {likes !== 1 ? "likes" : "like"}
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="ml-auto mr-auto mt-6 w-full max-w-screen-md">
+            <Comments />
+          </div>
+
+          <Gap height="h-12" />
+          <PostFooter postTitle={post.title} slug={post.slug} />
+          <div className="ml-auto mr-auto mt-10 flex max-w-screen-xl flex-col p-4">
+            <h2 className="text-3xl font-bold text-gray-800">
+              If you enjoyed this article
+            </h2>
+            <p className="mt-2 text-xl font-thin text-gray-400">
+              You might enjoy one of these suggestions
             </p>
-
-            <p className="flex items-center gap-2 text-gray-300">
-              <i className="fa-solid fa-book-open"></i> ~{readingTime}{" "}
-              {readingTime !== 1 ? "minutes" : "minute"}
-            </p>
-          </div>
-          <MarkdownRender markdown={markdown} />
-          <hr className="mt-20 mb-10 border-zinc-700" />
-          <div className="flex w-full flex-col items-center justify-between gap-4 rounded-xl bg-gradient-to-r from-gray-800 to-zinc-900 p-6 shadow-md md:flex-row">
-            <div className="flex flex-col gap-2 ">
-              <p className="text-center text-xl font-normal text-white md:text-left">
-                Did you enjoy this article?
-              </p>
-              <p className="text-center text-sm text-gray-400 md:text-left">
-                Consider liking it! I'd surely appreciate the love.
-              </p>
-            </div>
-            <Form method="post">
-              {isLiked ? (
-                <button
-                  className="flex items-center gap-2 rounded-full border-2 border-red-400 bg-red-900 bg-opacity-30 py-1 px-3 text-gray-100"
-                  value="dislike-post"
-                  name="action"
-                >
-                  <i className="fa-solid fa-heart  text-red-400"></i>
-                  glad you liked it!
-                </button>
-              ) : (
-                <button
-                  className="flex items-center gap-2 rounded-full border-2 border-gray-400 py-1 px-3 text-gray-400"
-                  value="like-post"
-                  name="action"
-                >
-                  <i className="fa-solid fa-heart  text-gray-400"></i>
-                  press me
-                </button>
-              )}
-            </Form>
-          </div>
-
-          <div className="mt-8 flex w-full gap-6">
-            <div className="flex items-center gap-2">
-              <i className="fa-solid fa-face-grin-hearts text-xl text-teal-400"></i>
-              <p className="text-sm font-semibold text-gray-300">
-                {post.views} <span className="font-thin">views</span>
-              </p>
-            </div>
-            <div className="flex items-center gap-2">
-              <i className="fa-solid fa-heart text-xl text-red-400"></i>
-              <p className="text-sm font-semibold text-gray-300">
-                {likes}{" "}
-                <span className="font-thin">
-                  {likes !== 1 ? "likes" : "like"}
-                </span>
-              </p>
+            <div className="mt-10 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3">
+              {suggestions.map((post) => (
+                <PostItem key={post.slug} post={post} />
+              ))}
             </div>
           </div>
+          <Gap />
+          <Footer />
         </div>
-        <div className="ml-auto mr-auto mt-6 w-full max-w-screen-md">
-          <Comments />
-        </div>
-
-        <Gap height="h-12" />
-        <PostFooter postTitle={post.title} slug={post.slug} />
-        <Gap />
-        <div className="ml-auto mr-auto flex max-w-screen-xl flex-col p-4">
-          <h2 className="h2">If you enjoyed this article</h2>
-          <p className="subtitle">You might enjoy one of these suggestions</p>
-          <div className="mt-10 grid grid-cols-1 gap-10 tablet:grid-cols-2 desktop:grid-cols-3">
-            {suggestions.map((post) => (
-              <PostItem key={post.slug} post={post} />
-            ))}
-          </div>
-        </div>
-        <Gap />
-        <Footer />
-      </div>
+      </main>
     </div>
   );
 };

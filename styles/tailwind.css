@@ -164,6 +164,9 @@
     );
   }
 
+  .featured-post:hover .cta {
+    @apply text-indigo-500;
+  }
   @media screen and (max-width: 768px) {
     .h1 {
       @apply text-3xl;
