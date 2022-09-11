@@ -7,6 +7,7 @@ import { Link } from "remix";
 
 const Header = () => {
   const { isMobileNavOpen, toggleMobileNav } = useMobileNav(false);
+  const { height, width } = useViewportSize();
 
   const toggleLine1 = {
     open: {
@@ -109,7 +110,7 @@ const Header = () => {
                   ></motion.span>
                 </motion.div>
               </div>
-              <MobileNav isOpen={isMobileNavOpen} />
+              {isMobileNavOpen && <MobileNav isOpen={isMobileNavOpen} />}
             </div>
           </div>
         </section>
