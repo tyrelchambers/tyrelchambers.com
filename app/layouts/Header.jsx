@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MobileNav from "./MobileNav";
 import { useMobileNav } from "~/hooks/useMobileNav";
 import { motion } from "framer-motion";
@@ -7,7 +7,13 @@ import { Link } from "remix";
 
 const Header = () => {
   const { isMobileNavOpen, toggleMobileNav } = useMobileNav(false);
-  const { height, width } = useViewportSize();
+  const [docWidth, setDocWidth] = useState(0);
+
+  useEffect(() => {
+    if (document) {
+      setDocWidth(document.body.clientWidth);
+    }
+  }, []);
 
   const toggleLine1 = {
     open: {
@@ -55,22 +61,30 @@ const Header = () => {
   return (
     <>
       <header
-        className={`sticky top-0 z-10 flex w-full flex-col items-center justify-between bg-white px-4 tablet:py-5`}
+        className={`sticky top-0 z-10 flex w-full flex-col items-center justify-between bg-white py-5 px-4`}
       >
-        <section className="flex w-full flex-col items-center justify-between tablet:flex-row">
+        {console.log(docWidth)}
+        <section className="flex w-full items-center justify-between">
           <Link
             to="/"
             className="flex w-full items-center justify-between px-4 tablet:w-fit tablet:px-0"
           >
             <img src={headshot} alt="" className="h-12 w-12 rounded-full" />
           </Link>
-          <div className="flex gap-4">
-            <Link
-              to="/gallery"
-              className="rounded-full bg-red-400 py-2 px-6 text-white "
-            >
-              The Gallery
-            </Link>
+          <div className="flex items-center gap-4">
+            {docWidth > 425 ? (
+              <Link
+                to="/gallery"
+                className="whitespace-nowrap rounded-full bg-red-400 py-2 px-6 text-white"
+              >
+                The Gallery
+              </Link>
+            ) : (
+              <Link to="/gallery">
+                <i class="fa-solid fa-gallery-thumbnails text-gray-800"></i>
+              </Link>
+            )}
+
             <div className="relative z-10 flex flex-col">
               <div
                 className={`flex items-center gap-4 rounded-full bg-gray-100 py-2 px-4 ${

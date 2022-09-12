@@ -12,6 +12,7 @@ import { format } from "date-fns";
 import ResumeWidget from "../components/ResumeWidget";
 import { jobXp } from "../constants/jobXp";
 import { getIGPhotos, getJobLogo } from "../images.server";
+import Footer from "../layouts/Footer";
 
 export const loader = async () => {
   const { data: posts } = await supabase
@@ -52,7 +53,7 @@ export default function Index() {
 
       <main className="ml-auto mr-auto w-full max-w-screen-2xl">
         <Section className="max-w-4xl gap-6">
-          <h1 className="text-6xl font-bold leading-normal text-gray-700 ">
+          <h1 className="text-2xl font-bold leading-normal text-gray-700 tablet:text-6xl ">
             Software developer, runner, and photographer.
           </h1>
           <p className="text-xl leading-relaxed text-gray-500">
@@ -64,8 +65,8 @@ export default function Index() {
         </Section>
 
         <Section className="my-20">
-          <div className="rounded-3xl bg-gray-50 p-10">
-            <div className="flex gap-10">
+          <div className="rounded-3xl tablet:bg-gray-50 tablet:p-10">
+            <div className="flex flex-col gap-10 tablet:flex-row">
               <img
                 src={recentPost.cover_img}
                 alt=""
@@ -76,7 +77,9 @@ export default function Index() {
                 <p className="text-sm text-indigo-300">
                   {format(new Date(recentPost.created_at), "MMM do, yyyy")}
                 </p>
-                <h3 className="mb-4 text-3xl font-bold">{recentPost.title}</h3>
+                <h3 className="mb-4 text-xl font-bold tablet:text-3xl">
+                  {recentPost.title}
+                </h3>
                 <p className="text-gray-500">{recentPost.description}</p>
 
                 <Link
@@ -93,7 +96,7 @@ export default function Index() {
         </Section>
 
         <Section className="my-32" title="Most popular articles">
-          <div className=" grid w-full grid-cols-3 gap-10">
+          <div className=" tablet:gtid-cols-3 grid w-full grid-cols-1 gap-10">
             {posts.map((p) => (
               <PostItem post={p} />
             ))}
@@ -107,7 +110,7 @@ export default function Index() {
           title="Some projects I've worked on"
           subtitle="These are entirely made up of personal projects or technical challenges."
         >
-          <div className="grid grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 gap-10 tablet:grid-cols-3">
             {projects.slice(0, 3).map((p) => (
               <Project project={p} />
             ))}
@@ -115,12 +118,12 @@ export default function Index() {
         </Section>
 
         <Section className="my-20">
-          <div className="grid grid-cols-12 gap-6">
-            <div className="col-span-4">
+          <div className="grid grid-cols-1 gap-6 tablet:grid-cols-12">
+            <div className="w-full tablet:col-span-4">
               <ResumeWidget jobs={jobs} />
             </div>
 
-            <div className="roudned-3xl col-span-8 flex h-fit justify-between gap-6 rounded-3xl bg-gray-50 p-10">
+            <div className="roudned-3xl flex h-fit flex-col justify-between gap-6 rounded-3xl bg-gray-50 p-10 tablet:col-span-8 tablet:flex-row">
               <div className="flex flex-col">
                 <h3 className="text-xl font-bold text-gray-700">
                   Resources I've collected
@@ -140,6 +143,7 @@ export default function Index() {
           </div>
         </Section>
       </main>
+      <Footer />
     </div>
   );
 }

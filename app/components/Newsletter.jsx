@@ -2,7 +2,7 @@ import React from "react";
 
 const Newsletter = () => {
   return (
-    <div className="newsletter flex items-center gap-2 rounded-3xl border-[1px] border-gray-200 p-12 shadow-lg">
+    <div className="newsletter flex flex-col items-center gap-2 rounded-3xl border-[1px] border-gray-200 p-8 shadow-lg tablet:flex-row tablet:p-12">
       <div className="flex flex-1 flex-col">
         <p className="text-xl font-bold text-gray-50">
           Want to be in the know?
@@ -18,11 +18,11 @@ const Newsletter = () => {
         method="post"
         target="popupwindow"
         onsubmit="window.open('https://tinyletter.com/tyrelchambers', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true"
-        className="flex h-fit"
+        className="flex h-fit flex-col gap-4"
       >
         <input
           type="text"
-          className="mr-4 w-[300px] rounded-full border-[1px] border-gray-200 bg-white py-3 px-6"
+          className=" w-full max-w-[300px] rounded-full border-[1px] border-gray-200 bg-white py-3 px-6"
           name="email"
           placeholder="Enter your email"
           id="tlemail"

@@ -54,7 +54,7 @@ export default function gallery() {
       </AnimatePresence>
       <main className="ml-auto mr-auto w-full max-w-screen-2xl">
         <Section className="max-w-3xl ">
-          <h1 className="text-6xl font-bold leading-normal text-gray-700 ">
+          <h1 className="text-3xl font-bold leading-normal text-gray-700 tablet:text-6xl ">
             Welcome to the Gallery
           </h1>
           <p className="text-xl leading-relaxed text-gray-500">
@@ -87,7 +87,7 @@ export default function gallery() {
             </button>
           </div>
 
-          <div className="mb-20 grid grid-cols-4 gap-6">
+          <div className="mb-20 grid grid-cols-1 gap-6 tablet:grid-cols-2 desktop:grid-cols-4">
             {photos
               .filter((p) => (filter ? p.printable : p))
               .map((p, i) => (

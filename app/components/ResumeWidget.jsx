@@ -8,7 +8,10 @@ const ResumeWidget = ({ jobs }) => {
       <h2 className="text-lg font-bold text-gray-800">Work</h2>
       <ul className="my-8 flex flex-col gap-4">
         {jobs.map((j) => (
-          <li className="flex items-center gap-4" key={j.title}>
+          <li
+            className="flex flex-col gap-4 tablet:flex-row tablet:items-center"
+            key={j.title}
+          >
             <img
               src={`data:image/png;base64, ${j.logoUrl}`}
               className="h-14 w-14 rounded-full border-2 border-gray-400 object-cover shadow-md"
