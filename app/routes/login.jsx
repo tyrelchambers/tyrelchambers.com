@@ -24,7 +24,7 @@ export const action = async ({ request }) => {
 
 export default function login() {
   return (
-    <>
+    <div>
       <Header />
       <main className="ml-auto mr-auto w-full max-w-screen-sm">
         <h1 className="text-3xl font-bold leading-normal text-gray-700 ">
@@ -52,6 +52,6 @@ export default function login() {
           </button>
         </Form>
       </main>
-    </>
+    </div>
   );
 }

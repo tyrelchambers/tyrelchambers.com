@@ -28,7 +28,7 @@ export const loader = async () => {
 const about = () => {
   const suggestions = useLoaderData();
   return (
-    <>
+    <div>
       <Header />
 
       <Main className="mr-auto ml-auto w-full max-w-screen-2xl">
@@ -132,7 +132,7 @@ const about = () => {
         <Gap />
       </Main>
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -59,7 +59,7 @@ const index = () => {
       <Main className="relative z-10 ml-auto mr-auto mb-20 max-w-screen-xl">
         <SectionHero
           leftCol={
-            <>
+            <div>
               <h1 className="mb-4 text-5xl font-bold leading-normal text-gray-700">
                 Welcome to my growing collection of articles
               </h1>
@@ -81,10 +81,10 @@ const index = () => {
                   }
                 />
               </Form>
-            </>
+            </div>
           }
           rightCol={
-            <>
+            <div>
               <Link to={`/blog/${featuredPost.slug}`} className="featured-post">
                 <h2 className="h3 mb-6">Featured article</h2>
                 <div className="flex w-full flex-col rounded-lg  bg-gray-100 shadow-lg">
@@ -107,7 +107,7 @@ const index = () => {
                   </div>
                 </div>
               </Link>
-            </>
+            </div>
           }
         />
 

@@ -1,3 +1,4 @@
+import { Form } from "@remix-run/react";
 import React from "react";
 
 const Newsletter = () => {
@@ -13,12 +14,12 @@ const Newsletter = () => {
         </p>
       </div>
 
-      <form
+      <Form
         action="https://tinyletter.com/tyrelchambers"
         method="post"
         target="popupwindow"
-        onsubmit="window.open('https://tinyletter.com/tyrelchambers', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true"
-        className="flex h-fit flex-col gap-4"
+        onSubmit="window.open('https://tinyletter.com/tyrelchambers', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true"
+        className="flex h-fit flex-col gap-4 tablet:flex-row"
       >
         <input
           type="text"
@@ -33,7 +34,7 @@ const Newsletter = () => {
           value="Subscribe"
           className="rounded-full bg-indigo-400 py-2 px-6 text-white"
         />
-      </form>
+      </Form>
     </div>
   );
 };

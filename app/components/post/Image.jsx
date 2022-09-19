@@ -5,7 +5,7 @@ const Image = ({ src }) => {
   const [opened, setOpened] = useState(false);
 
   return (
-    <>
+    <div>
       <button type="button" onClick={() => setOpened(true)}>
         <img src={src} alt="" className="w-full rounded-3xl" />
       </button>
@@ -19,7 +19,7 @@ const Image = ({ src }) => {
       >
         <img src={src} alt="" className="aspect-video h-full" />
       </Modal>
-    </>
+    </div>
   );
 };
 

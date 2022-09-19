@@ -96,7 +96,7 @@ export default function Index() {
         </Section>
 
         <Section className="my-32" title="Most popular articles">
-          <div className=" tablet:gtid-cols-3 grid w-full grid-cols-1 gap-10">
+          <div className=" grid w-full grid-cols-1 gap-10 tablet:grid-cols-3">
             {posts.map((p) => (
               <PostItem post={p} />
             ))}
