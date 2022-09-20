@@ -94,11 +94,11 @@ const PostSlug = () => {
   return (
     <div>
       <Header />
-      <main className="ml-auto mr-auto max-w-screen-xl">
+      <main className="ml-auto mr-auto max-w-screen-xl p-4">
         <motion.img
           src={post.cover_img}
           alt=""
-          className="mb-10 h-[400px] w-full  rounded-lg object-cover shadow-lg"
+          className=" mb-10 h-[400px] w-full rounded-lg object-cover shadow-lg"
           initial={{ opacity: 0, filter: "blur(10px)", scale: 1.1 }}
           animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
           transition={{ duration: 1 }}
@@ -168,7 +168,7 @@ const PostSlug = () => {
               </div>
             </div>
           </div>
-          <div className="ml-auto mr-auto mt-6 w-full max-w-screen-md">
+          <div className="ml-auto mr-auto mt-6 w-full max-w-screen-md p-4">
             <Comments />
           </div>
 
