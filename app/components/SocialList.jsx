@@ -11,7 +11,7 @@ const SocialList = ({ className = "" }) => {
           <a href={social.url} target="_blank" rel="noopenner noreferrer">
             {social.icon({
               className:
-                "opacity-50 hover:opacity-100 transition-all text-white",
+                "opacity-50 hover:opacity-100 transition-all text-gray-800",
             })}
           </a>
         </li>

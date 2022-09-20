@@ -13,6 +13,9 @@ module.exports = {
           primary: "#1f2028",
         },
       },
+      aspectRatio: {
+        "9/16": "9 / 16",
+      },
     },
   },
 
