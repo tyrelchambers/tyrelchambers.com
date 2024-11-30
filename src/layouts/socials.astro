@@ -1,0 +1,15 @@
+---
+import { socials } from "../constants";
+---
+
+<section class="flex justify-center">
+  <div class="grid grid-cols-2 w-fit h-fit gap-10 justify-center">
+    {
+      socials.map((social) => (
+        <a href={social.url} class="text-7xl">
+          <i class={social.icon} />
+        </a>
+      ))
+    }
+  </div>
+</section>

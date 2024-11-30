@@ -1,0 +1,60 @@
+:root {
+  --background: 52 94% 99%;
+  --foreground: 0 0% 0%;
+  --border: 73 31% 82%;
+  --muted: 73 21% 42%;
+
+  --primary: 337 41% 30%;
+  --secondary: 517 41% 90%;
+  --secondary-foreground: 517 41% 30%;
+}
+
+body,
+html {
+  font-family: "Raleway", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  @apply text-foreground;
+}
+
+#marquee {
+  --gap: 5em;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+}
+
+.marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--gap);
+
+  justify-content: space-around;
+}
+
+.scroll {
+  animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+.photo-grid {
+  /* display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: masonry; */
+}

@@ -1,0 +1,24 @@
+---
+import { TEXT_CAROUSEL } from "../constants";
+---
+
+<section class="bg-primary text-background py-6 overflow-hidden" id="marquee">
+  <ul class="flex gap-20 whitespace-nowrap marque-content scroll">
+    {
+      TEXT_CAROUSEL.map((item) => (
+        <li class="font-poppins uppercase font-bold text-7xl carousel-item transition-all">
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+  <ul class="flex gap-20 whitespace-nowrap marque-content scroll" aria-hidden>
+    {
+      TEXT_CAROUSEL.map((item) => (
+        <li class="font-poppins uppercase font-bold text-7xl carousel-item transition-all">
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+</section>

@@ -1,0 +1,34 @@
+---
+const routes = [
+  {
+    title: "Home",
+    url: "/",
+  },
+  {
+    title: "Projects",
+    url: "/",
+  },
+  {
+    title: "About",
+    url: "/",
+  },
+  {
+    title: "Blog",
+    url: "/blog",
+  },
+];
+---
+
+<nav>
+  <ul class="flex gap-10 items-center">
+    {
+      routes.map((route) => (
+        <li>
+          <a href={route.url} class="text-foreground/70 uppercase text-xs">
+            {route.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

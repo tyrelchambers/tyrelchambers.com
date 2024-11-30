@@ -1,0 +1,23 @@
+---
+interface Props {
+  title: string;
+  tag: string;
+  fullWidth?: boolean;
+}
+
+import clsx from "clsx";
+
+const { title, tag, fullWidth } = Astro.props;
+const restrictWidth = "max-w-screen-2xl mx-auto";
+---
+
+<section class={clsx(" my-40", !fullWidth && restrictWidth)}>
+  <header class={clsx(fullWidth && restrictWidth)}>
+    <p class="uppercase text-primary font-medium tracking-[0.4rem] mb-2">
+      {tag}
+    </p>
+    <h2 class="uppercase font-black text-6xl text-primary mb-6">{title}</h2>
+  </header>
+
+  <slot />
+</section>
