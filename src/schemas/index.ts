@@ -13,6 +13,7 @@ export const projectSchema = z.object({
   title: z.string(),
   description: z.string(),
   link: z.string(),
+  image: z.string(),
 });
 
 export type Project = z.infer<typeof projectSchema>;

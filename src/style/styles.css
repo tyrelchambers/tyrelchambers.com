@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --background: 52 94% 99%;
   --foreground: 0 0% 0%;
@@ -57,4 +61,43 @@ a {
   /* display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: masonry; */
+}
+
+@layer components {
+  .project-list-item:hover {
+    height: 1000px;
+  }
+
+  .project-list-item:hover > img {
+    @apply w-full;
+  }
+
+  .project-list-item:hover h3 {
+    @apply mix-blend-normal underline text-foreground;
+  }
+  .project-list-item h3 {
+    @apply font-bold text-[7rem] text-background mb-2 flex justify-between items-center  drop-shadow-2xl mix-blend-exclusion leading-none;
+  }
+
+  .project-list-item header {
+    @apply absolute z-10 left-[10%] bottom-[20%];
+  }
+
+  .project-list-item:hover header {
+    @apply left-[0%] bottom-[10%];
+  }
+
+  .project-list-item header > p {
+    opacity: 0;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  .project-list-item:hover header > p {
+    opacity: 1;
+  }
+
+  .project-list-item > img {
+    @apply object-cover shadow-xl rounded-xl absolute top-0 right-0 w-4/5 aspect-video transition-all;
+  }
 }

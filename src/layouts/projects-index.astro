@@ -4,19 +4,21 @@ import { projects } from "../data/projects";
 ---
 
 <Section title="The projects" tag="I love building things">
-  <div class="flex flex-wrap gap-10">
+  <div class="flex flex-col gap-10">
     {
       projects.map((p) => (
         <a
           href={p.link}
-          class="flex flex-col border border-secondary p-6 rounded-xl flex-1"
+          class="block relative max-w-screen-xl w-full h-[800px] project-list-item transition-all reverse"
         >
-          <h3 class="font-bold text-3xl font-poppins text-secondary-foreground mb-2 flex justify-between items-center hover:underline">
-            {p.title}
+          <img src={p.image} alt="" class="" />
 
-            <i class="fa-solid fa-arrow-up-right-from-square text-lg" />
-          </h3>
-          <p class="text-foreground/70">{p.description}</p>
+          <header class="transition-all mix-blend-difference">
+            <h3 class="font-poppins">{p.title}</h3>
+            <p class="text-foreground/70 text-xl mt-4 font-medium uppercase">
+              {p.description}
+            </p>
+          </header>
         </a>
       ))
     }

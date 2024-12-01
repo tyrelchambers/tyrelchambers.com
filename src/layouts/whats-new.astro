@@ -1,0 +1,47 @@
+---
+import Section from "./section.astro";
+import { format } from "date-fns";
+const sample = {
+  title: "This is a title",
+  description:
+    "Pariatur adipisicing pariatur ea consectetur reprehenderit ullamco fugiat esse. Nisi eu eiusmod quis dolor laborum ut enim labore irure magna in labore. Elit deserunt ut laboris do in laboris esse incididunt irure nisi esse aute. Nulla commodo qui adipisicing cupidatat consectetur. Non consequat non laborum pariatur id ea duis eiusmod mollit est in et eiusmod.",
+  cover:
+    "https://plus.unsplash.com/premium_photo-1732286938777-c1de308097cb?q=80&w=2584&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  tags: ["#tag1", "#tag2", "#tag3"],
+  published: new Date(),
+};
+---
+
+<section class="max-w-screen-2xl mx-auto">
+  <h2 class="text-primary font-poppins font-bold mb-4 text-xl uppercase">
+    What's new
+  </h2>
+  <section class="mb-10">
+    <div class="flex gap-10">
+      <img
+        src={sample.cover}
+        alt=""
+        class="object-cover aspect-video w-1/2 rounded-xl"
+      />
+
+      <div class="flex flex-col">
+        <p
+          class="text-secondary-foreground font-poppins mb-2 text-xs uppercase font-medium"
+        >
+          {format(sample.published, "MMMM d, yyyy")}
+        </p>
+        <h3 class="text-4xl font-bold my-4">{sample.title}</h3>
+        <p class="font-light text-foreground/70">{sample.description}</p>
+        <div class="flex gap-4 mt-4">
+          {
+            sample.tags.map((tag) => (
+              <span class="text-xs font-medium font-poppins text-primary/70">
+                {tag}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
