@@ -9,7 +9,7 @@ export const socials = [
   },
   {
     icon: "fa-brands fa-linkedin",
-    url: "https://www.linkedin.com/in/tyrelchambers/",
+    url: "https://www.linkedin.com/in/tyrel-chambers-8ab581214/",
   },
   {
     icon: "fa-brands fa-youtube",
