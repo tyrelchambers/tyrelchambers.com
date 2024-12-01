@@ -5,15 +5,6 @@
   font-style: normal;
 }
 
-p,
-a {
-  font-family: "Poppins", sans-serif;
-}
-
-.font-poppins {
-  font-family: "Poppins", sans-serif;
-}
-
 @keyframes scroll {
   from {
     transform: translateX(0);

@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import { type Blog } from "../schemas/index";
 import Section from "../layouts/section.astro";
-const posts = (await getCollection("blog")) as Blog[];
+const posts = await getCollection("blog");
 ---
 
 <Section title="The blog" tag="The ramble zone">
