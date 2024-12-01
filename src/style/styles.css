@@ -57,15 +57,9 @@ a {
   }
 }
 
-.photo-grid {
-  /* display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: masonry; */
-}
-
 @layer components {
   .project-list-item:hover {
-    height: 1000px;
+    @apply lg:h-[850px] xl:h-[1000px] h-fit;
   }
 
   .project-list-item:hover > img {
@@ -76,11 +70,11 @@ a {
     @apply mix-blend-normal underline text-foreground;
   }
   .project-list-item h3 {
-    @apply font-bold text-[7rem] text-background mb-2 flex justify-between items-center  drop-shadow-2xl mix-blend-exclusion leading-none;
+    @apply font-bold text-xl lg:text-[7rem] text-foreground mt-6 lg:mt-0 lg:text-background mb-2 flex justify-between items-center  drop-shadow-2xl mix-blend-exclusion leading-none;
   }
 
   .project-list-item header {
-    @apply absolute z-10 left-[10%] bottom-[20%];
+    @apply lg:absolute z-10 lg:left-[10%] lg:bottom-[20%];
   }
 
   .project-list-item:hover header {
@@ -88,9 +82,9 @@ a {
   }
 
   .project-list-item header > p {
-    opacity: 0;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
+    @apply opacity-100 lg:opacity-0;
   }
 
   .project-list-item:hover header > p {
@@ -98,6 +92,6 @@ a {
   }
 
   .project-list-item > img {
-    @apply object-cover shadow-xl rounded-xl absolute top-0 right-0 w-4/5 aspect-video transition-all;
+    @apply object-cover shadow-xl rounded-xl lg:absolute lg:top-0 lg:right-0 lg:w-4/5 w-full aspect-video transition-all;
   }
 }

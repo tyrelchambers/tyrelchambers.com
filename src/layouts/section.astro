@@ -11,12 +11,16 @@ const { title, tag, fullWidth } = Astro.props;
 const restrictWidth = "max-w-screen-2xl mx-auto";
 ---
 
-<section class={clsx(" my-40", !fullWidth && restrictWidth)}>
+<section class={clsx("px-4 lg:my-40 my-20", !fullWidth && restrictWidth)}>
   <header class={clsx(fullWidth && restrictWidth)}>
-    <p class="uppercase text-primary font-medium tracking-[0.4rem] mb-2">
+    <p
+      class="uppercase text-primary font-medium tracking-[0.4rem] text-xs md:text-base mb-2"
+    >
       {tag}
     </p>
-    <h2 class="uppercase font-black text-6xl text-primary mb-6 raleway-black">
+    <h2
+      class="uppercase font-black text-3xl md:text-6xl text-primary mb-6 raleway-black"
+    >
       {title}
     </h2>
   </header>

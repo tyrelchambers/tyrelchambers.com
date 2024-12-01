@@ -9,13 +9,13 @@ import { projects } from "../data/projects";
       projects.map((p) => (
         <a
           href={p.link}
-          class="block relative max-w-screen-xl w-full h-[800px] project-list-item transition-all reverse"
+          class="block relative max-w-screen-xl w-full  lg:h-[800px] project-list-item transition-all reverse"
         >
-          <img src={p.image} alt="" class="" />
+          <img src={p.image} alt="" />
 
           <header class="transition-all mix-blend-difference">
             <h3 class="font-poppins">{p.title}</h3>
-            <p class="text-foreground/70 text-xl mt-4 font-medium uppercase">
+            <p class="text-foreground/70 lg:text-xl mt-4 font-medium lg:uppercase">
               {p.description}
             </p>
           </header>
