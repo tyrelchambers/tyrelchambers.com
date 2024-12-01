@@ -10,8 +10,8 @@ import Wrapper from "../layouts/wrapper.astro";
     <Header />
     <Section title="Hey, welcome." tag="About me">
       <div class="flex my-20 gap-10">
-        <img src="me.jpeg" class="rounded-xl max-w-lg" />
-        <div class="flex flex-col text-3xl gap-6 leading-normal">
+        <img src="me.jpeg" class="rounded-xl max-w-lg aspect-square h-fit" />
+        <div class="flex flex-col text-2xl gap-6 leading-normal">
           <p>
             During the day, I'm working for This Dot Labs as a Customer Success
             Engineer.
@@ -24,22 +24,20 @@ import Wrapper from "../layouts/wrapper.astro";
               target="_blank">Stories After Midnight</a
             >.
           </p>
+          <p class="text-2xl leading-normal">
+            You can also find me taking pictures for my Instagram and some day
+            I'd like to enter a competiton for them. There's something special
+            in capturing God's beauty in nature.
+          </p>
+          <p class="text-2xl leading-normal">
+            <span class="bg-red-500 p-2 uppercase font-bold"
+              >Before I forget,</span
+            > if you know the devs of S.T.A.L.K.E.R, let them know I want to voice
+            act in a video game of theirs. But, let's be real, it would be cool to
+            voice act in a story-driven video game.
+          </p>
           <Socials />
         </div>
-      </div>
-      <div class="flex flex-col gap-4">
-        <p class="text-3xl leading-normal">
-          You can also find me taking pictures for my Instagram and some day I'd
-          like to enter a competiton for them. There's something special in
-          capturing God's beauty in nature.
-        </p>
-        <p class="text-3xl leading-normal">
-          <span class="bg-red-500 p-2 uppercase font-bold"
-            >Before I forget,</span
-          > if you know the devs of S.T.A.L.K.E.R, let them know I want to voice
-          act in a video game of theirs. But, let's be real, it would be cool to
-          voice act in a story-driven video game.
-        </p>
       </div>
     </Section>
   </main>
