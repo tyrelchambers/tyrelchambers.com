@@ -1,0 +1,64 @@
+---
+name: Build and deploy
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-web:
+    name: app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/tyrelchambers.com:latest
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository_owner }}/tyrelchambers.com
+          cache-to: type=gha,mode=max
+
+  deploy:
+    needs: [build-web]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Promote tyrelchambers.com to latest
+        run: |
+          docker buildx imagetools create \
+            --tag ghcr.io/${{ github.repository_owner }}/tyrelchambers.com \
+            ghcr.io/${{ github.repository_owner }}/tyrelchambers.com
+
+      - name: Deploy docker images to server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd apps
+            docker compose pull 
+            docker compose down
+            docker compose up -d
