@@ -3,7 +3,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm install
+RUN npm install -f
 RUN npm run build
 
 ENV HOST=0.0.0.0
