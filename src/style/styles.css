@@ -2,15 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: 52 94% 99%;
-  --foreground: 0 0% 0%;
-  --border: 73 31% 82%;
-  --muted: 73 21% 42%;
+@layer base {
+  :root {
+    --background: 52 94% 99%;
+    --foreground: 0 0% 0%;
+    --border: 73 31% 82%;
+    --muted: 73 21% 42%;
 
-  --primary: 337 41% 30%;
-  --secondary: 517 41% 90%;
-  --secondary-foreground: 517 41% 30%;
+    --primary: 337 41% 30%;
+    --secondary: 517 41% 90%;
+    --secondary-foreground: 517 41% 30%;
+  }
 }
 
 body,
@@ -93,5 +95,17 @@ a {
 
   .project-list-item > img {
     @apply object-cover shadow-xl rounded-xl lg:absolute lg:top-0 lg:right-0 lg:w-4/5 w-full aspect-video transition-all;
+  }
+
+  .whats-new-overlay {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, white 0%, rgba(52, 94, 99, 0) 100%);
+    z-index: 10;
   }
 }

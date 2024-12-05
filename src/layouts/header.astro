@@ -1,10 +1,42 @@
 ---
-import Nav from "./nav.astro";
+import MobileNav from "./MobileNav";
+
+export const routes = [
+  {
+    title: "Home",
+    url: "/",
+  },
+  {
+    title: "Projects",
+    url: "/projects",
+  },
+  {
+    title: "About",
+    url: "/about",
+  },
+  {
+    title: "Blog",
+    url: "/blog",
+  },
+];
 ---
 
 <header class="py-4 px-8">
-  <div class="flex items-center gap-10">
-    <h1 class="font-bold uppercase text-xs">Tyrel Chambers</h1>
-    <Nav />
+  <div class="flex items-center gap-10 justify-between md:justify-start">
+    <h1 class="font-bold uppercase text-xs"><a href="/">Tyrel Chambers</a></h1>
+    <nav class="gap-10 uppercase hidden md:flex">
+      {
+        routes.map((route) => (
+          <a
+            class="text-foreground/40 hover:text-foreground text-xs font-medium"
+            href={route.url}
+          >
+            {route.title}
+          </a>
+        ))
+      }
+    </nav>
+
+    <MobileNav client:only />
   </div>
 </header>

@@ -4,8 +4,9 @@ export const blogSchema = z.object({
   title: z.string(),
   description: z.string(),
   date: z.date(),
-  tags: z.array(z.string()),
+  tags: z.array(z.string()).optional(),
   cover: z.string(),
+  author: z.string(),
 });
 export type Blog = z.infer<typeof blogSchema>;
 

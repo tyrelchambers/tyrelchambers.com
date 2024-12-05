@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+---
+
+<a
+  href={`/blog/${post.id}`}
+  class="bg-gray-50 rounded-xl hover:scale-[101%] transition-all hover:shadow-xl"
+>
+  <div class="relative rounded-xl overflow-hidden">
+    <img
+      src={post.data.cover}
+      alt=""
+      class="aspect-video w-full object-cover"
+    />
+    <div class="bg-gradient-to-t from-white absolute inset-0"></div>
+  </div>
+  <div class="flex flex-col w-[90%] mx-auto -mt-20 z-10 relative pb-4">
+    <h3 class="text-3xl font-bold">{post.data.title}</h3>
+    <p
+      class="mt-6 text-foreground/60 line-clamp-4"
+      title={post.data.description}
+    >
+      {post.data.description}
+    </p>
+    <p class="text-primary font-medium mt-4">
+      Written by {post.data.author}
+    </p>
+    <p class="text-foreground/50 mt-2 italic">
+      {post.data.date.toDateString()}
+    </p>
+  </div>
+</a>

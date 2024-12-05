@@ -10,15 +10,30 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/react": "^4.0.0",
     "@astrojs/tailwind": "^5.1.2",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@types/react": "^18.3.13",
+    "@types/react-dom": "^18.3.1",
     "astro": "^4.16.16",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "lucide": "^0.468.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-player": "^2.16.0",
+    "tailwind-merge": "^2.5.5",
     "tailwindcss": "^3.4.15",
-    "typescript": "^5.7.2"
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.7.2",
+    "vaul": "^1.1.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
     "prettier": "^3.4.1",
     "prettier-plugin-astro": "^0.14.1"
   }

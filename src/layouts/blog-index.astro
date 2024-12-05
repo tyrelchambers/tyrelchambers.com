@@ -1,10 +1,12 @@
 ---
 import { getCollection } from "astro:content";
-import { type Blog } from "../schemas/index";
 import Section from "../layouts/section.astro";
+import BlogPost from "../components/BlogPost.astro";
 const posts = await getCollection("blog");
 ---
 
 <Section title="The blog" tag="The ramble zone">
-  {posts.map((post) => <p>{post.title}</p>)}
+  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    {posts.map((post) => <BlogPost post={post} />)}
+  </section>
 </Section>
