@@ -2,11 +2,10 @@
 import Header from "../layouts/header.astro";
 import Hero from "../layouts/hero.astro";
 import Carousel from "../layouts/carousel.astro";
-import BlogIndex from "../layouts/blog-index.astro";
 import PhotographyIndex from "../layouts/photography-index.astro";
 import ProjectsIndex from "../layouts/projects-index.astro";
-import WhatsNew from "../layouts/whats-new.astro";
 import Wrapper from "../layouts/wrapper.astro";
+import Section from "@/layouts/section.astro";
 ---
 
 <Wrapper title="Tyrel Chambers">
@@ -14,10 +13,14 @@ import Wrapper from "../layouts/wrapper.astro";
     <Header />
 
     <Hero />
-    <WhatsNew />
     <Carousel />
 
-    <BlogIndex />
+    <Section
+      tag="Check out the blog"
+      title="Code & Context"
+      href="https://blog.tyrelchambers.com"
+    />
+
     <ProjectsIndex />
     <PhotographyIndex />
   </main>

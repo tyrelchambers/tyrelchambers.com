@@ -3,11 +3,12 @@ interface Props {
   title: string;
   tag: string;
   fullWidth?: boolean;
+  href?: string;
 }
 
 import clsx from "clsx";
 
-const { title, tag, fullWidth } = Astro.props;
+const { title, tag, fullWidth, href } = Astro.props;
 const restrictWidth = "max-w-screen-2xl mx-auto";
 ---
 
@@ -18,11 +19,19 @@ const restrictWidth = "max-w-screen-2xl mx-auto";
     >
       {tag}
     </p>
-    <h2
-      class="uppercase font-black text-3xl md:text-6xl text-primary mb-6 raleway-black"
-    >
-      {title}
-    </h2>
+    {
+      href ? (
+        <a href={href} class="w-fit">
+          <h2 class="uppercase font-black text-3xl md:text-6xl text-primary mb-6 raleway-black underline">
+            {title}
+          </h2>
+        </a>
+      ) : (
+        <h2 class="uppercase font-black text-3xl md:text-6xl text-primary mb-6 raleway-black">
+          {title}
+        </h2>
+      )
+    }
   </header>
 
   <slot />

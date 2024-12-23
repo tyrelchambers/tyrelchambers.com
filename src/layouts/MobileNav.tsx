@@ -7,7 +7,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { routes } from "./header.astro";
+import { routes } from "@/routes";
 
 const MobileNav = () => {
   const isMobile = window && window.innerWidth <= 768;
