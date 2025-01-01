@@ -58,7 +58,5 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd apps
-            docker compose pull 
-            docker compose down
-            docker compose up -d
+            kubectl rollout restart deployment tyrelchambers-deploy
+
