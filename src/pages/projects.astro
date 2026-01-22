@@ -1,0 +1,73 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getAllProjects, getStackColorClasses } from "../data/projects";
+
+const projects = getAllProjects();
+---
+
+<Layout title="Projects | tyrel_chambers">
+  <main class="flex flex-col gap-8 md:gap-12 px-4 sm:px-8 md:px-12 lg:px-20 py-12 lg:py-20 bg-[#0C0C0C] w-full min-h-screen">
+    <!-- Header -->
+    <div class="flex flex-col gap-4">
+      <a href="/" class="text-[#3B82F6] text-[13px] font-medium hover:underline">&larr; cd ..</a>
+      <div class="flex flex-col gap-3">
+        <span class="text-[#525252] text-sm">$ ls -la ./projects/</span>
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-semibold">All Projects</h1>
+        <span class="text-[#525252] text-sm">// complete_work_history</span>
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full">
+      {projects.map((project) => (
+        <article class="flex flex-col gap-4 bg-[#1A1A1A] p-4 md:p-5 rounded fade-in-scroll hover:bg-[#222222] transition-colors">
+          <div class="w-full h-[160px] sm:h-[180px] bg-[#0C0C0C] rounded overflow-hidden">
+            <img
+              src={project.image}
+              alt={project.title}
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="flex flex-col gap-3 flex-1">
+            <div class="flex flex-wrap gap-1.5">
+              {project.stack.map((tech) => (
+                <span class={`text-[10px] font-medium px-2 py-0.5 rounded ${getStackColorClasses(tech.color)}`}>
+                  {tech.name}
+                </span>
+              ))}
+            </div>
+            <h2 class="text-base md:text-lg font-semibold">{project.title}</h2>
+            <p class="text-[#737373] text-[13px] leading-[1.6] line-clamp-3">
+              {project.description}
+            </p>
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[#22C55E] text-[13px] font-medium hover:underline mt-auto"
+            >
+              &rarr; view_project()
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Empty state message if no projects -->
+    {projects.length === 0 && (
+      <div class="flex flex-col items-center justify-center py-20 text-center">
+        <span class="text-[#525252] text-sm">// no_projects_found</span>
+        <p class="text-[#737373] text-base mt-2">Projects coming soon...</p>
+      </div>
+    )}
+  </main>
+</Layout>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
