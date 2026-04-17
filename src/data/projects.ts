@@ -42,6 +42,21 @@ export const projects: Project[] = [
     ],
     featured: true,
   },
+  {
+    title: "big-o",
+    slug: "big-o",
+    description:
+      "Interactive teaching tool for understanding Big-O notation. Walk through complexity classes with live code, race algorithms head-to-head, and drill ~70 quiz questions covering O(1) operations, recursion, and amortized-cost traps across customizable difficulty tiers.",
+    image: "/images/project-big-o.png",
+    url: "https://big-o.tyrelchambers.com",
+    stack: [
+      { name: "React", color: "green" },
+      { name: "Vite", color: "purple" },
+      { name: "Tailwind", color: "blue" },
+      { name: "Kubernetes", color: "blue" },
+    ],
+    featured: true,
+  },
 ];
 
 export const getStackColorClasses = (color: Project["stack"][0]["color"]) => {
