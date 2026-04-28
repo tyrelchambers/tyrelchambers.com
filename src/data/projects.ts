@@ -57,6 +57,21 @@ export const projects: Project[] = [
     ],
     featured: true,
   },
+  {
+    title: "bitwise",
+    slug: "bitwise",
+    description:
+      "Interactive teaching tool for JavaScript bitwise operations. Walk through operators and idioms with live evaluation, then switch to the polynomial (GF(2)) view to see how bits behave as elements of a field — XOR as addition, AND as multiplication, with shift-and-XOR long division.",
+    image: "/images/project-bitwise.png",
+    url: "https://bitwise.tyrelchambers.com",
+    stack: [
+      { name: "React", color: "green" },
+      { name: "Vite", color: "purple" },
+      { name: "Tailwind", color: "blue" },
+      { name: "Kubernetes", color: "blue" },
+    ],
+    featured: true,
+  },
 ];
 
 export const getStackColorClasses = (color: Project["stack"][0]["color"]) => {
