@@ -13,6 +13,21 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "helmsman",
+    slug: "helmsman",
+    description:
+      "AI-native admin platform for self-hosting production Kubernetes without a dedicated ops team. Diagnoses failures in plain English, applies the fixes you approve behind a guarded command gate, and replaces the Rancher/Lens dashboard with live logs, storage, RBAC, and a one-click app catalog.",
+    image: "/images/project-helmsman.png",
+    url: "https://helmsman.run",
+    stack: [
+      { name: "TypeScript", color: "blue" },
+      { name: "React", color: "green" },
+      { name: "Bun", color: "orange" },
+      { name: "Kubernetes", color: "blue" },
+    ],
+    featured: true,
+  },
+  {
     title: "jobwatchcanada",
     slug: "jobwatch-canada",
     description:
@@ -49,6 +64,21 @@ export const projects: Project[] = [
       "Interactive teaching tool for understanding Big-O notation. Walk through complexity classes with live code, race algorithms head-to-head, and drill ~70 quiz questions covering O(1) operations, recursion, and amortized-cost traps across customizable difficulty tiers.",
     image: "/images/project-big-o.png",
     url: "https://big-o.tyrelchambers.com",
+    stack: [
+      { name: "React", color: "green" },
+      { name: "Vite", color: "purple" },
+      { name: "Tailwind", color: "blue" },
+      { name: "Kubernetes", color: "blue" },
+    ],
+    featured: true,
+  },
+  {
+    title: "linked-lists",
+    slug: "linked-lists",
+    description:
+      "Interactive teaching tool for singly, doubly, and circular linked lists. Step through classic interview techniques — dummy head, two-pointer, reverse, merge, Floyd's cycle detection, palindrome, Nth-from-end — with animated diagrams, a free-form sandbox, and quizzes.",
+    image: "/images/project-linked-lists.png",
+    url: "https://linked-lists.tyrelchambers.com",
     stack: [
       { name: "React", color: "green" },
       { name: "Vite", color: "purple" },
