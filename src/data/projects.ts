@@ -13,12 +13,12 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "helmsman",
-    slug: "helmsman",
+    title: "rigel",
+    slug: "rigel",
     description:
       "AI-native admin platform for self-hosting production Kubernetes without a dedicated ops team. Diagnoses failures in plain English, applies the fixes you approve behind a guarded command gate, and replaces the Rancher/Lens dashboard with live logs, storage, RBAC, and a one-click app catalog.",
-    image: "/images/project-helmsman.png",
-    url: "https://helmsman.run",
+    image: "/images/project-rigel.png",
+    url: "https://rigel.run",
     stack: [
       { name: "TypeScript", color: "blue" },
       { name: "React", color: "green" },
