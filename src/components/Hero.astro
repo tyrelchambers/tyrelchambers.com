@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import { ArrowRight } from "@lucide/astro";
+import lake from "../assets/images/hero-lake.webp";
+import rigel from "../assets/images/project-rigel.png";
+---
+
+<section class="relative isolate flex flex-col items-center gap-14 overflow-hidden bg-bg pt-32 lg:h-[1010px] lg:gap-[72px] lg:pt-[162px]">
+  <Image src={lake} alt="" loading="eager" fetchpriority="high" class="absolute inset-0 -z-20 size-full object-cover" />
+  <div class="hero-scrim absolute inset-0 -z-10"></div>
+
+  <div class="flex w-full max-w-[1120px] flex-col items-center gap-7 px-4 text-center sm:px-8">
+    <h1 class="display-headline text-on-inverse">I help build professional digital experiences.</h1>
+    <p class="max-w-[680px] text-lg leading-normal text-on-inverse-2 md:text-xl">
+      I'm a full-stack engineer who works in TypeScript, Go and React. I do my best to understand who I am working with, to deliver value that truly benefits you.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+      <a href="#projects" class="btn-glow px-[26px] py-4 text-base">
+        See the projects
+        <ArrowRight size={18} aria-hidden="true" />
+      </a>
+      <a href="#contact" class="btn-outline px-[26px] py-4 text-base">Start a project</a>
+    </div>
+  </div>
+
+  <div class="h-[240px] w-full max-w-[1180px] overflow-hidden rounded-t-2xl border border-b-0 border-white/12 sm:h-[400px] lg:h-auto lg:min-h-0 lg:flex-1">
+    <Image
+      src={rigel}
+      alt="The rigel dashboard showing a Kubernetes cluster overview"
+      widths={[640, 1180, 2000]}
+      sizes="(min-width: 1180px) 1180px, 100vw"
+      loading="eager"
+      class="size-full object-cover object-top"
+    />
+  </div>
+</section>
+
+<style>
+  .hero-scrim {
+    background: linear-gradient(
+      180deg,
+      rgb(6 6 10 / 0.9) 0%,
+      rgb(6 6 10 / 0.75) 30%,
+      rgb(6 6 10 / 0.6) 55%,
+      rgb(6 6 10 / 0.95) 100%
+    );
+  }
+</style>

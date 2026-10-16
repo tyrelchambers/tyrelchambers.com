@@ -1,0 +1,33 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-bg pb-12">
+  <canvas
+    id="wordmark"
+    role="img"
+    aria-label="tyrel."
+    class="block aspect-[1440/852] w-full"
+  ></canvas>
+  <div class="mx-auto mt-12 flex max-w-[1440px] flex-col items-center justify-between gap-2 px-4 sm:flex-row sm:px-8 lg:px-20">
+    <p class="font-cap text-sm text-ink-3">&copy; {year} Tyrel Chambers</p>
+    <p class="font-mono text-sm text-ink-3">tyrelchambers.com</p>
+  </div>
+</footer>
+
+<script>
+  import { mountNoiseStrings } from "../scripts/noise-strings";
+
+  const canvas = document.getElementById("wordmark") as HTMLCanvasElement;
+  const styles = getComputedStyle(document.documentElement);
+
+  mountNoiseStrings(canvas, {
+    text: "tyrel",
+    accent: ".",
+    font: '"DM Sans Variable"',
+    textColor: styles.getPropertyValue("--color-ink"),
+    accentColor: styles.getPropertyValue("--color-glow"),
+    background: styles.getPropertyValue("--color-bg"),
+    widthRatio: 1100 / 1440,
+  });
+</script>

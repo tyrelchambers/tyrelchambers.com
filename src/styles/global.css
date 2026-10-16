@@ -1,0 +1,95 @@
+@import "@fontsource-variable/dm-sans";
+@import "@fontsource-variable/instrument-sans";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+@import "tailwindcss";
+
+/* Midnight Indigo palette, mirrored from the `palette: midnight` theme in portfolio.pen */
+@theme static {
+  --color-bg: #0a0a0f;
+  --color-surface: #14141c;
+  --color-ink: #ededf7;
+  --color-ink-2: #a6a6be;
+  --color-ink-3: #7e7e98;
+  --color-inverse: #14141c;
+  --color-inverse-2: #1c1c27;
+  --color-on-inverse: #ffffff;
+  --color-on-inverse-2: #a6a6be;
+  --color-accent: #8e96ff;
+  --color-glow: #a5b0ff;
+  --color-on-glow: #0a0a0f;
+  --color-line: #23232e;
+  --color-line-dark: #2a2a37;
+  --color-chip: #ffffff12;
+  --color-chip-inverse: #ffffff14;
+  --color-stage: #2b2777;
+
+  --font-head: "DM Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "DM Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-cap: "Instrument Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+  }
+
+  body {
+    @apply bg-bg font-body text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent text-on-glow;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-4 outline-glow;
+  }
+}
+
+@utility section-title {
+  @apply font-head font-bold text-[clamp(3.5rem,9vw,7.5rem)] leading-[0.9] tracking-[-0.033em];
+}
+
+@utility section-heading {
+  @apply font-head font-bold text-[clamp(2.25rem,4.5vw,3.5rem)] leading-[1.05] tracking-[-0.032em];
+}
+
+@utility display-headline {
+  @apply font-head font-bold text-[clamp(2.75rem,7vw,5.5rem)] leading-none tracking-[-0.028em];
+}
+
+@utility section-subtitle {
+  @apply max-w-[640px] font-body text-lg leading-normal md:text-xl;
+}
+
+@utility eyebrow {
+  @apply font-cap text-xs font-semibold tracking-[0.12em] uppercase;
+}
+
+@utility chip {
+  @apply rounded-full px-3 py-1.5 font-cap text-[13px] font-medium;
+}
+
+@utility btn-glow {
+  @apply inline-flex items-center gap-2 rounded-full bg-glow font-body font-semibold text-on-glow transition hover:bg-white;
+}
+
+@utility btn-outline {
+  @apply inline-flex items-center gap-2 rounded-full border border-line-dark font-body font-medium text-on-inverse transition hover:border-ink-3 hover:bg-white/5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

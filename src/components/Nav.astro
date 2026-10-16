@@ -1,0 +1,71 @@
+---
+import { Menu, X } from "@lucide/astro";
+import LogoMark from "./LogoMark.astro";
+
+const links = [
+  { label: "Client work", href: "/#client-work" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Writing", href: "/#writing" },
+  { label: "About", href: "/#about" },
+];
+---
+
+<header class="absolute inset-x-0 top-0 z-20">
+  <div class="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-6 sm:px-8 lg:px-20 lg:py-7">
+    <a href="/" class="flex items-center gap-2.5 text-on-inverse">
+      <LogoMark class="h-[34px] w-auto text-glow" />
+      <span class="font-head text-[19px] font-bold">Tyrel Chambers</span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden items-center gap-9 md:flex">
+      {links.map((l) => (
+        <a href={l.href} class="text-[15px] text-on-inverse-2 transition hover:text-on-inverse">{l.label}</a>
+      ))}
+      <a href="/#contact" class="rounded-full border border-line-dark bg-white/5 px-[18px] py-2.5 text-[15px] font-medium text-on-inverse transition hover:bg-white/10">
+        Get in touch
+      </a>
+    </nav>
+
+    <button id="menu-open" type="button" class="text-on-inverse md:hidden" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+      <Menu size={26} />
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="fixed inset-0 z-30 hidden flex-col bg-bg px-4 py-6 sm:px-8" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 text-on-inverse">
+        <LogoMark class="h-[34px] w-auto text-glow" />
+        <span class="font-head text-[19px] font-bold">Tyrel Chambers</span>
+      </a>
+      <button id="menu-close" type="button" class="text-on-inverse" aria-label="Close menu">
+        <X size={26} />
+      </button>
+    </div>
+    <nav aria-label="Mobile" class="mt-16 flex flex-col gap-6">
+      {[...links, { label: "Get in touch", href: "/#contact" }].map((l) => (
+        <a href={l.href} class="mobile-link font-head text-4xl font-bold tracking-tight text-ink">{l.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menu = document.getElementById("mobile-menu")!;
+  const openBtn = document.getElementById("menu-open")!;
+  const closeBtn = document.getElementById("menu-close")!;
+
+  const setOpen = (open: boolean) => {
+    menu.classList.toggle("hidden", !open);
+    menu.classList.toggle("flex", open);
+    openBtn.setAttribute("aria-expanded", String(open));
+    document.body.style.overflow = open ? "hidden" : "";
+    (open ? closeBtn : openBtn).focus();
+  };
+
+  openBtn.addEventListener("click", () => setOpen(true));
+  closeBtn.addEventListener("click", () => setOpen(false));
+  menu.querySelectorAll(".mobile-link").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !menu.classList.contains("hidden")) setOpen(false);
+  });
+</script>

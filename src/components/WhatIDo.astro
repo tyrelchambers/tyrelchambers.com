@@ -1,0 +1,56 @@
+---
+import { Database, LayoutPanelTop, Rocket } from "@lucide/astro";
+
+const areas = [
+  {
+    icon: LayoutPanelTop,
+    title: "Product & interface",
+    body: "I build interfaces with React, Next.js and Tailwind, and I pay close attention to how they respond and how quickly they load.",
+  },
+  {
+    icon: Database,
+    title: "Systems & data",
+    body: "I write APIs and data pipelines in Go and Postgres. The ones behind JobWatchCanada serve more than 400,000 government records.",
+  },
+  {
+    icon: Rocket,
+    title: "Shipping & running it",
+    body: "I set up the CI/CD pipelines, self-hosted clusters and monitoring. I ship early and tune performance once real usage shows me what's slow.",
+  },
+];
+
+const stats = [
+  { value: "30,000+", caption: "installs of the Google Drive app I helped build for Stripe through This Dot" },
+  { value: "20,000+", caption: "visitors to JobWatchCanada in its first two months" },
+];
+---
+
+<section class="bg-bg">
+  <div class="mx-auto flex max-w-[1440px] flex-col gap-12 px-4 pt-20 pb-16 sm:px-8 lg:px-20 lg:pt-[120px]">
+    <h2 class="section-heading max-w-[1040px] text-ink">
+      I work on every layer of a product, from the UI to the code to the infrastructure.
+    </h2>
+
+    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-[1fr_1fr_1fr_360px]">
+      {areas.map(({ icon: Icon, title, body }) => (
+        <article class="flex flex-col gap-4 rounded-2xl bg-surface p-8">
+          <div class="flex size-11 items-center justify-center rounded-xl bg-bg text-accent">
+            <Icon size={22} aria-hidden="true" />
+          </div>
+          <h3 class="mt-10 font-head text-2xl font-semibold text-ink">{title}</h3>
+          <p class="leading-[1.55] text-ink-2">{body}</p>
+        </article>
+      ))}
+
+      <aside class="flex flex-col gap-4 rounded-2xl bg-inverse p-8">
+        <p class="eyebrow text-on-inverse-2">Track record</p>
+        {stats.map((s) => (
+          <div class="flex flex-col gap-1.5 pt-3 pb-1">
+            <p class="font-mono text-[44px] font-medium tracking-tight text-glow">{s.value}</p>
+            <p class="text-[15px] leading-[1.45] text-on-inverse-2">{s.caption}</p>
+          </div>
+        ))}
+      </aside>
+    </div>
+  </div>
+</section>
