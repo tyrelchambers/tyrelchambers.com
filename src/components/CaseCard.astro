@@ -1,0 +1,74 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import { ArrowUpRight, Check } from "@lucide/astro";
+
+interface Props {
+  label: string;
+  labelStyle: "index" | "category";
+  meta: string;
+  title: string;
+  summary: string;
+  points?: string[];
+  tags: string[];
+  cta?: { label: string; href: string };
+  image: ImageMetadata;
+  imageAlt: string;
+  flip?: boolean;
+}
+
+const { label, labelStyle, meta, title, summary, points = [], tags, cta, image, imageAlt, flip = false } = Astro.props;
+---
+
+<article class:list={["flex flex-col gap-6 rounded-2xl bg-surface p-4 sm:p-6 lg:min-h-[640px] lg:flex-row", flip && "lg:flex-row-reverse"]}>
+  <div class="flex flex-col justify-between gap-10 p-2 sm:p-4 lg:w-[560px] lg:shrink-0 lg:py-6 lg:pr-4 lg:pl-6">
+    <div class="flex items-center justify-between gap-4">
+      <span class:list={[labelStyle === "index" ? "font-mono text-[15px] font-medium" : "eyebrow text-[13px]", "text-accent"]}>{label}</span>
+      <span class:list={["font-mono text-sm", labelStyle === "index" ? "text-ink-2" : "text-ink-3"]}>{meta}</span>
+    </div>
+
+    <div class="flex flex-col gap-5">
+      <h3 class:list={[
+        "font-head font-bold leading-[0.95] text-ink",
+        labelStyle === "index" ? "text-[clamp(2.25rem,9.5vw,4rem)] tracking-[-0.031em] wrap-anywhere" : "text-[clamp(2.5rem,5vw,3.5rem)] tracking-[-0.032em]",
+      ]}>{title}</h3>
+      <p class="leading-[1.55] text-ink-2">{summary}</p>
+      {points.length > 0 && (
+        <ul class="flex flex-col gap-3 pt-1">
+          {points.map((p) => (
+            <li class="flex gap-3 text-[15px] leading-[1.45] text-ink">
+              <Check size={18} class="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
+              {p}
+            </li>
+          ))}
+        </ul>
+      )}
+      {cta && (
+        <ul class="flex flex-wrap gap-2" aria-label="Stack">
+          {tags.map((t) => <li class="chip bg-chip text-ink">{t}</li>)}
+        </ul>
+      )}
+    </div>
+
+    {cta ? (
+      <a href={cta.href} target="_blank" rel="noopener noreferrer" class="btn-glow self-start px-[22px] py-3.5 text-[15px]">
+        {cta.label}
+        <ArrowUpRight size={16} aria-hidden="true" />
+      </a>
+    ) : (
+      <ul class="flex flex-wrap gap-2" aria-label="What I did">
+        {tags.map((t) => <li class="chip bg-chip text-ink">{t}</li>)}
+      </ul>
+    )}
+  </div>
+
+  <div class="aspect-[16/10] overflow-hidden rounded-xl border border-line lg:aspect-auto lg:flex-1">
+    <Image
+      src={image}
+      alt={imageAlt}
+      widths={[640, 1000, 1600]}
+      sizes="(min-width: 1440px) 660px, (min-width: 1024px) 50vw, 100vw"
+      class="size-full object-cover object-top-left"
+    />
+  </div>
+</article>

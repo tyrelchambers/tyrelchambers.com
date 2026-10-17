@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import { ArrowUpRight } from "@lucide/astro";
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<a
+  href={project.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group flex flex-col gap-5 rounded-2xl bg-surface p-3 pb-7 transition hover:bg-[#1a1a24]"
+>
+  <div class="h-[220px] overflow-hidden rounded-xl">
+    <Image
+      src={project.image}
+      alt={`Screenshot of the ${project.title} lesson`}
+      widths={[480, 800]}
+      sizes="(min-width: 768px) 33vw, 100vw"
+      class="size-full object-cover transition duration-500 group-hover:scale-[1.03]"
+    />
+  </div>
+  <div class="flex flex-col gap-2.5 px-4">
+    <div class="flex items-center justify-between gap-4">
+      <h4 class="font-head text-4xl font-bold tracking-[-0.033em] text-ink">{project.title}</h4>
+      <ArrowUpRight size={22} class="shrink-0 text-accent transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+    </div>
+    <p class="text-[15px] leading-normal text-ink-2">{project.description}</p>
+  </div>
+</a>

@@ -1,0 +1,79 @@
+---
+import { ArrowUpRight } from "@lucide/astro";
+import SectionHeader from "./SectionHeader.astro";
+import { articles, blog, featuredArticle } from "../data/content";
+---
+
+<section id="writing" class="bg-inverse">
+  <div class="mx-auto flex max-w-[1440px] flex-col gap-10 px-4 py-20 sm:px-8 lg:px-20 lg:py-[120px]">
+    <SectionHeader
+      title="Writing"
+      tone="inverse"
+      subtitle="I write at All Systems Nominal about running my own infrastructure, building alongside AI and what being an engineer means right now. It's the best place to see how I think."
+    >
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="font-mono text-[13px] text-on-inverse-2">I write about</span>
+        {blog.topics.map((t) => <span class="chip bg-chip-inverse text-on-inverse">{t}</span>)}
+      </div>
+    </SectionHeader>
+
+    <div class="flex flex-col gap-4 lg:h-[460px] lg:flex-row">
+      <a
+        href={featuredArticle.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group flex flex-1 flex-col justify-between gap-10 rounded-2xl border border-line-dark bg-inverse-2 p-8 transition hover:border-ink-3 lg:p-12"
+      >
+        <p class="font-mono text-sm text-on-inverse-2">{featuredArticle.date} · {featuredArticle.read}</p>
+        <div class="flex flex-col gap-5">
+          <h3 class="font-head text-[clamp(2rem,4vw,3rem)] leading-[1.05] font-semibold tracking-[-0.03em] text-on-inverse group-hover:text-glow">
+            {featuredArticle.title}
+          </h3>
+          <p class="max-w-[620px] text-[17px] leading-[1.55] text-on-inverse-2">{featuredArticle.excerpt}</p>
+        </div>
+        <ul class="flex flex-wrap gap-2">
+          {featuredArticle.tags?.map((t) => <li class="chip bg-chip-inverse text-on-inverse">{t}</li>)}
+        </ul>
+      </a>
+
+      <div class="flex flex-col gap-3 rounded-2xl border border-line-dark bg-inverse-2 p-8 lg:w-[400px] lg:justify-end lg:p-12">
+        <p class="font-head text-[44px] leading-none font-bold tracking-[-0.032em] text-on-inverse">{blog.name}</p>
+        <p class="text-lg leading-[1.4] font-medium text-on-inverse-2">{blog.tagline}</p>
+        <a href={blog.url} target="_blank" rel="noopener noreferrer" class="btn-glow mt-3 self-start px-[22px] py-3.5 text-[15px]">
+          Read the blog
+          <ArrowUpRight size={16} aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+
+    <div class="pt-6">
+      <div class="hidden gap-6 border-b border-line-dark pb-4 md:flex" aria-hidden="true">
+        <span class="eyebrow w-40 text-on-inverse-2">Date</span>
+        <span class="eyebrow w-[200px] text-on-inverse-2">Topic</span>
+        <span class="eyebrow flex-1 text-on-inverse-2">Title</span>
+        <span class="eyebrow w-[120px] text-on-inverse-2">Read</span>
+        <span class="w-6"></span>
+      </div>
+      <ul>
+        {articles.map((a) => (
+          <li class="border-b border-line-dark">
+            <a
+              href={a.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex flex-wrap items-center gap-x-4 gap-y-2 py-7 md:flex-nowrap md:gap-6"
+            >
+              <span class="font-mono text-[15px] text-on-inverse-2 md:w-40 md:shrink-0">{a.date}</span>
+              <span class="font-cap text-[15px] font-medium text-glow md:w-[200px] md:shrink-0">{a.topic}</span>
+              <span class="basis-full font-head text-2xl leading-[1.2] font-semibold tracking-[-0.02em] text-on-inverse group-hover:text-glow md:basis-auto md:flex-1">
+                {a.title}
+              </span>
+              <span class="hidden font-mono text-[15px] text-on-inverse-2 md:block md:w-[120px] md:shrink-0">{a.read}</span>
+              <ArrowUpRight size={24} class="hidden shrink-0 text-glow transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 md:block" aria-hidden="true" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

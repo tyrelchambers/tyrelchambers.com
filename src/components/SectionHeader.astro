@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  tone?: "default" | "inverse";
+  level?: "title" | "heading";
+}
+
+const { title, subtitle, tone = "default", level = "title" } = Astro.props;
+---
+
+<header class="flex flex-col gap-7 pb-4">
+  {level === "title"
+    ? <h2 class:list={["section-title", tone === "inverse" ? "text-on-inverse" : "text-ink"]}>{title}</h2>
+    : <h3 class:list={["section-heading", tone === "inverse" ? "text-on-inverse" : "text-ink"]}>{title}</h3>}
+  <p class:list={["section-subtitle", tone === "inverse" ? "text-on-inverse-2" : "text-ink-2"]}>{subtitle}</p>
+  <slot />
+</header>

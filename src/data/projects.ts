@@ -1,118 +1,85 @@
+import type { ImageMetadata } from "astro";
+import rigel from "../assets/images/project-rigel.png";
+import jobwatch from "../assets/images/project-jobwatch.png";
+import reddex from "../assets/images/project-reddex.png";
+import bigO from "../assets/images/project-big-o.png";
+import linkedLists from "../assets/images/project-linked-lists.png";
+import bitwise from "../assets/images/project-bitwise.png";
+
 export interface Project {
   title: string;
   slug: string;
+  kind: "product" | "lesson";
   description: string;
-  image: string;
+  image: ImageMetadata;
   url: string;
-  stack: {
-    name: string;
-    color: "green" | "blue" | "orange" | "purple";
-  }[];
-  featured: boolean;
+  stack: string[];
 }
 
 export const projects: Project[] = [
   {
     title: "rigel",
     slug: "rigel",
+    kind: "product",
     description:
-      "AI-native admin platform for self-hosting production Kubernetes without a dedicated ops team. Diagnoses failures in plain English, applies the fixes you approve behind a guarded command gate, and replaces the Rancher/Lens dashboard with live logs, storage, RBAC, and a one-click app catalog.",
-    image: "/images/project-rigel.png",
+      "rigel lets a small team run production Kubernetes on their own servers without hiring an ops engineer. It explains failures in plain English, applies only the fixes you approve, and replaces Rancher or Lens as your dashboard.",
+    image: rigel,
     url: "https://rigel.run",
-    stack: [
-      { name: "TypeScript", color: "blue" },
-      { name: "React", color: "green" },
-      { name: "Bun", color: "orange" },
-      { name: "Kubernetes", color: "blue" },
-    ],
-    featured: true,
+    stack: ["TypeScript", "React", "Bun", "Kubernetes"],
   },
   {
     title: "jobwatchcanada",
     slug: "jobwatch-canada",
+    kind: "product",
     description:
-      "Community-driven platform providing transparency about Temporary Foreign Worker program usage. Features AI-powered natural language queries across 400,000+ LMIA records, interactive maps, and non-compliant employer tracking.",
-    image: "/images/project-jobwatch.png",
+      "JobWatchCanada makes the Temporary Foreign Worker program easier to scrutinize. You can search more than 400,000 LMIA records in plain English, browse them on a map and see which employers were found non-compliant. The Toronto Star, Toronto Sun, Yahoo News and Canadian Press have all covered it.",
+    image: jobwatch,
     url: "https://jobwatchcanada.com",
-    stack: [
-      { name: "Go", color: "green" },
-      { name: "React", color: "green" },
-      { name: "PostgreSQL", color: "orange" },
-      { name: "TypeScript", color: "blue" },
-    ],
-    featured: true,
+    stack: ["Go", "React", "PostgreSQL", "TypeScript"],
   },
   {
     title: "reddex",
     slug: "reddex",
+    kind: "product",
     description:
-      "Platform for content creators to manage Reddit stories, build personal portfolio websites, and receive story submissions. Features subreddit search, author messaging, and content organization tools.",
-    image: "/images/project-reddex.png",
+      "Reddex helps narrators find and organize Reddit stories for their channels. They can search subreddits, message authors, collect story submissions and publish their own portfolio site.",
+    image: reddex,
     url: "https://reddex.app",
-    stack: [
-      { name: "Next.js", color: "blue" },
-      { name: "TypeScript", color: "blue" },
-      { name: "tRPC", color: "orange" },
-      { name: "Prisma", color: "purple" },
-    ],
-    featured: true,
+    stack: ["Next.js", "TypeScript", "tRPC", "Prisma"],
   },
   {
     title: "big-o",
     slug: "big-o",
+    kind: "lesson",
     description:
-      "Interactive teaching tool for understanding Big-O notation. Walk through complexity classes with live code, race algorithms head-to-head, and drill ~70 quiz questions covering O(1) operations, recursion, and amortized-cost traps across customizable difficulty tiers.",
-    image: "/images/project-big-o.png",
+      "Learn the common complexity classes with live code, race algorithms against each other and test yourself with about 70 quiz questions.",
+    image: bigO,
     url: "https://big-o.tyrelchambers.com",
-    stack: [
-      { name: "React", color: "green" },
-      { name: "Vite", color: "purple" },
-      { name: "Tailwind", color: "blue" },
-      { name: "Kubernetes", color: "blue" },
-    ],
-    featured: true,
+    stack: ["React", "Vite", "Tailwind", "Kubernetes"],
   },
   {
     title: "linked-lists",
     slug: "linked-lists",
+    kind: "lesson",
     description:
-      "Interactive teaching tool for singly, doubly, and circular linked lists. Step through classic interview techniques — dummy head, two-pointer, reverse, merge, Floyd's cycle detection, palindrome, Nth-from-end — with animated diagrams, a free-form sandbox, and quizzes.",
-    image: "/images/project-linked-lists.png",
+      "Step through animated diagrams of the dummy head, two-pointer, reverse and merge techniques, plus Floyd's cycle detection.",
+    image: linkedLists,
     url: "https://linked-lists.tyrelchambers.com",
-    stack: [
-      { name: "React", color: "green" },
-      { name: "Vite", color: "purple" },
-      { name: "Tailwind", color: "blue" },
-      { name: "Kubernetes", color: "blue" },
-    ],
-    featured: true,
+    stack: ["React", "Vite", "Tailwind", "Kubernetes"],
   },
   {
     title: "bitwise",
     slug: "bitwise",
+    kind: "lesson",
     description:
-      "Interactive teaching tool for JavaScript bitwise operations. Walk through operators and idioms with live evaluation, then switch to the polynomial (GF(2)) view to see how bits behave as elements of a field — XOR as addition, AND as multiplication, with shift-and-XOR long division.",
-    image: "/images/project-bitwise.png",
+      "Try JavaScript's bitwise operators and see each result as you type. A GF(2) view shows how XOR works as addition and AND as multiplication.",
+    image: bitwise,
     url: "https://bitwise.tyrelchambers.com",
-    stack: [
-      { name: "React", color: "green" },
-      { name: "Vite", color: "purple" },
-      { name: "Tailwind", color: "blue" },
-      { name: "Kubernetes", color: "blue" },
-    ],
-    featured: true,
+    stack: ["React", "Vite", "Tailwind", "Kubernetes"],
   },
 ];
 
-export const getStackColorClasses = (color: Project["stack"][0]["color"]) => {
-  const colorMap = {
-    green: "text-[#22C55E] bg-[#22C55E]/[0.125]",
-    blue: "text-[#3B82F6] bg-[#3B82F6]/[0.125]",
-    orange: "text-[#F59E0B] bg-[#F59E0B]/[0.125]",
-    purple: "text-[#A855F7] bg-[#A855F7]/[0.125]",
-  };
-  return colorMap[color];
-};
+export const getProjects = (filter: { kind?: Project["kind"] } = {}) =>
+  projects.filter((p) => !filter.kind || p.kind === filter.kind);
 
-export const getFeaturedProjects = () => projects.filter((p) => p.featured);
-export const getAllProjects = () => projects;
+export const domainOf = (url: string) => new URL(url).hostname;
